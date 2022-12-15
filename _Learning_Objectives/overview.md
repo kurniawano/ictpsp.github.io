@@ -1,5 +1,5 @@
 ---
-title: 10.020 DDW Learning Objectives
+title: Introduction to Computational Thinking and Problem Solving Using Python - Learning Objectives
 permalink: /lo/weekly
 key: lo-weekly
 layout: article
@@ -10,101 +10,153 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+## Lesson 0: Computational Thinking and Problem Solving 
 
-## Week 1: Python ([Concept Map](https://drive.google.com/file/d/11dFasj8ePnDj0TPYWCRrrWckVQk21fjd/view?usp=sharing))
+By the end of this lesson, students should be able to:
+* State the various components of computational thinking, i.e. decomposition, abstraction, pattern recognition and algorithms
+* identify the various skills needed in computing and specifically in programming
+* state the PCDIT framework for problem solving
+* state the difference between novice and expert programmers in solving problems
+* explain the need for identifying patterns in problem solving
 
-- Apply Python's **procedural** programming and **basic** data structures
-- **Define** and **call** functions
-- Implement:
-  - Bubble sort and
-  - Insertion sort algorithms to **sort** a sequence of number
-- Use **print** statements to debug code
+## Lesson 1: Code Execution and Basic Data Types
+By the end of this lesson, students should be able to:
 
-## Week 2: Analysing Programs ([Concept Map](https://drive.google.com/file/d/1PV9-Pe3D1AXhs4pao_70KnF3xyNcNX0P/view?usp=sharing))
+* explain how Python code is executed in sequence
+* create and use a variable
+* create basic data types such as integer, float and string 
+* display basic data types using print function
+* explain the assignment operator
+* draw the environment diagram after assignment
+* check data type of a literal or variable
+* identify input and output data type of a problem
 
-- Write functions to do **binary heap** data structure operation
-- Implement **heapsort** using iteration
-- Define **Big-O** notation and other asymptotic notations
-- Derive **complexity** of a code using its computation model
-- Create **plots** from array data for **visualising** computational time
-- **Measure** computation time for bubble sort, insertion sort, built-in sort, and heapsort
+## Lesson 2: Function, the First Abstraction
+By the end of this lesson, students should be able to:
 
-## Week 3: Divide and Conquer ([Concept Map](https://drive.google.com/file/d/1TRve3OUUgiqjE8DvUDA4breOvj6pmqK2/view?usp=sharing))
+* call built-in math functions
+* explain the purpose of creating a user-defined function
+* define a function with and without arguments
+* define a function with and without return values
+* define a function with multiple arguments and multiple return values
+* define a function with optional or keyword arguments
+* specify data types in arguments and return value
+* abstract a problem as a function
+* identify input, output and process of a function
 
-- Solve problems using **recursion**
-- Identify problems that has recursive solutions
-- Explain and implement **merge sort** algorithm
-- Derive solution of **recurrence** of merge sort using recursion-tree method
-- Measure computation time of merge sort and **compare** it with the other sort algorithms
+## Lesson 3: Operators and Operands
+By the end of this lesson, students should be able to:
 
-## Week 4: Object-Oriented Paradigm ([Concept Map](https://drive.google.com/file/d/1iLusuxa-wncnHcxOrRoX4207u07l18Nh/view?usp=sharing))
+* use basic operators with basic data types
+* predict the evaluated data types from an expression
+* evaluate math expression with various precedence
+* use compound operators
+* use print function to debug a function
 
-- Create `class` definitions with initialization and other methods
-- Create **stored** property and **computed** property
-- Draw UML class diagram of a class with attributes and methods
-- Explain `has-a` relationship
-- Discuss object **aliasing** and **copying**
-- Draw UML class diagram for `has-a` relationship
-- Implement abstract data type for **Stack**, **Queue** using Object Oriented paradigm
-- **Apply** Stack and Queue for some applications
-- Implement Queue using double **Stack** and discuss implementation **impact** on computation time
+## Lesson 4: Three Basic Control Structures
+By the end of this lesson, students should be able to:
 
-## Week 5: Searching Data ([Concept Map](https://drive.google.com/file/d/1B91OlTA0Ss2HLDxf_PJcS9O4GZPDRI9K/view?usp=sharing))
+* state the three basic control structures, i.e. sequential, branch and iteration
+* state the Python keywords to be used for each basic control structures
+* implement branch structure using if-else statement
+* implement simple iteration using while loop
+* identify basic structures from a given problem
 
-- Use **Dictionary** to represent graph
-- Apply **basic** dictionary operations
-- Define **graph**, **vertices**, **edges** and **weights**
-- Differentiate **directed** and **undirected** graphs
-- Define **paths**
-- Create a `Vertex` class and a Graph class
-- Represent graphs using **adjacency-list** representation or **adjacency-matrix** representation
-- Explain and implement **breadth** first search
-- Explain and implement **depth** first search
+## Lesson 5: Boolean Data Type and Branch Structure
 
-## Week 6: Inheritance and Object-Oriented Design ([Concept Map](https://drive.google.com/file/d/1pkxE0M-V7uz_vteyBZsDotkL4sCkJj6b/view?usp=sharing))
+By the end of this lesson, students should be able to:
 
-- Inherit a class to create a **child** class
-- Explain `is-a` relationship
-- Draw **UML** diagram for `is-a` relationship
-- **Override** operators to extend parent's methods
-- Implement **Deque** data structure as a subclass of **Queue**
-- Implement **Array** and **Linked List** data structure from the same base class
+* create a boolean data type
+* convert a variable into a boolean data type
+* evaluate relational and logical operators
+* specify the precedence of relational and logical operators
+* implement branch structure using if-elif-else statement
+* draw a flow chart for if-else and nested if-else
+* explain the difference between if-elif and if-if codes
+* use assert to create a test
+* identify branch structure in a problem
+* decompose a problem into multiple selections
+* abstract selection process as a function
 
-## Week 8: Visualizing and Processing Data([Concept Map](https://drive.google.com/file/d/1PUZkAsRJLcGxEfqDXC-QQlKa6TQu2oNO/view?usp=sharing))
+## Lesson 6: String
 
-- Create **scatter** plot and statistical plots like box plot, histogram, and bar plot
-- Create a **Panda's DataFrame** and selecting data from DataFrame
-- Using library to read `CSV` or `EXCEL` file
-- **Split** data randomly into training set and testing set
-- **Normalize** data using min-max normalization
-- Give example of **linear regression and classification**
+By the end of this lesson, students should be able to:
+* create string using various methods
+* create multi-line string
+* use basic operations on string data type
+* obtain the length of a string
+* obtain a character of a string using the index
+* create a new substring from a string using slice operator
+* explain that string is immutable
+* check if a substring is in a string
 
-## Week 9: Modelling Continuous Data ([Concept Map](https://drive.google.com/file/d/15EkM4XMdMyYjLkg_yFgeKlsgpl-qYjUU/view?usp=sharing))
+## Lesson 7: Iteration using While Loop and For Loop
 
-- Write **objective** function of linear regression
-- Implement **Gradient Descent algorithm** for optimisation
-- Train **linear regression model** using gradient descent
-- Transform data for **higher** order features
-- Evaluate linear regression model using `r^2` and mean-squared-error
-- Evaluate and choose **learning rate**
-- Plot **cost** function over iteration time
-- Plot **linear** regression
+By the end of this lesson, students should be able to:
+* speciy and identify basic building blocks of a while loop statement
+* traverse a string using while loop and counter
+* traverse a string with sentinel value
+* use a break statement to terminate a loop
+* traverse an iterable using for-loop 
+* use range function to create an iterable
+* traverse an iterable using its index
+* use print to debug while loop and for-loop code
+* identify iteration structure from a given problem
+* decompose problem into iterative process of smaller problems
 
-## Week 10: Classifying Categorical Data ([Concept Map](https://drive.google.com/file/d/1wSyrCyG3fFRR-CSCKfMadnhngANKVrcU/view?usp=sharing))
+## Lesson 8: List and Tuple
 
-- Write objective function of **logistic** regression
-- Use logistic regression to **calculate** probabilities of binary classification
-- Train logistic **regression** model
-- Split data into **training**, **validation**, and **testing** set
-- Visualize **non-linear** decision boundary
-- Classify **multi-class** problems using one-vs-all technique
-- Calculate **confusion** **matrix**, **precision**, and **recall**
+By the end of this lesson, students should be able to:
+* create a tuple
+* explain what it means that tuple is immutable
+* access an element in a tuple using index
+* create a list using square bracket operator
+* access an element in a list using index
+* get the length of a list
+* check if an item is an element in a list
+* concatenate a list
+* obtain a sublist from a list using the slice operator
+* modify an element in a list
+* remove an element in a list
+* create an alias of a list
+* clone a list into a new list
+* add an element into a list
+* pass a list as function arguments
+* explain the effect of aliasing for list data type
+* create list comprehension
+* traverse a list using while loop and for-loop
+* draw environment diagram of a list
+* use print to display elements of a list
+* identify when list or tuple is appropriate in a problem
 
-## Week 12: Design of State Machines ([Concept Map](https://drive.google.com/file/d/1Vql1S6jK7ysFhMvEhQ7LIG5THXoMFYJZ/view?usp=sharing))
+## Lesson 9: Nested List and Nested For Loop
 
-- Define a **state machine**
-- Implement an **Abstract Base Class** for State Machine using abc module
-- Define **output** function and **next** state function
-- Draw **state transition diagram** and **time-step table**
-- **Implement** output function and next state function inside `get_next_values` overridden method.
-- **Apply** breadth first search to perform state-space search
+By the end of this lesson, students should be able to:
+* create a nested list
+* access elements in a nested list
+* traverse a nested list using both while loop and for-loop
+* draw environment diagram of a nested list
+* explain the effect of aliasing of a nested list
+* explain the difference between shallow copy and deep copy
+* use print to debug nested loop
+* identify nested loop structure in a given problem
+* decompose nested loop problem into multiple loops
+
+
+## Lesson 10: Dictionary and Set
+
+By the end of this lesson, students should be able to:
+* create a dictionary as key-value pairs
+* access the value using the key
+* add key-value pair into a dictionary
+* use dictionary to implement branch structure
+* remove a key-value pair from a dictionary
+* check if a key is in a dictionary
+* check if a value is in a dictionary
+* traverse a dictionary 
+* compare dictionary with a list
+* create a set
+* use basic set operations
+* add item into a set
+* compare set and dictionary
+* identify when dictionary or set is appropriate in a problem

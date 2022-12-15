@@ -18,9 +18,9 @@ highlight_theme_alt: "tomorrow-night" # "default" (default), "tomorrow", "tomorr
 text_skin: "default" # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: "tomorrow" # url: "https://username.github.io"
 # baseurl: /baseurl # does not include hostname
-title: 10.020 DDW
+title: ICTPSP
 description: > # this means to ignore newlines until "Language & timezone"
-  Welcome to 10.020 Data Driven World Course Site!
+  Welcome to Introduction to Computational Thinking and Problem Solving Using Python Book Site!
 
 ## => Language and Timezone
 ##############################
@@ -49,7 +49,7 @@ author:
 
 ## => GitHub Repository (if the site is hosted by GitHub), won't be useful if you don't enable _show_edit_on_github
 ##############################
-repository: Data-Driven-World/Data-Driven-World.github.io
+repository: Data-Driven-World/ictpsp.github.io
 repository_tree: main
 
 ## => Paths
@@ -149,7 +149,7 @@ collections:
   Notes:
     output: true
   Mini_Projects:
-    output: true
+    output: false
   Learning_Objectives:
     output: true
 
