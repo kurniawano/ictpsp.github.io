@@ -1,5 +1,5 @@
 ---
-title: Data Driven World Notes
+title: Introduction to Computational Thinking and Problem Solving Using Python
 permalink: /notes/overview
 key: notes-overview
 layout: article
@@ -13,74 +13,73 @@ show_edit_on_github: false
 show_date: false
 ---
 
-## Week 01: Python Revision and Sorting Algorithm
+## Lesson 0: Computational Thinking and Problem Solving
 
 Notes:
 
-- [Bubble Sort and Insertion Sort]({% link _Notes/BubbleSort_InsertionSort.md %})
+- [What is Computational Thinking]({% link _Notes/Computational_Thinking.md %})
+- [Computational Thinking and Programming]({% link _Notes/Programming_Intro.md %})
+- [Problem Solving Framework]({% link _Notes/PCDIT_Intro.md %})
 
-## Week 02: Analysing Programs
+## Lesson 1: Code Execution and Basic Data Types
+Notes:
+
+- [Hello World]({% link _Notes/BinaryHeap_Heapsort.md %})
+- [Basic Data Types]({% link _Notes/Basic_Data_Types.md %})
+
+
+## Lesson 2: Function, the First Abstraction
 
 Notes:
 
-- [Binary Heap and Heapsort]({% link _Notes/BinaryHeap_Heapsort.md %})
-- [Analysing Computation Time]({% link _Notes/ComputationTime.md %})
+- [Calling a Function]({% link _Notes/Calling_Function.md %})
+- [Defining a Function]({% link _Notes/Defining_Function.md %})
 
-## Week 03: Divide and Conquer
-
-Notes:
-
-- [Divide and Conquer]({% link _Notes/Divide_Conquer.md %})
-- [Merge Sort]({% link _Notes/Merge_Sort.md %})
-
-## Week 04: Object-Oriented Paradigm
+## Lesson 3: Operators and Operands
 
 Notes:
 
-- [Object Oriented Programming]({% link _Notes/Object_Oriented_Programming.md %})
-- [Linear Data Structures]({% link _Notes/Linear_Data_Structures.md %})
+- [Basic Operators]({% link _Notes/Basic_Operators.md %})
 
-## Week 05: Searching Data
-
-Notes:
-
-- [Introduction to Graph]({% link _Notes/Intro_to_Graph.md %})
-- [Graph Search]({% link _Notes/Graph_Search.md %})
-
-## Week 06: Inheritance and Object-Oriented Design
+## Lesson 4: Three Basic Control Structures
 
 Notes:
 
-- [Inheritance and Abstract Base Class]({% link _Notes/Inheritance_ABC.md %})
-- [Fixed-Size Array and Linked List]({%link _Notes/Array_LinkedList.md %})
+- [Basic Control Structures]({% link _Notes/Intro_Control_Structures.md %})
 
-## Week 08: Visualizing and Processing Data
-
-Notes:
-
-- [Working With Data]({% link _Notes/Working_With_Data.md %})
-- [Creating Plots using Matplotlib and Seaborn]({% link _Notes/Visualization.md %})
-
-## Week 09: Modeling Continuous Data
+## Lesson 5: Boolean Data Type and Branch Structure
 
 Notes:
 
-- [Linear Regression]({% link _Notes/LinearRegression.md %})
-- [Multiple Linear Regression]({% link _Notes/Multiple_Linear_Regression.md %})
+- [Boolean Data]({% link _Notes/Boolean_Data.md %})
+- [Branch Structures]({%link _Notes/Branch_Structure.md %})
 
-## Week 10: Classifying Categorical Data
+## Lesson 6: String
 
 Notes:
 
-- [Logistic Regression]({% link _Notes/Logistic_Regression.md %})
-- [Confusion Matrix and Metrics]({% link _Notes/Confusion_Matrix_Metrics.md %})
+- [String]({% link _Notes/String.md %})
 
-## Week 12: Design of State Machines
+## Lesson 7: Iteration Using While Loop and For Loop
 
-- [State Machine]({% link _Notes/State_Machine.md %})
-- [SM Abstract Class]({% link _Notes/StateMachine_ABC.md %})
+Notes:
+
+- [Implementing While Loop]({% link _Notes/While_Loop.md %})
+- [Implementing For Loop]({% link _Notes/For_Loop.md %})
+
+## Lesson 8: List and Tuple
+
+Notes:
+
+- [Tuple Data]({% link _Notes/Tuple.md %})
+- [List Data]({% link _Notes/List.md %})
+
+## Lesson 9: Nested List and Nested For Loop
+
+- [Nested List]({% link _Notes/Nested_List.md %})
+- [Nested For Loop]({% link _Notes/Nested_For_Loop.md %})
 - [State Space Search]({% link _Notes/State_Space_Search.md %})
 
 ## Contributors
 
-These notes and problem sets were prepared by Oka Kurniawan, Zachary Teo Wei Jie, and Amanda Kosim.
+These notes and problem sets were prepared by Oka Kurniawan.
