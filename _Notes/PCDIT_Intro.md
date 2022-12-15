@@ -1,7 +1,7 @@
 ---
-title: Basic Data Types
-permalink: /notes/basic-data-types
-key: notes-basic-data-types
+title: Problem Solving Framework
+permalink: /notes/intro-pcdit
+key: notes-intro-pcdit
 layout: article
 nav_key: Notes
 sidebar:

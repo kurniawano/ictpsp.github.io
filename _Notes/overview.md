@@ -45,7 +45,7 @@ Notes:
 
 Notes:
 
-- [Basic Control Structures]({% link _Notes/Intro_Control_Structures.md %})
+- [Basic Control Structures]({% link _Notes/Basic_Structures.md %})
 
 ## Lesson 5: Boolean Data Type and Branch Structure
 
@@ -78,7 +78,6 @@ Notes:
 
 - [Nested List]({% link _Notes/Nested_List.md %})
 - [Nested For Loop]({% link _Notes/Nested_For_Loop.md %})
-- [State Space Search]({% link _Notes/State_Space_Search.md %})
 
 ## Contributors
 

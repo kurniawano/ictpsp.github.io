@@ -1,7 +1,7 @@
 ---
-title: Basic Data Types
-permalink: /notes/basic-data-types
-key: notes-basic-data-types
+title: Computational Thinking and Programming
+permalink: /notes/intro-programming
+key: notes-intro-programming
 layout: article
 nav_key: Notes
 sidebar:
