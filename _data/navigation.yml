@@ -9,63 +9,65 @@ header:
     key: lo-weekly
 
 Notes:
-  - title: Week 1
+  - title: Lesson 0: Computational Thinking and Problem Solving
     children:
-      - title: Sorting Algorithms
-        url: /notes/bubble_insertion_sort
-  - title: Week 2
+      - title: What is Computational Thinking
+        url: /notes/intro-ct
+      - title: Computational Thinking and Programming
+        url: /notes/intro-programming
+      - title: Problem Solving Framework
+        url: /notes/intro-pcdit
+  - title: Lesson 1: Code Execution and Basic Data Types
     children:
-      - title: Binary Heap
-        url: /notes/binary_heap_sort
-      - title: Computation Time
-        url: /notes/computation_time
-  - title: Week 3
+      - title: Hello World
+        url: /notes/hello-world
+      - title: Basic Data Types
+        url: /notes/basic-data-types
+  - title: Lesson 2: Function, the First Abstraction
     children:
-      - title: Divide and Conquer
-        url: /notes/divide_conquer
-      - title: Merge Sort
-        url: /notes/merge_sort
-  - title: Week 4
+      - title: Calling a Function
+        url: /notes/calling-function
+      - title: Defining a Function
+        url: /notes/defining-function
+  - title: Lesson 3: Operators and Operands
     children:
-      - title: OOP
-        url: /notes/oo_programming
-      - title: Linear Data Structures
-        url: /notes/linear_data_structure
-  - title: Week 5
+      - title: Basic Operators
+        url: /notes/basic-operators
+  - title: Lesson 4: Three Basic Control Structures
     children:
-      - title: Basics of Graph
-        url: /notes/intro_graph
-      - title: Graph Search
-        url: /notes/graph_search
-  - title: Week 6
+      - title: Basic Control Structures
+        url: /notes/basic-structures
+  - title: Lesson 5: Boolean Data Type and Branch Structure
     children:
-      - title: Inheritance
-        url: /notes/inheritance_abc
-      - title: Array and Linked List
-        url: /notes/array_linkedlist
-  - title: Week 8
+      - title: Boolean Data
+        url: /notes/boolean-data
+      - title: Branch Structures
+        url: /notes/branch-structures
+  - title: Lesson 6: String
     children:
-      - title: Working with Data
-        url: /notes/working_with_data
-      - title: Matplotlib and Seaborn
-        url: /notes/visualization
-  - title: Week 9
+      - title: Working with String
+        url: /notes/string
+  - title: Lesson 7: Iteration Using While Loop and For Loop
     children:
-      - title: Linear Regression
-        url: /notes/linear_regression
-      - title: Multiple Linear Regression
-        url: /notes/multiple_linear_regression
-  - title: Week 10
+      - title: Implementing While Loop
+        url: /notes/while-loop
+      - title: Implementing For Loop
+        url: /notes/for-loop
+  - title: Lesson 8: List and Tuple
     children:
-      - title: Logistic Regression
-        url: /notes/logistic_regression
-      - title: Confusion Matrix and Metrics
-        url: /notes/confusion_matrix_metrics
-  - title: Week 12
+      - title: Working with Tuple
+        url: /notes/tuple
+      - title: Working with List
+        url: /notes/list
+  - title: Lesson 9: Nested List and Nested For Loop
     children:
-      - title: State Machine
-        url: /notes/state_machine
-      - title: SM Abstract Class
-        url: /notes/abstract_sm_class
-      - title: State Space Search
-        url: /notes/state_space_search
+      - title: Nested List
+        url: /notes/nested-list
+      - title: Nested For Loop
+        url: /notes/nested-for
+  - title: Lesson 10: Dictionaries and Sets
+    children:
+      - title: Working with Dictionaries
+        url: /notes/dictionaries
+      - title: Working with Sets
+        url: /notes/sets

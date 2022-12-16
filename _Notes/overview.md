@@ -24,7 +24,7 @@ Notes:
 ## Lesson 1: Code Execution and Basic Data Types
 Notes:
 
-- [Hello World]({% link _Notes/BinaryHeap_Heapsort.md %})
+- [Hello World]({% link _Notes/Hello_World.md %})
 - [Basic Data Types]({% link _Notes/Basic_Data_Types.md %})
 
 
@@ -52,13 +52,13 @@ Notes:
 Notes:
 
 - [Boolean Data]({% link _Notes/Boolean_Data.md %})
-- [Branch Structures]({%link _Notes/Branch_Structure.md %})
+- [Branch Structures]({% link _Notes/Branch_Structure.md %})
 
 ## Lesson 6: String
 
 Notes:
 
-- [String]({% link _Notes/String.md %})
+- [Working with String]({% link _Notes/String.md  %})
 
 ## Lesson 7: Iteration Using While Loop and For Loop
 
@@ -71,13 +71,17 @@ Notes:
 
 Notes:
 
-- [Tuple Data]({% link _Notes/Tuple.md %})
-- [List Data]({% link _Notes/List.md %})
+- [Working with Tuple]({% link _Notes/Tuple.md %})
+- [Working with List]({% link _Notes/List.md %})
 
 ## Lesson 9: Nested List and Nested For Loop
 
 - [Nested List]({% link _Notes/Nested_List.md %})
 - [Nested For Loop]({% link _Notes/Nested_For_Loop.md %})
+
+## Lesson 10: Dictionaries and Sets
+- [Working with Dictionaries]({% link _Notes/Dictionary.md %})
+- [Working with Sets]({% link _Notes/Set.md %})
 
 ## Contributors
 

@@ -1,7 +1,7 @@
 ---
-title: Basic Control Structures
-permalink: /notes/basic-structures
-key: notes-basic-structures
+title: Sets
+permalink: /notes/sets
+key: notes-sets
 layout: article
 nav_key: Notes
 sidebar:
