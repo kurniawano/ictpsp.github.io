@@ -12,3 +12,12 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
+## True or False?
+
+## Relational Operators
+
+## Logical Operators
+
+## Evaluating Boolean Expressions
+

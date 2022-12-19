@@ -12,3 +12,7 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
+## Your First Program
+
+## Sequence Matters

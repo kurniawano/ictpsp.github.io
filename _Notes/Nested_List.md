@@ -12,3 +12,11 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
+## Creating a Nested List
+
+## Basic Operations with Nested Lists
+
+## Environment Diagram of a Nested List
+
+## Copying Nested List and Aliasing Issue

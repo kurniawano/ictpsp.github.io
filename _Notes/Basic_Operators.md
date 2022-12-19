@@ -12,3 +12,13 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
+## Operators and Operands in Computation
+
+## Arithmetic Operators
+
+## Evaluating an Expression
+
+## Compound Operators
+
+## Debugging using Print Statement

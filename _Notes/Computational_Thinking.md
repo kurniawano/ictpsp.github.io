@@ -13,3 +13,6 @@ show_edit_on_github: false
 show_date: false
 ---
 
+## What is Computational Thinking?
+
+## Components of Computational Thinking

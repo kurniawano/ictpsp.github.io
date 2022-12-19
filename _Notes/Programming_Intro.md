@@ -12,3 +12,7 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
+## What is Programming?
+
+## Skills Needed in Programming

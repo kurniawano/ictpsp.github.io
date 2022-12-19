@@ -12,3 +12,7 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
+## PCDIT: How to Solve Problem Computationally?
+
+## Novice and Expert Programmers
