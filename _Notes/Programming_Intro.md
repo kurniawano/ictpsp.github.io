@@ -21,7 +21,7 @@ When you use computers for your work or study, you will naturally use some softw
 
 To create these computer codes, one usually choose a *programming language* to work with. Every computer code is written in some specific programming language. How then computer processes these codes? There are two main ways: interpreter and compiler. 
 
-In using an interpreter, the computer processes every *statement* or *expression* written in the codes and executes it immediately. For example, let's take a look at a Python code below.
+In using an interpreter, the computer processes every *statement* or *expression* written in the codes and executes it immediately. For example, let's take a look at a Python code below to calculate a Body Mass Index.
 
 ```python
 weight = 60
@@ -40,7 +40,22 @@ Since compilers take in the whole source code, they are able to do optimisation 
 
 // image of compilation and linking
 
+The important things to note is that the result of a programming activity is a source code which is used to produce instructions for the computer to execute. 
+
+[^1]: https://github.com/WebKit/WebKit 
 
 ## Skills Needed in Programming
 
-[^1]: https://github.com/WebKit/WebKit 
+Programming, however, is not an easy task. This is especially true for novice programmers. The reason for this is that programming requires a number of different skill sets. Here we list down four of them which is common in most programming activities.
+- Familiarity with the programming language
+- Problem solving skills
+- Familiarity with the development environment tools
+- Analytical thinking and debugging skills
+
+Each of this different skills are required for programmers to perform this single task of programming. Familiarity with a programming language used is analogous to learning a new foreign language. At the same time, knowing a new language does not guarantee a person to be able to write a computer code. The reason is that the programming language itself is just a tool to solve some problems at hand. Therefore, problem solving skill is also needed in programming. It is common for novice programmers to learn the programming language without being able to write a code to solve certain problems. 
+
+Moreover, programmers usually use certain development tools such as Integrated Development Environment (IDE) or any other software to write the computer codes, debug, test and executes them. This means that a novice programmers must learn how to use these tools. In some occasions, the installation and operation of these software tools are not easy. This means that novice programmers must juggle to learn how to use the software. One simple example is that many novice programmers do not know how to use the debugging features of their IDE. This makes it difficult for them to fix their code when they encounter some errors.
+
+Speaking about fixing codes, this is another skill that is different from problem solving and learning a new language. There are two kinds of errors that programmers may encounter. The first one is a syntax error where the compiler or the interpreter is unable to execute the command that the programmer writes due to some mistakes in the code. Usually the compiler or the interpreter is able to highlight what kind of error and which line of the code that it fails. Many novice programmers are not able to understand the error message that the compiler or the interpreter gives. Some of these error messages produce a whole stack of information that is useful for expert programmers but may confuse a novice programmer. The second kind of error is what is called the semantic errors or the logical errors. These errors are not caught by the compiler or the interpreter because it is a valid syntax or instruction for the machine to execute. However, these errors produces a different output than what is expected. Being able to trace where the logical errors are requires  some analytical skills. 
+
+The various skills that is needed by programmers to do programming may seem overwhelming for novice programmers. At the same time, this is the reason why programming activities are helpful. When someone learn programming, he or she pick up these various skills such as those needed by someone learning a new foreign language, or like those engineers who are able to solve various problems, or even like those detectives who are able to use their analytical skills to form conclusions from the given evidences. In short, programming is a challenging yet rewarding activities. 
