@@ -69,3 +69,7 @@ At the same time, learning programming language without any problem sometimes ro
 Expert programmers test their codes and even write the test before they write their solutions. Novice programmers tend to put testing outside of their scope. In most courses, test code are given for novice programmers. Moreover, they are not taught on how to test their code frequently in small chunks. Novice programmers are not aware when to test their code or how to test their code. 
 
 Basic testing and debugging skills must be introduced to novice programmers from the early times. Certain concepts of programming language such as basic code invariant are useful to help them in testing their code. 
+
+## Summary
+
+This section introduce the readers on the problem solving framework which we adopt in this notes. We also share the difference between the expert and novice programmers in approaching a problem. Our hope is that by identifying some these differences, we can lead any novice programmers towards the direction that expert progammers have. We will highlight some of the steps in the PCDIT framework. Moreover, we will also put some highlight on how expert and novie programmers may think in approaching a particular problem examples. 
