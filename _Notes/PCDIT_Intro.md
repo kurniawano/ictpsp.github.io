@@ -48,7 +48,7 @@ It is generally thought that it takes about 10 years to turn a novice into an ex
 
 ### Knowledge Schemas
 
-Expert programmers efficiently organized knowledge schemas according to functional characteristics of the underlying algorithms. On the other hand, novice programmers tend to be limited to surface and superficial knowledge such as the language syntax. An example of this is that when expert programmers see a problem description, they tend to think how similar this new problems with existing problems they have solved before. Expert programmers have mental bank of large schemas of various problems and their underlying algorithm to solve these problems. On the other hand, novice programmes have not built up their solutions schemas and so limited to thinking in terms of the programming language syntax such as what statement should they use.  This indicates that novice programmers need to learn to build their solution schemas by exposing themselves to various problems and their solutions. At the same time, they need to learn to identify patters in that problem and how they can use their existing solutions schemas to solve the new problems instead of focusing on the language syntax. 
+Expert programmers efficiently organized knowledge schemas according to functional characteristics of the underlying algorithms. On the other hand, novice programmers tend to be limited to surface and superficial knowledge such as the language syntax. An example of this is that when expert programmers see a problem description, they tend to think how similar this new problems with existing problems they have solved before. Expert programmers have mental bank of large schemas of various problems and their underlying algorithm to solve these problems. On the other hand, novice programmes have not built up their solutions schemas and so limited to thinking in terms of the programming language syntax such as what statement should they use.  This indicates that novice programmers need to learn to build their solution schemas by exposing themselves to various problems and their solutions. At the same time, they need to learn to identify patterns in that problem and how they can use their existing solutions schemas to solve the new problems instead of focusing on the language syntax. 
 
 ### Strategies
 
@@ -58,3 +58,14 @@ On the other hand, novice programmers tend to approach programming "line by line
 
 ### Language Constructs
 
+Studies show that expert programmers are familiar and comfortable to use specific programming language constructs to solve the programming problems. On the other hand, novice programmers struggles with the programming language constructs. They tend to use a few common ways and syntax of the language. Novice programmers also tend to focus on the programming language constructs instead of the algorithm. They tend to think what syntax should I use instead of what kind of steps should I do to solve this problem. 
+
+One way to help novice programmers is to strengthen their familiarity with the programming language constructrs that they use. It is important to give the understanding how the programming language works and to expose them how different constructs are used in solving different problems. Novice programmers to write code on their own using these different constructs to make them familiar. Many programming language learning is linear from one topic to another topic. However, the way our memory works require us to revisit some of these topics, exercise again and again to make one comfortable with the language. Just as learning new foreign language requires someone to make use of the language frequently, it would be the same with learning programming language. 
+
+At the same time, learning programming language without any problem sometimes rob the context and have less motivation. The challenge is to introduce the language construct that motivates novice programmers to use them and to use them repeatedly to the point that they are comfortable and familiar with the language. 
+
+### Testing
+
+Expert programmers test their codes and even write the test before they write their solutions. Novice programmers tend to put testing outside of their scope. In most courses, test code are given for novice programmers. Moreover, they are not taught on how to test their code frequently in small chunks. Novice programmers are not aware when to test their code or how to test their code. 
+
+Basic testing and debugging skills must be introduced to novice programmers from the early times. Certain concepts of programming language such as basic code invariant are useful to help them in testing their code. 
