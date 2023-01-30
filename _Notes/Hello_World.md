@@ -77,6 +77,8 @@ Hello World!
 >>> 
 ```
 
+We'll show you how to run Python's Script but for the next few section you can just type your code into the Python's shell. 
+
 ## Human Language and Programming Language
 
 At this point it is important to note that there is a significant different between our human language and a programming language. The reason for this difference is that computer is not as smart as human in resolving ambiguity in the message. Computer requires a more exact instruction that is non-ambiguous to execute your instruction. On the other hand, human is much better at resolving ambiguities by reading the context, body language and other clues. Human also can verify if his understanding is correct or not. Computer requires exact and non-ambiguous instruction. 
@@ -298,7 +300,204 @@ for world in range(1_000_000):
   print("Hello World no. ", world)
 ```
 
-If the above code looks foreign to you, do not worry. We will discuss about the `for-in` statement, the `range()` function and the role of variables in subsequent lessons. But I hope you can at least identify there are two data types in the above code. The first one is the `int` data which we create using `1_000_000` to represent the number of worlds we have (assuming we only have 1 million worlds). The second one is the `string` data which we create using the double quotes in `"Hello World no. "`. Thinking about "what kind of data is this?" is very important. 
+If the above code looks foreign to you, do not worry. We will discuss about the `for-in` statement, the `range()` function and the role of variables in subsequent lessons. But I hope you can at least identify there are two data types in the above code. The first one is the `int` data which we create using `1_000_000` to represent the number of worlds we have (assuming we only have 1 million worlds). The second one is the `string` data which we create using the double quotes in `"Hello World no. "`. Thinking about "what kind of data is this?" is very important. Knowing what data that is helps us to know what we can do about it. Different data has different operations and ways to manipulate.
+
+## Running Python Code as a Script
+
+We have been running our code in a Python shell. We enter the shell by first typing:
+```sh
+python
+```
+
+in our terminal. 
+
+The second way of running our Python's code is as a *Script*. To do this, create a new *text file* called `01_hello.py`. You may want to use code editor like Visual Studio Code, Atom, Sublime Text, etc, to do this. You can write your code and paste it into your new text file.
+
+```python
+print("Hello World no. ", 1)
+print("Hello World no. ", 2)
+print("Hello World no. ", 3)
+```
+
+After you save your text file, you can run this code by running the following command in your terminal or command prompt.
+
+```sh
+python 01_hello.py
+```
+
+You will see an output that looks like this.
+
+```sh
+Hello World no.  1
+Hello World no.  2
+Hello World no.  3
+```
+
+The above command assumes you are in the same location as where you save your `01_hello.py`. For example, if you save your `01_hello.py` in your `/Users/my_user/Downloads`, then you need to go into that folder first. The terminal command to go to a particular location is `cd` which means change directory.
+
+```sh
+cd ~/Downloads
+```
+
+In Unix-based OS, the character `~` is used to indicate the home user's directory, which is the same as `/Users/my_user/`.
+
+If you use Windows operating system, you may store it in something like `C:\Users\my_user\Downloads`. Similarly, you can open your command prompt and type the following
+
+```dos
+cd $HOME\Downloads
+```
+
+In Windows, `$HOME` stores the location to the user's home directory. 
 
 
 ## Sequence Matters
+
+In programming, sequence matters. In fact, this is the first pattern that you will continue to see recurring again in all computer codes. Computer codes in general execute the instruction in sequence **from top to bottom**. When you run your code as a script, the sequence matters because different sequence may create a different output. For example, run the below code which is the same as in the previous one using Python Tutor to visualize the sequence. You can click the "next" button to step through the execution of the code. However, we want you to note the two arrows. The green and the red arrows. The green light arrow indicates the instruction that has *just been executed*. On the other hand, the dark red arrow indicates the instruction that is *about to be executed*. 
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Hello%20World%20no.%20%22,%201%29%0Aprint%28%22Hello%20World%20no.%20%22,%202%29%0Aprint%28%22Hello%20World%20no.%20%22,%203%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+The output is different from the following one.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Hello%20World%20no.%20%22,%203%29%0Aprint%28%22Hello%20World%20no.%20%22,%201%29%0Aprint%28%22Hello%20World%20no.%20%22,%202%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+The reason that the output is different because the sequence of the instruction is different. In the second one, the hello to world number 3 is executed first before the other two instructions. 
+
+Besides noting that the sequence matters, it is important to understand the concept of **program counter**. The red arrow in the two embedded code above shows the program counter. A program counter **points to the next instruction to be executed**. In most cases, the program counter moves from **top to bottom** in a linear sequence. We will learn ways to alter this behaviour in the subsequent lessons. But for now, it is important to remember that program counter moves in sequence from top to bottom. The program counter indicates which instruction to be executed next. 
+
+## Introducing Variables
+
+In many cases, we want to **work** with data. This means that our data may change over time. We may also re-use some of the data we have created in other places in our computation and manipulate it. Computers are good to work with numbers but human works better with labels. In most programming language, we are able to create a **variable** that binds a label or a name with a value or data. For example, in the previous problem of saying hello to our multiverse, we can actually store our world's index or number into a variable. For example,
+
+```python
+world_index = 1
+print("Hello World no. ", world_index)
+```
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+When you click "next" for the first time, Python interpreter will execute the first line `world_index = 1`.  The effect of this execution  was not apparent as there is no output produced. However, Python Tutor displays that there are three things happening in the **Global frame** which is the memory environment used by Python to execute the code.
+- a label or a name called `world_index` was created
+- an `int` literal was created with the value `1`. 
+- the name `world_index` was binded with the literal data `1`.
+
+When you click the "next" button the second time, Python interpreter executes the `print()` statement and displays the text into the standard output. Note that in displaying this output, Python interpreter encounters a **name** called `world_index`. Python interpreter then tries to find what is the meaning of this name. Python could not find it in any of its built-in keywords and functions and, therefore, check whether `world_index` is **defined** in the *global frame*. When Python interpreter finds the name `world_index` in the global frame and recognize that it is a variable, it evaluates its value, which is `1`. Thus, the above code is evaluated similar to the following code.
+
+```python
+print("Hello World no. ", 1)
+```
+
+A variable is just a name that is binded to some value. You can change this binding to a different value. 
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%202%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%203%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+In the above code, when Python interpreter executes line number 3 `world_index = 2`, it does the following:
+- Python creates an `int` literal with value `2`.
+- Python binds this new literal to the name `world_index`.
+
+We can see that the value in the *global frame* for `world_index` changes to `2` after executing line 3. 
+
+You may have noticed that we use the equal sign, i.e. `=` in the above code. This **operator** is called the **assignment operator**. It is called the assignment operator because it assigns the literal to a label or a name. 
+
+Note that this assignment is from **right to left**. We cannot swap the sequence. Writing the below code produces an error. 
+
+```python
+>>> 1 = world_index
+  File "<stdin>", line 1
+SyntaxError: cannot assign to literal
+```
+
+The error says that you cannot assign something to a literal. Recall that `1` is an `int` type literal and the assignment is from right to left
+
+The error says that you cannot assign something to a literal. Recall that `1` is an `int` type literal and the assignment is from right to left. With the above code, you are telling python to assign the value associated with the name `world_index` to the literal `1` and Python does not allow this. 
+
+## Checking Data Type
+
+Python makes it easy for programmers to create variables. But this comes at a cost that programmers do not ask the question, "What kind of data is this?". When you create a variable, binds the data dynamically and does not require you to specify the type of the data. However, Python 3.6 onwards allows programmers to specify the data type as a kind of **annotation** to be checked by other programs. You can specify the previous variable as follows.
+
+```python
+world_index: int = 1
+```
+
+However, what Python does is just to create an annotation and does not enforce it. For example, you can still make mistakes assigning a wrong data type and Python interpreter will still executes fine. Run the following code step by step observing the data created in the memory.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%3Aint%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%20%222%22%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%203.0%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+As you can see that `world_index` is neither `str` nor `float` and yet Python continues to executes the code. The annotation is useful if you use other checker to check your code. The most common one is called [mypy](https://github.com/python/mypy). 
+
+To install mypy, do the following from the terminal.
+
+```sh
+python -m pip install -U mypy
+```
+
+You can then run `mypy` on your script. To create your script. Create a text file called `02_wrong_type_hello.py` and type in the following code.
+
+```python
+world_index:int = 1
+print("Hello World no. ", world_index)
+world_index:str = 2
+print("Hello World no. ", world_index)
+world_index:float = 3
+print("Hello World no. ", world_index)
+```
+
+Running `mypy` on the text file results in the following.
+
+```sh
+$ mypy 02_wrong_type_hello.py
+02_wrong_type_hello.py:3: error: Incompatible types in assignment (expression has type "str", variable has type "int")  [assignment]
+02_wrong_type_hello.py:5: error: Incompatible types in assignment (expression has type "float", variable has type "int")  [assignment]
+Found 2 errors in 1 file (checked 1 source file)
+```
+
+To fix this error, you need change the data back to `int` type. Create a new text file with the corrected code with the name `03_correct_type_hello.py`. 
+
+```python
+world_index:int = 1
+print("Hello World no. ", world_index)
+world_index = 2
+print("Hello World no. ", world_index)
+world_index = 3
+print("Hello World no. ", world_index)
+```
+
+And run `mypy` again.
+
+```sh
+$ mypy 03_correct_type_hello.py
+Success: no issues found in 1 source file
+```
+
+Notice that `mypy` does not actually runs the code but only checks if there is any issues by doing static type checking on the code. We will use `mypy` to improve our code.
+
+As a programmer, you can actually check what is the data type of a variable using the `type()` function. 
+
+```python
+world_index = 1
+print(type(world_index))
+world_index = "2"
+print(type(world_index))
+world_index = 3.0
+print(type(world_index))
+```
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%20%222%22%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%203.0%0Aprint%28type%28world_index%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Try clicking the "next" button and see how the code works. I think it is important to explain the following line.
+
+```python
+print(type(world_index))
+```
+
+When Python interpreter sees this, 
+- it sees a name `print` and recognize that you are *invoking* a function due to the opening and closing parenthesis `print()`. 
+- Python tries to evaluates the value inside the parenthesis to pass it to the `print()` function. 
+- When Python evaluates the value inside the parenthesis, it finds another name `type` and recognize that it is another of its built-in function.
+- Python also sees that you are invoking `type()` because of the opening and closing parenthesis. In order to execute this function, Python tries to evaluate the value inside this *inner* parenthesis.
+- When evaluating the inner parenthesis, Python finds another name `world_index`. This time, Python cannot recognize this name from any of its built-in keywords or function and tries to find it in the global frame.
+- Python finds the name `world_index` in the global frame and obtains the value, which is `1`.
+- Python pass this value `1` to the function `type()` and executes `type()`. This functions evaluates to a data that describes Python's `type`. You can actually try to type the following in a Python shell to see: `type(type(1))`. You will get `<class 'type'>`. 
+- Python then pass this output of `type()` function to `print()` function. In order to print it, Python will convert this data into a string so that it can displays it into the standard output.
+- Python finally displays `<class 'int'>` into the screen.
+
+Now, that's a lot of things going on with just a simple code. But it is important to note that Python **evaluates from inside to outside of the parenthesis** when it invokes a function such as `print()` and `type()`. We will learn more about function in the next lesson. 
