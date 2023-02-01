@@ -29,6 +29,8 @@ Now, we will introduce two basic data types:
 
 In our first problem, our data is not numbers but rather text. We call this data of a `string` data type. In some other programming language, they have a character data type where it only consists of a single character. Python does not have a character data type. To create a character, you basically create a string with only one character.  
 
+If you recall about our chatbot, a name will be a string data. But let's say if you create a chatbot to calculate your cadence related to your fitness activity, some of those data may not be a string. For example, the chatbot can ask on the number of steps and the duration of your walk or your cycling period. In calculating your cadence, the app has to work with numbers to do the mathematical manipulation. 
+
 This `string` data type includes other kinds that may not so obviously a text such as:
 - new line character
 - tab and other whitespaces
@@ -402,4 +404,64 @@ Now, that's a lot of things going on with just a simple code. But it is importan
 
 ## Environment Diagram
 
+Python Tutor allows you to see the memory environment of your code. On the right hand side of your code you see two panels, the first one at the top right is the print of your standard output. This panel shows you whatever that you display to the standard output through the `print()` function. The second one is on the right side just below the print output panel. This shows you what is happening in the memory environment of your code. At the beginning, you only see the labels:
+- Frames
+- Objects
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%20%222%22%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%203.0%0Aprint%28type%28world_index%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Try clicking the "next" button and you will see that the first frame created is called the **global frame**. Later on, when you learn to create your own user defined function, you will see that each function has its own local frame. But for now, we will only deal with the global frame. All the variables are created in this global frame. Currently, we only have one variable called `world_index`. As we introduce more data and more different kinds of data, you will see more things in this environment diagram.
+
 ## Identifying Data Type in a Problem
+
+The first step of PCDIT is Problem Statement. In this step, we need to identify the input, output and process of the problem. In identifying the input and the output, we need to ask, "what kind of data is this?". 
+
+Let's try to identify the input and output of our chatbot. Let's say, our chatbot is able to advise us on our fitness activity and would like to calculate your cadence from your previous cycling period. So the chatbot will do a conversation like the following.
+
+```
+Hi, Jane! How as your last cycling?
+
+> nice
+
+Did you count how many push you did on the pedal within 30 seconds?
+
+> 25
+
+Thanks. Your cadence is 50. That's rather low, you may want to try to increase it.
+```
+
+Now, we should ask, what the input and the output of this program is. The input to the chatbot is all the data that you give to the program. In this case, they are text data as you type into the chatbot. This means that the data is a string data. On the other hand, the chatbot displays a string data as well into the app screen. So both input and output are string. 
+
+You may ask why the input is not a number since `25` looks like a number. The answer is that the data that you key in is considered as a string because it is entered into a kind of text field. This is why it is important to ask what kind of data it is. 
+
+However, in order to calculate the cadence, you cannot manipulate a string data and therefore you need to transform your data into a number-like data. Since steps tend to be generally whole number, we can convert that string data into an `int`. So now we can roughly design our algorithm to calculate your cycling cadence.
+1. Request for number of steps within 30 seconds
+1. Convert the number of steps from string into integer
+1. Multiply number of steps by 2 to get the cadence
+
+Depending on the cadence we may want to decide whether to prompt the user to increase their cycling cadence or not. But in order to display different messages, we will need to learn on the control structure in the subsequent lesson. For now, we can implement the cadence calculation.
+
+In order to get data, you need to learn a function to take in data from the keyboard. In Python, you can use `input()` function where the argument is the prompt you want to display to the user. This function returns you the string that the user enters through the keyboard. 
+
+
+```python
+steps_inp: str = input("how many push you did on the pedal within 30 seconds?")
+
+steps: int = int(steps_inp)
+cadence: int = steps * 2
+
+print("Your cadence is ", cadence)
+```
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=steps_inp%3A%20str%20%3D%20input%28%22how%20many%20push%20you%20did%20on%20the%20pedal%20within%2030%20seconds%3F%22%29%0A%0Asteps%3A%20int%20%3D%20int%28steps_inp%29%0Acadence%3A%20int%20%3D%20steps%20*%202%0A%0Aprint%28%22Your%20cadence%20is%20%22,%20cadence%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%2225%22%5D&textReferences=false"> </iframe>
+
+Try clicking the "next" button step by step. When Python Tutor loads, you will see a prompt to enter the number of steps. In the embedded Python Tutor, a value of 25 was entered. If you want to see the prompt and enter it yourself, you can click [this link](https://pythontutor.com/visualize.html#code=steps_inp%3A%20str%20%3D%20input%28%22how%20many%20push%20you%20did%20on%20the%20pedal%20within%2030%20seconds%3F%22%29%0A%0Asteps%3A%20int%20%3D%20int%28steps_inp%29%0Acadence%3A%20int%20%3D%20steps%20*%202%0A%0Aprint%28%22Your%20cadence%20is%20%22,%20cadence%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false). Now you see the variable `steps_inp` was created in the global frame with a value `"25"`. You can note that the data type is a string. 
+
+The next instruction is to convert the data into an `int` using the `int()` function. Notice the common way of calling the function using the parenthesis. The output is stored in a new variable called `steps`. After you click "next" you see that the value of `steps` and `steps_inp` are different. One is an `int` while the other is a `string`. 
+
+In the next instruction, we calculate the `cadence` by multiplying the number of push within 30 seconds. And lastly, this number is printed into the standard output. 
+
+
+
+
+

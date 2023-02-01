@@ -114,3 +114,15 @@ SyntaxError: EOL while scanning string literal
 ```
 
 This indicates that the type of error is a `SyntaxError`. The message after this is saying that Python interpreter finds `EOL` which stands for *end of line* while scannign the string literal `"Hello World!`. What happens is that Python interpreter sees the first double quotes before the letter `H` and recognize that you are trying to create a string literal. However, Python interpreter cannot find the ending of this string literal before it encounters the end of line. To fix this error, you need to put back the closing double quotes after the exclamation mark. 
+
+## From a Hello World to a ChatBot
+
+You may get bored with saying hello world to the multiverse. But if you have played with any chatbot, that maybe the first thing a chat bot does. A chat bot can show a message to greet you. 
+
+Let's create our first chat bot greeting then. 
+
+```python
+print("Hello Jane! Welcome to the multiverse.")
+```
+
+If your name is not Jane, you maybe dissapointed. In the next lesson, we will learn how to take in your name so that the chatbot can greet you using your name. But before that, we need to ask what kind of data is it? What kind of data a name is? As we build our chatbot, we will involve more and more data.
