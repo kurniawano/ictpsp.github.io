@@ -445,7 +445,7 @@ In order to get data, you need to learn a function to take in data from the keyb
 
 
 ```python
-steps_inp: str = input("how many push you did on the pedal within 30 seconds?")
+steps_inp: str = input("how many push you did on the pedal within 30 seconds? ")
 
 steps: int = int(steps_inp)
 cadence: int = steps * 2
@@ -453,15 +453,41 @@ cadence: int = steps * 2
 print("Your cadence is ", cadence)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=steps_inp%3A%20str%20%3D%20input%28%22how%20many%20push%20you%20did%20on%20the%20pedal%20within%2030%20seconds%3F%22%29%0A%0Asteps%3A%20int%20%3D%20int%28steps_inp%29%0Acadence%3A%20int%20%3D%20steps%20*%202%0A%0Aprint%28%22Your%20cadence%20is%20%22,%20cadence%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%2225%22%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=steps_inp%3A%20str%20%3D%20input%28%22how%20many%20push%20you%20did%20on%20the%20pedal%20within%2030%20seconds%3F%20%22%29%0A%0Asteps%3A%20int%20%3D%20int%28steps_inp%29%0Acadence%3A%20int%20%3D%20steps%20*%202%0A%0Aprint%28%22Your%20cadence%20is%20%22,%20cadence%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=1&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%2225%22%5D&textReferences=false"> </iframe>
 
-Try clicking the "next" button step by step. When Python Tutor loads, you will see a prompt to enter the number of steps. In the embedded Python Tutor, a value of 25 was entered. If you want to see the prompt and enter it yourself, you can click [this link](https://pythontutor.com/visualize.html#code=steps_inp%3A%20str%20%3D%20input%28%22how%20many%20push%20you%20did%20on%20the%20pedal%20within%2030%20seconds%3F%22%29%0A%0Asteps%3A%20int%20%3D%20int%28steps_inp%29%0Acadence%3A%20int%20%3D%20steps%20*%202%0A%0Aprint%28%22Your%20cadence%20is%20%22,%20cadence%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false). Now you see the variable `steps_inp` was created in the global frame with a value `"25"`. You can note that the data type is a string. 
+
+Try clicking the "next" button step by step. When Python Tutor loads, you will see a prompt to enter the number of steps. In the embedded Python Tutor, a value of 25 was already entered. If you want to see the prompt and enter it yourself, you can click [this link](https://pythontutor.com/visualize.html#code=steps_inp%3A%20str%20%3D%20input%28%22how%20many%20push%20you%20did%20on%20the%20pedal%20within%2030%20seconds%3F%20%22%29%0A%0Asteps%3A%20int%20%3D%20int%28steps_inp%29%0Acadence%3A%20int%20%3D%20steps%20*%202%0A%0Aprint%28%22Your%20cadence%20is%20%22,%20cadence%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false). Now you see the variable `steps_inp` was created in the global frame with a value `"25"`. You can note that the data type is a string. 
 
 The next instruction is to convert the data into an `int` using the `int()` function. Notice the common way of calling the function using the parenthesis. The output is stored in a new variable called `steps`. After you click "next" you see that the value of `steps` and `steps_inp` are different. One is an `int` while the other is a `string`. 
 
 In the next instruction, we calculate the `cadence` by multiplying the number of push within 30 seconds. And lastly, this number is printed into the standard output. 
 
+You can try running the above Python code as a script. To do that, create a new file, say with the name `04_cadence_bot.py`. Paste the code into this text file. You can run the code then by typing the following into the terminal.
 
+```sh
+python 04_cadence_bot.py
+```
 
+The output and interaction may look like something of the following.
+
+```sh
+$ python 04_cadence_bot.py 
+how many push you did on the pedal within 30 seconds? 23
+Your cadence is  46
+```
+
+In the above code, the output cadence is also an `int` but then we display this value into the standard output. In later lessons, we will learn on Python's string formatting so that we can format any data as a string to display them in the standard output in a better way.
+
+## Summary
+
+In this two lessons, you have learnt how to write your first code. The first important pattern that we introduce here is what we call as **sequential**. In general, Python code is executed in sequence from the top to the bottom. We will learn how to change this sequence to allow variation of code to be executed depending on different conditions. 
+
+We also learn our first built-in function, which is `print()`. We learn how to call a function using the parenthesis and supplying the input data to the `print()` function through its argument. We will create our own custom function in the next lesson. We also made use of `int()` function to convert a string data into an `int` data type.
+
+How would we know that we need to use `int()` function in our last example of cadence chat bot? The answer is because we were asking the question, "What kind of data is this?". In our use of `input()` function (the other built-in function that we use), the output of this function is a `string` data. Because it is a string data it cannot be used with any other mathematical operators to calculate any new data. But an `int` data is a numeric data that can be manipulated using mathematical operators. So we convert it to an `int` first before we calculate the cadence. Asking what kind of data that we are dealing with is a necessary components in PCDIT framework. So in this P (problem statement) step, we also ask that question. That helps us to know that we need a step to convert the data from one type to another type.
+
+We have introduced a few basic data types, `string`, `int` and `float`. These are the basic data and it allows us to do a simple chatbot example to calculate cadence when you cycle. In subsequent lessons, we will introduce more data and when you learn about object oriented, you will be able to create your own custom data. 
+
+In the next lesson, we will dive in into **functions**, which is our first lesson on abstraction. Remember that abstraction is one of the big element in computational thinking. You will see abstraction every where in learning how to code and creating a function is one of the first example of abstraction that we will introduce. 
 
 
