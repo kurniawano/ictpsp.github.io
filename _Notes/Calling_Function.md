@@ -113,7 +113,58 @@ out_int = 5
 
 // Put diagram
 
-## Calling More Functions in Python
+## Importing and Calling Math Functions in Python
+
+We have learnt how to call functions and supplying the input arguments as well as how to retrieve the output returned by the function. Now we can work with more functions. One of the common functions that Python provides is the math library. In order to use the math library, we need to import them into the current environment.
+
+```python
+import math
+```
+
+You can find a list of math functions [in this link](https://docs.python.org/3/library/math.html). 
+
+For example, if you want to find a square root of a number, you can call the `sqrt()` function from the `math` library. 
+
+```python
+import math
+x = math.sqrt(4)
+```
+
+The value of `x` after executing the function is `2`. Notice that we are importing the `math` name into our environment. This `math` name contains a reference to the `math` module that contains a range of functions. In order to access that function inside that module, we use the **dot** operator as in `math.sqrt()`. 
+
+Sometimes, we are too lazy to keep on typing `math` everytime, we want to call a function. In this case, we can rename it using the keyword `as`. 
+
+```python
+import math as m
+x = m.sqrt(4)
+```
+
+If we do not prefer to type `m` at all, we can simply import the function itself instead of importing the module into our environment. In this case, we do it as shown below.
+
+```python
+from math import sqrt
+x = sqrt(4)
+```
+
+In the last example, what we imported is only the function `sqrt` which we get from the `math` module. If two packages provide a similar function name, your global frame will be populated by only the last name you define or imported. If you prefer to keep separately the two functions for different usage, it is recommended to use the second approach above by renaming the different modules and access the same function name using the dot operator. 
+
+For example, `numpy` also provides a `sqrt` function. We can import both function as follows.
+
+```python
+import math as m
+import numpy as np
+x = m.sqrt(4)
+y = np.sqrt(4)
+```
+
+You maybe wondering what's the use of `numpy` package if `math` package already provides the same square root function. Python's `math` library deals with either `int` or `float` data type but not a collection of these data. On the other hand, `numpy` can deal better with array-like data. In later section, we will learn about some collection data like `list` which `numpy` array can handle better. For `math` library, we need to loop over those values in the collection in order to apply the function. There is another way like using the `map` function to do similar thing. For now, our objective is on how to call functions and how to import functions from another library like `math`.
+
+
+## Summary
+
+In this lesson, you have learnt how to call a function. Some functions require you to supply the input arguments for the function to do its calculation. You also learn how take the return value of the function which we also call as the output of the function. We differentiate the output returned by the function and its side effect. Some functions like `print()` do not have output but creates side effect. We also learn on how you can make use of other functions created by other people such as the various mathematical function in the `math` library. We show the different ways of importing the module into the current environment so that we can call the function using the dot operator. 
+
+
 
 
 
