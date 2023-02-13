@@ -43,17 +43,13 @@ By the end of this lesson, students should be able to:
 * specify data types in arguments and return value
 * abstract a problem as a function
 * identify input, output and process of a function
-
-## Lesson 3: Operators and Operands
-By the end of this lesson, students should be able to:
-
 * use basic operators with basic data types
 * predict the evaluated data types from an expression
 * evaluate math expression with various precedence
 * use compound operators
 * use print function to debug a function
 
-## Lesson 4: Three Basic Control Structures
+## Lesson 3: Three Basic Control Structures
 By the end of this lesson, students should be able to:
 
 * state the three basic control structures, i.e. sequential, branch and iteration
@@ -62,7 +58,7 @@ By the end of this lesson, students should be able to:
 * implement simple iteration using while loop
 * identify basic structures from a given problem
 
-## Lesson 5: Boolean Data Type and Branch Structure
+## Lesson 4: Boolean Data Type and Branch Structure
 
 By the end of this lesson, students should be able to:
 
@@ -78,7 +74,7 @@ By the end of this lesson, students should be able to:
 * decompose a problem into multiple selections
 * abstract selection process as a function
 
-## Lesson 6: String
+## Lesson 5: String
 
 By the end of this lesson, students should be able to:
 * create string using various methods
@@ -90,7 +86,7 @@ By the end of this lesson, students should be able to:
 * explain that string is immutable
 * check if a substring is in a string
 
-## Lesson 7: Iteration using While Loop and For Loop
+## Lesson 6: Iteration using While Loop and For Loop
 
 By the end of this lesson, students should be able to:
 * speciy and identify basic building blocks of a while loop statement
@@ -104,7 +100,7 @@ By the end of this lesson, students should be able to:
 * identify iteration structure from a given problem
 * decompose problem into iterative process of smaller problems
 
-## Lesson 8: List and Tuple
+## Lesson 7: List and Tuple
 
 By the end of this lesson, students should be able to:
 * create a tuple
@@ -129,7 +125,7 @@ By the end of this lesson, students should be able to:
 * use print to display elements of a list
 * identify when list or tuple is appropriate in a problem
 
-## Lesson 9: Nested List and Nested For Loop
+## Lesson 8: Nested List and Nested For Loop
 
 By the end of this lesson, students should be able to:
 * create a nested list
@@ -143,7 +139,7 @@ By the end of this lesson, students should be able to:
 * decompose nested loop problem into multiple loops
 
 
-## Lesson 10: Dictionary and Set
+## Lesson 9: Dictionary and Set
 
 By the end of this lesson, students should be able to:
 * create a dictionary as key-value pairs

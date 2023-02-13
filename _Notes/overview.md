@@ -34,52 +34,48 @@ Notes:
 
 - [Calling a Function]({% link _Notes/Calling_Function.md %})
 - [Defining a Function]({% link _Notes/Defining_Function.md %})
-
-## Lesson 3: Operators and Operands
-
-Notes:
-
 - [Basic Operators]({% link _Notes/Basic_Operators.md %})
 
-## Lesson 4: Three Basic Control Structures
+
+## Lesson 3: Three Basic Control Structures
 
 Notes:
 
 - [Basic Control Structures]({% link _Notes/Basic_Structures.md %})
 
-## Lesson 5: Boolean Data Type and Branch Structure
+## Lesson 4: Boolean Data Type and Branch Structure
 
 Notes:
 
 - [Boolean Data]({% link _Notes/Boolean_Data.md %})
 - [Branch Structures]({% link _Notes/Branch_Structure.md %})
 
-## Lesson 6: String
+## Lesson 5: String
 
 Notes:
 
 - [Working with String]({% link _Notes/String.md  %})
 
-## Lesson 7: Iteration Using While Loop and For Loop
+## Lesson 6: Iteration Using While Loop and For Loop
 
 Notes:
 
 - [Implementing While Loop]({% link _Notes/While_Loop.md %})
 - [Implementing For Loop]({% link _Notes/For_Loop.md %})
 
-## Lesson 8: List and Tuple
+## Lesson 7: List and Tuple
 
 Notes:
 
 - [Working with Tuple]({% link _Notes/Tuple.md %})
 - [Working with List]({% link _Notes/List.md %})
 
-## Lesson 9: Nested List and Nested For Loop
+## Lesson 8: Nested List and Nested For Loop
 
 - [Nested List]({% link _Notes/Nested_List.md %})
 - [Nested For Loop]({% link _Notes/Nested_For_Loop.md %})
 
-## Lesson 10: Dictionaries and Sets
+## Lesson 9: Dictionaries and Sets
 - [Working with Dictionaries]({% link _Notes/Dictionary.md %})
 - [Working with Sets]({% link _Notes/Set.md %})
 
