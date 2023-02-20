@@ -38,7 +38,10 @@ By the end of this lesson, students should be able to:
 * explain the purpose of creating a user-defined function
 * define a function with and without arguments
 * define a function with and without return values
-* define a function with multiple arguments and multiple return values
+* define a function with multiple arguments 
+* create a tuple 
+* define a function that returns a tuple
+* access an element of a tuple
 * define a function with optional or keyword arguments
 * specify data types in arguments and return value
 * abstract a problem as a function
