@@ -344,6 +344,61 @@ print(speed[0], speed[1])
 
 The bracket operator takes in an index which starts from 0. This means that to access the first output, you use index 0. On the other hand, to access the second output, you use index 1 and so on. 
 
+## Local Frame and Local Variables
+
+At this point it is instructive to see the difference between a global and local variables as this may affect the way we define our functions. Let's run the above functions on Python Tutor.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Adef%20calculate_speed%28diameter%3A%20int,%20tire_size%3A%20float,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int,%20cog%3A%20int,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cadence%3A%20int%29%20-%3E%20float%3A%0A%0A%20%20gear_ratio%20%3D%20chainring%20/%20cog%0A%20%20speed%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed_kmh,%20speed_mph%20%3D%20calculate_speed%28685.8,%2038.1,%2050,%2014,%2025%29%0Aprint%28speed_kmh,%20speed_mph%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+We have added the function call and the print statement at the end of the code. We have also removed the docstring to shorten the code. Click the "Next" button a few times until the program counter reach line number 11, which is step 11 out of 13. 
+
+At this point the image on the right hand side gives a snapshot of what is in the memory before the function exit and returns the two values. A few things which you need to take note. The first one is that there are **two frames** created. The first one is the **global** frame and the second one is the **calculate_speed** frame. The calculate speed frame is created when the function `calculate_speed` is called. This happens on step 6 of 13. You can click the "Prev" button to verify this. Go to step 5 and click "Next" to see when is the `calculate_speed` frame created. In essence the `calculate_speed` frame is a local frame which is called when the function is *invoked* or *executed*. Every function invocation creates a new frame. 
+
+At step 7, the program counter is at the first line of the code in function `calculate_speed`. At this point, the local frame has been populated by the input arguments: `diameter`, `tire_size`, `chainring`, `cog` and `cadence`. When you execute line 6 to arrive at Step 8, a new **local** variable is created, which is `gear_ratio`. When this local variable is created, several things happens:
+- Python tries to evaluate the value of the expression on the right.
+- On the right hand side of the assignment operator (`=`), Python sees the operator `/` and understood it as a division. Since this is a *binary* operator it requires two operands.
+- Python found two **names** for the operands of `/`: `chainring` and `cog`. Python tries to see if these names are any of the built-in names or keywords.
+- Since Python cannot find any of these names in its built-in functions or keywords, Python looks into the **local frame**. At this point, Python finds the two names and *evaluates* the values.
+- Once Python obtains the two values for the operands, Python executes the division operation on the two operands and assign it to the name on the left hand side of the assignment operators, i.e. `gear_ratio`. 
+
+In subsequent lines, Python does similar things to create several other *local variables*: `speed`, `speed_kmh` and `speed_mph`. 
+
+Those are called **local variables** because they are local to the functin and are **not accessible** anywhere else. To see this, make sure your program counter is back at line 11 or Step 11 of 13. Click "Next" two times to exit the function. Notice that now there is only one single frame, which is the *global* frame. The local frame of `calculate_speed` has been destroyed. Since this frame is destroyed none of those local variables are accessible when we exit the function. 
+
+## Global Variable
+
+Now, you may realize that most of the arguments in the function `calculate_speed` will not change if the bicycle remains the same. Most of these are parameters of the bicycle of the users. As long as the user does not change the bicycle, those parameters will not change. Do we need to keep on entering those numbers such as the diameters and the tire size again every time we want to calculate the speed for a given cadence? The answer is no. In this section and the next few ones, we will show you how to avoid entering these sections. There are several alternatives and we will discuss the good and the bad of these alternatives. 
+
+Let's start with using the global variables. Since these parameters never (or seldom) change, we may put all these values as a kind of constants and define it outside of the functions. In this way, all these constants are readable by all the functions that we create. How to do this? Let's see the code below in Python Tutor.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0A%0Adiameter%20%3D%20685.8%0Atire_size%20%3D%2038.1%0Achainring%20%3D%2050%0Acog%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20float%3A%0A%0A%20%20gear_ratio%20%3D%20chainring%20/%20cog%0A%20%20speed%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed_kmh,%20speed_mph%20%3D%20calculate_speed%2825%29%0Aprint%28speed_kmh,%20speed_mph%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+In the code above, we define all the constants the first few lines of the code followed by the function definition. Notice that now the functin definition only takes in `cadence` as the input argument. During function invocation, we also only provide one actual argument, which is for the cadence, i.e. 25. How does the function `calculate_speed` obtains the values from the constants? Click "Next" button until you reach the first line inside the function `calculate_speed`, i.e. Step 9 of 15.
+
+Notice the environment diagram on the right hand side. As expected, when we execute a functin, Python will create a local frame for that function. Here we see there is one local variable which comes from the input argument, i.e. `cadence`. However, note that the global frame has more names associated with it. This time, we not only have `math` but also `diameter`, `tire_size`, `chainring` and `cog`. We also have the name `calculate_speed` (Python needs to know how to execute this function). 
+
+Let's see what happens when you execute line 10:
+- At line 10, when we execute `gear_ratio = chainring / cog`, Python recognizes that you are doing assignment from the assignment operator, i.e. `=`. Because of this, Python tries to evaluate the right hand side of the expression.
+- At the right hand side, Python sees the binary operator `/` and found two operands with two names `chainring` and `cog`. 
+- Python tries to find what these names are. Python cannot find these names in its built-in functions or keywords and so Python check the *local frame*. However, Python cannot find these two names in the local frame as well.
+- Since Python, cannot find the names in the local frame, Python goes **up** one level to the **previous** frame. This is the frame where the function `calculate_speed` is called. It happens that this is the same as the *global* frame. At this point, Python finds the two names and evaluates the values and execute the binary operator to perform division. 
+- The result is assigned to a new name `gear_ratio` which is part of the *local* frame.
+
+Click Next to see how the environment change in the local frame. 
+
+Similar things happens when we execute line 11 to calculate the `speed`. This time, Python gets the value for `diameter`, `tire_size` from the *global* frame. On the other hand, Python gets the value of `gear_ratio` and `cadence` from the local frame. You may not noticed that actually in this expression, we access the constant `math.pi` even in our earlier version of the code. If you observe carefully, the name `math` is located in the global frame. This is because our `import math` statement is outside of the function. Any code outside of any function is executed in the global frame. This is also the reason why we import the name `math` in the global frame. The reason is that more than one functions may make use of the math functions and constants. If we import the library `math` inside of each function, we have to do multiple import. 
+
+## Variable Shadowing
+
+What happens if you have the same name both in the local and in the global variable? In this case, the name in the local frame takes precedence and you will not be able to access the global variable. Let's look at a simple example to illustrate this. Let's create a variable `diameter` inside the function with some specific constant value.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0A%0Adiameter%20%3D%20685.8%0Atire_size%20%3D%2038.1%0Achainring%20%3D%2050%0Acog%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20float%3A%0A%20%20chainring%20%3D%200%0A%20%20gear_ratio%20%3D%20chainring%20/%20cog%0A%20%20speed%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed_kmh,%20speed_mph%20%3D%20calculate_speed%2825%29%0Aprint%28speed_kmh,%20speed_mph%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+In the above code, we have to variables with the name `chainring`. The first one is at line 5 which is outside of the function and is in the global frame while the second one is at line 9 which is inside the function and is in the local frame. When you run the code and execute line 10 (Step 11 of 16), you notice that now the gear_ratio is 0.0. The reason is that Python takes in the value of `chainring` from the local frame instead of the global frame. Notice in the environment diagram that the value of `chainring` in the local frame is 0. This is why we call the local variable shadow the global variable when they have the same name. 
+
+
+
+
 
 ## Defining Functions with Optional Arguments
 
