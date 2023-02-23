@@ -34,13 +34,13 @@ Notes:
 
 - [Calling a Function]({% link _Notes/Calling_Function.md %})
 - [Defining a Function]({% link _Notes/Defining_Function.md %})
-- [Basic Operators]({% link _Notes/Basic_Operators.md %})
 
 
-## Lesson 3: Three Basic Control Structures
+## Lesson 3: Basic Operators and Basic Control Structures
 
 Notes:
 
+- [Basic Operators]({% link _Notes/Basic_Operators.md %})
 - [Basic Control Structures]({% link _Notes/Basic_Structures.md %})
 
 ## Lesson 4: Boolean Data Type and Branch Structure

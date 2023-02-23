@@ -44,17 +44,18 @@ By the end of this lesson, students should be able to:
 * access an element of a tuple
 * define a function with optional or keyword arguments
 * specify data types in arguments and return value
+* explain the difference between local and global variables
+* choose whether to use local or global variables
 * abstract a problem as a function
 * identify input, output and process of a function
+ use print function to debug a function
+
+## Lesson 3: Basic Operators and Basic Control Structures
+By the end of this lesson, students should be able to:
 * use basic operators with basic data types
 * predict the evaluated data types from an expression
 * evaluate math expression with various precedence
 * use compound operators
-* use print function to debug a function
-
-## Lesson 3: Three Basic Control Structures
-By the end of this lesson, students should be able to:
-
 * state the three basic control structures, i.e. sequential, branch and iteration
 * state the Python keywords to be used for each basic control structures
 * implement branch structure using if-else statement
