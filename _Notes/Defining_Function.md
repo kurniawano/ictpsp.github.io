@@ -203,7 +203,7 @@ def calculate_speed(diameter, tire_size, chainring, cog, cadence):
   Calculates the speed from the given bike parameters and cadence.
 
   Parameters:
-    diameter (int): diameter of the wheel in mm
+    diameter (float): diameter of the wheel in mm
     tire_size (float): size of tire in mm
     chainring (int): teeth of the front gears
     cog (int): teeth of the rear gears
@@ -212,12 +212,12 @@ def calculate_speed(diameter, tire_size, chainring, cog, cadence):
   Returns:
    speed (float): cycling speed in km/h 
   '''
-  gear_ratio = chainring / cog
-  speed = math.pi * (diameter + (2 * tire_size)) * gear_ratio * cadence
+  gear_ratio: float = chainring / cog
+  speed: float = math.pi * (diameter + (2 * tire_size)) * gear_ratio * cadence
   return speed * 60 / 1_000_000
 ```
 
-Since the input arguments are all in mm and the cadence is in rotation per *minute*, the variable `speed` has a unit  of mm/min. In order to change this unit to km/h, we multiply by 60 (to convert from minute to hour) and divide by 1,000,000 (to convert from mm to km). 
+Since the input arguments are all in mm and the cadence is in rotation per *minute*, the variable `speed` has a unit  of mm/min. In order to change this unit to km/h, we multiply by 60 (to convert from minute to hour) and divide by 1,000,000 (to convert from mm to km). Notice that we expect the `gear_ratio` to be a float after dividing `chainring` by `cog`. Similarly, `speed` is expected to be a `float`. 
 
 The nice thing about Python docstring is that we can access this documentation. To do that, type in the above code into the Python shell and press enter for Python to execute the function definition. In order to access the documentation, you can type `calculate_speed.__doc__`. 
 
@@ -227,7 +227,7 @@ The nice thing about Python docstring is that we can access this documentation. 
   Calculates the speed from the given bike parameters and cadence.
 
   Parameters:
-    diameter (int): diameter of the wheel in mm
+    diameter (float): diameter of the wheel in mm
     tire_size (float): size of tire in mm
     chainring (int): teeth of the front gears
     cog (int): teeth of the rear gears
@@ -246,7 +246,7 @@ calculate_speed(diameter, tire_size, chainring, cog, cadence)
     Calculates the speed from the given bike parameters and cadence.
     
     Parameters:
-      diameter (int): diameter of the wheel in mm
+      diameter (float): diameter of the wheel in mm
       tire_size (float): size of tire in mm
       chainring (int): teeth of the front gears
       cog (int): teeth of the rear gears
@@ -260,14 +260,14 @@ We can include the data type as part of the annotation into our function definit
 
 ```python
 import math
-def calculate_speed(diameter: int, tire_size: float, 
+def calculate_speed(diameter: float, tire_size: float, 
                     chainring: int, cog: int, 
                     cadence: int) -> float:
   '''
   Calculates the speed from the given bike parameters and cadence.
 
   Parameters:
-    diameter (int): diameter of the wheel in mm
+    diameter (float): diameter of the wheel in mm
     tire_size (float): size of tire in mm
     chainring (int): teeth of the front gears
     cog (int): teeth of the rear gears
@@ -276,8 +276,8 @@ def calculate_speed(diameter: int, tire_size: float,
   Returns:
    speed (float): cycling speed in km/h 
   '''
-  gear_ratio = chainring / cog
-  speed = math.pi * (diameter + (2 * tire_size)) \
+  gear_ratio: float = chainring / cog
+  speed: float = math.pi * (diameter + (2 * tire_size)) \
           * gear_ratio * cadence
   return speed * 60 / 1_000_000
 ```
@@ -302,27 +302,29 @@ We can then use a tuple to return multiple values out of the function. For examp
 
 ```python
 import math
-def calculate_speed(diameter: int, tire_size: float, 
+def calculate_speed(diameter: float, tire_size: float, 
                     chainring: int, cog: int, 
-                    cadence: int) -> float:
+                    cadence: int) -> Tuple[float, float]:
   '''
   Calculates the speed from the given bike parameters and cadence.
 
   Parameters:
-    diameter (int): diameter of the wheel in mm
+    diameter (float): diameter of the wheel in mm
     tire_size (float): size of tire in mm
     chainring (int): teeth of the front gears
     cog (int): teeth of the rear gears
     cadence (int): cadence in rpm
 
   Returns:
-   speed (float): cycling speed in km/h 
+    Tuple:
+      speed_kmh (float): cycling speed in km/h 
+      speed_mph (float): cycling speed in km/h 
   '''
-  gear_ratio = chainring / cog
-  speed = math.pi * (diameter + (2 * tire_size)) \
+  gear_ratio: float = chainring / cog
+  speed: float = math.pi * (diameter + (2 * tire_size)) \
           * gear_ratio * cadence
-  speed_kmh = speed * 60 / 1_000_000
-  speed_mph = speed * 60 / 1.609e6
+  speed_kmh: float = speed * 60 / 1_000_000
+  speed_mph: float = speed * 60 / 1.609e6
   return speed_kmh, speed_mph
 ```
 
@@ -348,9 +350,36 @@ The bracket operator takes in an index which starts from 0. This means that to a
 
 At this point it is instructive to see the difference between a global and local variables as this may affect the way we define our functions. Let's run the above functions on Python Tutor.
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Adef%20calculate_speed%28diameter%3A%20int,%20tire_size%3A%20float,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int,%20cog%3A%20int,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cadence%3A%20int%29%20-%3E%20float%3A%0A%0A%20%20gear_ratio%20%3D%20chainring%20/%20cog%0A%20%20speed%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed_kmh,%20speed_mph%20%3D%20calculate_speed%28685.8,%2038.1,%2050,%2014,%2025%29%0Aprint%28speed_kmh,%20speed_mph%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adef%20calculate_speed%28diameter%3A%20float,%20tire_size%3A%20float,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int,%20cog%3A%20int,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cadence%3A%20int%29%20-%3E%20Speed%3A%0A%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%28685.8,%2038.1,%2050,%2014,%2025%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-We have added the function call and the print statement at the end of the code. We have also removed the docstring to shorten the code. Click the "Next" button a few times until the program counter reach line number 11, which is step 11 out of 13. 
+
+We have added the function call and the print statement at the end of the code. We have also removed the docstring to shorten the code. At the same time, we created an Alias to define the type of the return value of the function.
+
+```python
+Speed = Tuple[float, float]
+```
+In order to use `Tuple[float, float]`, we need to import the name `Tuple` from `typing` library. This makes `Tuple` available in your environment for type hinting. 
+
+```python
+from typing import Tuple
+```
+
+We can then define `Speed` as a tuple that consists of two float values. We then use this `Speed` to annotate the return value of the function. 
+
+```python
+def calculate_speed(diameter: float, tire_size: float, 
+                    chainring: int, cog: int, 
+                    cadence: int) -> Speed:
+```
+
+Since `speed` is a tuple, we can access the elements using the square bracket operators. 
+
+```python
+speed: Speed = calculate_speed(685.8, 38.1, 50, 14, 25)
+print(speed[0], speed[1])
+```
+
+Click the "Next" button a few times until the program counter reach line number 11, which is step 11 out of 13. 
 
 At this point the image on the right hand side gives a snapshot of what is in the memory before the function exit and returns the two values. A few things which you need to take note. The first one is that there are **two frames** created. The first one is the **global** frame and the second one is the **calculate_speed** frame. The calculate speed frame is created when the function `calculate_speed` is called. This happens on step 6 of 13. You can click the "Prev" button to verify this. Go to step 5 and click "Next" to see when is the `calculate_speed` frame created. In essence the `calculate_speed` frame is a local frame which is called when the function is *invoked* or *executed*. Every function invocation creates a new frame. 
 
@@ -367,18 +396,19 @@ Those are called **local variables** because they are local to the functin and a
 
 ## Global Variable
 
-Now, you may realize that most of the arguments in the function `calculate_speed` will not change if the bicycle remains the same. Most of these are parameters of the bicycle of the users. As long as the user does not change the bicycle, those parameters will not change. Do we need to keep on entering those numbers such as the diameters and the tire size again every time we want to calculate the speed for a given cadence? The answer is no. In this section and the next few ones, we will show you how to avoid entering these sections. There are several alternatives and we will discuss the good and the bad of these alternatives. 
+Now, you may realize that most of the arguments in the function `calculate_speed` will not change if the bicycle remains the same. Most of these are parameters of the bicycle of the users. As long as the user does not change the bicycle, those parameters will not change. Do we need to keep on entering those numbers such as the diameters and the tire size again every time we want to calculate the speed for a given cadence? The answer is no. In this section we will show two alternatives which uses the global variable and optional arguments. We will discuss its advantage and disadvantage. In the future lessons, we will show some other alternatives such as using your own custom data type through object oriented programming. Object oriented programming will allow you to pass on the bicycle information as one single data.  
 
 Let's start with using the global variables. Since these parameters never (or seldom) change, we may put all these values as a kind of constants and define it outside of the functions. In this way, all these constants are readable by all the functions that we create. How to do this? Let's see the code below in Python Tutor.
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0A%0Adiameter%20%3D%20685.8%0Atire_size%20%3D%2038.1%0Achainring%20%3D%2050%0Acog%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20float%3A%0A%0A%20%20gear_ratio%20%3D%20chainring%20/%20cog%0A%20%20speed%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed_kmh,%20speed_mph%20%3D%20calculate_speed%2825%29%0Aprint%28speed_kmh,%20speed_mph%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-In the code above, we define all the constants the first few lines of the code followed by the function definition. Notice that now the functin definition only takes in `cadence` as the input argument. During function invocation, we also only provide one actual argument, which is for the cadence, i.e. 25. How does the function `calculate_speed` obtains the values from the constants? Click "Next" button until you reach the first line inside the function `calculate_speed`, i.e. Step 9 of 15.
+
+In the code above, we define all the constants the first few lines of the code followed by the function definition. Notice that now the functin definition only takes in `cadence` as the input argument. During function invocation, we also only provide one actual argument, which is for the cadence, i.e. 25. How does the function `calculate_speed` obtains the values from the constants? Click "Next" button until you reach the first line inside the function `calculate_speed`, i.e. Step 11 of 17.
 
 Notice the environment diagram on the right hand side. As expected, when we execute a functin, Python will create a local frame for that function. Here we see there is one local variable which comes from the input argument, i.e. `cadence`. However, note that the global frame has more names associated with it. This time, we not only have `math` but also `diameter`, `tire_size`, `chainring` and `cog`. We also have the name `calculate_speed` (Python needs to know how to execute this function). 
 
-Let's see what happens when you execute line 10:
-- At line 10, when we execute `gear_ratio = chainring / cog`, Python recognizes that you are doing assignment from the assignment operator, i.e. `=`. Because of this, Python tries to evaluate the right hand side of the expression.
+Let's see what happens when you execute line 13:
+- At line 13, when we execute `gear_ratio = chainring / cog`, Python recognizes that you are doing assignment from the assignment operator, i.e. `=`. Because of this, Python tries to evaluate the right hand side of the expression.
 - At the right hand side, Python sees the binary operator `/` and found two operands with two names `chainring` and `cog`. 
 - Python tries to find what these names are. Python cannot find these names in its built-in functions or keywords and so Python check the *local frame*. However, Python cannot find these two names in the local frame as well.
 - Since Python, cannot find the names in the local frame, Python goes **up** one level to the **previous** frame. This is the frame where the function `calculate_speed` is called. It happens that this is the same as the *global* frame. At this point, Python finds the two names and evaluates the values and execute the binary operator to perform division. 
@@ -386,20 +416,86 @@ Let's see what happens when you execute line 10:
 
 Click Next to see how the environment change in the local frame. 
 
-Similar things happens when we execute line 11 to calculate the `speed`. This time, Python gets the value for `diameter`, `tire_size` from the *global* frame. On the other hand, Python gets the value of `gear_ratio` and `cadence` from the local frame. You may not noticed that actually in this expression, we access the constant `math.pi` even in our earlier version of the code. If you observe carefully, the name `math` is located in the global frame. This is because our `import math` statement is outside of the function. Any code outside of any function is executed in the global frame. This is also the reason why we import the name `math` in the global frame. The reason is that more than one functions may make use of the math functions and constants. If we import the library `math` inside of each function, we have to do multiple import. 
+Similar things happens when we execute line 14 to calculate the `speed`. This time, Python gets the value for `diameter`, `tire_size` from the *global* frame. On the other hand, Python gets the value of `gear_ratio` and `cadence` from the local frame. You may not noticed that actually in this expression, we access the constant `math.pi` even in our earlier version of the code. If you observe carefully, the name `math` is located in the global frame. This is because our `import math` statement is outside of the function. Any code outside of any function is executed in the global frame. This is also the reason why we import the name `math` in the global frame. The reason is that more than one functions may make use of the math functions and constants. If we import the library `math` inside of each function, we have to do multiple import. 
 
 ## Variable Shadowing
 
 What happens if you have the same name both in the local and in the global variable? In this case, the name in the local frame takes precedence and you will not be able to access the global variable. Let's look at a simple example to illustrate this. Let's create a variable `diameter` inside the function with some specific constant value.
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0A%0Adiameter%20%3D%20685.8%0Atire_size%20%3D%2038.1%0Achainring%20%3D%2050%0Acog%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20float%3A%0A%20%20chainring%20%3D%200%0A%20%20gear_ratio%20%3D%20chainring%20/%20cog%0A%20%20speed%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed_kmh,%20speed_mph%20%3D%20calculate_speed%2825%29%0Aprint%28speed_kmh,%20speed_mph%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%20%20chainring%3A%20int%20%3D%200%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-In the above code, we have to variables with the name `chainring`. The first one is at line 5 which is outside of the function and is in the global frame while the second one is at line 9 which is inside the function and is in the local frame. When you run the code and execute line 10 (Step 11 of 16), you notice that now the gear_ratio is 0.0. The reason is that Python takes in the value of `chainring` from the local frame instead of the global frame. Notice in the environment diagram that the value of `chainring` in the local frame is 0. This is why we call the local variable shadow the global variable when they have the same name. 
+In the above code, we have two variables with the name `chainring`. The first one is at line 8 which is outside of the function and is in the global frame while the second one is at line 12 which is inside the function and is in the local frame. When you run the code and execute line 12 (Step 11 of 18), you notice that now the gear_ratio is 0.0. The reason is that Python takes in the value of `chainring` from the local frame instead of the global frame. Notice in the environment diagram that the value of `chainring` in the local frame is 0. This is why we say that the local variable shadows the global variable when they have the same name. 
 
+If you move the steps to the last step and observe the global frame, notice that the value of the `chainring` remains at 50. The value at the global frame does not change when we have a new definition with the same name in the local frame. If you want to modify the global frame variable's value, you can use the keyword `global` in Python inside the function definition. But modifying global variable from inside a function is creating a side effect. This will make it hard for programmers to debug as the value can be modified from any function and we will find a hard time where or how the value is modified. The best way to modify a value in the global variable is by returning the output of the function and assigning it back to the global variable. 
 
-
+In summary, avoid using the global variable to modify information. If you want to pass on information to the function, pass it through the input arguments. On the other hand, if you want the function to modify some variables, modify by assigning the output of that function to that variable. In short, we want to have no side effects from a function as much as possible. Side effects make it hard for us to debug our code. On the other hand, if we use input arguments and return values, we know what data coming in and out of the functions and it will be easier to debug. 
 
 
 ## Defining Functions with Optional Arguments
 
+The other alternative instead of using a global variable is to use optional arguments with default values. Python allows some arguments to be optional, which means that you do not need to supply the actual argument during the function call. However, to ensure that the function can still compute the output, you need to provide the default values for these optional arguments. To declare optional arguments, you just need to use the assignment operators in the function header and provide its default values. Let's use it for our `calculate_speed()` function.
+
+```python
+import math
+from typing import Tuple 
+
+Speed = Tuple[float, float]
+
+def calculate_speed(cadence: int, 
+                    diameter: float = 685.8, 
+                    tire_size: float = 38.1, 
+                    chainring: int = 50, 
+                    cog: int = 14) -> Speed:
+  gear_ratio: float = chainring / cog
+  speed: float = math.pi * (diameter + (2 * tire_size)) \
+          * gear_ratio * cadence
+  speed_kmh: float = speed * 60 / 1_000_000
+  speed_mph: float = speed * 60 / 1.609e6
+  return speed_kmh, speed_mph
+```
+
+In the above function, note that we provided the default values for `diameter`, `tire_size`, `chainring` and `cog`. Because Python has values for these arguments, if there are no actual arguments provided, Python will use these default values to compute. Thus, you can call this function as follows.
+
+```python
+speed: Speed = calculate_speed(25)
+```
+
+In the case if any of the bicycle parameters change, you can modify the value using the argument name as the keyword. For example, if the `chainring` is 56 instead of 50, you can call the function as follows.
+
+```python
+speed: Speed = calculate_speed(25, chainring=56)
+```
+
+Here we follow PEP8 guidelines of not putting space in the keyword arguments. But notice that you do not need to follow the sequence of the arguments anymore when you provide the name of the argument. Python will match the name of the arguments. This also implies that you can only put the optional arguments at the back of the compulsory arguments. Notice that we have change the sequence of the arguments by putting `cadence` to the first argument in our function definition. This is needed because for Python will supply the actual arguments based on its position in the function header. In our case, 25 is the first argument and Python will feed into the first argument in the function header, which is `cadence`. On the other hand, since the rest of the arguments are optionals, they need not be supplied with any actual arguments. You can supply only the arguments that you know is different from the default values. But now, Python does not know which optional arguments you are supplying, so in this case, you need to give the name of the argument. This why it is also called as keyword arguments. 
+
 ## Identifying Input, Output and Process of a Problem
+
+We have discussed how to create our own function in this section. We also say that function is one way we can abstract our computation. In our previous lessons, we mentioned that we can use PCDIT framework to solve problems, design our algorithms and implement it. In the first part of this framework, we need to state the Problem Statement, i.e. P step. We can actually apply PCDIT for every function that we design. 
+
+In the example above, we first ask what is the input to the `calculate_speed` function? We identify a few input:
+- `cadence`
+- `diameter`
+- `tire_size`
+- `chainring`
+- and `cog`
+
+It is also important to ask what kind of data are these inputs? We then identify:
+- `cadence` to be an int
+- `diameter` to be a float
+- `tire_size` to be a float
+- `chainring` and `cog` to be an int
+
+After identifying the input, we also need to identify the output of the problem and in this case is the output of the function. In our `calculate_speed()` function, the output is the speed. However, we actually output two values, one in km/h and the other one in mph. So the kind of output is a tuple of two numbers. We should expect that these two numbers are floats instead of just integers. 
+
+The last part is to identify the computation process of the function. In our case, it is the math equation to calculate speed from the those input arguments. 
+
+$$\text{speed} = \pi \times \left(\text{diameter} + (2 \times \text{tire\_size})\right) \times (\text{chainring}/\text{cog}) \times \text{cadence}$$
+
+So we have identified:
+- input
+- output
+- process
+
+This completes our Problem Statement step. This step must be done at the beginning and we can revise or revisit it again as we move on to the following steps. 
+
+We have put this PCDIT framework discussion at the end instead of the beginning as a kind of reflection how we arrive at the final function. In actual practice, we should do our **P**roblem Statement formulation before we write down any **I**mplementation. 
