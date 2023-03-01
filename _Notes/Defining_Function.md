@@ -317,15 +317,15 @@ def calculate_speed(diameter: float, tire_size: float,
 
   Returns:
     Tuple:
-      speed_kmh (float): cycling speed in km/h 
+      speed_kmph (float): cycling speed in km/h 
       speed_mph (float): cycling speed in km/h 
   '''
   gear_ratio: float = chainring / cog
   speed: float = math.pi * (diameter + (2 * tire_size)) \
           * gear_ratio * cadence
-  speed_kmh: float = speed * 60 / 1_000_000
+  speed_kmph: float = speed * 60 / 1_000_000
   speed_mph: float = speed * 60 / 1.609e6
-  return speed_kmh, speed_mph
+  return speed_kmph, speed_mph
 ```
 
 In our equation above, we created two additional variables to store the speed in km/h and the speed in mph. We use a conversion of 1 mile to be about $1.609\times 10^6 \text{mm}$. 
@@ -333,8 +333,8 @@ In our equation above, we created two additional variables to store the speed in
 There are two ways to access the output. First is that, we provide two variables to store the output when calling the function.
 
 ```python
-speed_kmh, speed_mph = calculate_speed(685.8, 38.1, 50, 14, 25)
-print(speed_kmh, speed_mph)
+speed_kmph, speed_mph = calculate_speed(685.8, 38.1, 50, 14, 25)
+print(speed_kmph, speed_mph)
 ```
 
 The other way is to store it in a single variable first which then can be accessed using the bracket operator. 
@@ -346,11 +346,13 @@ print(speed[0], speed[1])
 
 The bracket operator takes in an index which starts from 0. This means that to access the first output, you use index 0. On the other hand, to access the second output, you use index 1 and so on. 
 
+You can access the code above in the file `05_speed_annotated.py` and run `mypy` to do static check on it. 
+
 ## Local Frame and Local Variables
 
 At this point it is instructive to see the difference between a global and local variables as this may affect the way we define our functions. Let's run the above functions on Python Tutor.
 
-<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adef%20calculate_speed%28diameter%3A%20float,%20tire_size%3A%20float,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int,%20cog%3A%20int,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cadence%3A%20int%29%20-%3E%20Speed%3A%0A%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%28685.8,%2038.1,%2050,%2014,%2025%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adef%20calculate_speed%28diameter%3A%20float,%20tire_size%3A%20float,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int,%20cog%3A%20int,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cadence%3A%20int%29%20-%3E%20Speed%3A%0A%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmph%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmph,%20speed_mph%0A%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%28685.8,%2038.1,%2050,%2014,%2025%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 
 We have added the function call and the print statement at the end of the code. We have also removed the docstring to shorten the code. At the same time, we created an Alias to define the type of the return value of the function.
@@ -390,7 +392,7 @@ At step 7, the program counter is at the first line of the code in function `cal
 - Since Python cannot find any of these names in its built-in functions or keywords, Python looks into the **local frame**. At this point, Python finds the two names and *evaluates* the values.
 - Once Python obtains the two values for the operands, Python executes the division operation on the two operands and assign it to the name on the left hand side of the assignment operators, i.e. `gear_ratio`. 
 
-In subsequent lines, Python does similar things to create several other *local variables*: `speed`, `speed_kmh` and `speed_mph`. 
+In subsequent lines, Python does similar things to create several other *local variables*: `speed`, `speed_kmph` and `speed_mph`. 
 
 Those are called **local variables** because they are local to the functin and are **not accessible** anywhere else. To see this, make sure your program counter is back at line 11 or Step 11 of 13. Click "Next" two times to exit the function. Notice that now there is only one single frame, which is the *global* frame. The local frame of `calculate_speed` has been destroyed. Since this frame is destroyed none of those local variables are accessible when we exit the function. 
 
@@ -400,7 +402,7 @@ Now, you may realize that most of the arguments in the function `calculate_speed
 
 Let's start with using the global variables. Since these parameters never (or seldom) change, we may put all these values as a kind of constants and define it outside of the functions. In this way, all these constants are readable by all the functions that we create. How to do this? Let's see the code below in Python Tutor.
 
-<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmph%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmph,%20speed_mph%0A%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 
 In the code above, we define all the constants the first few lines of the code followed by the function definition. Notice that now the functin definition only takes in `cadence` as the input argument. During function invocation, we also only provide one actual argument, which is for the cadence, i.e. 25. How does the function `calculate_speed` obtains the values from the constants? Click "Next" button until you reach the first line inside the function `calculate_speed`, i.e. Step 11 of 17.
@@ -422,7 +424,7 @@ Similar things happens when we execute line 14 to calculate the `speed`. This ti
 
 What happens if you have the same name both in the local and in the global variable? In this case, the name in the local frame takes precedence and you will not be able to access the global variable. Let's look at a simple example to illustrate this. Let's create a variable `diameter` inside the function with some specific constant value.
 
-<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%20%20chainring%3A%20int%20%3D%200%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmh,%20speed_mph%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%20%20chainring%3A%20int%20%3D%200%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmph%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmph,%20speed_mph%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 In the above code, we have two variables with the name `chainring`. The first one is at line 8 which is outside of the function and is in the global frame while the second one is at line 12 which is inside the function and is in the local frame. When you run the code and execute line 12 (Step 11 of 18), you notice that now the gear_ratio is 0.0. The reason is that Python takes in the value of `chainring` from the local frame instead of the global frame. Notice in the environment diagram that the value of `chainring` in the local frame is 0. This is why we say that the local variable shadows the global variable when they have the same name. 
 
@@ -449,9 +451,9 @@ def calculate_speed(cadence: int,
   gear_ratio: float = chainring / cog
   speed: float = math.pi * (diameter + (2 * tire_size)) \
           * gear_ratio * cadence
-  speed_kmh: float = speed * 60 / 1_000_000
+  speed_kmph: float = speed * 60 / 1_000_000
   speed_mph: float = speed * 60 / 1.609e6
-  return speed_kmh, speed_mph
+  return speed_kmph, speed_mph
 ```
 
 In the above function, note that we provided the default values for `diameter`, `tire_size`, `chainring` and `cog`. Because Python has values for these arguments, if there are no actual arguments provided, Python will use these default values to compute. Thus, you can call this function as follows.
@@ -499,3 +501,106 @@ So we have identified:
 This completes our Problem Statement step. This step must be done at the beginning and we can revise or revisit it again as we move on to the following steps. 
 
 We have put this PCDIT framework discussion at the end instead of the beginning as a kind of reflection how we arrive at the final function. In actual practice, we should do our **P**roblem Statement formulation before we write down any **I**mplementation. 
+
+Let's relook at the problem again. Instead of returning a tuple, let's state that our function only return the speed in km/h. We can then think of another computation that converts speed in km/h to speed in mph. In this new function, let's identify the input, output and the computation process.
+
+The input to this function is speed in km/h. We should then ask, "What kind of data is this?". We can get a hint from our `calculate_speed()` function and note that it is a float data. Similarly, the output is the speed in mph and it is a float data as well. How about the computation process then? Approximately, you can get speed in mph from km/h using by using the following:
+
+$$\text{speed}_{mph} = \text{speed}_{kmph} \times 0.621371192 $$
+
+Now, we have our **P**roblem Statement. We have identified the input, output, and computation process. We can then translate these information into our function defnition. Since the problem is simple enough, we will skip the **C**oncrete Cases and the **D**esign of Algorithm steps. 
+
+```python
+def convert_kmph_to_mph(speed_kmph: float) -> float:
+  return speed_kmph * 0.621371192
+```
+
+We can then test this function by putting in the actual argument in the function call.
+
+```python
+speed_mph: float = convert_kmph_to_mph(12.82)
+print(speed_mph)
+```
+
+You will get about 7.97 mph which is what you saw previously in the second output of `calculate_speed()`. Now, our `calculate_speed()` need not return two values but only the speed in km/h. Let's modify our function again.
+
+```python
+import math
+def calculate_speed(cadence: int, 
+                    diameter: float = 685.8, 
+                    tire_size: float = 38.1, 
+                    chainring: int = 50, 
+                    cog: int = 14) -> float:
+  '''
+  Calculates the speed from the given bike parameters and cadence.
+
+  Parameters:
+    cadence (int): Cadence in rpm.
+    diameter (float): Diameter of the wheel in mm. Default value = 685.8 mm.
+    tire_size (float): Size of tire in mm. Default value = 38.1 mm.
+    chainring (int): Teeth of the front gears. Default value = 50.
+    cog (int): Teeth of the rear gears. Default value = 14.
+
+  Returns:
+    speed_kmh (float): cycling speed in km/h 
+  '''
+  gear_ratio: float = chainring / cog
+  speed: float = math.pi * (diameter + (2 * tire_size)) \
+          * gear_ratio * cadence
+  speed_kmh: float = speed * 60 / 1_000_000
+  return speed_kmh 
+
+def convert_kmph_to_mph(speed_kmph: float) -> float:
+  '''
+  Calculates the speed in mph from the speed in km/h.
+
+  Parameters:
+    speed_kmph (float): speed in km/h
+
+  Returns:
+    speed_mph (float): speed in mph
+  '''
+  return speed_kmph * 0.621371192
+```
+
+We can then use these two functions as follows.
+
+```python
+speed_kmph: float = calculate_speed(25)
+speed_mph: float = convert_kmph_to_mph(speed_kmph)
+```
+
+If we are just interested in the speed in mph, we can combine the above code into a single line of code.
+
+```python
+speed_mph: float = convert_kmph_to_mph(calculate_speed(25))
+print(speed_mph)
+```
+
+// insert diagram
+
+Notice that Python first executes the inner function `calculate_speed(25)` and evaluates the return value. This return value is used as an input argument for `convert_kmph_to_mph()` function. See diagram above.
+
+You can run the file `06_speed_convert.py` with `mypy` to check if the code passes the static check. 
+
+```sh
+$ mypy 06_speed_convert.py  
+Success: no issues found in 1 source file
+```
+
+To actually run the code as a script. Execute the following.
+
+```sh
+$ python 06_speed_convert.py 
+7.968731362596021
+```
+
+## Summary
+
+In this lesson, we have learnt to create our own user defined function. We learnt how to declare a new function that takes in some input arguments and returning some output values. We also continue to use the type hinting to ensure that our code is written well and easy to debug. 
+
+Function can be thought of as a small computation and we can abstract our computation units as separate functions. We have shown how we can solve the same problem in a few different ways. But in all these cases, we follow the PCDIT framework. We mainly use the Problem Statement and identifying the input, output as well as the computational process in this lesson. As our code becomes more complicated, we will make use of the other steps in PCDIT framework. 
+
+Another important point is the concept of global and local variables. Local variable only exists within the context of that function when it is executed. They live only in the local frame. On the other hand, global variable is accessible from all frames. However, if there is a variable with the same name as the global variable, it will shadow the global variable. The function always access the local frame first before it searches the global frame. 
+
+We have also introduced how we can use optional arguments in our function definition. In this case, our function can be simpler. We also show that we can chain our function call and feed the output of one function into the input of another function. 
