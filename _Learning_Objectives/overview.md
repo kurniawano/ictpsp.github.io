@@ -57,19 +57,18 @@ By the end of this lesson, students should be able to:
 * evaluate math expression with various precedence
 * use compound operators
 * state the three basic control structures, i.e. sequential, branch and iteration
-* state the Python keywords to be used for each basic control structures
-* implement branch structure using if-else statement
-* implement simple iteration using while loop
 * identify basic structures from a given problem
+* state the Python keywords to be used for each basic control structures
+* draw flow chart for sequential, branch and iterative structure
 
 ## Lesson 4: Boolean Data Type and Branch Structure
 
 By the end of this lesson, students should be able to:
-
 * create a boolean data type
 * convert a variable into a boolean data type
 * evaluate relational and logical operators
 * specify the precedence of relational and logical operators
+* implement branch structure using if-else statement
 * implement branch structure using if-elif-else statement
 * draw a flow chart for if-else and nested if-else
 * explain the difference between if-elif and if-if codes
@@ -93,6 +92,7 @@ By the end of this lesson, students should be able to:
 ## Lesson 6: Iteration using While Loop and For Loop
 
 By the end of this lesson, students should be able to:
+* implement simple iteration using while loop
 * speciy and identify basic building blocks of a while loop statement
 * traverse a string using while loop and counter
 * traverse a string with sentinel value
