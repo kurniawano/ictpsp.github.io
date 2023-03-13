@@ -542,13 +542,13 @@ def calculate_speed(cadence: int,
     cog (int): Teeth of the rear gears. Default value = 14.
 
   Returns:
-    speed_kmh (float): cycling speed in km/h 
+    speed_kmph (float): cycling speed in km/h 
   '''
   gear_ratio: float = chainring / cog
   speed: float = math.pi * (diameter + (2 * tire_size)) \
           * gear_ratio * cadence
-  speed_kmh: float = speed * 60 / 1_000_000
-  return speed_kmh 
+  speed_kmph: float = speed * 60 / 1_000_000
+  return speed_kmph 
 
 def convert_kmph_to_mph(speed_kmph: float) -> float:
   '''
