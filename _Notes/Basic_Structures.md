@@ -132,4 +132,83 @@ Notice that if the condition `100 <= cadence <= 120` is true, we display "very h
 
 ## Iterative Structures
 
+Another common structure that we often find in computing is called **iterative** structure or **loops**. Iterative structure is based on the *branch* structure because it requires the sequence of the code to be altered based on some conditions. The only difference is that for iterative structure one of the branches will loop back to the top to repeat some codes in the body of the loop.
+
+Let's take a look at an example how iterative structure can appear in our cycling chatbot. For example, let's say we want the user to enter the number of steps to calculate the cadence. Some users may enter non-valid data such as a word instead of a number or other non-relevant information. What would the chatbot do? The chatbot can repeat the question until the user enters a valid data. 
+
+Let's recall how we can get input from the user using Python's `input()` function.
+
+```python
+steps_inp: str = input("how many push did you do on the pedal within 30 seconds? ")
+```
+
+How can we repeat this as long as the user did not enter a valid response? Below is a flowchart on how you can do so.
+
+// put image flowchart loop
+
+A few notes on the flowchart diagram above. Notice that we use the parallelogram for the `input()` function to get the users' input. We do this two times: the first one is the initial prompt and the second one is when the user did not enter a valid input. We modified the prompt to the user to indicate that the input entered is not valid and give some valid input example. 
+
+Every time the user enters the input, it will be directed to the decision diamon box where it will check if the input is valid or not. If it is not valid, it will repeat the blocks that requests the user to enter it again. On the other hand, if the input is valid, it will exit the loop and continue to the next part of the code. 
+
+The iterative structure is very common and can be found in many different cases. Another example could be when we want to average the cadence values for the past three days. We can create three variables to store the three days cadence values. Another way is to store it in a **collection** data type such as a list. We will cover list in future lessons. For now, you can see a list data structure as just a list of data. You can name this list `cadence` for example. If you want to store only the past three days, the list can have three elements. On the other hand if you want to store for the past one week, the list can contain seven elements. List is very flexible and very useful in programming. 
+
+Let's go back to our problem in calculating the average cadence for the past `n` days. Below is the flowchart that we can draw to compute the average.
+
+// put flowchart for average
+
+In the above flowchart, notice where the loop structure is. Notice also that we always have some part of the flowchart that is sequential. Recall that we mention that the sequential structure is the most basic structure. In general, any iterative structure *usually* have the following structure.
+
+// put flowchart for iterative in general
+
+The init block is used to initialize the data which will be used to decide whether we will enter into the loop or not. This data is checked with some conditions in the diamond decision block. Depending on the condition, we either enter the **body** of the loop or **terminate** the loop. It is possible that we may never enter the body of the loop for some cases. The condition simply determines whether to do the body of the loop or not. The body of the loop consists of two parts, the first part is the main code to be executed repeatedly. The second part is the code to modify the data in such a way that the condition at some points in time will *terminate* the loop. If we do not have this block that modifies the conditions, the loop will run forever and we will end up in an **infinite** loop. The program will hang and will never continues. 
+
 ## Identifying Structural Patterns in a Problem
+
+We will see the three basic structures again and again. It is important for us to be able to identify which structure may be present in a given problem that we are solving. As a basic rule, the sequential structure is present throughout and is the most basic structure. All computation is fundamentally sequential. This means that the sequence matters and we compute from the top to the bottom. Therefore, in this section, we are more interested in identifying if we can spot the *branch* structure and the *iterative* structure in a given problem statement.
+
+The way we will do this is to introduce the next part of our problem solving framework, which is the **C**oncrete cases and the **D**esign of Algorithm steps. Previously, we have discussed the **P**roblem statement step in identifying the input, output, the computation process that is needed. We also shared that we need to ask the question, "What kind of data is this?" at every step of our PCDIT framework. 
+
+These two steps in PCDIT is best illustrated with an example. Let's start with a problem. Let's say we want to train cycling cadence to hit a certain target average for the past one week. If the user hit the target, the chatbot would like to compliment the user for achieving the target and maybe give some bonus points through its gamification features. IF the user does not hit the target, the chatbot may encourage the user to try harder or maybe to set a lower target. Whether the chatbot requests the user to set a lower target or simply encourage him to try harder will be based on the difference that the user's cadence average with the target. If the difference is greater than 10 RPM, then the chatbot will ask the user to have a lower target. How should we start? Let's apply the PCDIT framework and in the process, we will identify if there is any *branch* structure or *iterative* structure.
+
+### Problem Statement
+
+We will start with the problem statement. In this step, we will ask what is the input, output and the computation process. We are also interested in the kind of data of the input and output. 
+
+Let's say for our case, the input is a list of cadence of the user for the past seven days. This input is a collection data type. In such collection data type, we want to ask further what is the data type of the element of the list. In our case, the cadence is of `int` type in RPM (rotation per minute). 
+
+How about the output? There is no particular output that this code will return. The program, however, will end up in several possible states.
+- state 1: The user hits the target and the chatbot displays some compliment and reward user with some bonus point.
+- state 2: The user does not hit the average target by less than 10 RPM difference. In this case, the chatbot will display some words to encourage the user to hit the target. 
+- state 3: the user does not hit the average target by more than 10 RPM difference. In this case, the chatbot will offer the user whether he or she wants to modify the target with a lower target at first. 
+
+What we have described in the previous paragraph is part of the computation process that we need to perform. In order to arrive at one of those states, the program has compute the average cadence first. We can summarize the problem statement as follows.
+
+```
+Input: 
+  - cadence_list: list of cadence for the past seven days. The element of the list is an integer.
+
+Output:
+  - None
+
+Process:
+  - Compute average cadence from the list
+  - From the average, set the state of the chatbot one of the three states in the table. 
+```
+
+### Concrete Cases
+
+In concrete cases steps, we try to think of specific values for the input and work out the computation step by step. The important part is take note and observe how we do the computation. This step leads to the **D**esign of Algorithm step. 
+
+To do this, let's create some concrete cases for the input. For example, we can start with the following input list for the cadence in the past seven days.
+
+```python
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+```
+
+In the above, we use the square bracket `[]` to indicate a list of data. Notice that we put only integers inside the list. This is part of what we have already indicated in our problem statement. PCDIT framework is not meant to be linear. In the case that we realize that some of the elements are not integer, we should go back to the **P**roblem statement step and revise it.
+
+In **C**oncrete Cases, we walk through the computation as if we are the computers. This is an important exercise of computational thinking. This means that we have to think like a computing agent in doing this step. Let's do it.
+
+The first step is to compute the average. In order to compute the average from the input, we need to get two things: the sum of all the elements and the number of elements in the list. 
+
+
