@@ -445,7 +445,7 @@ In order to get data, you need to learn a function to take in data from the keyb
 
 
 ```python
-steps_inp: str = input("how many push you did on the pedal within 30 seconds? ")
+steps_inp: str = input("how many push did you do on the pedal within 30 seconds? ")
 
 steps: int = int(steps_inp)
 cadence: int = steps * 2
