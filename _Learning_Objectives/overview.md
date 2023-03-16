@@ -60,6 +60,8 @@ By the end of this lesson, students should be able to:
 * identify basic structures from a given problem
 * state the Python keywords to be used for each basic control structures
 * draw flow chart for sequential, branch and iterative structure
+* Derive concrete cases given a problem statement
+* Derive design of algorithm steps from some concrete cases
 
 ## Lesson 4: Boolean Data Type and Branch Structure
 
