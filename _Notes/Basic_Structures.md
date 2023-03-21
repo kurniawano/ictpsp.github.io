@@ -176,6 +176,8 @@ We will start with the problem statement. In this step, we will ask what is the 
 
 Let's say for our case, the input is a list of cadence of the user for the past seven days. This input is a collection data type. In such collection data type, we want to ask further what is the data type of the element of the list. In our case, the cadence is of `int` type in RPM (rotation per minute). 
 
+There is another input in our case. This is the target cadence average the user wants to hit. Since this is a cycling training app, the user may want to hit a certain target cadence for the past one week. This target value is an input to this computation. What's the data type? This can be another integer. 
+
 How about the output? There is no particular output that this code will return. The program, however, will end up in several possible states.
 - state 1: The user hits the target and the chatbot displays some compliment and reward user with some bonus point.
 - state 2: The user does not hit the average target by less than 10 RPM difference. In this case, the chatbot will display some words to encourage the user to hit the target. 
@@ -186,6 +188,7 @@ What we have described in the previous paragraph is part of the computation proc
 ```
 Input: 
   - cadence_list: list of cadence for the past seven days. The element of the list is an integer.
+  - target_cadence: the target value for the cadence average to hit.
 
 Output:
   - None
@@ -199,10 +202,11 @@ Process:
 
 In concrete cases steps, we try to think of specific values for the input and work out the computation step by step. The important part is take note and observe how we do the computation. This step leads to the **D**esign of Algorithm step. 
 
-To do this, let's create some concrete cases for the input. For example, we can start with the following input list for the cadence in the past seven days.
+To do this, let's create some concrete cases for the input. For example, we can start with the following input list for the cadence in the past seven days and some target value.
 
 ```python
 cadence_list = [45, 57, 62, 58, 55, 66, 63]
+target_cadence = 60
 ```
 
 In the above, we use the square bracket `[]` to indicate a list of data. Notice that we put only integers inside the list. This is part of what we have already indicated in our problem statement. PCDIT framework is not meant to be linear. In the case that we realize that some of the elements are not integer, we should go back to the **P**roblem statement step and revise it.
@@ -211,4 +215,199 @@ In **C**oncrete Cases, we walk through the computation as if we are the computer
 
 The first step is to compute the average. In order to compute the average from the input, we need to get two things: the sum of all the elements and the number of elements in the list. 
 
+Let's do the first step of getting the sum of all the elements first. We will need something to hold the sum, let's name it total.
 
+```
+total = 0
+```
+
+Now, we go through every element in the list and add them to total. In the first iteration, we will take the value of the first element.
+
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                ^
+                |
+```
+
+The value is `45` and we will add it to total.
+
+```
+total = 0 + 45 = 45
+```
+
+Then we move to the next element.
+
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                    ^
+                    |
+```
+
+And we add it again to total.
+
+```
+total = 45 + 57 = 102
+```
+
+Similarly, to the third element. We do this until it reaches the last element.
+
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                        ^
+                        |
+total = 102 + 62 = 164
+```
+fourth iteration:
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                            ^
+                            |
+total = 164 + 58 = 222
+```
+
+fifth iteration:
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                                ^
+                                |
+total = 222 + 55 = 277
+```
+
+sixth iteration:
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                                    ^
+                                    |
+total = 277 + 66 = 343
+```
+
+seventh iteration:
+```
+cadence_list = [45, 57, 62, 58, 55, 66, 63]
+                                        ^
+                                        |
+total = 343 + 63 = 406
+```
+
+Now, we have reached the last element and get the sum of all the cadence values. We can get the average by dividing this total with the number of elements. There are seven elements and so we have:
+
+```
+average_cadence = 406 / 7 = 58
+```
+
+Now we have the average cadence, we can *check* whether the average cadence hits the target value or not. 
+
+If `average_cadence` is greater than or equal to the  `target_cadence`, then the chatbot will display `"Good job, you hit your target for the past week cycling."`. Otherwise, we want to check the difference. If the difference is greater or equal to `10`, then we will request the user to adjust the target value. If the difference is less than `10`, we will just display, `"You almost hit your target, try harder in the coming weeks."`. 
+
+In our concrete case here, our average cadence is 58 while the target cadence is 60. So in this case, we do not hit the target. Now, we need to calculate the difference.
+
+```
+difference = 60 - 58 = 2
+```
+
+Since the difference is less than 10, we will just display `"You almost hit your target, try harder in the coming weeks."`. 
+
+You should try with a different input values. For example, if the target is 70.
+
+```
+target_cadence = 70
+```
+
+In this case, the difference will be:
+
+```
+difference = 70 - 58 = 12
+```
+
+Since the difference is greater than 12, the chatbot should request the user to adjust the target.
+
+On the other hand, if the target is 50.
+
+```
+target_cadence = 50
+```
+
+In this case, our average is greater than the target and we will just display, `"Good job, you hit your target for the past week cycling."`
+
+### Design of Algorithm
+
+Now, we are ready to design our algorithm. The word algorithm refers to the steps of the computation. We can derive the algorithm from the previous **C**oncrete Case steps by **generalizing** the steps we took in our computation. We will do so in two ways. The first one is through a pseudocode and the second one will use a flowchart. 
+
+Let's start with using the pseudocode. A pseudocode is not a computer code. That's where the word *pseudo* comes from. It is meant to be general enough in such a way that it can be implemented by any programming language. The key feature of a pseudocode is to help us to think through about the steps without worrying about the programming language features. In these notes, we will use simple English for our pseudocode which we will then refine to use with certain key words that helps us to identify the structure of steps.
+
+We can divide the steps into few distinct stages:
+- calculating the total
+- calculating the average
+- determining the state output
+- displaying the state output
+
+To calculate the total, we start with an empty storage, `total = 0`. We then go through every element in the list and add the value to the `total`. We will write it in two stages. Here is our first draft.
+
+```
+1. Initialize *total* to 0. 
+2. Go to the first element.
+3. Get the value of the first element and add to *total*. Store the result back to *total*. 
+4. Go to the second element.
+5. Get the value of that element and add to *total*. Store the result back to *total*. 
+6. Go to the third element.
+7. Get the value of that element and add to *total*. Store the result back to *total*. 
+8. Repeat the last two steps up to the last element.
+```
+
+There you go. We basically write what we have done in the **C**oncrete Cases steps. Notice that we repeat some steps again and again. This is an indicator of an **iterative** structure. What we want is to go through some steps **for every element in the list**. We can refine this further by using this keyword *for every element in the list*.
+
+```
+1. Initialize *total* = 0. 
+2. *for every element in the list*
+    2.1. Add the value of that element to *total* and store back the result to *total*.
+```
+
+We have shortened our previous steps by using the *iterative* keyword *for every element in the list*.  The steps are still easy to read and understood. Now, we can calculate the average.
+
+```
+1. Divide the *total* by the number of element in the list and store it to *average_cadence*.
+```
+
+In order to do the above, we need to know the number of element in the list. Let's combine these steps and re-write it.
+```
+1. Initialize *total* to 0. 
+2. Get the number of element in the list and store it to *n*. 
+3. *for every element in the list*
+    3.1. Add the value of that element to *total* and store back the result to *total*.
+4. Divide *total* by *n* and store it to *average_cadence*. 
+```
+
+Now, we can proceed to the next two stages that is to determine the state and display it. To determine the state, we can write something like the following.
+
+```
+1. if the *average_cadence* is greater than or equal to *target_cadence*
+    1.1 Display "Good job, you hit your target for the past week cycling.".
+2. Otherwise,
+    2.1 calculate difference betwen *average_cadence* and *target_cadence*.
+    2.2 if the difference is less than 10
+        2.2.1 Display, "You almost hit your target, try harder in the coming weeks."
+    2.3 Otherwise,
+        2.3.1 Call *modify_target_cadence* function.
+```
+
+Let's combine all the steps now into one single algorithm.
+
+```
+1. Initialize *total* to 0. 
+2. Get the number of element in the list and store it to *n*. 
+3. *for every element in the list*
+    3.1. Add the value of that element to *total* and store back the result to *total*.
+4. Divide *total* by *n* and store it to *average_cadence*. 
+5. if the *average_cadence* is greater than or equal to *target_cadence*
+    5.1 Display "Good job, you hit your target for the past week cycling.".
+6. Otherwise,
+    6.1 calculate difference betwen *average_cadence* and *target_cadence*.
+    6.2 if the difference is less than 10
+        6.2.1 Display, "You almost hit your target, try harder in the coming weeks."
+    6.3 Otherwise,
+        6.3.1 Call *modify_target_cadence* function.
+```
+
+The flowchart for the first step to calculate the total is shown below.
+
+// show flowchart for total
