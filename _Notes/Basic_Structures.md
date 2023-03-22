@@ -60,7 +60,7 @@ def calculate_speed(cadence: int,
 
 We can draw a flow chart of the above code as shown below.
 
-// put image of flow chart of calculate speed.
+<img src="/assets/images/lesson3/sequential1.png" height=500>
 
 As you can easily see from the flowchart, the computation flows from top to bottom. The sequence is important because we need to compute the `gear_ratio` before we can compute the `speed`. Similarly, we need to compute the `speed` before we can compute the `speed_kmph`.
 
@@ -89,7 +89,7 @@ def calculate_speed(cadence: int,
   return speed_kmph, speed_mph
 ```
 
-// Draw flowchart
+<img src="/assets/images/lesson3/sequential2.png" height=500>
 
 The above code is similar to the previous one. The only difference is that we compute both `speed_kmph` and `speed_mph` in this code. At the same time, you may have noticed that we don't put a separate process box for the `speed_mph` and `speed_kmph`. The reason is that these two computations does not depend on each other and can be computed as long as `speed` has been computed. This means that the two computations are at the same dependencies with respect to the `speed` process block. 
 
@@ -126,7 +126,8 @@ Notice that in the above flowchart, we choose to start from the very high catego
 
 Can we choose the other way around starting from the low category?
 
-// put flowchart from the low category
+
+<img src="/assets/images/lesson3/branch2.png" height=500>
 
 Notice that if the condition `100 <= cadence <= 120` is true, we display "very high". However, if this condition is false, we do not display anything and there is no process associated to it. Though, we can write a code for this, it is easier to read if we start from the "very high" category and move down such that all the other cases when the cadence is lower than 70 is attributed to "low". This example, illustrates that though we can choose how we want to nest and sequence our conditions, certain way of writing is easier to read.
 
@@ -144,7 +145,7 @@ steps_inp: str = input("how many push did you do on the pedal within 30 seconds?
 
 How can we repeat this as long as the user did not enter a valid response? Below is a flowchart on how you can do so.
 
-// put image flowchart loop
+<img src="/assets/images/lesson3/iterative1.png" height=500>
 
 A few notes on the flowchart diagram above. Notice that we use the parallelogram for the `input()` function to get the users' input. We do this two times: the first one is the initial prompt and the second one is when the user did not enter a valid input. We modified the prompt to the user to indicate that the input entered is not valid and give some valid input example. 
 
