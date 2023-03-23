@@ -3,8 +3,8 @@ function showContent() {
   document.body.style.opacity = 1;
 }
 
-var lightStyle = '@import url("/assets/css/main.css");';
-var darkStyle = '@import url("/assets/css/main_alt.css");';
+var lightStyle = '@import url("/ictpsp/assets/css/main.css");';
+var darkStyle = '@import url("/ictpsp/assets/css/main_alt.css");';
 
 function setTheme(theme) {
   if (theme == "dark") {
