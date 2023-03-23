@@ -1,6 +1,6 @@
 ---
 title: Basic Control Structures
-permalink: /notes/basic-structures
+permalink: /ictpsp/notes/basic-structures
 key: notes-basic-structures
 layout: article
 nav_key: Notes

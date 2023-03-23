@@ -1,6 +1,6 @@
 ---
 title: Defining a Function
-permalink: /notes/defining-function
+permalink: /ictpsp/notes/defining-function
 key: notes-defining-function
 layout: article
 nav_key: Notes

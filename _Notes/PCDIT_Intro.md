@@ -1,6 +1,6 @@
 ---
 title: Problem Solving Framework
-permalink: /notes/intro-pcdit
+permalink: /ictpsp/notes/intro-pcdit
 key: notes-intro-pcdit
 layout: article
 nav_key: Notes

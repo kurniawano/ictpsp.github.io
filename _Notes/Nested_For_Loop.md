@@ -1,6 +1,6 @@
 ---
 title: Nested For Loops
-permalink: /notes/nested-for
+permalink: /ictpsp/notes/nested-for
 key: notes-nested-for
 layout: article
 nav_key: Notes

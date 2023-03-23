@@ -1,6 +1,6 @@
 ---
 title: Branch Structures
-permalink: /notes/branch
+permalink: /ictpsp/notes/branch
 key: notes-branch-structures
 layout: article
 nav_key: Notes

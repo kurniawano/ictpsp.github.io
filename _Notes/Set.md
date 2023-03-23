@@ -1,6 +1,6 @@
 ---
 title: Sets
-permalink: /notes/sets
+permalink: /ictpsp/notes/sets
 key: notes-sets
 layout: article
 nav_key: Notes

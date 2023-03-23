@@ -1,6 +1,6 @@
 ---
 title: Calling a Function
-permalink: /notes/calling-function
+permalink: /ictpsp/notes/calling-function
 key: notes-calling-function
 layout: article
 nav_key: Notes

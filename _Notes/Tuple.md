@@ -1,6 +1,6 @@
 ---
 title: Tuple Data
-permalink: /notes/tuple
+permalink: /ictpsp/notes/tuple
 key: notes-tuple
 layout: article
 nav_key: Notes
