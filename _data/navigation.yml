@@ -1,11 +1,11 @@
 header:
   - title: Home
-    url: /ictpsp/index.html
+    url: /index.html
   - title: Notes
-    url: /ictpsp/notes/overview
+    url: /notes/overview
     key: notes
   - title: Learning Objectives
-    url: /ictpsp/lo/weekly
+    url: /lo/weekly
     key: lo-weekly
 
 Notes:
