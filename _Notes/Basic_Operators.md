@@ -1,6 +1,6 @@
 ---
 title: Basic Operators
-permalink: /ictpsp/notes/basic-operators
+permalink: /notes/basic-operators
 key: notes-basic-operators
 layout: article
 nav_key: Notes

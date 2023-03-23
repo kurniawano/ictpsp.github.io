@@ -12,62 +12,62 @@ Notes:
   - title: "Lesson 0: Computational Thinking and Problem Solving"
     children:
       - title: What is Computational Thinking
-        url: /ictpsp/notes/intro-ct
+        url: /notes/intro-ct
       - title: Computational Thinking and Programming
-        url: /ictpsp/notes/intro-programming
+        url: /notes/intro-programming
       - title: Problem Solving Framework
-        url: /ictpsp/notes/intro-pcdit
+        url: /notes/intro-pcdit
   - title: "Lesson 1: Code Execution and Basic Data Types"
     children:
       - title: Hello World
-        url: /ictpsp/notes/hello-world
+        url: /notes/hello-world
       - title: Basic Data Types
-        url: /ictpsp/notes/basic-data-types
+        url: /notes/basic-data-types
   - title: "Lesson 2: Function, the First Abstraction"
     children:
       - title: Calling a Function
-        url: /ictpsp/notes/calling-function
+        url: /notes/calling-function
       - title: Defining a Function
-        url: /ictpsp/notes/defining-function
+        url: /notes/defining-function
   - title: "Lesson 3: Operators and Operands"
     children:
       - title: Basic Operators
-        url: /ictpsp/notes/basic-operators
+        url: /notes/basic-operators
   - title: "Lesson 4: Three Basic Control Structures"
     children:
       - title: Basic Control Structures
-        url: /ictpsp/notes/basic-structures
+        url: /notes/basic-structures
   - title: "Lesson 5: Boolean Data Type and Branch Structure"
     children:
       - title: Boolean Data
-        url: /ictpsp/notes/boolean-data
+        url: /notes/boolean-data
       - title: Branch Structures
-        url: /ictpsp/notes/branch-structures
+        url: /notes/branch-structures
   - title: "Lesson 6: String"
     children:
       - title: Working with String
-        url: /ictpsp/notes/string
+        url: /notes/string
   - title: "Lesson 7: Iteration Using While Loop and For Loop"
     children:
       - title: Implementing While Loop
-        url: /ictpsp/notes/while-loop
+        url: /notes/while-loop
       - title: Implementing For Loop
-        url: /ictpsp/notes/for-loop
+        url: /notes/for-loop
   - title: "Lesson 8: List and Tuple"
     children:
       - title: Working with Tuple
-        url: /ictpsp/notes/tuple
+        url: /notes/tuple
       - title: Working with List
-        url: /ictpsp/notes/list
+        url: /notes/list
   - title: "Lesson 9: Nested List and Nested For Loop"
     children:
       - title: Nested List
-        url: /ictpsp/notes/nested-list
+        url: /notes/nested-list
       - title: Nested For Loop
-        url: /ictpsp/notes/nested-for
+        url: /notes/nested-for
   - title: "Lesson 10: Dictionaries and Sets"
     children:
       - title: Working with Dictionaries
-        url: /ictpsp/notes/dictionaries
+        url: /notes/dictionaries
       - title: Working with Sets
-        url: /ictpsp/notes/sets
+        url: /notes/sets

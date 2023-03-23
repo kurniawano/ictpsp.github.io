@@ -1,6 +1,6 @@
 ---
 title: String
-permalink: /ictpsp/notes/string
+permalink: /notes/string
 key: notes-string
 layout: article
 nav_key: Notes

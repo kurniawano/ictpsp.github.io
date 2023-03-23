@@ -1,6 +1,6 @@
 ---
 title: Boolean Data
-permalink: /ictpsp/notes/boolean-data
+permalink: /notes/boolean-data
 key: notes-boolean-data
 layout: article
 nav_key: Notes

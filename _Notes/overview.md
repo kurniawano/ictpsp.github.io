@@ -1,6 +1,6 @@
 ---
 title: Introduction to Computational Thinking and Problem Solving Using Python
-permalink: /ictpsp/notes/overview
+permalink: /notes/overview
 key: notes-overview
 layout: article
 nav_key: notes

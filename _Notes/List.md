@@ -1,6 +1,6 @@
 ---
 title: List
-permalink: /ictpsp/notes/list
+permalink: /notes/list
 key: notes-list
 layout: article
 nav_key: Notes

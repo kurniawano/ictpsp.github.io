@@ -1,6 +1,6 @@
 ---
 title: Nested List
-permalink: /ictpsp/notes/nested-list
+permalink: /notes/nested-list
 key: notes-nested-list
 layout: article
 nav_key: Notes

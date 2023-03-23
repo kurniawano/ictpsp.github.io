@@ -1,6 +1,6 @@
 ---
 title: Basic Data Types
-permalink: /ictpsp/notes/basic-data-types
+permalink: /notes/basic-data-types
 key: notes-basic-data-types
 layout: article
 nav_key: Notes

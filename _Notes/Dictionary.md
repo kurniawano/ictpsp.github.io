@@ -1,6 +1,6 @@
 ---
 title: Dictionaries
-permalink: /ictpsp/notes/dictionaries
+permalink: /notes/dictionaries
 key: notes-dictionaries
 layout: article
 nav_key: Notes

@@ -1,6 +1,6 @@
 ---
 title: While Loop
-permalink: /ictpsp/notes/while-loop
+permalink: /notes/while-loop
 key: notes-while-loop
 layout: article
 nav_key: Notes

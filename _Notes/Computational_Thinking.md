@@ -1,6 +1,6 @@
 ---
 title: What is Computational Thinking
-permalink: /ictpsp/notes/intro-ct
+permalink: /notes/intro-ct
 key: notes-intro-ct
 layout: article
 nav_key: Notes

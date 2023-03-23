@@ -1,6 +1,6 @@
 ---
 title: Computational Thinking and Programming
-permalink: /ictpsp/notes/intro-programming
+permalink: /notes/intro-programming
 key: notes-intro-programming
 layout: article
 nav_key: Notes

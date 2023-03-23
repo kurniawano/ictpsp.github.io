@@ -1,6 +1,6 @@
 ---
 title: For Loop
-permalink: /ictpsp/notes/for-loop
+permalink: /notes/for-loop
 key: notes-for-loop
 layout: article
 nav_key: Notes

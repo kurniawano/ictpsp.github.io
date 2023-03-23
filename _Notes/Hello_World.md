@@ -1,6 +1,6 @@
 ---
 title: Hello World
-permalink: /ictpsp/notes/hello-world
+permalink: /notes/hello-world
 key: notes-hello-world
 layout: article
 nav_key: Notes

@@ -17,7 +17,8 @@ text_skin_alt: "dark" # "default" (default), "dark", "forest", "ocean", "chocola
 highlight_theme_alt: "tomorrow-night" # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 text_skin: "default" # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: "tomorrow" # url: "https://username.github.io"
-# baseurl: /baseurl # does not include hostname
+baseurl: "/ictpsp" # does not include hostname
+url: "https://kurniawano.github.io" 
 title: ICTPSP
 description: > # this means to ignore newlines until "Language & timezone"
   Welcome to Introduction to Computational Thinking and Problem Solving Using Python Book Site!
@@ -55,8 +56,8 @@ repository_tree: main
 ## => Paths
 ##############################
 paths:
-  root: "/ictpsp/" # title link url, "/" (default)
-  home: "/ictpsp/" # home layout url, "/" (default)
+  root:  # title link url, "/" (default)
+  home:  # home layout url, "/" (default)
   archive: # "/archive.html" (default)
   rss: # "/feed.xml" (default)
 
