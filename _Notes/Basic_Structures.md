@@ -385,10 +385,11 @@ Now, we can proceed to the next two stages that is to determine the state and di
     1.1 Display "Good job, you hit your target for the past week cycling.".
 2. Otherwise,
     2.1 calculate difference betwen *average_cadence* and *target_cadence*.
-    2.2 if the difference is less than 10
-        2.2.1 Display, "You almost hit your target, try harder in the coming weeks."
-    2.3 Otherwise,
-        2.3.1 Call *modify_target_cadence* function.
+    2.2 Determine state depending on the difference
+      2.2.1 if the difference is less than 10
+          2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
+      2.2.2 Otherwise,
+          2.2.2.1 Call *modify_target_cadence* function.
 ```
 
 Let's combine all the steps now into one single algorithm.
@@ -399,16 +400,50 @@ Let's combine all the steps now into one single algorithm.
 3. *for every element in the list*
     3.1. Add the value of that element to *total* and store back the result to *total*.
 4. Divide *total* by *n* and store it to *average_cadence*. 
-5. if the *average_cadence* is greater than or equal to *target_cadence*
-    5.1 Display "Good job, you hit your target for the past week cycling.".
-6. Otherwise,
-    6.1 calculate difference betwen *average_cadence* and *target_cadence*.
-    6.2 if the difference is less than 10
-        6.2.1 Display, "You almost hit your target, try harder in the coming weeks."
-    6.3 Otherwise,
-        6.3.1 Call *modify_target_cadence* function.
+5. Determine what to display
+  5.1 if the *average_cadence* is greater than or equal to *target_cadence*
+      5.1 Display "Good job, you hit your target for the past week cycling.".
+  5.2 Otherwise,
+      5.2.1 calculate difference betwen *average_cadence* and *target_cadence*.
+      5.2.2 Determine state depending on the difference
+        5.2.2.1 if the difference is less than 10
+            5.2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
+        5.2.2.2 Otherwise,
+            5.2.2.2.1 Call *modify_target_cadence* function.
 ```
 
-The flowchart for the first step to calculate the total is shown below.
+Notice a few things:
+- In general, the structure is sequential which means the instruction is executed from the top to the bottom. We need to do the earlier steps before the later steps. This is true for all computer codes.
+- Starting with the total calculation, we observe there is an iterative structure. We identify this iterative structure because in the previous draft of our design of algorithm we have some repeated steps that we do *for every element in the list*. We then use this keyword *for every element in the list* in our second draft of the design of algorithm.
+- The step that is being repeated in this iterative structure is simply to add the element in the list to the total. We indented this step and added a sub numbering to indicate that this step is part of the iterative structure.
+- In step 5, we can observe the branch structure. In fact, this branch structure has another branch structure inside it in step 5.2.2. All structure can be nested inside another structure. 
 
-// show flowchart for total
+We can also represent the above design of algorithm using a Flowchart. 5.2.2. All structure can be nested inside another structure. 
+
+We can also represent the above design of algorithm using a Flowchart. We can iterate the flowchart from big steps to the smaller steps. For example, we can start with the following basic steps.
+
+// show flowchart for big steps sequential
+
+Notice, that we do not describe in detail on how to get the average. We can expand the process to calculate the average using the following flowchart.
+
+// flowchart for calculate average
+
+Notice that the iterative structure in the above flowchart. We continue adding as long as there is a next element in the list. When there is no more next element, we stop the iteration and calculate the average. 
+
+Similarly, we can draw the flowchart to determine the state of the program after the average cadence calculation as shown below.
+
+// flowchart for state determination
+
+Notice that we also have two decision box in this section showing how the branch structure is actually nested inside another branch structure. 
+
+Finally, we can combine the different part into one single flowchart as shown below.
+
+// flowchart overall.
+
+For smaller problem like the above, we can draw all the parts in a single flowchart. For bigger problems, we may need to modularize and separate the flowchart into different sections and parts. 
+
+## Summary
+
+In this section, we introduced to you the three basic structures, sequential, branch and iterative. The basic structure is sequential. However, the branch structure actually is the one that creates flexibility in our computer programs as it allows us to choose what to do depending on some conditions. In fact, the iterative structure is based on the branch structure as it chooses to repeat certain block of steps depending on some conditions. 
+
+We also introduce how you can write down your **C**oncrete Cases and **D**esign of Algorithm. We showed you how to iterate over your design of algorithm using both pseudocode and flowchart. In subsequent lessons, we will focus on pseudocode to design our algorithm.
