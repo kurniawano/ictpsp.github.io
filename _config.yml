@@ -55,8 +55,8 @@ repository_tree: main
 ## => Paths
 ##############################
 paths:
-  root: # title link url, "/" (default)
-  home: # home layout url, "/" (default)
+  root: "/ictpsp/" # title link url, "/" (default)
+  home: "/ictpsp/" # home layout url, "/" (default)
   archive: # "/archive.html" (default)
   rss: # "/feed.xml" (default)
 
