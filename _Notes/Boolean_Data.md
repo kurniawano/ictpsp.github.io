@@ -178,5 +178,124 @@ False
 
 ## Logical Operators
 
+On top of relational operators, logical operators also evaluate to boolean data. There are three common logical operators as shown in the table below.
+
+| operator | remarks                                                      |
+|----------|--------------------------------------------------------------|
+| a and b  | true if both a and b are true                                |
+| a or b   | true if at least one of the operands (either a or b) is true |
+| not a    | true if a is false and false if a is true                    |
+
+In the above table, `a` and `b` can be any other expressions that can be evaluated to boolean data. This means that we can put some relational operators in either `a` and `b`.  Let's see some examples below.
+
+```python
+>>> 3 < 4 or 3 > 5
+True
+>>> 3 < 4 and 3 > 5
+False
+```
+
+The first one is `True` because `3 < 4` evaluates to `True`. And for `or` operator to return `True` it only requires at least one of the operands to be `True`. On the other hand `and` operator requires both operands to be `True` to result in a `True` value.
+
+
+```python
+>>> 3 == 3 and 3 < 4
+True
+```
+
+Python actuall supports using to relational operators at the same time assuming it is related by the `and` operator. See below example.
+
+```python
+>>> 2 < 3 and 3 < 4
+True
+>>> 2 < 3 < 4
+True
+```
+
+The two expressions above are the same.
+
+The last logical operator always invert the boolean values. 
+
+```python
+>>> not True
+False
+>>> not False
+True
+>>> not 0
+True
+>>> not 1
+False
+```
+
+You can combine all the relational and logical operators together. It is recommended to use parenthesis to clarify which order we want the operations to be evaluated.
+
+```python
+>>> (3 < 4) or (5 < 1) and True
+True
+>>> not( (3 < 4) or (5 < 1) and True)
+False
+```
+
 ## Evaluating Boolean Expressions
 
+As with the arithmetic operators, relational and logical operators also have their precedence. This determines which operator to be evaluated first. It is important to know this as it may help us greatly in debugging our code.
+
+Consider the below example.
+
+```python
+>>> (1 < 5) or (3 > 4) and False
+True
+```
+
+At first glance, it may not be obvious why the result is True. 
+- `1 < 5` results in `True`
+- `3 > 4` results in `False`
+
+The question now is whether we evaluate the `or` operator first or the `and` operator first.
+
+If we evaluate the `or` operator first, we will get `True or False` which results in `True`. Then we evaluate the `True and False` when evaluating the `and` operator which results in `False`. 
+
+However, what happens is that `and` has a higher precedence than `or` and Python evaluates `(3 > 4) and False` first which results in `False`. Only then, Python evaluates the `or` operator: `(1 < 5) or False` which evaluates to `True or False` resulting in a `True` value. 
+
+Similarly, we need to know whether `not` operator has a higher precedence as compared to `and` and `or` operator. Let's figure it out using some of these examples.
+
+```python
+>>> not False or False
+True
+```
+
+As can be seen above, `not` has higher precedence as compared to `or`. The reason is that `not False` is evaluated first which results in a `True` value. Only then Python evaluates `True or False` which results in a `True`. How about with regards to `and` operator?
+
+```python
+>>> not False and True
+True
+```
+
+Similarly, `not` operator is evaluated first than the `and` operator in the above example which results in evaluating `True and True`. 
+
+How about between the relational and logical operators? Which is evaluated first?
+
+```python
+>>> 3 < 0 and True
+False
+>>> 3 < 0 or 4 > 1
+True
+```
+
+In the first example, `3 < 0` is evaluated first which results in `False`. Then Python evaluates `False and True` to produce `False` as the output. In the second example, we also evaluate the relational operators first to produce `False or True` which results in `True`. 
+
+Let's add on these precedence to our previous table. We now have the following.
+
+| precedence | operator | remarks                                                                                                                        |
+|------------|----------|--------------------------------------------------------------------------------------------------------------------------------|
+| 0          |      ()  | Parenthesis is used to evaluate the inside expression to override the precedence of the surrounding operators.                 |
+| 1          | **       | Power or exponentiation operator.                                                                                              |
+| 2          | * / % // | Multiplication, division, modulus and integer division. They are evaluated from left to right when appearing in a single line. |
+| 3          | + -      | Addition and subtraction.                                                                                                      |
+| 4          | =        | Assignment operator.                                                                                                           |
+| 5          | <, <=, >, >=, !=, ==        | Relational operators.                                                                                                           |
+| 6          | not      | Boolean NOT operator.                                                                                                           |
+| 7          | and      | Boolean AND operator.                                                                                                           |
+| 8          | or       | Boolean OR operator.                                                                                                           |
+
+Now, we know how to evaluate boolean data. We are not ready to use it in our program especially in the *branch* and *iterative* structure.
