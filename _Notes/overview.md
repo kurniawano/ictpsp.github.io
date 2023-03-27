@@ -17,67 +17,67 @@ show_date: false
 
 Notes:
 
-- [What is Computational Thinking]({% link _Notes/Computational_Thinking.md %})
-- [Computational Thinking and Programming]({% link _Notes/Programming_Intro.md %})
-- [Problem Solving Framework]({% link _Notes/PCDIT_Intro.md %})
+- [What is Computational Thinking]({{ "/notes/intro-ct" | relative_url }})
+- [Computational Thinking and Programming]({{ "/notes/intro-programming" | relative_url }})
+- [Problem Solving Framework]({{ "/notes/intro-pcdit" | relative_url }})
 
 ## Lesson 1: Code Execution and Basic Data Types
 Notes:
 
-- [Hello World]({% link _Notes/Hello_World.md %})
-- [Basic Data Types]({% link _Notes/Basic_Data_Types.md %})
+- [Hello World]({{ "/notes/hello-world" | relative_url }})
+- [Basic Data Types]({{ "/notes/basic-data-types" | relative_url }})
 
 
 ## Lesson 2: Function, the First Abstraction
 
 Notes:
 
-- [Calling a Function]({% link _Notes/Calling_Function.md %})
-- [Defining a Function]({% link _Notes/Defining_Function.md %})
+- [Calling a Function]({{ "/notes/calling-function" | relative_url }})
+- [Defining a Function]({{ "/notes/defining-function" | relative_url }})
 
 
 ## Lesson 3: Basic Operators and Basic Control Structures
 
 Notes:
 
-- [Basic Operators]({% link _Notes/Basic_Operators.md %})
-- [Basic Control Structures]({% link _Notes/Basic_Structures.md %})
+- [Basic Operators]({{ "/notes/basic-operators" | relative_url }})
+- [Basic Control Structures]({{ "/notes/basic-control-structures" | relative_url }})
 
 ## Lesson 4: Boolean Data Type and Branch Structure
 
 Notes:
 
-- [Boolean Data]({% link _Notes/Boolean_Data.md %})
-- [Branch Structures]({% link _Notes/Branch_Structure.md %})
+- [Boolean Data]({{ "/notes/boolean-data" | relative_url }})
+- [Branch Structures]({{ "/notes/branch-structures" | relative_url }})
 
 ## Lesson 5: String
 
 Notes:
 
-- [Working with String]({% link _Notes/String.md  %})
+- [Working with String]({{ "/notes/string" | relative_url }})
 
 ## Lesson 6: Iteration Using While Loop and For Loop
 
 Notes:
 
-- [Implementing While Loop]({% link _Notes/While_Loop.md %})
-- [Implementing For Loop]({% link _Notes/For_Loop.md %})
+- [Implementing While Loop]({{ "/notes/while-loop" | relative_url }})
+- [Implementing For Loop]({{ "/notes/for-loop" | relative_url }})
 
 ## Lesson 7: List and Tuple
 
 Notes:
 
-- [Working with Tuple]({% link _Notes/Tuple.md %})
-- [Working with List]({% link _Notes/List.md %})
+- [Working with Tuple]({{ "/notes/tuple" | relative_url }})
+- [Working with List]({{ "/notes/list" | relative_url }})
 
 ## Lesson 8: Nested List and Nested For Loop
 
-- [Nested List]({% link _Notes/Nested_List.md %})
-- [Nested For Loop]({% link _Notes/Nested_For_Loop.md %})
+- [Nested List]({{ "/notes/nested-list" | relative_url }})
+- [Nested For Loop]({{ "/notes/nested-for-loop" | relative_url }})
 
 ## Lesson 9: Dictionaries and Sets
-- [Working with Dictionaries]({% link _Notes/Dictionary.md %})
-- [Working with Sets]({% link _Notes/Set.md %})
+- [Working with Dictionaries]({{ "/notes/dictionaries" | relative_url }})
+- [Working with Sets]({{ "/notes/sets" | relative_url }})
 
 ## Contributors
 
