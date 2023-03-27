@@ -41,14 +41,14 @@ Notes:
 Notes:
 
 - [Basic Operators]({{ "/notes/basic-operators" | relative_url }})
-- [Basic Control Structures]({{ "/notes/basic-control-structures" | relative_url }})
+- [Basic Control Structures]({{ "/notes/basic-structures" | relative_url }})
 
 ## Lesson 4: Boolean Data Type and Branch Structure
 
 Notes:
 
 - [Boolean Data]({{ "/notes/boolean-data" | relative_url }})
-- [Branch Structures]({{ "/notes/branch-structures" | relative_url }})
+- [Branch Structures]({{ "/notes/branch" | relative_url }})
 
 ## Lesson 5: String
 
@@ -73,7 +73,7 @@ Notes:
 ## Lesson 8: Nested List and Nested For Loop
 
 - [Nested List]({{ "/notes/nested-list" | relative_url }})
-- [Nested For Loop]({{ "/notes/nested-for-loop" | relative_url }})
+- [Nested For Loop]({{ "/notes/nested-for" | relative_url }})
 
 ## Lesson 9: Dictionaries and Sets
 - [Working with Dictionaries]({{ "/notes/dictionaries" | relative_url }})
