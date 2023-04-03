@@ -183,6 +183,58 @@ Therefore, we **must always use** if-elif statement when it is the same comparis
 
 ## Nested If-Else
 
+In our previous discussion on basic structures, we noted that you can actually have a nested structure. The most common one is to have some sequential structure in one of the blocks inside either branch or iterative structure. This means the "code block A" when the condition is True may contain more than one statement but a few and they are all executed sequentially. However, such nested structure is not limited to only sequential structure. We can have a branch structure inside another branch structure. 
+
+Recall our example of our cycling application. In our previous lessons, we drafted the following pseudocode.
+
+```
+1. if the *average_cadence* is greater than or equal to *target_cadence*
+    1.1 Display "Good job, you hit your target for the past week cycling.".
+2. Otherwise,
+    2.1 calculate difference betwen *average_cadence* and *target_cadence*.
+    2.2 Determine state depending on the difference
+      2.2.1 if the difference is less than 10
+          2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
+      2.2.2 Otherwise,
+          2.2.2.1 Call *modify_target_cadence* function.
+```
+
+Notice in the above pseudocode that we have two branch structure. The first branch structure is based on whether the `average_cadence` is greater than or equla to the `target_cadence`. When the condition is `False`, step 2.1 calculates the difference between the two. Furthermore, step 2.2 actually contains another branch structure that is based on the difference. We can draw the flowchart as below.
+
+// flowchart for nested if-else
+
+Note that the nested branch structure can be either in the true block or in the false block of codes. Where they are located really depends on the logic and the problem we are trying to solve. 
+
+The way we will introduce another branch structure is basically just to include another if-statement at the **right indentation** level. Recall that Python identifies what is block of codes to be executed when it is `True` or `False` depends on the indentation of the code. For example, the above pseudocode or flowchart can be implemented in Python as follows.
+
+```python
+if average_cadence >= target_cadence:
+  print("Good job, you hit your target for the past week cycling.")
+else:
+  difference = abs(average_cadence - target_cadence)
+  if difference < 10:
+    print("You almost hit your target, try harder in the coming weeks.")
+  else:
+    target_cadence = modify_target_cadence()
+```
+
+It is important to take note of the indentation level when reading Python codes. In the above code we have one statement in the True block if `average_cadence >= target_cadence` which is the `print()` statement. On the other hand, there are two statements in the False block when the condition is `False`. In that False block of codes, we have the assignment to calculate the `difference` and another if-statement to check how big the difference is. This is the other branch structure that is nested in the earlier branch structure. If the difference is less than 10, it will call the `print()` function. On the other hand, if the difference is not less than 10, it will call `modify_target_cadence()` function. 
+
+Now you know how to have a nested if-else. But what is more important is to come up with the pseudocode and the algorithm as well as identifying the basic structures. 
+
+In some cases, you can actually reduce the level of the nested if-statements. For example, in our case, above, you can rewrite the nested if-else using if-elif-else statements.
+
+```python
+if average_cadence >= target_cadence:
+  print("Good job, you hit your target for the past week cycling.")
+elif abs(average_cadence - target_cadence) < 10:
+    print("You almost hit your target, try harder in the coming weeks.")
+else:
+    target_cadence = modify_target_cadence()
+```
+
+In this case, the elif condition is checked only if `average_cadence` is not greater than or equal to `target_cadence`. This results in the same logic. Which way to write is better? Some times having a nested if-else statement is done for simplicity and clarity of the logic. However, when the nested levels become too deep, it will become harder to read. We should strive to avoid nested code without sacrificing the readability of the code. 
+
 ## Testing Using Assert
 
 ## Identifying Branch Structure in a Problem
