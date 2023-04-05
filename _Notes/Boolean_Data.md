@@ -298,4 +298,87 @@ Let's add on these precedence to our previous table. We now have the following.
 | 7          | and      | Boolean AND operator.                                                                                                           |
 | 8          | or       | Boolean OR operator.                                                                                                           |
 
-Now, we know how to evaluate boolean data. We are not ready to use it in our program especially in the *branch* and *iterative* structure.
+Now, we know how to evaluate boolean data. We are not ready to use it in our program especially in the *branch* and *iterative* structure. Before we move on to the *branch* structure. There is one simple useful use of boolean data in programming and that is to **T**est. This is the last part of the PCDIT framework and the way we do it is to write test and implementation in small bites repetitively. 
+
+## Testing Using Assert
+
+One simple way to test your code is to use the `assert` statement in Python. This is the general syntax to use `assert`.
+
+```python
+assert condition
+```
+
+The way it works is that if the `condition` is `True`, Python will continue to the next line without complaining. However, if the `condition` is `False`, Python will throw an exception or an error. This is useful when writing codes because we can fill in our codes with assert statements to test it and our programme will continue running as it is as long as all those conditions are fulfilled. Only when there is an error, Python will stop and tell us at which `assert` statement that our test fails. Let's take a look at how we can make use of it in our PCDIT framework.
+
+Let's look at some of the functions we have created in the past lessons. One of the first function we created was `compute_cadence_for_30sec(steps)`. When we are trying to write this function, instead of starting with some implementation, we can start with some **expectation**. This can be written as a series of test. These expectations can be writtend based on our specifications for that problem. For example, in the function above, we expect that this function will caculate the cadence given the number of steps. We can write a few expected output before we write any implementations.
+
+```python
+assert compute_cadence_for_30sec(10) == 20
+assert compute_cadence_for_30sec(21) == 42
+assert compute_cadence_for_30sec(25) == 50
+assert compute_cadence_for_30sec(31) == 62
+```
+
+Notice that the expression on the right of the `assert` statement is a Boolean expression that makes use of the relational operator `==`. We wrote those expected output of the function based on our problem spefications and even our **C**oncrete Cases that we did during our PCDIT steps. From the above expectations, which is our **T**est, we can start writing our **I**mplementation. 
+
+```python
+def compute_cadence_for_30sec(steps):
+  return steps * 2
+
+assert compute_cadence_for_30sec(10) == 20
+assert compute_cadence_for_30sec(21) == 42
+assert compute_cadence_for_30sec(25) == 50
+assert compute_cadence_for_30sec(31) == 62
+```
+
+When you run the above code with `mypy` and `python`, you will see no complain thrown out.
+
+```sh
+$ mypy 01_compute_cadence.py 
+Success: no issues found in 1 source file
+$ python 01_compute_cadence.py 
+$
+```
+
+You can try the above code in Python Tutor shown below.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20compute_cadence_for_30sec%28steps%29%3A%0A%20%20return%20steps%20*%202%0A%0Aassert%20compute_cadence_for_30sec%2810%29%20%3D%3D%2020%0Aassert%20compute_cadence_for_30sec%2821%29%20%3D%3D%2042%0Aassert%20compute_cadence_for_30sec%2825%29%20%3D%3D%2050%0Aassert%20compute_cadence_for_30sec%2831%29%20%3D%3D%2062&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Notice that Python does not produce any output in the standard output since we do not have any `print()` statement. However, the program finishes without error. The reason that the program finishes is because our **I**mplementation fulfills all the `assert` statements which is our expectation. 
+
+To see what happens if we have a wrong **I**mplementation, let's try changing our implementation purposely to introduce a wrong implementation. Let's use `**` instead of `*` in our calculation. 
+
+```python
+def compute_cadence_for_30sec(steps):
+  return steps ** 2
+
+assert compute_cadence_for_30sec(10) == 20
+assert compute_cadence_for_30sec(21) == 42
+assert compute_cadence_for_30sec(25) == 50
+assert compute_cadence_for_30sec(31) == 62
+```
+
+You can run the file `02_compute_cadence_error.py` with `mypy`.
+
+```sh
+$ mypy 02_compute_cadence_error.py 
+Success: no issues found in 1 source file
+```
+
+Note that `mypy` does not complain as it does not find any error from the static check. However, running Python will throw an error.
+
+```sh
+$ python 02_compute_cadence_error.py 
+Traceback (most recent call last):
+  File "02_compute_cadence_error.py", line 4, in <module>
+    assert compute_cadence_for_30sec(10) == 20
+AssertionError
+```
+
+The error is of `AssertionError` and Python actually points out that it fails on the first `assert` statement as the output of the function is not equal to 20. 
+
+You can also try it in Python Tutor and it will stop on the first `assert` statement.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20compute_cadence_for_30sec%28steps%29%3A%0A%20%20return%20steps%20**%202%0A%0Aassert%20compute_cadence_for_30sec%2810%29%20%3D%3D%2020%0Aassert%20compute_cadence_for_30sec%2821%29%20%3D%3D%2042%0Aassert%20compute_cadence_for_30sec%2825%29%20%3D%3D%2050%0Aassert%20compute_cadence_for_30sec%2831%29%20%3D%3D%2062&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+The `assert` statement is useful in driving our implementation. As shown in the above example, we can immediately know there is a bug in our implementation since our test fails. This is part of **Test Driven Development** (TDD). In TDD, we write our test before we write any implementation. As we go along these lessons, we will share more on how to write test that drives implementation. But for now, we can see how boolean data can be used for testing our implementation. 
