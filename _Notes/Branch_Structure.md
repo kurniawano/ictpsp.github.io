@@ -235,10 +235,114 @@ else:
 
 In this case, the elif condition is checked only if `average_cadence` is not greater than or equal to `target_cadence`. This results in the same logic. Which way to write is better? Some times having a nested if-else statement is done for simplicity and clarity of the logic. However, when the nested levels become too deep, it will become harder to read. We should strive to avoid nested code without sacrificing the readability of the code. 
 
-## Testing Using Assert
-
 ## Identifying Branch Structure in a Problem
+
+How can we identify a branch structure from our **D**esign of algorithm? The answer is simple. Whenever we encounter a step in the algorithm that requires us to take **different actions** depending on some **conditions** we have a branch structure. This requires us to make a **decision** on which course of action to take. This is why the flowchart symbol for a branch structure contains the "Decision" symbol.
+
+// put image of decision symbol in flowchart. 
+
+In order for us to easily spot the branch structure it is recommended that we rewrite our **D**esign of algorithm with certain keywords such as the following:
+- decide ..., determine ...
+- if ...
+- otherwise ...
+
+This is an example of our pseudocode for our average cadence.
+
+```
+1. if the *average_cadence* is greater than or equal to *target_cadence*
+    1.1 Display "Good job, you hit your target for the past week cycling.".
+2. Otherwise,
+    2.1 calculate difference betwen *average_cadence* and *target_cadence*.
+    2.2 Determine state depending on the difference
+      2.2.1 if the difference is less than 10
+          2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
+      2.2.2 Otherwise,
+          2.2.2.1 Call *modify_target_cadence* function.
+```
+
+Notice in the above pseudocode we use the keywords: if ..., otherwise ..., determine ..., etc. This helps us to translate the above pseudocode using the if-statement in Python easily. 
+
+
+## Abstracting Selection Process as a Function
+
+In some cases, we want to abstract our selection process using a function. Recall that we can use function as an abstraction of some computation such as calculating speed, calculating cadence, etc. Similarly, we can create functions that returns a Boolean data for our selection process. For example, we can create the following functions for our example on average cadence of the week.
+- `user_hits_target(user_value, target)` which checks if the user hits the target or not. 
+- `has_small_difference(user_value, target)` which checks if the difference is small or not. We can use this to decide whether to modify the target or just display some encouraging message as in step 2.2 in the pseudocode above.
+
+In the two functions above, we need to return a Boolean data as the return value. Let's see how we can define those two functions.
+
+```python
+def user_hits_target(user_value, target):
+  return user_value >= target
+```
+
+We can also write that function using type annotation as follows.
+
+```python
+
+def user_hits_target(user_value: float, target: float) -> bool:
+  return user_value >= target
+```
+
+Similarly, we can have the following function to check if the difference is large or not.
+
+```python
+def has_small_difference(user_value, target):
+  return abs(user_value - target) < 10
+```
+Its type annotated function can be written as follows.
+
+```python
+def has_small_difference(user_value: float, target: float) -> bool:
+  return abs(user_value - target) < 10
+```
+
+With these two functions, we can re-write our if-else statements by calling these two functions.
+
+```python
+if user_hits_target(average_cadence, target_cadence):
+  print("Good job, you hit your target for the past week cycling.")
+elif has_small_difference(average_cadence,  target_cadence):
+    print("You almost hit your target, try harder in the coming weeks.")
+else:
+    target_cadence = modify_target_cadence()
+```
+
+You may wonder what's the advantage of abstracting the condition as a function. One advantage is that the if-statement is more readable as it is written in a higher abstraction. It is easier to read a condition that says "if it has small difference" as compared to read something with some mathematical operations in it. The second advantage is that if our definition of small difference changes, we do not need to change our if-statement code. Consider for example, if different user may have different motivation level and for some, a difference of 10 is significant while for others is not significant. What if we want to change when we should modify the target? Let's say if the difference is smaller than 20 instead. If we abstract our conditions as a function, we only need to change our function `has_small_difference()`. This is more significant if there are more than one places where we want to check if the difference is large or not.  
 
 ## Decomposing Problems Containing Branch Structures
 
-## Abstracting Selection Process as a Function
+Another advantage of abstracting those boolean conditions into a function is that it fits nicely to how we think from big problems and decomposing it to smaller problems. For example, in our case above, we can start writing our pseudocode in this manner.
+
+```
+1. if the user hits the target
+    1.1 Display "Good job, you hit your target for the past week cycling.".
+2. Otherwise,
+    2.1 calculate difference betwen *average_cadence* and *target_cadence*.
+    2.2 Determine state depending on whether it has a small difference between the user and the target
+```
+
+We can then expand 2.2 into the following.
+
+```
+      2.2.1 if it has a small difference
+          2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
+      2.2.2 Otherwise,
+          2.2.2.1 Call *modify_target_cadence* function.
+```
+
+As you can see that we try to think in terms of the big picture with big steps that may contain smaller steps. Step 2.2 for example may be broken down into 2.2.1 and 2.2.2. Moreover, we can decompose the step `if the user hits the target` into the following:
+
+```
+if the average_cadence is greater than or equal to target_cadence
+```
+
+In this case, the second statement is more concrete while the original one is more abstract. 
+
+Similarly, we can drill down step 2.2.1 `if it has small difference` into the following.
+
+```
+if the difference is less than 10
+```
+
+We should not be afraid of revising our **D**esign of algorithm at various level of abstraction. In fact, that is one of important lesson in computational thinking. To be able to think through some abstraction and at different level of abstraction is one of the key element of computational thinking. 
