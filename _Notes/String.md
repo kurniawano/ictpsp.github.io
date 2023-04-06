@@ -13,10 +13,270 @@ show_edit_on_github: false
 show_date: false
 ---
 
-## Various Ways of Creating a String
+## Recap: String Data
+
+In our lesson [Basic Data Types]({{ "/notes/basic-data-types" | relative_url }}), we have introduced `string` data to represent text. In a way, `string` data is different from numbers like `int` and `float` because it consists of a sequence of **characters**. Though numbers can be thought of like a sequence of digits, however, we tend to manipulate and treat numbers as a whole. On the other hand, string is rather different. There are many occasions that we want to manipulate some of the substrings in a particular string or even some of its characters. For example, in many text processing, we want to remove the leading and trailing whitespaces in the string as they may not be meaningful for our data processing. Those whitespaces are part of a string. Therefore, it is important to be able to manipulate not only the string as a whole but also its substrings and characters inside the string. In this way, a string is like a **collection** of characters which we want to process. We will introduce another *collection* data type in the future, but for now, string is a good way to introduce how computing processes these kind of collection-like data. 
+
+Let's recap again on how we can create `string` data. We can create string data using either a single quote or a single double quote.
+
+```python
+str1 = 'This is a string data.'
+str2 = "This is another string data."
+```
+
+We have also discussed on why Python have these two kinds of string delimiters. Other programming language may only have one way of creating a string data. For Python, it is one simply way to create a string whenenver there is an apostrophe or quotes inside that string. See example, below.
+
+```python
+print("How're you?")
+print('The actor exclaimed, "To be or not to be"')
+```
+
+In the the first example, we have a single apostrophe in the string. Therefore, we use the double quotes as the string delimiter. It's the other way around for the second example which contains quotes in the string data. 
+
+We can create multi-line string data using **triple** single quotes or **triple** double quotes. 
+
+```python
+data = '''
+Two roads diverged in a yellow wood,
+And sorry I could not travel both
+And be one traveler, long I stood
+And looked down one as far as I could
+To where it bent in the undergrowth;
+
+Then took the other, as just as fair,
+And having perhaps the better claim,
+Because it was grassy and wanted wear;
+Though as for that the passing there
+Had worn them really about the same,
+
+And both that morning equally lay
+In leaves no step had trodden black.
+Oh, I kept the first for another day!
+Yet knowing how way leads on to way,
+I doubted if I should ever come back.
+
+I shall be telling this with a sigh
+Somewhere ages and ages hence:
+Two roads diverged in a wood, and I—
+I took the one less traveled by,
+And that has made all the difference.
+
+-- by Robert Frost
+'''
+```
+
+We can do the same with a triple double quotes.
+```python
+data = """
+“Hope” is the thing with feathers -
+That perches in the soul -
+And sings the tune without the words -
+And never stops - at all -
+
+And sweetest - in the Gale - is heard -
+And sore must be the storm -
+That could abash the little Bird
+That kept so many warm -
+
+I’ve heard it in the chillest land -
+And on the strangest Sea -
+Yet - never - in Extremity,
+It asked a crumb - of me.
+
+-- by Emily Dickinson
+"""
+```
+
+Notice that in the above data, it contains both double quotes in the first line and a single quote in `I've heard...`. So triple quotes can handle those in a single string without any issue. 
 
 ## Basic String Operations
 
-## Getting a Substring from a String
+Previously, in our lesson [Basic Operators]({{ "/notes/basic-operators | relative_url }}), we have also introduced two simple operators that can be used with string data: the concatenation `+` operator and the duplication `*` operator. Let's review it again here.
+
+We can concatenate two strings using the `+` operator. 
+
+```python
+>>> first_name = "John"
+>>> last_name = "Wick"
+>>> full_name = first_name + last_name
+>>> print(full_name)
+JohnWick
+```
+
+Oops. The concatenated string does not have a space. But we can fix that by concatenating a space in between.
+
+```python
+>>> full_name = first_name + " " + last_name
+>>> print(full_name)
+John Wick
+```
+
+This kind of operation is useful in many applications since usually the user profile is stored as first name and last name. You can display the full name in the profile by concatenating the two strings.  Similarly, with data like home address where you need to concatenate the road address, unit number and its postal code. 
+
+We have also introduced the duplication operator `*`. For example, we can create an ASCII artwork as below.
+
+```python
+data = 3 * " " + "*" + "\n"
+data += 2 * " " + 3 * "*" + "\n"
+data += 1 * " " + 5 * "*" + "\n"
+data += 3 * " " + "*" + "\n"
+data += 3 * " " + "*" + "\n"
+print(data)
+```
+
+You can see the output by running it in Python Tutor below.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=data%20%3D%203%20*%20%22%20%22%20%2B%20%22*%22%20%2B%20%22%5Cn%22%0Adata%20%2B%3D%202%20*%20%22%20%22%20%2B%203%20*%20%22*%22%20%2B%20%22%5Cn%22%0Adata%20%2B%3D%201%20*%20%22%20%22%20%2B%205%20*%20%22*%22%20%2B%20%22%5Cn%22%0Adata%20%2B%3D%203%20*%20%22%20%22%20%2B%20%22*%22%20%2B%20%22%5Cn%22%0Adata%20%2B%3D%203%20*%20%22%20%22%20%2B%20%22*%22%20%2B%20%22%5Cn%22%0Aprint%28data%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+We used a few operators here. The most common one is actually the assignment operator `=`. In the first line, we created the first string and assign it to the name `data`. How did we create the first string? We have the following line.
+
+```python
+data = 3 * " " + "*" + "\n"
+```
+
+In this line of code, we duplicate a single space string `" "` three times and concatenate it with a single asterisk. At the end we added a **newline character**  `"\n"` so that the next string added will be printed into a new line.  The second line added the next line to the string.
+
+```python
+data += 2 * " " + 3 * "*" + "\n"
+```
+
+In this code, we use the compound operator `+=` which is equivalent to `data = data + something`. That something is the expression on the right hand side. It does a few thing. First it duplicates the space two times and concatenate with the asterisk that is duplicated three times (`***`). Lastly, it is concatenated with a newline character again. By now, you should be able to guess what the other lines do. The result is a simple christmas tree.
+
+```
+   *
+  ***
+ *****
+   *
+   *
+```
+
+On top of that, we also learned that we can compare strings in our lesson [Boolean Data]({{ "/notes/boolean-data" | relative_url }}). We can use the relational operators such as `<`, `<=`, `>`, `>=`, `==`, `!=`. In many cases, we are actually interested to compare if two strings are equal or not equal. A common example is in many website form or login when we want to compare whether the user is in a database.
+
+```python
+>>> name_entered = 'John the Wick'
+>>> name_in_database = 'John Wick'
+>>> print(name_entered == name_in_database)
+False
+```
+
+## Collection Operators
+
+Now, we will introduce a few new operators that works in a collection-like data type. We mention that though string data can be considered as a collection of characters inside that string. There are some common operations that we usually do with collection-like data.
+
+### Check If Substring is in a String
+
+The first one maybe is simply to check if some item is inside a collection. In the case of `string` data, we may want to check if a character is inside a string or if a substring is inside a string.  In this case we use the `in` operator. This operator evaluates to a boolean data because it is either true, when the substring is inside the  string, or false, when the substring is not inside  string. 
+
+```python
+>>> char = 'a'
+>>> vowel = 'aiueo'
+>>> print(char in vowel)
+True
+```
+
+Similarly, we can do the same for a substring.
+
+```python
+>>> first_name = 'John'
+>>> full_name = 'John Wick'
+>>> print(first_name in full_name)
+True
+```
+
+### Getting the Length of the String
+
+It is very useful to know what is the length of a collection. This means like how many items are there in a list. In the case of string data, we are interested to know what is the length of the string or how many characters are there in the string. This is done simply using the `len()` built-in function provided by Python. 
+
+```python
+>>> name = "John Wick"
+>>> print(len(name))
+9
+```
+
+You can count manually to verify whether "John Wick" has nine characters. 
+
+
+### Getting an Element
+
+Another common operation in collection-like data is to get an element from the collection. In our string data, we may want to get the first character or the last character. To do this we will use the **bracket** operator where we specify the **index** inside the bracket. The index starts from 0 in Python. 
+
+| index     | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|-----------|---|---|---|---|---|---|---|---|---|
+| character | J | o | h | n |   | W | i | c | k |
+
+We can get the different characters by specifying the index inside the bracket operator. The bracket operator is also called the **Get Item** operator.
+
+```python
+>>> name = "John Wick"
+>>> print(name[0])
+J
+>>> print(name[5])
+W
+>>> print(name[8])
+k
+```
+
+You can also use **negative indexing** with the bracket operator. 
+
+| index     | -9 | -8 | -7 | -6 | -5 | -4 | -3 | -2 | -1 |
+|-----------|----|----|----|----|----|----|----|----|----|
+| character | J  | o  | h  | n  |    | W  | i  | c  | k  |
+
+```python
+>>> name = "John Wick"
+>>> print(name[-9])
+J
+>>> print(name[-4])
+W
+>>> print(name[-1])
+k
+```
+
+Notice that we can get the same characters either using the positive indexing or the negative indexing. It is, however, very convinient to get the last character using the index `-1`. Otherwise, we will need to know the length of the string or the collection.  The last character is always **the length of the string minus one**. 
+
+```python
+>>> name = "John Wick"
+>>> print(name[len(name) - 1])
+k
+>>> print(name[-1])
+k
+```
+
+The reason that the last character is always length of string minus one is that Python starts its indexing from 0. As shown in the table above, the last character has the index of 8 when the length of string is 9. 
+
+### Getting a Substring from a String
+
+Not only we can get a character from a string, we can also slice a substring from a string. This **slicing** operation makes use of the same **Get Item** operator (or the bracket operator). The only difference is that the argument inside the bracket is a slice that contains double colon.
+
+```python
+[start:end:step]
+```
+
+The only point to take note is that **end index** is excluded from the sliced substring. To illustrate. Let's put back here our table and try a few slicing operations. 
+
+| index     | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|-----------|---|---|---|---|---|---|---|---|---|
+| character | J | o | h | n |   | W | i | c | k |
+
+```python
+>>> name = "John Wick"
+>>> print(name[0:3])
+Joh
+>>> print(name[3:6])
+n W
+```
+
+In the first slice, we start with index `0` and end at index `3`. Notice that index 3 refers to the letter `n` in `John`. However, what is printed is only `Joh` without the `n` character. This is to emphasize that the ending index is **excluded** in the slice. 
+
+What's the reason for this? Python developers find it easier to obtain the length of the slice from the two indices. When we have `name[0:3]`, we can immediately subtract the two indices $3-0 = 3$ which gives us the length of the sliced substring `Joh`. 
+
+We can see similar behaviour in `name[3:6]`. In this case, index 3 is on character `n` while index 6 is on character `i` after the letter `W`. However, the output simply prints `n W` which contains three character as you can calculate from the two indices. 
+
+```python
+>>> print(name[:4])
+John
+>>> print(name[5:])
+Wick
+```
 
 ## String is Immutable
