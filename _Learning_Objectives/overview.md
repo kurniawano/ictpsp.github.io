@@ -100,6 +100,7 @@ By the end of this lesson, students should be able to:
 * traverse a string with sentinel value
 * use a break statement to terminate a loop
 * traverse an iterable using for-loop 
+* enumerating a collection data to get the element and the index
 * use range function to create an iterable
 * traverse an iterable using its index
 * use print to debug while loop and for-loop code
