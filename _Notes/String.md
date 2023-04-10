@@ -272,6 +272,8 @@ What's the reason for this? Python developers find it easier to obtain the lengt
 
 We can see similar behaviour in `name[3:6]`. In this case, index 3 is on character `n` while index 6 is on character `i` after the letter `W`. However, the output simply prints `n W` which contains three character as you can calculate from the two indices. 
 
+When the slicing starts from the beginning or all the way to the end, you can remove the index from the slice. Python will use those first index and all the way to the last element as default values. See the two examples below.
+
 ```python
 >>> print(name[:4])
 John
@@ -279,4 +281,83 @@ John
 Wick
 ```
 
+You can also provide steps in the slicing. So if you would like to get every other characters from the string, you can do something like the following.
+
+```python
+>>> name = "John Wick"
+>>> print(name[::2])
+Jh ik
+>>> print(name[1::2])
+onWc
+```
+
+The first slicing is from the beginning to the end with a step of two characters. Therefore, it starts from the first character (`J`) and then the third character (`h`) and so on. The second example put the starting index as 1 which is the second character. The second output gives you characters from the second to the end with every two steps. 
+
+You can use negative indexing in slicing though it may become rather confusing. Let's see one example here.
+
+```python
+>>> print(name[-1:-10:-1])
+kciW nhoJ
+>>> print(name[::-1])
+kciW nhoJ
+```
+
+In the first insance, we use the starting index to be -1 which is the last character and all the way to the character position before the first character. See from above table that the first character is at -9 index. Here, we put the ending index to be -10 which is one before the first character. We need to do this because the ending index is excluded. Notice also that we put the step to be -1. In the second example, we do exactly the same without specifying the starting and ending index. Python can figure out that you want to take the whole string and reverse it from the negative index in the step argument. 
+
+Use negative index sparingly and only when it clarifies what you are trying to do. Try to use positive indexing as it is clearer in many cases.
+
 ## String is Immutable
+
+Different programming language may implement string data type differently. Python makes its `string` data type to be **immutable**. Immutable means that you cannot change it. Once you create a string, you cannot edit it or change it.
+
+```python
+>>> name = "John Wick"
+>>> name[0] = 'Z'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+>>> 
+```
+
+Notice that the error says string data does not support item assignment. The assignment operator does not work with string data because string is immutable. How can you change the string then? The answer is that you cannot. But you can create a new string.
+
+For example, in the above case when we want to change the first character to `'Z'`, we can do the following.
+
+```python
+>>> name = 'Z' + name[1:]
+>>> print(name)
+Zohn Wick
+```
+
+Here, we managed to change the name from John Wick to Zohn Wick. What is important here is that `name` variable points to a new string. In order to illustrate this, we will use the built-in function `id()` to check its identity which depends on where it is located in the memory address. 
+
+```python
+Zohn Wick
+>>> name = "John Wick"
+>>> id(name)
+140450800593904
+>>> name = 'Z' + name[1:]
+>>> id(name)
+140450800593840
+```
+
+Notice that the variable `name` has two different identities number. 
+
+A number data types in Python are actually immutable such as `int` and `float`. You can check it out in the same manners.
+
+```python
+>>> a = 1
+>>> id(a)
+4544481632
+>>> a = 2
+>>> id(a)
+4544481664
+>>> b = 3.
+>>> id(b)
+140450263065232
+>>> b = 3.14
+>>> id(b)
+140450531292976
+```
+
+What happens with every assignment is that Python creates a new binding to a new `int` or `float` objects. This is what Python does with `string` object as well. 
