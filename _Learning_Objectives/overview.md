@@ -90,6 +90,7 @@ By the end of this lesson, students should be able to:
 * create a new substring from a string using slice operator
 * explain that string is immutable
 * check if a substring is in a string
+* Use formatted string literal to display formatted string with data
 
 ## Lesson 6: Iteration using While Loop and For Loop
 
