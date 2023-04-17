@@ -100,7 +100,132 @@ We can see that the `enumerate()` function returns an iterable. Each element of 
 
 ## Range Function and Iteration Using Index
 
+Previously, we mentioned that the right hand side of the `in` operator in `for-in` syntax must be an *iterable*. One simple way to create an iterable that can be used for indexing the elements in a collection data type is `range()` function. This function `range()` produces an iterable which element is a sequence of integers. 
+
+```python
+>>> range(10)
+range(0, 10)
+>>> for item in range(10):
+...     print(item)
+... 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+In the above code, `range(10)` produces a range of values from `0` to `9`. Notice that it does not include `10`. This similar convention can be found when we slice a string in the previous lesson. In slicing, the ending index is excluded. Similarly with `range()` function. By default the starting index is 0, but you can modify it following this syntax below.
+
+```python
+range(start, end, step)
+```
+
+For example, you can have something like the following.
+
+```python
+>>> for item in range(10,100,10):
+...     print(item)
+... 
+10
+20
+30
+40
+50
+60
+70
+80
+90
+```
+
+Notice again that `100` is excluded. In that range function, we put our starting number to be 10 and a step of 10. 
+
+Range function is useful when we need an index of each character or element of a collection data type. We can rewrite our previous code where we used `enumerate()` in a different way using `range()` function. See below.
+
+```python
+name = "John Wick"
+for idx in range(len(name)):
+  char = name[idx]
+  print(f"Character {char} is at position: {idx + 1}")
+```
+
+You can check that the output the same by running it in Python Tutor.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=name%20%3D%20%22John%20Wick%22%0Afor%20idx%20in%20range%28len%28name%29%29%3A%0A%20%20char%20%3D%20name%5Bidx%5D%0A%20%20print%28f%22Character%20%7Bchar%7D%20is%20at%20position%3A%20%7Bidx%20%2B%201%7D%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+
 ## Using Print to Debug For Loop
+
+Iterative structure can be complicated, especially when you have a number of computation inside the body of the loop (code block A) which is repeated. The reason is that you need to keep track at which iteration you are at and what is the state of the variables at that iteration. In this section, we will share little tips on how to keep track iterative structure using table and `print()` statement. 
+
+Let's start with our last code.
+
+```python
+name = "John Wick"
+for idx in range(len(name)):
+  char = name[idx]
+  print(f"Character {char} is at position: {idx + 1}")
+```
+
+First, we can note that `range(len(name))` will be evaluated from the inside to the outside as what we have learned previously in [Calling a Function]({ "/notes/calling-function" | relative_url }). This means that `len(name)` will be evaluated to `9` and then Python will evaluate `range(9)`. This function calls produces a range from 0 to 8. These values will be put into the variable `idx` at every iteration. 
+
+It is useful then, to use print statement to print `idx` values at each iteration. 
+
+```python
+name = "John Wick"
+for idx in range(len(name)):
+  print(idx)
+```
+
+We can setup a table to keep track the variable state at each iteration as follows.
+1. Evaluate the iterable and identify the variable that is iterated at each iteration. We have done this step just now where we identify `idx` to be a range of numbers from 0 to 8. 
+1. Write a table where the left column is the iterated values.
+1. Write the different column to be all the expression we want to keep track. 
+
+For example, in the above code, we can construct the following table.
+
+| idx | name[idx] | char | idx + 1 |
+|-----|-----------|------|---------|
+| 0   |           |      |         |
+| 1   |           |      |         |
+| 2   |           |      |         |
+| 3   |           |      |         |
+| 4   |           |      |         |
+| 5   |           |      |         |
+| 6   |           |      |         |
+| 7   |           |      |         |
+| 8   |           |      |         |
+
+What we have put in the columns are the various expression in the body of the loop. Looking at the code below, we identified three others besides `idx`:
+- `name[idx]`
+- `char`
+- `idx + 1`
+
+```python
+name = "John Wick"
+for idx in range(len(name)):
+  char = name[idx]
+  print(f"Character {char} is at position: {idx + 1}")
+```
+
+Notice that the table is similar to the output of the code when it is at the following state.
+
+```python
+name = "John Wick"
+for idx in range(len(name)):
+  print(idx)
+```
+
+We can use both paper and `print()` statement to debug our code when we implement our solutions. Recall that **T**esting should be done together with the **I**mplementation.  Printing the elements of the iterable is the first thing we always advise novice programmers to do. This is to ensure that we know what is the elements being iterated.
+
+
+
+
 
 ## Identifying Iterative Structure in a Problem
 
