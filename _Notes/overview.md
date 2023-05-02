@@ -63,7 +63,7 @@ Notes:
 - [Implementing For Loop]({{ "/notes/for-loop" | relative_url }})
 - [Implementing While Loop]({{ "/notes/while-loop" | relative_url }})
 
-## Lesson 7: List and Tuple
+## Lesson 7: Tuple and List
 
 Notes:
 
