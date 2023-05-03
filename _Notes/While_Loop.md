@@ -99,9 +99,49 @@ In this case, our initialization is simply to set the variable `item` to 10. The
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23%20code%20to%20initialize%0Aitem%20%3D%2010%0A%0A%23%20while%20statement%0Awhile%20item%20%3C%20100%3A%0A%20%20%23%20block%20A%0A%20%20print%28item%29%0A%0A%20%20%23%20block%20B%0A%20%20item%20%2B%3D%2010&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
+## When to use While Loop Instead of For Loop
+
+In the previous examples, we implemented iterative structure using `while` statement which we convert from the `for-in` statement. The `while` statement is general enough that it can do what `for-in` statement can do. When dealing with *iterable* data types, it is easier and more natural to use `for-in` statement as we iterate for every item in the iterable or in the collection. The `while` statement is used more naturally when there is no obvious iterable data or collection data that we work on. It is also more natural to use the `while` statement when we do not know beforehand how many iteration is needed. An example of this is when users login unsuccessfuly. In this case, the user is presented with the login page repeatedly until he or she enters the right password. Let's write a simple Python code to test this.
+
+```python
+username = 'user1'
+password = 'password4user1'
+# code to initialize
+username_inp = input("Username: ")
+password_inp = input("Password: ")
+
+# while loop with condition
+while (username_inp != username) or (password_inp != password):
+  # block A
+  print("You have entered a wrong username or password. Please try again.")
+
+  # block B
+  username_inp = input("Username: ")
+  password_inp = input("Password: ")
+
+print("You have successfuly login!")
+
+```
+
+The output below show an example when you enter the wrong username or password and then the right one.
+
+```sh
+$ python 01_login.py 
+Username: d
+Password: s
+You have entered a wrong username or password. Please try again.
+Username: user1
+Password: password4user1
+You have successfuly login!
+```
+
+Notice that we have put some comments on the above code to show that we still have a similar structure for while loop. The first part is to initialize the variable that will be used as the condition for the while-loop. The second part is the while condition itself inside the `while` statement. The third part is the block A which is the code to be repeated. In this case, we simply print the error message. Lastly, the fourth part is the block B which is the code that modifies the state of the condition. This is needed to ensure that the condition can terminate. If we do not prompt the user to enter the new user name or password, the evaluated condition will not change and the loop will not terminate. 
+
+In the case above, it is more natural to use the `while` statement instead of the `for-in` statement. The reason is that `for-in` statement requires iterable on the right hand side of the `in` keyword. However, in the example above, there is no obvious iterable that we work on. 
+
+Another example for iterative structure that best implemented using the `while` statement is for **loop with sentinel value**. Sentinel value refers to some value that indicate to the program that it is time to end the iteration. In other words, it is the value used as a condition for termination. 
 
 ## Using Print to Debug While Loop
 
-## Using While Loop With Sentinel Value
 
 ## Early Termination
