@@ -95,18 +95,18 @@ By the end of this lesson, students should be able to:
 ## Lesson 6: Iteration using While Loop and For Loop
 
 By the end of this lesson, students should be able to:
-* implement simple iteration using while loop
-* speciy and identify basic building blocks of a while loop statement
-* traverse a string using while loop and counter
-* traverse a string with sentinel value
-* use a break statement to terminate a loop
-* traverse an iterable using for-loop 
+ traverse an iterable using for-loop 
 * enumerating a collection data to get the element and the index
 * use range function to create an iterable
 * traverse an iterable using its index
 * use print to debug while loop and for-loop code
 * identify iteration structure from a given problem
 * decompose problem into iterative process of smaller problems
+* implement simple iteration using while loop
+* speciy and identify basic building blocks of a while loop statement
+* traverse a string using while loop and counter
+* traverse a string with sentinel value
+* use a break statement to terminate a loop
 
 ## Lesson 7: List and Tuple
 
