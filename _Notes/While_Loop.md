@@ -333,18 +333,49 @@ Try running the code step by step using Python Tutor.
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=data%20%3D%20%22%22%22Violence%20does,%20in%20truth,%20recoil%20upon%20the%20violent,%20and%20the%20schemer%20falls%20into%20the%20pit%20which%20he%20digs%20for%20another.%20Let%20us%20thrust%20this%20creature%20back%20into%20its%20den,%20and%20we%20can%20then%20remove%20Miss%20Stoner%20to%20some%20place%20of%20shelter%20and%20let%20county%20police%20know%20what%20has%20happened.%22%22%22%0A%0Aarrow%20%3D%200%0A%23%20initialize%20condition%0Afound_fullstop%20%3D%20False%0A%23%20while%20statement%0Awhile%20%20not%20found_fullstop%3A%0A%20%20%23%20block%20A%0A%20%20char%20%3D%20data%5Barrow%5D%0A%20%20if%20char%20%3D%3D%20','%3A%0A%20%20%20%20print%28f%22A%20comma%20at%20position%20%7Barrow%20%2B%201%7D.%22%29%0A%20%20%23%20block%20B%0A%20%20if%20char%20%3D%3D%20'.'%3A%0A%20%20%20%20found_fullstop%20%3D%20True%0A%20%20arrow%20%2B%3D%201&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
+It is also a good exercise to rewrite the above code with some type annotation. See below the version with type annotation.
+
+```python
+data:str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
+
+arrow:int = 0
+# initialize condition
+found_fullstop:bool = False
+# while statement
+while  not found_fullstop:
+  # block A
+  char:str = data[arrow]
+  if char == ',':
+    print(f"A comma at position {arrow + 1}.")
+  # block B
+  if char == '.':
+    found_fullstop = True
+  arrow += 1
+```
+
+Running `mypy` and `python` output the following.
+
+```sh
+$ mypy 02_count_comma.py 
+Success: no issues found in 1 source file
+$ python 02_count_comma.py 
+A comma at position 14.
+A comma at position 24.
+A comma at position 49.
+```
+
 Instead of using a boolean variable `found_fullstop`, the code can be written by looping till the end of the string and end prematurely when it sees a fullstop. See an alternative code below.
 
 ```python
-data = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
+data:str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
 
 # initialize condition
-arrow = 0
+arrow:int = 0
 
 # while statement
 while  arrow < len(data):
   # block A
-  char = data[arrow]
+  char:str = data[arrow]
   if char == ',':
     print(f"A comma at position {arrow + 1}.")
   if char == '.':
@@ -354,8 +385,18 @@ while  arrow < len(data):
 ```
 
 In the code above, we no longer have our `found_fullstop` boolean variable. Now, our `while` condition is `while arrow < len(data)`. This also changes our initialization block. Now, `arrow` is considered as part of this initialization condition because `arrow` is in the condition to continue or terminate the loop. The other changes that we have in the last if statement. When we sees a fullstop, it executes `break` statement. As mentioned earlier, the `break` statement terminates the loop immediately without executing the other statements such as the `arrow += 1`. This statement now, is no longer part of block B but rather part of block A. The code in block B is simply the line that increases the arrow position. This will ensure that the condition for the loop terminates when it reaches the end of the string. 
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=data%3Astr%20%3D%20%22%22%22Violence%20does,%20in%20truth,%20recoil%20upon%20the%20violent,%20and%20the%20schemer%20falls%20into%20the%20pit%20which%20he%20digs%20for%20another.%20Let%20us%20thrust%20this%20creature%20back%20into%20its%20den,%20and%20we%20can%20then%20remove%20Miss%20Stoner%20to%20some%20place%20of%20shelter%20and%20let%20county%20police%20know%20what%20has%20happened.%22%22%22%0A%0A%23%20initialize%20condition%0Aarrow%3Aint%20%3D%200%0A%0A%23%20while%20statement%0Awhile%20%20arrow%20%3C%20len%28data%29%3A%0A%20%20%23%20block%20A%0A%20%20char%3Astr%20%3D%20data%5Barrow%5D%0A%20%20if%20char%20%3D%3D%20','%3A%0A%20%20%20%20print%28f%22A%20comma%20at%20position%20%7Barrow%20%2B%201%7D.%22%29%0A%20%20if%20char%20%3D%3D%20'.'%3A%0A%20%20%20%20break%0A%20%20%23%20block%20B%0A%20%20arrow%20%2B%3D%201&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=data%20%3D%20%22%22%22Violence%20does,%20in%20truth,%20recoil%20upon%20the%20violent,%20and%20the%20schemer%20falls%20into%20the%20pit%20which%20he%20digs%20for%20another.%20Let%20us%20thrust%20this%20creature%20back%20into%20its%20den,%20and%20we%20can%20then%20remove%20Miss%20Stoner%20to%20some%20place%20of%20shelter%20and%20let%20county%20police%20know%20what%20has%20happened.%22%22%22%0A%0A%23%20initialize%20condition%0Aarrow%20%3D%200%0A%0A%23%20while%20statement%0Awhile%20%20arrow%20%3C%20len%28data%29%3A%0A%20%20%23%20block%20A%0A%20%20char%20%3D%20data%5Barrow%5D%0A%20%20if%20char%20%3D%3D%20','%3A%0A%20%20%20%20print%28f%22A%20comma%20at%20position%20%7Barrow%20%2B%201%7D.%22%29%0A%20%20if%20char%20%3D%3D%20'.'%3A%0A%20%20%20%20break%0A%20%20%23%20block%20B%0A%20%20arrow%20%2B%3D%201&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+We can run `mypy` and `python` from the script `03_count_comma.py` as well.
+
+```sh
+$ mypy 03_count_comma.py 
+Success: no issues found in 1 source file
+$ python 03_count_comma.py 
+A comma at position 14.
+A comma at position 24.
+A comma at position 49.
+```
 
 ## Summary
 
