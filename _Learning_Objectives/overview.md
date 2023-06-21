@@ -114,6 +114,9 @@ By the end of this lesson, students should be able to:
 * create a tuple
 * explain what it means that tuple is immutable
 * access an element in a tuple using index
+* get the length of a tuple
+* check if an item is an element in a tuple
+* traverse a tuple
 * create a list using square bracket operator
 * access an element in a list using index
 * get the length of a list
