@@ -210,6 +210,16 @@ Notice, however, that if we tend to modify the elements of our collection, it is
 - Tuple is immutable and so it is safer if you want to have a collection that should not be modified. Programs like `mypy` can help to check your code if you try to modify a tuple. 
 - Lastly, tuple can be used as a dictionary keys because it is immutable. We will discuss about dictionary in the future lesson. One thing to note is that dictionary keys must be hashable and so it must be immutable. Since list is mutable, it cannot be used as dictionary keys. But we will come to this point again when we dicuss dictionary data type.
 
+One other basic operations that we can do with a tuple is to check if an element is inside a tuple. We can use the `in` operator which returns `True` or `False`. See the example below.
+
+```python
+>>> new_tuple = [3, 3.14, '3.14']
+>>> 3 in new_tuple
+True
+>>> 4 in new_tuple
+False
+```
+
 Just a simple example that `mypy` can check if we try to modify a tuple, you can run `mypy` on `01_modify_tuple.py`.
 
 ```python
@@ -260,6 +270,39 @@ Success: no issues found in 1 source file
 ```
 
 ## Traversing a Tuple
+
+Tuple is an iterable data type. This means that you can iterate over the elements in a tuple. The simplest way is to use the `for-in` statement as shown below.
+
+```python
+from typing import Tuple
+
+contact:Tuple[str, str, str] = ("John", "80043232", "john@mycontact.com")
+
+for item in contact:
+  print(item)
+```
+
+You can run the above code step by step using Python Tutor.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=from%20typing%20import%20Tuple%0A%0Acontact%3ATuple%5Bstr,%20str,%20str%5D%20%3D%20%28%22John%22,%20%2280043232%22,%20%22john%40mycontact.com%22%29%0A%0Afor%20item%20in%20contact%3A%0A%20%20print%28item%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+If you need the index as well as the item in the tuple, again, you can use the `enumerate()` function. 
+
+```python
+from typing import Tuple
+
+contact:Tuple[str, str, str] = ("John", "80043232", "john@mycontact.com")
+
+for idx, item in enumerate(contact):
+  print(idx, item)
+```
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=from%20typing%20import%20Tuple%0A%0Acontact%3ATuple%5Bstr,%20str,%20str%5D%20%3D%20%28%22John%22,%20%2280043232%22,%20%22john%40mycontact.com%22%29%0A%0Afor%20idx,%20item%20in%20enumerate%28contact%29%3A%0A%20%20print%28idx,%20item%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Similarly, we can also use `while` loop to traverse over the elements of the tuple. However, it is more intuitive and simpler to use for loop in this case. 
+
+## Summary
+In this lesson, we introduce the first collection data type called Tuple. A tuple can have a number of elements with different data types inside it. One important aspect about a tuple is that it is immutable. This means that you cannot modify its element once it is created. We will discuss about List data type which is mutable in the next lesson. We showed some basic operations with tuple and how to traverse a tuple using the for-in statement. 
 
 
 
