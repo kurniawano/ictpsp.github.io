@@ -49,10 +49,10 @@ Notes:
         url: /notes/string
   - title: "Lesson 7: Iteration Using While Loop and For Loop"
     children:
-      - title: Implementing While Loop
-        url: /notes/while-loop
       - title: Implementing For Loop
         url: /notes/for-loop
+      - title: Implementing While Loop
+        url: /notes/while-loop
   - title: "Lesson 8: List and Tuple"
     children:
       - title: Working with Tuple
