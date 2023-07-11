@@ -125,6 +125,7 @@ By the end of this lesson, students should be able to:
 * obtain a sublist from a list using the slice operator
 * modify an element in a list
 * remove an element in a list
+* find the position of an element in a list
 * create an alias of a list
 * clone a list into a new list
 * add an element into a list

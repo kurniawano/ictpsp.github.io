@@ -84,7 +84,174 @@ IndexError: list index out of range
 
 The error message indicates that the list index is out of range. This is because the last index is `len(my_steps) - 1`. 
 
-## Basic Operations with a List Data
+Another basic operations is to add elements into a list. There are multiple ways of adding an element into a list. The first one is to add an element at the **back** of the list. This is called **appending**. Since list is an *ordered* linear data structure, there is a sequence in the element. We can talk about the first item and the last item in a list. Appending is adding the item at the end of the list as the last item of the list. As the name suggest, the method to do this is `list.append(item)`. 
+
+```python
+>>> my_steps = [40, 50, 43]
+>>> my_steps.append(52)
+>>> my_steps
+[40, 50, 43, 52]
+```
+
+In the above code, we add 52 at the end of the list. What if we want to add item at the first position in the list? In this case, we can use the `list.insert(pos, item)` method.
+
+```python
+>>> my_steps
+[40, 50, 43, 52]
+>>> my_steps.insert(0, 45)
+>>> my_steps
+[45, 40, 50, 43, 52]
+```
+
+The method `insert()` has two arguments. The first argument specifies at which position you want to insert the element and the second argument is the element you want to insert. In the above example, we inserted 45 into position 0, which is the first position in the list. We can insert element into the other position as well. 
+
+```python
+TypeError: 'list' object is not callable
+>>> my_steps
+[45, 40, 50, 43, 52]
+>>> my_steps.insert(2, 65)
+>>> my_steps
+[45, 40, 65, 50, 43, 52]
+```
+
+In the above code, we inserted 65 into the third position (index 2). 
+
+One important thing to note is that both `.append()` and `.insert()` does not return any value. These methods modify the list object that is attached to these methods. Notice that we call the method in this way.
+
+```python
+object_name.append(item)
+```
+
+In our case above, the object name was `my_steps`. We then use the "dot" operator to access the method `append()` of this object. In this case, this method is attached to a list object called `my_steps`. The dot operator in `my_steps.append(52)` can be read as follows: "call the append() method OF my_steps object with an input argument 52". The append() belongs to a list object `my_steps`. In fact, every list object that you create has this `append()` method. What this method does is simply appending an item to the object it belongs to which in this case is `my_steps`. However, this method has no return value. We can check that it has no return value by storing the output of this method to a variable and print the variable value as shown below.
+
+```python
+>>> output = my_steps.append(70)
+>>> print(output)
+None
+>>> print(my_steps)
+[45, 40, 65, 50, 43, 52, 70]
+```
+
+We can see that the output of `print(output)` is `None`. However, when you print the list object `my_steps`, you can see that it has been modified with the new element at the end.
+
+Another way of adding elements into a list is by concatenating two lists or extending a list with another list. The operator for concatenating two objects is the `+` operator which we have used for concatenating two strings. We can use the same operator for concatenating two lists.
+
+```python
+>>> week1_steps = [40, 45, 50]
+>>> week2_steps = [55, 52, 60]
+>>> week1_and_2 = week1_steps + week2_steps
+>>> week1_and_2
+[40, 45, 50, 55, 52, 60]
+```
+
+We can also use the `list1.extend(list2)` method to extend a list with another list. The second list is extended to the back of the first list.
+
+```python
+>>> week1_steps
+[40, 45, 50]
+>>> week2_steps
+[55, 52, 60]
+>>> week1_steps.extend(week2_steps)
+>>> week1_steps
+[40, 45, 50, 55, 52, 60]
+```
+
+There is a subtle difference between using `+` operator and `.extend()` method. When using the `+` operator, a new list containing both lists are created. This new concatenated list is different from both the first and the second list. However, when we use the `.extend()` method. This method is similar to `.append()` and `.insert()` in the sense that it modifies the object that is attached to it through the dot operator and does not return any other value. We can see from the above example that the list object `week1_steps` is changed to contain the second list. 
+
+We have shown how to access an element in a list and how to add elements into the list. Now, we can show how to remove elements from a list. The common operator to remove elements from a list is the `del` operator. We use it in this way.
+
+```python
+del list[index]
+```
+where the index is the position of the item we want to remove. For example, we can remove the second element of a list using the following.
+
+```python
+>>> my_steps
+[45, 40, 65, 50, 43, 52, 70]
+>>> del my_steps[1]
+>>> my_steps
+[45, 65, 50, 43, 52, 70]
+```
+
+Notice that the second element, which is indexed by 1, has been removed from the list, i.e. 40. However, there are times that we know the item value that we want to remove rather than its index. A convinient method to remove an item in this case is to use the `list.remove(item)` method. For example, if we want to remove 43 from the list above, we can type the following.
+
+```python
+>>> my_steps
+[45, 65, 50, 43, 52, 70]
+>>> my_steps.remove(43)
+>>> my_steps
+[45, 65, 50, 52, 70]
+```
+
+This `.remove()` method is similar to the other list methods in the sense that it does not return any value. However, these methods modify the existing list which in this case is `my_steps`. We can see that `my_steps` no longer contains 43 after calling `my_steps.remove(43)`. 
+
+Just as it is common to add items from the back of the list, it is also common to remove items from the back of the list. This is typically true when list is used as stack data structure. We will discuss stack at some other lessons but for now we can think of stack data structure similar to a stack of books on a table where we can put book at the top of the stack and remove the book only from the top of the stack. Python provides `list.pop()` method for this.
+
+```python
+>>> my_steps
+[45, 65, 50, 52, 70]
+>>> out = my_steps.pop()
+>>> print(out)
+70
+>>> my_steps
+[45, 65, 50, 52]
+```
+
+Notice above that `pop()` method does two things:
+* first, it returns the last element as the output of the `pop()` method.
+* second, it removes the last element from the list and thereby changing the list itself.
+
+In the above example, 70 was removed from `my_steps` and it is returned by `pop()` to be assigned to `out` variable. 
+
+What is interesting is that you can change the behaviour of `pop()` by providing an argument. Instead of popping the element from the last item of the list, you can specify which item you want to pop out from the list. For example, let's say if we want to pop out the first item of the list, we can type the following code.
+
+```python
+>>> my_steps
+[45, 65, 50, 52]
+>>> out = my_steps.pop(0)
+>>> print(out)
+45
+>>> print(my_steps)
+[65, 50, 52]
+```
+
+You can see that 45, which is the first element, is removed from the list and is stored into `out`.  How different `pop()` is with `del` keyword. Both seems to remove the element by providing its index. The difference lies in the fact that `pop()` returns the element that is removed from the list while `del` does not. In fact, if you try to assign to a variable when using `del` it will give an error.
+
+```python
+>>> out = del my_steps[0]
+  File "<stdin>", line 1
+    out = del my_steps[0]
+          ^
+SyntaxError: invalid syntax
+```
+
+The error says it is an invalid syntax because `del` keyword is expected to be the first token in a statement and cannot be used with an assignment operator. 
+
+What if we want to know the position of a particular item in the list? Can we find its index? Python provides `index()` method to find the index of a particular element. 
+
+```python
+>>> my_steps
+[65, 50, 52]
+>>> my_steps.index(52)
+2
+```
+In the above example, `my_steps.index(52)` finds the index of an element 52 in the list `my_steps`. What if there are more than one elements in the list? Can we find its second occurance position? We can still use the same `index()` method by providing the second argument. The second argument specifies from which position you want to start finding the element. See example below. First, we will add another element with the same value 52 and then we will find the two positions in the list.
+
+```python
+>>> my_steps
+[65, 50, 52]
+>>> my_steps.append(52)
+>>> my_steps
+[65, 50, 52, 52]
+>>> first_pos = my_steps.index(52)
+>>> first_pos
+2
+>>> second_pos = my_steps.index(52, first_pos + 1)
+>>> second_pos
+3
+```
+
+In the above code, we first append another 52 into the list `my_steps`. Then, we capture the first position of 52 by using the `index(52)` method. We stored this output into `first_pos` variable. We then used this position to find the second position by providing it into the second argument of `index()`. We put `first_pos + 1` because we want to start find the next 52.
 
 ## Getting a Sublist from a List
 
