@@ -50,6 +50,8 @@ On Python 3.8 and earlier, the name of the collection type is capitalized, and t
 
 ## Basic Operations for List
 
+### Accessing an Element in a List
+
 Once we know how to create a List, we can now show some of the common basic operations with List data type. The most basic one is to access the element in a list. The way we do it is exactly the same as accessing an element in a Tuple.
 
 ```python
@@ -63,6 +65,8 @@ Once we know how to create a List, we can now show some of the common basic oper
 ```
 
 Notice that we can access the first element from index 0 and the last element from size of list minus 1, i.e. `len(my_steps) - 1`. We can also use the negative index where -1 refers to the last element. In the example above, -2 index will refer to the second last element, which is 50. 
+
+### Getting the Number of Elements in a List
 
 We can get the length of a list from the `len()` built-in function and so we can access the last element using this.
 
@@ -83,6 +87,8 @@ IndexError: list index out of range
 ```
 
 The error message indicates that the list index is out of range. This is because the last index is `len(my_steps) - 1`. 
+
+### Adding an Element Into a List
 
 Another basic operations is to add elements into a list. There are multiple ways of adding an element into a list. The first one is to add an element at the **back** of the list. This is called **appending**. Since list is an *ordered* linear data structure, there is a sequence in the element. We can talk about the first item and the last item in a list. Appending is adding the item at the end of the list as the last item of the list. As the name suggest, the method to do this is `list.append(item)`. 
 
@@ -158,6 +164,8 @@ We can also use the `list1.extend(list2)` method to extend a list with another l
 
 There is a subtle difference between using `+` operator and `.extend()` method. When using the `+` operator, a new list containing both lists are created. This new concatenated list is different from both the first and the second list. However, when we use the `.extend()` method. This method is similar to `.append()` and `.insert()` in the sense that it modifies the object that is attached to it through the dot operator and does not return any other value. We can see from the above example that the list object `week1_steps` is changed to contain the second list. 
 
+### Removing an Element From a List
+
 We have shown how to access an element in a list and how to add elements into the list. Now, we can show how to remove elements from a list. The common operator to remove elements from a list is the `del` operator. We use it in this way.
 
 ```python
@@ -227,6 +235,8 @@ SyntaxError: invalid syntax
 
 The error says it is an invalid syntax because `del` keyword is expected to be the first token in a statement and cannot be used with an assignment operator. 
 
+### Finding the Index of an Element
+
 What if we want to know the position of a particular item in the list? Can we find its index? Python provides `index()` method to find the index of a particular element. 
 
 ```python
@@ -253,7 +263,177 @@ In the above example, `my_steps.index(52)` finds the index of an element 52 in t
 
 In the above code, we first append another 52 into the list `my_steps`. Then, we capture the first position of 52 by using the `index(52)` method. We stored this output into `first_pos` variable. We then used this position to find the second position by providing it into the second argument of `index()`. We put `first_pos + 1` because we want to start find the next 52.
 
-## Getting a Sublist from a List
+## Creating a New List From an Existing Data
+
+We have learnt how to create a list using what we call as a *list literal*. We used square bracket to create a new list.
+
+```python
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+```
+
+We can also create a new list from any existing data. In this section, we will discuss some of a few way to create a new list from an existing data.
+
+### List Conversion Function
+
+Python provides a built-in function `list()` to convert any other data type to a list. This means that we can convert a tuple into a list or a string into a list. See code below.
+
+```python
+step_as_tuple: tuple[str, int] = ('John', 50)
+step_as_list: list[str, int] = list(step_as_tuple)
+print(step_as_list, type(step_as_list))
+```
+
+The output displays the following.
+```
+['John', 50] <class 'list'>
+```
+
+Similarly, we can convert a string into a list. In this case, every character will be an individual element in the converted list.
+
+```python
+name: str = 'John'
+name_as_list: list[str] = list(name)
+print(name_as_list)
+```
+
+The output is shown below.
+```
+['J', 'o', 'h', 'n']
+```
+
+### Copying a List into a New List
+
+We can also make a copy of an existing list into a new list. To do this, we will use the `copy()` function from the `copy` library.
+
+```python
+import copy
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+my_steps_backup: list[int] = copy.copy(my_steps)
+print(my_steps, id(my_steps))
+print(my_steps_backup, id(my_steps_backup))
+```
+
+The output is shown below.
+
+```
+[40, 50, 43, 55, 67, 56, 60] 4454460608
+[40, 50, 43, 55, 67, 56, 60] 4454499840
+```
+
+In the above code, we used `id()` to check the object id in the memory. We can see the output on the second number after the list. Notice that the two ids are different because they are two different objects in the memory. The `copy()` function has created a new object with the same value as the first list `my_steps`. 
+
+### Slicing a List
+
+Another way we can create a new list is by *slicing* the list. Python provides a convenient syntax using the square bracket operator (or the get item operator). The format is the following.
+
+```
+list[start:end:step]
+```
+
+One thing that we have to remember is that the **end index** is exclusive. This means that it excludes the element pointed by the *end index*. Let's illustrate this with an example. Let's start with our existing list.
+
+```python
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+```
+
+We can create a new list consisting of `[50, 43, 55]` which is the second element to the fourth element in the list above using slicing.
+```python
+mon_to_wed_steps: list[int] = my_steps[1:4]
+print(mon_to_wed_steps)
+```
+
+The output is shown below.
+```
+[50, 43, 55]
+```
+
+Notice that the index starts from 0 as shown in the table below.
+
+| positive index | 0  | 1  | 2  | 3  | 4  | 5  | 6  |
+|----------------|----|----|----|----|----|----|----|
+| element        | 40 | 50 | 43 | 55 | 67 | 56 | 60 |
+
+Notice that we did not specify the steps in the slicing arguments. By default the step size is 1. The `start` and the `end` index also has its default values. By default `start` is 0. This means that you don't need to specify the start index if you want to slice from the first element.
+
+```python
+sun_to_wed: list[int] = my_steps[:4]
+print(sun_to_wed)
+```
+
+The output is shown below.
+
+```
+[40, 50, 43, 55]
+```
+
+The default for the `end` index, however, is **one plus** the last element's index. In our case, the last element is 6, so the default for the end index is 7. Therefore, these two codes are equivalent.
+
+```python
+copy_1: list[int] = my_steps[0:7]
+copy_2: list[int] = my_steps[:]
+print(copy_1, id(copy_1))
+print(copy_2, id(copy_2))
+```
+
+The output is shown below.
+
+```
+[40, 50, 43, 55, 67, 56, 60] 4405092864
+[40, 50, 43, 55, 67, 56, 60] 4405094080
+```
+
+Notice that we have just created a duplicate of an existing list using slicing similar to what we do with `copy()`. 
+
+We can also slice the list using a negative index. See table below.
+
+| negative index | -7 | -6 | -5 | -4 | -3 | -2 | -1 |
+|----------------|----|----|----|----|----|----|----|
+| element        | 40 | 50 | 43 | 55 | 67 | 56 | 60 |
+
+Notice the difference between the positive indexing and the negative index. While the positive indexing starts from 0, the negative indexing starts from -1. This is useful when we want to create a new list counting from the back. For example, let's say we want to get the *last three elements*. 
+
+```python
+last_three_days: list[int] = my_steps[-3:]
+print(last_three_days)
+```
+
+The output is shown below.
+
+```
+[67, 56, 60]
+```
+
+Notice in the above slicing that we have used the default value for the `end` index. We can get the same results using the following code.
+
+```python
+last_three_days: list[int] = my_steps[-3:7]
+```
+
+The above example shows that you can actually mixed positive and negative indexing. However, utilising the default values are useful because it is just more intuitive to retrieve the last *three days* with indexing `my_steps[-3:]`. 
+
+We can also get the first three days using the positive indexing and default values as shown below.
+
+```python
+first_three_days: list[int] = my_steps[:3]
+print(first_three_days)
+```
+
+The output is shown below.
+
+```
+[40, 50, 43]
+```
+
+As can be seen above it is intuitive to get the first three days with slicing index of `my_steps[:3]`. This also explains why Python chose the `end` index is **exclusive**. The reason is that you easily get the number of elements from `start-end`. As in the example of the first three days, you know there are three days because $3-0=3$. Similarly, when we try to get the steps from Monday to Wednesday, the `end` index was 4 rather than 3 because $4-1=3$. This gives us a number of days when slicing `my_steps[1:4]`. 
+
+Another way to see the slice index is to put them at the boundary of the elements as shown in the figure below.
+
+INSERT FIGURE HERE
+
+In the figure above, we can see the `start` and `end` index as the boundary of the sliced elements. For example, when we want to get the steps from the second element to the fourth, we can see that the boundary enclosing those elements is 1 on the left and 4 on the right. The same thing works for the negative index. 
+
+
+
 
 ## Aliasing a List
 
