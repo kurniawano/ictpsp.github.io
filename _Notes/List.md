@@ -52,7 +52,7 @@ On Python 3.8 and earlier, the name of the collection type is capitalized, and t
 
 ### Accessing an Element in a List
 
-Once we know how to create a List, we can now show some of the common basic operations with List data type. The most basic one is to access the element in a list. The way we do it is exactly the same as accessing an element in a Tuple.
+Once we know how to create a List, we can now show some of the common basic operations with List data type. The most basic one is to access the element in a list. The way we do it is exactly the same as accessing an element in a Tuple. We use the get item operator which is a square bracket operator with an index.
 
 ```python
 >>> my_steps = [40, 50, 43]
@@ -65,6 +65,21 @@ Once we know how to create a List, we can now show some of the common basic oper
 ```
 
 Notice that we can access the first element from index 0 and the last element from size of list minus 1, i.e. `len(my_steps) - 1`. We can also use the negative index where -1 refers to the last element. In the example above, -2 index will refer to the second last element, which is 50. 
+
+### Modifying an Element in a List
+
+The get item operator can be used together with the assignment operator `=` to change an element in the list. 
+
+```python
+>>> my_steps = [40, 50, 43]
+>>> print(my_steps[0])
+40
+>>> my_steps[0] = 65
+>>> print(my_steps[0])
+65
+```
+
+In the above code, we modify the first element (index 0) from 40 to 65. 
 
 ### Getting the Number of Elements in a List
 
@@ -432,15 +447,270 @@ INSERT FIGURE HERE
 
 In the figure above, we can see the `start` and `end` index as the boundary of the sliced elements. For example, when we want to get the steps from the second element to the fourth, we can see that the boundary enclosing those elements is 1 on the left and 4 on the right. The same thing works for the negative index. 
 
+The third argument in the get item operator for list slicing is the step size. We can specify the step size other than the default value 1. For example, let's day we want to get the data every two days. We can do so using the code below.
 
+```python
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+every_other_days: list[int] = my_steps[::2]
+print(every_other_days)
+```
 
+The output is shown below.
+
+```python
+[40, 43, 67, 60]
+```
+
+Notice that since we did not specify the `start` and `end` index, Python takes their default values 0 and 7 for these two arguments. The resulting slice starts from the first element to the last but with a step of 2. We can also specify a negative step size. This is useful for example if we want to get a new list with a reverse order. Let's say, we can get the last three days starting from the last day to the earlier day using the code below.
+
+```python
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+reverse_last_three_days: list[int] = my_steps[-1:-4:-1]
+print(reverse_last_three_days)
+```
+The output is shown below.
+
+```python
+[60, 56, 67]
+```
+
+In the above slicing code, the `start` index was -1 which is the index of the last element using the negative indexing. The `end` index was -4 which is exclusive. Getting the difference between these two indices tells us that the resulting list will have 3 elements. The step size is specified as -1 because we start our indexing from the back and end it at the front.
 
 ## Aliasing a List
 
-## Environment Diagram of List Data
+One important concept about list data structure in Python is the concept of alias. This has implication on how list is copied and when it is passed on to a function. To start with, let's recall the concept of variable in a primitive data type like an integer.
 
-## List Comprehension
+```python
+a: int = 4
+b: int = a
+```
+
+In Python, variable names are just label that is binded to some value. In this case, the integer value 4 is binded to a name `a`. When we do assignment such as `b = a` as in the code above, Python evaluates the value of `a` and get `4`. This value is then binded to the name `b`. In this way, changing `b` will not affect `a`.
+
+```python
+a: int = 4
+b: int = a
+b = -3
+print(a)
+print(b)
+```
+
+The output is shown below.
+
+```python
+4
+-3
+```
+
+We can see the environment diagram from Python Tutor below.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3A%20int%20%3D%204%0Ab%3A%20int%20%3D%20a%0Ab%20%3D%20-3%0Aprint%28a%29%0Aprint%28b%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=5&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+This is different in the case of list data type. 
+
+```python
+my_steps: list[int] = [40, 50, 40, 50]
+copy_steps: list[int] = my_steps
+copy_steps[0] = 75
+print(my_steps)
+print(copy_steps)
+```
+
+The output is shown below.
+
+```python
+[75, 50, 40, 50]
+[75, 50, 40, 50]
+```
+
+Notice that both `my_steps` and `copy_steps` first elements are modified to 75. It's important to pause here and ponder what happens. In our code above, we created a list called `my_steps`. We then create another variable called `copy_steps` and assign `my_steps` to this variable. Unlike integer, the value that is binded to the new name `copy_steps` is a **reference** to the list **object**. This reference can be represented as an **arrow** in the environment diagram. Compare the environment diagram below with that for the integer case.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=my_steps%20%3D%20%5B40,%2050,%2040,%2050%5D%0Acopy_steps%20%3D%20my_steps%0Acopy_steps%5B0%5D%20%3D%2075%0Aprint%28my_steps%29%0Aprint%28copy_steps%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=5&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Notice the arrow in that environment diagram that points to the same list object. Because the two names point to the same object, modifying one of them causes modification on the other name. The reason of this is that `b` is an **alias** to `a` and so points to the same object as `a`. This is different from that when we deal with integer data type. For the case of integer data type, the integer object is duplicated and `b` points to a different integer object (Python has some optimisation for small integers but that's for another story). 
+
+The environment diagram before `b` is modified in the case of integer data type is shown below when the program counter is at line 3.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=a%3A%20int%20%3D%204%0Ab%3A%20int%20%3D%20a%0Ab%20%3D%20-3%0Aprint%28a%29%0Aprint%28b%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=2&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+
+This aliasing effect of list data type becomes important when we pass list data into a function as one of the input arguments.
+
+## Passing a List into a Function as Input
+
+In the previous section, we mentioned that list behaves differently than integer data type when we assign a variable to an existing data. In the case of integer data type, the integer object is duplicated when we assign a different name. However, in the case of list, the list object is not duplicated but rather the two names point to the same object. What happens for these two data types when we pass them into a function as input arguments?
+
+Let's start again with an integer data type. We can pass an integer as an argument as shown below.
+
+```python
+def compute_cadence_for_30sec(steps: int) -> int:
+  return steps * 2
+
+my_step: int = 40
+cadence = compute_cadence_for_30sec(my_step)
+```
+
+Notice the environment diagram as we enter the function `compute_cadence_for_30sec`. 
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20compute_cadence_for_30sec%28steps%3A%20int%29%20-%3E%20int%3A%0A%20%20return%20steps%20*%202%0A%0Amy_step%3A%20int%20%3D%2040%0Acadence%20%3D%20compute_cadence_for_30sec%28my_step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=3&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+In the environment diagram shown above, the argument `steps` is a variable in the local frame of the function `compute_cadence_for_30sec`. This `steps` has a value of 40 and is different from that of the variable `my_steps` in the *global* frame. The value 40 is duplicated and passed into the function. 
+
+As you can guess, the behaviour is different in the case when we pass a list data type into a function. Let's modify the function to take in a list.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20compute_cadence_for_30sec%28steps%29%3A%0A%20%20return%20steps%20*%202%0A%0Adef%20compute_cadence_for_list%28list_of_steps%29%3A%0A%20%20output%20%3D%20%5B%5D%0A%20%20for%20step%20in%20list_of_steps%3A%0A%20%20%20%20cadence%20%3D%20compute_cadence_for_30sec%28step%29%0A%20%20%20%20output.append%28cadence%29%0A%20%20return%20output%0A%0Amy_step%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%0Alist_cadence%20%3D%20compute_cadence_for_list%28my_step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=4&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+We purposely stop the step in Python Tutor at line 4 where we just entered the function after the function call. Notice the environment diagram on the right. We can see that both `my_steps` and `list_steps` point to the same list object. 
+
+See if you can understand the above code and what it does. We will show in the following section how to traverse a list. But for now, our interest is to show that when we pass a list as an input argument to a function, what is being passed on is the **reference** to this list. This means that you may **modify** the list inside the function. We should avoid this as it may be harder to debug your code. The reason is that when you modify the list inside the function, the list in the global frame is also modified. See the code below for an example.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20compute_cadence_for_30sec%28steps%29%3A%0A%20%20return%20steps%20*%202%0A%0Adef%20correct_first_day%28list_of_steps%29%3A%0A%20%20corrected_steps%20%3D%20list_of_steps%0A%20%20corrected_steps%5B0%5D%20%2B%3D%2010%0A%20%20return%20corrected_steps%0A%0Amy_steps%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%0Acorrected_steps%20%3D%20correct_first_day%28my_steps%29%0Aprint%28my_steps%29%0Aprint%28corrected_steps%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=11&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+We have modified the code just to illustrate this aliasing effect inside a functin. Let's say you have a code to correct one of the element of the list. In the code above, we added the first step by 10. Notice that at the end of the code, both `my_steps` and `corrected_steps` have the same value on the first element, i.e. it was changed from 40 to 50. We do expect `corrected_steps` to be changed but not `my_steps`. To avoid this aliasing effect, we should have copied the list as shown below.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20copy%0Adef%20compute_cadence_for_30sec%28steps%29%3A%0A%20%20return%20steps%20*%202%0A%0Adef%20correct_first_day%28list_of_steps%29%3A%0A%20%20output%20%3D%20copy.copy%28list_of_steps%29%20%23%20or%20output%20%3D%20list_of_steps%5B%3A%5D%0A%20%20output%5B0%5D%20%2B%3D%2010%0A%20%20return%20output%0A%0Amy_step%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%0Acorrected_step%20%3D%20correct_first_day%28my_step%29%0Aprint%28my_step%29%0Aprint%28corrected_step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=12&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Notice, in this case now `my_steps` and `corrected_steps` are two different list and we did not modify `my_steps` in the process. 
+
+## Mutable and Immutable Data Type
+
+By now, you may wonder how do we know whether an object is duplicated or only its reference. It turns out that Python's data type falls into either **mutable** or **immutable** data type. Mutable means that it can be changed (Remember the mutant in X-men?). Immutable means that it cannot be changed. The following table list down the mutable and immutable data types.
+
+| immutable | mutable             |
+|-----------|---------------------|
+| int       | list                |
+| float     | dictionary          |
+| str       | set                 |
+| tuple     | user-defined object |
+
+You may be surprised to see that integer and float as immutable as it seems that we can actually modify integer as in the code below.
+
+```python
+a: int = 4
+a = 5
+```
+
+However, we **didn't** change the integer object `4`. What happens is that we create a new integer object `5` and bind it to the same name `a`. The integer object `4` itself is immutable. This is more obvious in a string when you try to modify one of the character in a string. Recall that we can access a character in a string using the get item operator.
+
+```python
+name: str = "John Wick"
+print(name[0])
+```
+
+This outputs `J`. However, we are not able to modify this element.
+
+```python
+name: str = "John Wick"
+name[0] = "B"
+```
+
+It will output the following error message.
+
+```
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+```
+
+String object is immutable and so it does not support item assignment. Similarly with tuple.
+
+```python
+contact_info: tuple = ("John Wick", 81234567, "john@wick.com")
+contact_info[1] = 91234567
+```
+
+This also gives an error as shown below.
+
+```
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+```
+
+This is not the case for mutable data type such as list.  We have shown that we can actually modify an element in a list.
+
+```python
+my_steps = [40, 50, 43]
+my_steps[0] = 65
+```
+
+The above code does not produce error and it actually modifies the first element to 65. 
+
+We will discuss the other data type such as dictionary and set on the subsequent sections. One important thing to note for now is that these mutable data type binds its *reference* to its object to a variable name. This is the arrow that we have been seeing in the Python Tutor visualisation previously. When we copy this arrow to a new name, the arrow still points to the same list object. This is what happens when we create an **alias**. To avoid aliasing, you need to copy the list. We have shown above on how you can create a copy of a list. 
+
 
 ## Traversing a List
 
+One of the common operations when we deal with a list data type is to **traverse** the list. This means that we would like to visit every element of the list and process it in some way. The previous section has shown one simple way to traverse a list. The syntax is shown below.
+
+```python
+for element in iterable:
+  # block A for code to be repeated
+  # do something with element
+```
+
+This syntax is similar when we traverse every character of a string. Recall the following code.
+
+```python
+name = "John Wick"
+for char in name:
+  print(char)
+```
+
+List is also an *iterable* just like string data type. Because of this, we can actually traverse the list in a similar way.
+
+```python
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+output = []
+for step in my_steps:
+  cadence = compute_cadence_for_30sec(step)
+  output.append(cadence)
+```
+
+In the above code `my_steps` is our list which is an iterable. The variable `step` takes in the element of `my_steps` at *every iteration*. We can see the value of `step` by adding the `print()` statement after the for statement as shown below. Click the "next" button to step through the iteration in the for loop.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=my_steps%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%20%0Aoutput%20%3D%20%5B%5D%0Afor%20step%20in%20my_steps%3A%0A%20%20print%28step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+We can also use the `enumerate()` function to count the element and get the element at the same time. For example, we can use the code below to display the day and the steps.
+
+```python
+my_steps = [40, 50, 43, 55, 67, 56, 60] 
+output = []
+for index, step in enumerate(my_steps):
+  print('Day ', (index + 1), ', steps: ', step)
+```
+
+Recall that enumerate returns an iterable where each element is a tuple. The first element of the tuple is the index and the second element of that tuple is the list element that we are enumerating. To capture this tuple, we set the variable between `for` and `in` as the following: `index, step`. Since the enumeration starts from 0 and we want to count the day from 1, we use `index + 1` inside our `print()` statement. Use the below Python Tutor to step through the code and observe the output. 
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=my_steps%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%20%0Aoutput%20%3D%20%5B%5D%0Afor%20index,%20step%20in%20enumerate%28my_steps%29%3A%0A%20%20print%28'Day%20',%20%28index%20%2B%201%29,%20',%20steps%3A%20',%20step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Lastly, we can also traverse the list by creating the index and traversing the range of the indices. 
+
+```python
+my_steps = [40, 50, 43, 55, 67, 56, 60] 
+output = []
+for index in range(len(my_steps)):
+  print('Day ', (index + 1), ', steps: ', my_step[index])
+```
+
+Notice that the argument for `range()` function is an integer and not a list. In this case, we specify `len(my_steps)` as the input to `range()` function. The length of the list is 7 and so it calls `range(7)` which results in an iterable from 0 to 6 (exclusive of the ending) for the variable `index`. To retrieve the element of the list, we use the get item operator (square bracket), i.e. `my_step[index]`.
+
 ## Identifying When to Use a Tuple or a List
+
+List looks a lot like tuple that we learned in the previous lesson. So when do we use tuple and when do we use list? One main difference between tuple and list that we have discussed is that tuple is immutable while list is mutable. This means that we use tuple when there is no need to change the element of the tuple. On the other hand, if our solution requires change of the elements of the collection data, it would be preferable to use list instead.
+
+Another common practice when programmers use tuple is when we just want to group a collection of data which maybe related but rather different. In the example above, for example, we use tuple for contact info. 
+
+```python
+contact_info: tuple = ("John Wick", 81234567, "john@wick.com")
+```
+
+Notice that though these three data are related since they are all information of the same person, they are different kinds of data. The first one is a string since it is the name of the person. The second one is a number for the contact. The last one is the email address. Tuple is a convenient way to group them together. There are better ways which we will explore in subsequent lesson such as using dictionary. However, list is usually used to group items that is very look a like. In this lesson, we used it to group the steps of various days.
+
+```python
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+```
+
+Notice that all these data are integers and they are all `steps`. The only thing that differentiate them is which day the step belongs to. This comes to the other characteristics of list data. List data naturally suits those that have a sequence. In this case, the first data is the step on the first day, the second data is the step on the second day and so on. This suits list since each element is placed with a fixed index. The indices in a list data type is useful when the data has a certain order or sequence. Data at index of higher value is at a later sequence as compared to data at a lower value index. 
+
+Because of this, usually list is used when the data is of the same type. Though Python allows a mixed data type in a list, it is common to apply list for those collections that have the same data type. On the other hand, it is common to use tuple for those collections that have various data type in their elements.
