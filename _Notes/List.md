@@ -714,3 +714,529 @@ my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
 Notice that all these data are integers and they are all `steps`. The only thing that differentiate them is which day the step belongs to. This comes to the other characteristics of list data. List data naturally suits those that have a sequence. In this case, the first data is the step on the first day, the second data is the step on the second day and so on. This suits list since each element is placed with a fixed index. The indices in a list data type is useful when the data has a certain order or sequence. Data at index of higher value is at a later sequence as compared to data at a lower value index. 
 
 Because of this, usually list is used when the data is of the same type. Though Python allows a mixed data type in a list, it is common to apply list for those collections that have the same data type. On the other hand, it is common to use tuple for those collections that have various data type in their elements.
+
+## Finding a Maximum in a List Manually
+
+Now, we have introduced list data structure and some of its basic operations, it is time to put it into practice. List is a very common data structure that is frequently used in computer codes. Some programmers used list data type for anything that requires a collection of items. In this notes, we will differentiate the various collection data types and try to discuss which is the best to use. 
+
+In this last section, we would like to show how we can use list for our application. Let's say, our app user wants to find which day he or she actually clock in the maximum number of steps. This requires us to look into all the elements of the list and find the maximum. This is a common problem and solving this problem help us to see some common patterns when working with list. We will do this in two ways. The first one we will just show you how to do this using some Python's built-in function. The second one, however, we will work this problem using just Python keywords such as for-loop and if-else statement. 
+
+### (P)roblem Statement
+
+Let's start solving this problem. First, we would like to define the problem following the PCDIT framework. In the P step, we need to find out what is the input and output and write the problem statement. 
+
+```
+Input: a list of steps in a week
+Output: which day has the largest number of steps
+Problem Statement: 
+  given a list of steps in a week, 
+  the function should returns which day in that week 
+  has the largest number of steps
+```
+
+One important thing in the Problem Statement is to identify the input and output data types. Let's include this.
+
+```
+Input: a list of steps in a week (list of integers)
+Output: which day has the largest number of steps (string)
+Problem Statement: 
+  given a list of steps in a week, 
+  the function should returns which day in that week 
+  has the largest number of steps
+```
+
+We want to be able to output the name of the day such as "Sunday" or "Monday". However, since we store the number of steps in a list where each day is associated with the position in that list, we will break this problem into two sub problems. 
+
+```
+Sub-Problem 1:
+Input: a list of steps in a week (list of integers)
+Output: index of day with the largest number of steps (int)
+Problem Statement: 
+  given a list of steps in a week, 
+  the function should return which day in that week 
+  has the largest number of steps
+```
+
+```
+Sub-Problem 2:
+Input: index of day in a week (integer)
+Output: name of the day in a week (string)
+Problem Statement: 
+  given an index of day in a week,
+  the function should return the name 
+  of the day in the week.
+```
+
+### Concrete (C)ases
+
+Now, we can work on some concrete cases for these two sub-problems. For sub-problem 1, we can have the following input as an example of a concrete case. 
+
+```python
+my_steps = [40, 50, 43, 55, 67, 56, 60] 
+```
+
+We have to make an assumption on the index here. Let's say the week starts with Sunday on index 0. This means that, we have the following.
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+
+The output of sub-problem 1 is the index of the day where the steps is the largest. To do this, we have two steps:
+1. Find the largest element
+2. Find the position of the largest element
+
+In the above example, the largest element is `67`. Once we found the largest element, we can return the position which is index `4`. 
+
+Sub-problem 2 takes in the output of the first sub-problem which in this case index `4`. The output of the second sub-problem is to return the name of the day. Using the table above, we can see that the output is `Thursday`. 
+
+### Using Built-in Function
+
+Python provides various built-in functions to work with its built-in data structures. In this part, we will digress a little bit and show how we can  solve the above problem using Python's built-in function. In the next part, we will continue the PCDIT steps to show how it can be done manually using some basic control structures. 
+
+The Concrete (C)ases above shows that we can solve this with two steps. First, we can find the maximum element and then find the position of that maximum element. Let's write down the solution step by step. We will first define the function and just check the input argument first.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  print(list_steps)
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+```
+
+The output is shown below.
+
+```
+[40, 50, 43, 55, 67, 56, 60]
+```
+
+We can now find the maximum element using the `max()` function from Python and modify our function as follows.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  max_step: int = max(list_steps)
+  print(max_step)
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+```
+
+The output now gives us the following which is the maximum step in that list.
+
+```
+67
+```
+
+Now, we can find the position of this element in the list using `list.index(element)` function. 
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  max_step: int = max(list_steps)
+  pos: int = list_steps.index(max_step)
+  return pos
+
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+The output is given as follows.
+
+```
+4
+```
+
+Notice that we use the `return` statement such that this function outputs the position of the largest step. The output of this function is stored in `day_max_step` in the second last line which is then printed in the last line of the code.
+
+The Python code, without type annotation is given below and you can click step to check its execution step by step.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20find_pos_of_max%28list_steps%29%3A%0A%20%20max_step%20%3D%20max%28list_steps%29%0A%20%20pos%20%3D%20list_steps.index%28max_step%29%0A%20%20return%20pos%0A%0Amy_steps%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%20%0Aday_max_step%20%3D%20find_pos_of_max%28my_steps%29%0Aprint%28day_max_step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+### Concrete (C)ases for Manual Solution
+
+We have shown how to solve sub-problem 1 using the built-in function. But now, we will work out the solution if we were only to use the basic control structure. We will start by finding the largest element. 
+
+How do we find the largest element in the list? We have to look into every element and compare them. But in our case, we have to act and think like a computer where we can only traverse the element one at a time.  Let's start with out input list again.
+
+```python
+my_steps = [40, 50, 43, 55, 67, 56, 60] 
+```
+
+The index and the name of the day is given in the table below.
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+
+Since we can only traverse element of a list one at a time, we will indicate which element we are at using an arrow. So how do we traverse the list and find the maximum? First, we will take the first element as the *largest* element so far. 
+
+```python
+largest_so_far = 40
+```
+
+then, we will traverse the element starting from the second element all the way to the end. 
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+| current     |        | ^      |         |           |          |        |          |
+
+The current arrow points to element `50` for the first iteration. We can then compare the current element with the largest so far. In this case, since `50 > 40`, we will replace the largest so far to `50`.
+
+```python
+largest_so_far = 50
+```
+
+We can then move on to the next element.
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+| current     |        |        | ^       |           |          |        |          |
+
+At this iteration, we compare if `43` is larger than `50`. Since it is not, we keep the largest so far to be `50` and move to the next element.
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+| current     |        |        |         | ^         |          |        |          |
+
+At this iteration, `55 > 50` and so we found a new larger number. So we have to update our largest so far.
+
+```python
+largest_so_far = 55
+```
+
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+| current     |        |        |         |           | ^        |        |          |
+
+At this iteration, we compare again and found that `67 > 55`. So we have to update our largest so far again.
+
+```python
+largest_so_far = 67
+```
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+| current     |        |        |         |           |          | ^      |          |
+
+At this iteration, we compare `56` and `67`. However, since 56 is not greater than the larges so far, we can keep 67 as the largest number so far and move to the last element.
+
+| name of day | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|-------------|--------|--------|---------|-----------|----------|--------|----------|
+| index       | 0      | 1      | 2       | 3         | 4        | 5      | 6        |
+| element     | 40     | 50     | 43      | 55        | 67       | 56     | 60       |
+| current     |        |        |         |           |          |        | ^        |
+
+At this last iteration, we compare `60` with `67` but `67` is still the largest so far. Since we have no more element to compare in the list, we finish iteration. The final result is found in the `largest_so_far` bucket which currently contains `67`. We can now try to write down the steps above.
+
+### (D)esign of Algorithm
+
+The purpose of this (D)esign of Algorithm step is to generalize the steps we have done in Concrete (C)ases. Let's write down our steps here.
+
+```
+1. Set the first element in the list as the largest_so_far
+2. Iterate from the second element to the end, and do the following:
+    2.1 Get the value of the current element
+    2.2 If the current element > largest_so_far, do the following:
+        2.2.1 Set the current element as the largest so far
+```
+
+### (I)mplementation and (T)esting
+
+Now, we can try to implement the above steps in Python. Let's write down the function definition and the code to test it first.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  print(list_steps)
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+```
+
+The output of the above code just printed the input argument.
+
+```
+[40, 50, 43, 55, 67, 56, 60] 
+```
+
+Let's, do step 1 and print the value of the largest so far.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  print(largest_so_far)
+  return largest_so_far
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+```
+
+The output of the above code is shown below.
+```
+40
+```
+
+Currently, the largest number is the first day, which is `40`. Now, we can do the second step to iterate from the second element to the last. To iterate from the second element, we can slice the list as shown in this chapter. 
+
+```python
+list_steps[1:]
+```
+
+We will use that together with `for` statement to traverse the list element from the second to the end. We will print each element at every iteration for testing. Let's modify the code to do that.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  for current_element in list_steps[1:]:
+    print(current_element)
+  return largest_so_far
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+```
+
+The output is shown below.
+
+```
+50
+43
+55
+67
+56
+60
+```
+
+We can see that the first output is actually the step number in the second element, i.e. `50`. So now, we have managed to iterate the element of the list from the second to the end, i.e. `60`. In this process, we have actually also completed step 2.1 since we already got it in the variable `current_element` as we iterate the list. 
+
+We can now do step 2.2. To compare two numbers, we will use the `if` statement.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  for current_element in list_steps[1:]:
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+    print(current_element, largest_so_far)
+  return largest_so_far
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+```
+
+We added the line `print(current_element, largest_so_far)` so that we can see what is the current element at each iteration and see what is the value of the largest number. The output is given below.
+
+```
+50 50
+43 50
+55 55
+67 67
+56 67
+60 67
+```
+
+In the output above, the first column is the `current_element` and the second column is the `largest_so_far`. We can see that the variable `largest` so far is updated when the `current_element` is 50, 55, and finally 67. After which, the largest element stays at 67. So it seems we have completed the steps to find the largest number in the list. Now, we can remove the print statement and return this largest number.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  for current_element in list_steps[1:]:
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+  return largest_so_far
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+In the above code, we have added `print(day_max_step)` at the last line to print the output of the function. The output is shown below.
+
+```
+67
+```
+
+You may notice, however, that we output the wrong result. The function should not output the largest number but the position of the largest number. We have not finished. In order to find the position of the largest number of steps, we need to keep track, which day we found the largest step. Let's modify our steps.
+
+
+```
+1. Set the first element in the list as the largest_so_far
+2. Set the day_largest_step to the position of the first element
+3. Iterate from the second element to the end, and do the following:
+    3.1 Get the value of the current element
+    3.2 Get the position of the current element
+    3.2 If the current element > largest_so_far, do the following:
+        3.2.1 Set the current element as the largest so far
+        3.2.2 Set the current position as the day_largest_step
+```
+
+In the above, step, we have added step 2, 3.2 and 3.2.2. In step 2, we set the position of the first day as the position of the largest step. At each iteration, we keep track what is the day position in step 3.2. The only change, we need, now, is that whenever we update the largest step, we also update its position. This is done in step 3.2.2.
+
+Let's implement those three steps. Let's start with implementing step 2.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  pos_largest: int = 0 # step 2
+  for current_element in list_steps[1:]:
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+  return pos_largest # now the output returns the position instead
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+In the above code, we have added `pos_largest` and modify the return statement to return this variable instead. If we run this code, we will get 0 as the output. The reason is that we have not updated `pos_largest` whenever we updated the `largest_so_far`. To do this, we need to implement step 3.2 and 3.2.2. 
+
+How do we do step 3.2. In the previous section, we discussed the function `enumerate()` which outputs a tuple of index and element of the list. We can use that to get the position of the current element.
+
+
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  pos_largest: int = 0 # step 2
+  for pos, current_element in enumerate(list_steps[1:]):
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+    print(pos, current_element, largest_so_far)
+  return pos_largest # now the output returns the position instead
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+In the above code, we have added back the print statement to print the current position, the current element, and the largest number so far. The output is shown below.
+
+```
+0 50 50
+1 43 50
+2 55 55
+3 67 67
+4 56 67
+5 60 67
+0
+```
+
+The first column shows the current position, the second column shows the current element and the last one shows the largest so far. The last line is the output of the function which currently still outputs 0. Now, we have found a way to get the current position, we can implement step 3.2.2 to update this position. 
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  pos_largest: int = 0 # step 2
+  for pos, current_element in enumerate(list_steps[1:]):
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+      pos_largest = pos
+    print(pos, current_element, largest_so_far)
+  return pos_largest # now the output returns the position instead
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+We have added the line `pos_largest = pos` inside the true block when the codition of the comparison is true. This means that we will update the `pos_largest` whenever we found there is a current element that is larger than the largest so far. The output of the function is shown below.
+
+```
+0 50 50
+1 43 50
+2 55 55
+3 67 67
+4 56 67
+5 60 67
+3
+```
+
+Notice that we got `3` as the day of the largest step. This is incorrect since our Concrete (C)ases shows we should get `4` instead. The reason of this mistake is that when we enumerate the list, our enumerate function starts counting from 0 whereas our list is actually starting from day 1 which is the second day. Therefore, to get the correct answer, we need to add the current position by 1. Let's fix the code and see the output once again.
+
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  pos_largest: int = 0 # step 2
+  for pos, current_element in enumerate(list_steps[1:]):
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+      pos_largest = pos + 1
+    print(pos, current_element, largest_so_far)
+  return pos_largest # now the output returns the position instead
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+In the above code, we have modified the line to `pos_largest = pos + 1`. The output now is shown as follows.
+
+```
+0 50 50
+1 43 50
+2 55 55
+3 67 67
+4 56 67
+5 60 67
+4
+```
+
+This time the output of `day_max_step` is `4`. 
+
+In the code below, we remove the type annotation to make it simpler and you can trace the execution using Python Tutor.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20find_pos_of_max%28list_steps%29%3A%0A%20%20largest_so_far%20%3D%20list_steps%5B0%5D%0A%20%20pos_largest%20%3D%200%20%23%20step%202%0A%20%20for%20pos,%20current_element%20in%20enumerate%28list_steps%5B1%3A%5D%29%3A%0A%20%20%20%20if%20current_element%20%3E%20largest_so_far%3A%0A%20%20%20%20%20%20largest_so_far%20%3D%20current_element%0A%20%20%20%20%20%20pos_largest%20%3D%20pos%20%2B%201%0A%20%20%20%20print%28pos,%20current_element,%20largest_so_far%29%0A%20%20return%20pos_largest%20%23%20now%20the%20output%20returns%20the%20position%20instead%0A%20%20%0Amy_steps%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%20%0Aday_max_step%20%3D%20find_pos_of_max%28my_steps%29%0Aprint%28day_max_step%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+The final function should not have print statement inside it and it is given here.
+
+```python
+def find_pos_of_max(list_steps: list[int]) -> int:
+  largest_so_far: int = list_steps[0]
+  pos_largest: int = 0 # step 2
+  for pos, current_element in enumerate(list_steps[1:]):
+    if current_element > largest_so_far:
+      largest_so_far = current_element
+      pos_largest = pos + 1
+  return pos_largest # now the output returns the position instead
+  
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+day_max_step: int = find_pos_of_max(my_steps)
+print(day_max_step)
+```
+
+This is the solution only for the first sub-problem. The second sub-problem to get the name of the day given the index of the day in a week can be solved using `if-else` statement. This is shown below.
+
+```python
+def get_name_of_day(index: int) -> str:
+  if index == 0:
+    return "Sunday"
+  elif index == 1:
+    return "Monday"
+  elif index == 2:
+    return "Tuesday"
+  elif index == 3:
+    return "Wednesday"
+  elif index == 4:
+    return "Thursday"
+  elif index == 5:
+    return "Friday"
+  elif index == 6:
+    return "Saturday"
+```
+
+However, there is a better way of writing this piece of code when we learn another data structure called Dictionary. Until then, we can simply use the if-else statement as above. 
+
+## Summary
+
+In this section, we introduce the most commonly used collection data type in Python, which is list. We showed the various basic operation for list and finally we apply some of these to our problem of finding the day of the maximum step. Given a list, we want to find which day has the largest step. We showed two ways to do this. The first one uses Python's built-in function and the second one we went through the whole steps of PCDIT to derive the final solution. We purposely do the implementation and testing in steps so that we learn how to test the code in small bite size. Moreover, we solve the problem also in small steps. We divide the problem into two sub-problems and solve it separately. The important part in this lesson is to know how create list and how work with list data type. When working with list data type, one of the important thing is to traverse the list and do some computation with the element of the list. This shown in our example of finding the day of the maximum step. 
