@@ -1237,7 +1237,7 @@ def get_name_of_day(index: int) -> str:
 
 The above function assumes the input is in the range from 0 to 6 only. However, there is a better way of writing this piece of code when we learn another data structure called Dictionary. Until then, we can simply use the if-else statement as above. 
 
-## Function Composition
+### Function Composition
 
 We have created two functions `find_pos_of_max()` and `get_name_of_day()`. These two functions solve the two sub problems separately. We can then make use of these two functions to solve our original problem. The image below show the flowchart.
 
@@ -1262,7 +1262,7 @@ In the above code, we first call `find_pos_of_max()` to get the index of the day
 Thursday
 ```
 
-## Finding Position of Maximum Item in Any List
+### Finding Position of Maximum Item in Any List
 
 One thing to note is that we purposely name our functions generic enough such as `find_pos_of_max()` instead of `find_pos_of_max_step()`. The reason is that this function can be used to find the position of any list and not only steps. It is general enough and can be used for any other purpose whenever we want to find the index of the maximum item in the list. To make express this, we should rename some of the variables to make it general.
 
@@ -1281,7 +1281,7 @@ def find_pos_of_max(list_items: List[int]) -> int:
 
 In the above code, we replaced the name `list_steps` into `list_items`. 
 
-## Traversing From the First Element
+### Traversing From the First Element
 
 One other improvement we can do is to generalize the code such that we traverse the elements in the list starting from the first element instead from the second element. In the above solution, we first put the first element as the largest element before we start the iteration. There is a way if we want to traverse starting from the first element. We just need to make sure that when we compare the first element, it will always replace the first initial value. When finding the largest element, we can do so by initializing this to the smallest number. In our case, it is enough to initialize the largest element with a negative number since number of steps are non-negative. We can then re-write our solution as follows. 
 
