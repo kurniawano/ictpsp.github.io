@@ -1294,11 +1294,11 @@ def find_pos_of_max(list_items: List[int]) -> int:
   for pos, current_element in enumerate(list_items): # now we are iterating all elements
     if current_element > largest_so_far:
       largest_so_far = current_element
-      pos_largest = pos + 1
+      pos_largest = pos # now, we do not need to add by 1 anymore
   return pos_largest 
 ```
 
-We made three modifications in the above code. The first is that we set the `largest_so_far` to be negative. This ensures that when we visit the first element, that first element will be larger and set as the `largest_so_far`. We need to set the position of the largest element as well. Lastly, our `enumerate(list_items)` now contains no slicing. We visit all elements in the list starting from the first element. 
+We made four modifications in the above code. The first is that we set the `largest_so_far` to be negative. This ensures that when we visit the first element, that first element will be larger and set as the `largest_so_far`. Second, we need to initialize the position of the largest element as well. We chose to initialize it to -1 for similar reason assuming the index of the day we handle is from 0 to 6 for Sunday to Saturday. Third, our `enumerate(list_items)` now contains no slicing. We visit all elements in the list starting from the first element.  Lastly, because, now, we iterate from the first element, the `enumerate()` functions outputs its `pos` value for the fist day in the week and there is no need for us to do `pos + 1` as in the case when we start from the second day. Since we start enumerating from the first day, the `pos` value is the same index as the day in the week. Thus, we can just set `pos_largest = pos`. 
 
 
 ## Summary
