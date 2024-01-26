@@ -81,7 +81,94 @@ The above list creates the same nested list as before. You can actually write ev
 
 ## Environment Diagram of a Nested List
 
+It is important for us to see what the environment diagram looks like for a nested data structure like the above. Previously, we showed the environment diagram of a single list. See below the arrow on the right hand side that points to the list object. 
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=my_steps%20%3D%20%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D%20&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=1&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Notice that the list object contains the int immutable object. Now compares this with the environment diagram of a nested list.
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=month_steps%20%3D%20%5B%5B40,%2050,%2043,%2055,%2067,%2056,%2060%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B54,%2056,%2047,%2062,%2061,%2046,%2061%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B52,%2056,%2063,%2058,%2062,%2066,%2062%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B57,%2058,%2046,%2071,%2063,%2076,%2063%5D%5D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=4&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Notice that we have more *arrows* in this diagram. The name `month_steps` has an arrow pointing to a list of *four* elements. The element of this list is not an integer but rather another *arrow* which points to different list objects. Understanding this environment diagram helps us to understand what happens when we copy or access elements in the array. Let's look at some basic operations of a nested list.
+
 ## Basic Operations with Nested Lists
+
+### Accessing an Element
+
+The first basic operation is accessing an element either to read the value or to modify the value. Notice that `month_steps` is a list data type where each element is another list. See the type annotation of this variable.
+
+```python
+month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+                                [54, 56, 47, 62, 61, 46, 61],
+                                [52, 56, 63, 58, 62, 66, 62],
+                                [57, 58, 46, 71, 63, 76, 63]]
+```
+
+We have also seen the environment diagram in the previous section. The environment diagram shows that `month_steps` is actually just a list of four elements. This means that we can use the usual get item operator or the square bracket operator to get the item of its element.
+
+```python
+>>> month_steps[0]
+[40, 50, 43, 55, 67, 56, 60]
+>>> month_steps[1]
+[54, 56, 47, 62, 61, 46, 61]
+```
+
+We can also check the type of this element using the `type()` function.
+
+```python
+>>> type(month_steps[0])
+<class 'list'>
+```
+
+In order to get the number of steps in day one of week one, we need to access the list of list. Let's show how to do this in steps.
+
+```python
+>>> month_steps[0]
+[40, 50, 43, 55, 67, 56, 60]
+>>> month_steps[0][0]
+40
+```
+
+Notice that we used two get item operators here. The first one is to get the element of `month_steps` which is the first week, i.e. `month_steps[0]`. The second get item operator is to get the first element of that week which is the step of day one in week one. To make it clear, you can actually assign the first week to a variable first.
+
+```python
+>>> week_1 = month_steps[0]
+>>> week_1
+[40, 50, 43, 55, 67, 56, 60]
+>>> week_1[0]
+40
+```
+
+Notice that this `week_1[0]` is the same as `month_steps[0][0]` because `week_1 = month_steps[0]`. Similarly, if we wish to access the third day of week four, we can type the following code.
+
+```python
+>>> month_steps[3][2]
+46
+```
+
+Notice that week four is index 3 in the list since our indexing starts from 0. Similarly, our day three is index 2. 
+
+You can also modify the element using the get item operator and the assignment operator as usual. For example, you can modify the value of  third day in the fourth week as follows.
+
+```python
+>>> month_steps[3][2]
+46
+>>> month_steps[3][2] = 57
+>>> month_steps[3][2]
+57
+>>> month_steps
+[[40, 50, 43, 55, 67, 56, 60], 
+[54, 56, 47, 62, 61, 46, 61], 
+[52, 56, 63, 58, 62, 66, 62], 
+[57, 58, 57, 71, 63, 76, 63]]
+```
+
+### Slicing 
+
+Similar to a single list, you can also slice a nested list. What you need to remember is that they are just *a list where the *. This means that you need to decide how the list is to be sliced.
+
+
+### Adding and Removing Elements
 
 
 ## Copying Nested List and Aliasing Issue
