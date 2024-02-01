@@ -335,4 +335,354 @@ The environment diagram is shown below.
 Notice that now, `first_two_weeks` list elements do not point to the same objects as `week_1` and `week_2`. They point to two new list objects. The function `deepcopy()` ensures that you do copy all the objects at all levels. 
 
 
-## Slicing any part of the list
+## Slicing Any Part of The List
+
+We mentioned previously that it is easy to slice along the rows of the nested list but it is not so straight forward to slice along the columns. Another Python package called `numpy` makes this operation easy when dealing with arrays and matrices. However, it is also a good opportunity to solve this problem ourselves. We will apply PCDIT and create a function to solve this problem.
+
+### (P)roblem Definition
+
+Let's start by asking what is our problem statement. In order to do this, we need to identify the input and output and write a summary of our problem statement. What we want is that given the starting and ending indices of the rows and the columns, the function should return a subset of the nested list from the original list. 
+
+```
+Input:
+ - array: list of list with m x n dimension
+ - row_start: int: starting index of the row in the nested list
+ - row_end: int: ending index (exclusive) of the row in the nested list
+ - row_step: int: step size of the row to slice in the nested list
+ - col_start: int: starting index of the column in the nested list
+ - col_end: int: ending index (exclusive) of the column in the nested list
+ - col_step: int: step size of the column to slice in the nested list
+ 
+Output:
+ - list of list sliced from the input 
+
+Problem Statement:
+ Given a list of list and the slicing indices for the rows and the columns, 
+ return the sliced list of list.
+```
+
+Notice that we have indicated the data type of the indices as `int`. At the same time, we did not indicate the data type of the element of the list of list as this can be any type. We also assume that the input list has `m` rows and `n` columns. To make it simple, we can assume that each row has the same number of columns. This assumption can be removed later on during the implementation but for simplicity, we will put it here for now.
+
+### Concrete (C)ases
+
+Let's work on some concrete cases and see how we can obtain the output. Let's start with a simple list of list.
+
+```python
+input_array = [[1, 2, 3, 4],
+               [5, 6, 7, 8],
+               [9, 10, 11, 12],
+               [13, 14, 15, 16]]
+```
+
+We will specify a few possible input slice indices. The simplest case would be to get the same list again. This means
+
+```python
+row_start = 0
+row_end = 4
+row_step = 1
+col_start = 0
+col_end = 4
+col_step = 1
+```
+
+We start from the first row to the last. The index of the last row is 3 since we only have four rows. But since the ending index is exclusive, we set it as 4. Similarly for the columns. So how can we obtain the output array?
+
+We can start with an empty output array.
+
+```python
+output_array = []
+```
+
+What we will do is that we will go through the rows and get the elements from the sub-list according to the column indices. Let's start with the first row with index 0, i.e. `row_start = 0`. 
+
+```python
+current_row_index = 0
+input_row_list = input_array[current_row_index]
+```
+
+This gives us the following input row list.
+
+```python
+input_row_list = [1, 2, 3, 4]
+```
+
+Once we got the list in our current row, we can use the indices for the column to slice it. Since we slice from column 0 to 4 (exclusive), we will get the same list for the sliced row list.
+
+```python
+sliced_row_list = [1, 2, 3, 4]
+```
+
+We can now add this sliced row list into our `output_array`.
+
+```python
+output_array = [[1, 2, 3, 4]]
+```
+
+We can then go to the **next row** index. We need to check the ending row index to make sure we do not exceed the ending row index. We can then increase our row index according to the step. Since the step size is 1, we can add this to our previous row index which was 0. 
+
+```python
+current_row_index = 0 + 1
+input_row_list = input_array[current_row_index]
+```
+
+We can then retrieved the input row list.
+
+```python
+input_row_list = [5, 6, 7, 8]
+```
+
+We can then used the same column start index and ending index to slice the row list.
+
+```python
+sliced_row_list = [5, 6, 7, 8]
+```
+
+Then, we can add this into our output array.
+
+```python
+output_array = [[1, 2, 3, 4],
+                [5, 6, 7, 8]]
+```
+
+We can imagine how it continues to the end until our row index exceed the endign row index given in the input. 
+
+Now if the starting row index is not 0, we just need to start our current index from that non-zero index. Similary, if the step size is not 1, we just need to add our step size accordingly.
+
+```python
+current_row_index = row_start
+```
+
+```python
+current_row_index = current_row_index + row_step
+```
+
+We just need to continue going through the rows until the current row index is equal or greater than the ending row index. 
+
+Getting the elements in a row list is easier. Since each row is a list, we can use normal slicing to get the sliced row list.
+
+```
+sliced_row_list = input_row_list[col_start: col_end: col_step]
+```
+
+Let's generalize these steps and write down in words.
+
+### (D)esign of Algorithm
+
+Recall that we first create an empty list and then go through the rows.
+
+```
+1. Create an empty array for the output.
+2. For each row in the input row from row_start to row end with row_step size, do:
+  2. 1 ...
+```
+
+What are the things that we repeat at each row? We first get the row list and sliced it using the column indices. After we slice it, we must not forget to add the sliced list into our output array. We then repeat these steps for the next row list.
+
+```
+1. Create an empty array for the output.
+2. For each row in the input row from row_start to row end with row_step size, do:
+  2.1 get the current row list from the input array.
+  2.2 slice the current row list using the column start and end indices with its step size.
+  2.3 add the sliced row list into the output row. 
+```
+
+Let's start the Implementation and Testing.
+
+### (I)mplementation and (T)est
+
+Let's start by defining our function with the respective input and output.
+
+```python
+from typing import List, Any
+
+def slice_2d(array: List[List[Any]], 
+             row_start: int, row_end: int, row_step: int,
+             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+    pass
+
+input_array:List[List[int]] = [[1, 2, 3, 4],
+                               [5, 6, 7, 8],
+                               [9, 10, 11, 12],
+                               [13, 14, 15, 16]]
+
+output:List[List[int]] = slice_2d(input_array, 0, 4, 2, 0, 4, 2)
+print(output)
+```
+
+To test our function, we need to call it which is what the last line does. Notice that we have annotated the input and output of the function accordingly following our problem statement. Running `mypy` on the above code produces no error. We created `slice_2d.py` file inside `lesson08` folder for you to try.
+
+```
+$ mypy slice_2d.py
+Success: no issues found in 1 source file
+```
+
+We are now ready to implement our algorithm. The first step in our design of algorithm is to create an empty output array. For brevity sake, we will not include the function call and only show the function definition in the subsequent codes.
+
+```python
+from typing import List, Any
+
+def slice_2d(array: List[List[Any]], 
+             row_start: int, row_end: int, row_step: int,
+             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+
+    output: List[List[Any]] = []
+    # your solution
+    return output
+```
+
+If we run this code, it will output an empty list.  So we can move on to step number 2. We should iterate the rows from the starting index for the rows all the way to the ending index with step size as indicated by the input. We can use `range()` function to create our `current_row_index`. Let's create this row index and print it out.
+
+```python
+from typing import List, Any
+
+def slice_2d(array: List[List[Any]], 
+             row_start: int, row_end: int, row_step: int,
+             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+
+    output: List[List[Any]] = []
+    for current_row_index: int in range(row_start, row_end, row_step):
+        print(current_row_index)
+    return output
+```
+
+Given the following function call `slice_2d(0, 4, 1, 0, 4, 1)`, it gives the following output.
+
+```
+0
+1
+2
+3
+[]
+```
+
+We have set the row indices to start from 0 to 4 (exclusive) with step size 1. We should test what happens if we change the function call to the following.
+
+```python
+output:List[List[int]] = slice_2d(input_array, 0, 4, 2, 0, 4, 2)
+print(output)
+```
+
+In this case, we use step size 2 for both the rows and the columns. The output is given below.
+
+```
+0
+2
+[]
+```
+
+So far looks good. We can get the indices of our sliced rows. Now, we can proceed to do step 2.1 which is to get the list of the current row.
+
+```python
+from typing import List, Any
+
+def slice_2d(array: List[List[Any]], 
+             row_start: int, row_end: int, row_step: int,
+             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+
+    output: List[List[Any]] = []
+    for current_row_index: int in range(row_start, row_end, row_step):
+        row_list: List[Any] = array[current_row_index]
+        print(row_list)
+    return output
+```
+
+The output for the two function calls above is shown below.
+
+```
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+[13, 14, 15, 16]
+[]
+[1, 2, 3, 4]
+[9, 10, 11, 12]
+[]
+```
+
+In the first function call, we have four rows (from 0 to 3) and we can see the list for each row. There is one line with the output `[]` which is the result of printing the `output` list at the end of each function call. The second function call has a step size of two and it gets row 0 and row 2 which gives us `[1, 2, 3, 4]` and `[9, 10, 11, 12]` respectively.
+
+Once we get the row list, we can slice to get the elements according to our column indices. 
+
+```python
+from typing import List, Any
+
+def slice_2d(array: List[List[Any]], 
+             row_start: int, row_end: int, row_step: int,
+             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+
+    output: List[List[Any]] = []
+    for current_row_index: int in range(row_start, row_end, row_step):
+        row_list: List[Any] = array[current_row_index]
+        sliced_row_list: List[Any] = row_list[col_start: col_end: col_step]
+        print(sliced_row_list)
+    return output
+```
+
+The output for the two function calls above is shown below.
+
+```
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+[13, 14, 15, 16]
+[]
+[1, 3]
+[9, 11]
+[]
+```
+
+Notice that for the first function call, we get all the elements in the column. This is because we set the step size to be one. On the other hand, the second function calls output `[1, 3]` and `[9, 11]`. The reason is that we set the column step size to be two. 
+
+The last step is to add this sliced list into our output list.
+
+```python
+from typing import List, Any
+
+def slice_2d(array: List[List[Any]], 
+             row_start: int, row_end: int, row_step: int,
+             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+
+    output: List[List[Any]] = []
+    for current_row_index: int in range(row_start, row_end, row_step):
+        row_list: List[Any] = array[current_row_index]
+        sliced_row_list: List[Any] = row_list[col_start: col_end: col_step]
+        output.append(sliced_row_list)
+    return output
+```
+
+The output is given as shown below for the two function calls.
+
+```
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+[[1, 3], [9, 11]]
+```
+
+We can now apply this function to our `month_steps` list of list. Let's say, we want to get the steps on Wednesday for each week. We can write the following code.
+
+```python
+month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+                                [54, 56, 47, 62, 61, 46, 61],
+                                [52, 56, 63, 58, 62, 66, 62],
+                                [57, 58, 46, 71, 63, 76, 63]]
+wed_steps: List[List[int]] = slice_2d(month_steps, 0, 4, 1, 3, 4, 1)
+print(wed_steps)
+```
+
+Notice that we want all weeks so we set our row start index to be zero and its ending to be four with step size one. However, since we only wants Wednesdays in each week, we set our column start index to three and its ending index to four (exclusive) with a step size of one. The output is shown below.
+
+```
+[[55], [62], [58], [71]]
+```
+
+We can also get the steps on every Wednesdays and Fridays in the first two weeks using the following code.
+
+```python
+wed_fri_week12: List[List[int]] = slice_2d(month_steps, 0, 2, 1, 3, 6, 2)
+print(wed_fri_week12)
+```
+
+Verify that the input arguments are what you expected. The output is shown below.
+
+```
+[[55, 56], [62, 46]]
+```
