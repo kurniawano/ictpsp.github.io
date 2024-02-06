@@ -91,7 +91,7 @@ Notice that in the above data, it contains both double quotes in the first line 
 
 ## Basic String Operations
 
-Previously, in our lesson [Basic Operators]({{ "/notes/basic-operators | relative_url }}), we have also introduced two simple operators that can be used with string data: the concatenation `+` operator and the duplication `*` operator. Let's review it again here.
+Previously, in our lesson [Basic Operators]({{ "/notes/basic-operators" | relative_url }}), we have also introduced two simple operators that can be used with string data: the concatenation `+` operator and the duplication `*` operator. Let's review it again here.
 
 We can concatenate two strings using the `+` operator. 
 
