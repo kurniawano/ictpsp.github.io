@@ -76,8 +76,8 @@ Notes:
 - [Nested For Loop]({{ "/notes/nested-for" | relative_url }})
 
 ## Lesson 9: Dictionaries and Sets
-- [Working with Dictionaries]({{ "/notes/dictionaries" | relative_url }})
-- [Working with Sets]({{ "/notes/sets" | relative_url }})
+- [Working with Dictionary]({{ "/notes/dictionary" | relative_url }})
+- [Working with Set]({{ "/notes/set" | relative_url }})
 
 ## Contributors
 

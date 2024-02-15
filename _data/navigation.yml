@@ -65,9 +65,9 @@ Notes:
         url: /notes/nested-list
       - title: Nested For Loop
         url: /notes/nested-for
-  - title: "Lesson 10: Dictionaries and Sets"
+  - title: "Lesson 10: Dictionary and Set"
     children:
-      - title: Working with Dictionaries
-        url: /notes/dictionaries
-      - title: Working with Sets
-        url: /notes/sets
+      - title: Working with Dictionary
+        url: /notes/dictionary
+      - title: Working with Set
+        url: /notes/set

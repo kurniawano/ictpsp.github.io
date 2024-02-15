@@ -1,7 +1,7 @@
 ---
-title: Sets
-permalink: /notes/sets
-key: notes-sets
+title: Set
+permalink: /notes/set
+key: notes-set
 layout: article
 nav_key: Notes
 sidebar:
