@@ -264,6 +264,160 @@ dict_items([('name', 'John Nice'), ('email', 'john@wick.ed'), ('phone', '+659123
 ```
 
 We can see that `items()` method gives us a sequence of key-value pairs as a tuple, i.e. `(key, value)`. 
+
 ### Traversing a Dictionary
 
+As in any other collection data types, one of the most common operation is on how we can traverse the elements of the collections. The usual `for-in` syntax is commonly used to traverse dictionary data as well. Recall the format for `for-in` syntax in Python.
+
+```python
+for var in iterable:
+  # Block A : code to repeat
+  do_something_here()
+```
+
+Since dictionary is iterable, we can actually put the dictionary name as the `iterable` in the above syntax.
+
+```python
+for key in profile:
+  print(key)
+```
+
+The output is shown below.
+
+```
+name
+email
+phone
+birth-year
+```
+
+Notice that the variable `key` is not a keyword but just a variable name to capture what is thrown by the iterable at every iteration. When putting the dictionary's name, Python throws out the dictionary **keys** at every iteration. We can access the value for every key-valu pair using the get-item operator as usual.
+
+```python
+for key in profile:
+  print(f"key: {key}, value: {profile[key]}")
+```
+
+The output is shown below.
+
+```
+key: name, value: John Wick
+key: email, value: john@wick.ed
+key: phone, value: +6591234567
+key: birth-year, value: 1980
+```
+
+Notice that in the code above, we get the value using `profile[key]`. However, previously, we learnt that we can actually get both key and value from a dictionary using `.items()` method. Therefore, we can write the following code to get both key and value at every iteration.
+
+```python
+for key, value in profile.items():
+  print(f"key: {key}, value: {value}")
+```
+
+The output is given below.
+
+```
+key: name, value: John Wick
+key: email, value: john@wick.ed
+key: phone, value: +6591234567
+key: birth-year, value: 1980
+```
+
+We get the same output, but now the variable that is capturing the data at each iteration is a tuple `key, value`. Of course, there are times when we don't need the key-value pairs and maybe only need to iterate over the values. In order to do that, we can use the other methods `.values()` also mentioned in the previous section.
+
+```python
+for value in profile.values():
+  print(value)
+```
+
+The output is given below.
+
+```
+John Wick
+john@wick.ed
++6591234567
+1980
+```
+
+Note that we can guarantee the order of the key-value pair in dictionary. 
+
 ## Using Dictionary to Implement Branch Structure
+
+Another useful use case for dictionary data is to implement branch structure. Recall the codebook example in the beginning of this section. We want to translate certain vowels into another letter. We can actually write an if-else to do this. 
+
+```python
+message: str = "hello"
+encrypted: str = ""
+for char in message:
+  if char == "a":
+    encrypted += "p"
+  elif char == "e":
+    encrypted += "f"
+  elif char == "i":
+    encrypted += "j"
+  elif char == "o":
+    encrypted += "c"
+  elif char == "u":
+    encrypted += "l"
+  else:
+    encrypted += char
+print(f"{message} is encrypted as: {encrypted}")
+```
+
+In the above code, we are encrypting the message, which is `"hello"`. We replaced the vowels accordingly as specified in the beginning of this lesson. If it is not a vowel, we just add back the character into the encrypted message. The output of the above code is given below.
+
+```
+hello is encrypted as: hfllc
+```
+
+However, we can use dictionary to simply the code. We can have a codebook dictionary as follows and write the encryption as shown below.
+
+```python
+message: str = "hello"
+encrypted: str = ""
+codebook: dict[str, str] = {'a': 'p', 
+                            'e': 'f', 
+                            'i': 'j', 
+                            'o': 'c', 
+                            'u': 'l'}
+for char in message:
+    if char in codebook:
+        encrypted += codebook[char]
+    else:
+        encrypted += char
+print(f"{message} is encrypted as: {encrypted}")
+```
+
+The output is shown below.
+
+```
+hello is encrypted as: hfllc
+```
+
+We have replaced the `if-else` for the translation into a single line `encrypted += codebook[char]`. We still need the if statement to check if the character is one of the vowels. If it is not, it will just put back the same character from the original message. 
+
+One key limitation is that we can only use dictionary for branch structure where the condition is a single value. In the above example, the character is either `a` or `e` or `i` and so on. We are not able to represent a range of values. Therefore, it is hard to implement the following branch structure using dictionary.
+
+```python
+if 10 < average_steps <= 40:
+    message = "Try again next month to hit your target."
+elif 41 < average_steps <= 60:
+    message = "Well done! You hit your target."
+elif 60 < average_steps :
+    message = "Extraordinary! You break a record."
+```
+
+However, for simple if-else, dictionary can make the code cleaner. This is even more so when there are many conditions. Think what would the codebook translation code look like if we also translate the consonants using if-else statement. In the case of dictionary, the code remains the same. We just need to add an extra entry into our dictionary which can be done programmatically using code.
+
+## Graph and Breadth First Search
+
+Let's look into some example where we can use dictionary and apply some problem solving framework. Let's say, we have a train rail network and we would like to find the path we should take from one station to another station. See example image below of an example train network. What are the stations that we have to take from station A to station F?
+
+INSERT IMAGE HERE
+
+The first question we may ask is how should we represent the train network in our data. How should we represent the connection between one station to another station?
+
+One useful abstract data type is what we call a **graph**. A graph consists of vertices or nodes. These nodes are connected by edges. In our example here, we can represent each station as a vertex and the connection between two stations as an edge. Therefore, the above train network can be represented as the following graph.
+
+INSERT IMAGE HERE
+
