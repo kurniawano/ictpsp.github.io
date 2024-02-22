@@ -411,13 +411,392 @@ However, for simple if-else, dictionary can make the code cleaner. This is even 
 
 ## Graph and Breadth First Search
 
-Let's look into some example where we can use dictionary and apply some problem solving framework. Let's say, we have a train rail network and we would like to find the path we should take from one station to another station. See example image below of an example train network. What are the stations that we have to take from station A to station F?
+Let's look into some example where we can use dictionary and apply some problem solving framework. Let's say, our app can plan a cycling path and we would like to find the path we should take from one place to another place. See example image below of an example map. What are the path we should take from point A to point F?
 
 INSERT IMAGE HERE
 
-The first question we may ask is how should we represent the train network in our data. How should we represent the connection between one station to another station?
+The first question we may ask is how should we represent the map in our data. How should we represent the connection between one place to another place?
 
-One useful abstract data type is what we call a **graph**. A graph consists of vertices or nodes. These nodes are connected by edges. In our example here, we can represent each station as a vertex and the connection between two stations as an edge. Therefore, the above train network can be represented as the following graph.
+One useful abstract data type is what we call a **graph**. A graph consists of vertices or nodes. These nodes are connected by edges. In our example here, we can represent each place and junction as a vertex and the connection between two junctions as an edge. Therefore, the above map can be represented as the following graph.
 
 INSERT IMAGE HERE
 
+How can we represent this graph as our data? We can use a dictionary for this. In using the dictionary, we should ask ourselves what are the keys and the values. We can choose the vertices as the keys. Every graph has vertices and these vertices can be the keys in our dictionary. Moreover, each vertex can have some neighbouring vertices. These neighbours can the values for each key. We can then represent the the above graph as follows.
+
+```python
+cycling_map: dict[str, list[str]] = {"A": ["B", "D"],
+                                     "B": ["A", "C"],
+                                     "C": ["B", "D", "F"],
+                                     "D": ["A", "C", "E"],
+                                     "E": ["D", "F"],
+                                     "F": ["C", "E"]}
+```
+
+Given the above data, the problem now becomes finding the path from A to F. Usually, we want to find the shortest path and the longest path. So the shortest path is assumed in this problem. We will also make another assumption to simplify our problem. We will assume that it takes the same effort to travel from one point to another. This assumption may not be true and there are ways to represent this in our dictionary. But for now, to simplify our problem, we will assume that it takes the same effort to travel from one point to another and we are only interested to find the shortest path from point A to F. 
+
+### (P)roblem Definition
+
+We will start with our problem definition and try to identify the input, output and summarize the problem into a statement.
+
+```
+Input: 
+  - map: dictionary[key: string, value: list of string]
+  - start point: string
+  - end point: string
+
+Output:
+  - path: list of string in the map that gives the shortest path
+
+Problem Statement:
+  Given a map, starting point and ending point in the dictionary,
+  the function should return a shortest path from starting point
+  to ending point in the map.
+```
+
+How should we approach this problem? Let's start working on this concrete case step by step and generalize the algorithm.
+
+### Concrete (C)ases
+
+Let's start with our input. We have three inputs. The first one is the map and it is represented by the dictionary as follows.
+
+```python
+cycling_map: dict[str, list[str]] = {"A": ["B", "D"],
+                                     "B": ["A", "C"],
+                                     "C": ["B", "D", "F"],
+                                     "D": ["A", "C", "E"],
+                                     "E": ["D", "F"],
+                                     "F": ["C", "E"]}
+```
+
+The second input is our starting point. In this case, let's choose a path from A. The last input is our ending point. Let's choose the point F as our destination. We can see that we have a few paths from A to F.
+
+```
+path 1: A -> B -> C -> F
+path 2: A -> B -> C -> D -> E -> F
+path 3: A -> D -> E -> F
+```
+
+With our assumptions, we can either choose path 1 or path 3 as our solutions as it has shorter path or smaller number of points. How do we come to these paths?
+
+We start with the second input which is the starting vertex, i.e. A. What we can do now is too look into the neighbours of A. We can get A's neihbours from the dictionary. A has two neighbours, i.e. `["B", "D"]`. What we do is that we can put these to vertices into a list to visit.
+
+```python
+to_explore: List[str] = ["B", "D"]
+```
+The sequence may matter in this case. In the above, we choose to put into list alphabetically. This means that we put B first ahead of D. But we can choose otherwise. What do we do with this list? We can take out the item from the list and do the same thing as we did with A. 
+
+This means that we take out B from the list and find the neighbours of B. Looking into our dictionary, we notice that B has two neighbours, i.e `["A", "C"]`. However, we have visited A and we don't want to go back to A. So we must keep track of those vertices we have visited. Moreover, we also don't want to explore B and D again since we have done that. So we should keep track all these vertices that we have visited. What's the strategy? Well, we can put all those we put into the `to_explore` list into another list called `visited`. We didn't really put A into the `to_explore` list. But we can do this actually. In the beginning, we can add A into the `to_explore` list and `visited` list. Then we take out A from the `to_explore` list to get its neighbours. Let's create a new list for all those vertices we have visited. By now, it should contain A, B and D.
+
+```python
+visited: List[str] = ["A", "B", "D"]
+```
+
+Now, what we do is that before we add anything to the list `to_explore`, we will check if the vertex is already inside `visited` list. If  the vertex is not the `visited` list, we can add that vertex to the list `to_explore`. In this case, only C will be added.
+
+
+```python
+to_explore: List[str] = ["D", "C"]
+visited: List[str] = ["A", "B", "D", "C"]
+```
+
+Since we add all the neighbours of B, we can visit the neighbours of the next vertex in the list `to_explore`. Now, D is next. So we take out D from the list and find its neighbours. The neighbours of D are `["A", "C", "E"]`. But A and C are already in the `visited` list. So this leaves us only with E. 
+
+
+```python
+to_explore: List[str] = ["C", "E"]
+visited: List[str] = ["A", "B", "D", "C", "E"]
+```
+
+We will do the same steps. You can see that there is iteration structure here as we do the same steps again and again. We take out C from the list `to_explore` and get its neighbours, i.e. `["B", "D", "F"]`. Out of these three, B and D are in the `visited` list. Therefore, we will not add these two and only add F. But F is actually our destination and we have found our destination!
+
+But how do we get a path? In the above examples, our path is `A -> B -> C -> F`. How can we return a list describing the sequence points in this path? We can do that if we keep track how we visit one vertex to another and how do we get to our destination vertex.
+
+How can we keep track? Everytime we explore a vertex from another vertex, we can keep track which vertex is the previous vertex of the new vertex we visited. For example, when we start from A and visit B and D at the beginning, we can create a new dictionary indicating, who is the parent of B and D. The word parent here refers to the previous vertex from which B and D were visited.
+
+```python
+parent: dict[str, str] = {"B": "A",
+                          "D": "A"}
+```
+
+In the above dictionary, we take not that the parent of B is A and the parent of D is also A. Similarly, when we visit C from B, we will add this into our `parent` dictionary.
+
+```python
+parent: dict[str, str] = {"B": "A",
+                          "D": "A",
+                          "C": "B"}
+```
+
+Next, we actually explore D to visit C. So now we have the following.
+
+```python
+parent: dict[str, str] = {"B": "A",
+                          "D": "A",
+                          "C": "B",
+                          "E": "D"}
+```
+
+After we explore D, we explore C. From C we visit F and found our destination. So our final dictionary is the following.
+
+```python
+parent: dict[str, str] = {"B": "A",
+                          "D": "A",
+                          "C": "B",
+                          "E": "D",
+                          "F": "C"}
+```
+
+How, can then we generate the sequence of points in the path? This time, we will start with our destination F. We add this to our output path list.
+
+```python
+path: list[str] = ["F"]
+```
+
+From F we find the parent from our dictionary and get C. So we add C into the list.
+
+```python
+path: list[str] = ["C", "F"]
+```
+
+Notice that we have to add C to the front of F in the sequence. Then we check the parent of C and find B. We add this again to our list.
+
+```python
+path: list[str] = ["B", "C", "F"]
+```
+
+Lastly, from B's parent, we get A and add this to our list.
+
+```python
+path: list[str] = ["A", "B", "C", "F"]
+```
+
+We can stop now because A has no parent and A is our starting point. Now we are able to generate our output from our three inputs. Let's generalize these steps in our Design of Algorithm step.
+
+### (D)esign of Algorithm
+
+There are a lot of steps in the previous section. It is useful to reread these section again whenever you get lost in this part here. What we do as our first step is to initialize a few list and dictionary.
+
+```
+1. Create an empty list for *visited* and *to_explore*. 
+   Create an empty dictionary for *parent*.
+```
+
+Next, we can start from our starting point and add this into our `to_explore` list.
+
+```
+1. Create an empty list for *visited* and *to_explore*. 
+   Create an empty dictionary for *parent*.
+2. Add start vertex to *to_explore* list.
+```
+
+Reading the Concrete (C)ases section again reveals that once we reach this point, we started to repeat a few steps again and again. What are the steps that we repeat?
+
+```
+1. Take out the next vertex to explore from the *to_explore* list.
+2. Get the neighbours of this vertex.
+```
+
+What do we do with the neighbours of the vertex we want to explore? We do a few things. First we check if this neighbouring vertex is our destination vertex or not. If it is, then we are done. If it is not, we will add into our list to explore. But we only want to add those vertices that we have not visited. So let's write down the steps.
+
+First, we handle the case when we found the destination vertex.
+
+```
+1. For every vertex in the neighbouring vertex, do
+   1.1 if this neighbouring vertex is our destination vertex, do
+       1.1.1 Add this neighbouring vertex to the *parent* dictionary
+       1.1.2 Exit the search
+```
+If the neighbouring vertex is not the destination vertex we will add them into the list to explore.
+
+```
+1. For every vertex in the neighbouring vertex, do
+   1.1 If this neighbouring vertex is our destination vertex, do
+       1.1.1 Add this neighbouring vertex to the *parent* dictionary
+       1.1.2 Exit the search
+   1.2 Otherwise, if the neighbouring vertex is not in the *visited* list, do
+       1.2.1 Add the neighbouring vertex to the *visited* list
+       1.2.2 Add the neighbouring vertex to the *to_explore* list
+```
+
+We can now embed the above steps into our steps after we get the neighbours of our vertex to explore. 
+
+```
+1. Take out the next vertex to explore from the *to_explore* list.
+2. Get the neighbours of this vertex.
+3. For every vertex in the neighbouring vertex, do
+   3.1 If this neighbouring vertex is our destination vertex, do
+       3.1.1 Add this neighbouring vertex to the *parent* dictionary
+       3.1.2 Exit the search
+   3.2 Otherwise, if the neighbouring vertex is not in the *visited* list, do
+       3.2.1 Add the neighbouring vertex to the *visited* list
+       3.2.2 Add the neighbouring vertex to the *to_explore* list
+```
+
+Previously, we mentioned that we need to repeat these steps again and again. The question now is until what condition do we repeat the steps above? We can continue doing this as long as there is a vertex in the `to_explore` list. If there is no more, we can stop exploring. So let's add the iterative structure into the above steps. 
+
+```
+1. As long as there is an item in *to_explore* list
+   1.1 Take out the next vertex to explore from the *to_explore* list.
+   1.2 Get the neighbours of this vertex.
+   1.3 For every vertex in the neighbouring vertex, do
+       1.3.1 If this neighbouring vertex is our destination vertex, do
+             1.3.1.1 Add this neighbouring vertex to the *parent* dictionary
+             1.3.1.2 Exit the search
+       1.3.2 Otherwise, if the neighbouring vertex is not in the *visited* list, do
+             1.3.2.1 Add the neighbouring vertex to the *visited* list
+             1.3.2.2 Add the neighbouring vertex to the *to_explore* list
+```
+
+We can then combine these iterative structure into our overall steps.
+
+```
+1. Create an empty list for *visited* and *to_explore*. 
+   Create an empty dictionary for *parent*.
+2. Add start vertex to *to_explore* list.
+3. As long as there is an item in *to_explore* list
+   3.1 Take out the next vertex to explore from the *to_explore* list.
+   3.2 Get the neighbours of this vertex.
+   3.3 For every vertex in the neighbouring vertex, do
+       3.3.1 If this neighbouring vertex is our destination vertex, do
+             3.3.1.1 Add this neighbouring vertex to the *parent* dictionary
+             3.3.1.2 Exit the search
+       3.3.2 Otherwise, if the neighbouring vertex is not in the *visited* list, do
+             3.3.2.1 Add the neighbouring vertex to the *visited* list
+             3.3.2.2 Add the neighbouring vertex to the *to_explore* list
+```
+
+These are the steps up to the point we find the destination point. But we have not come up with the steps to get the sequence of points in the path. What we did was to `exit the search` in step 3.3.1.2 when we find the destination vertex. Let's write down the steps to get the sequence of points in the path. 
+
+In order to do this, we need to have the `parent` dictionary. Given the `parent` dictinary, the starting point and the destination point, we can craft steps to get the sequence as described in the Concrete (C)ases section. 
+
+We start by adding the destination vertex into our output path.
+
+```
+1. Add destination vertex into output list.
+```
+
+The next few steps are repeated again and again until we reach starting vertex. So we can write the following iterative structure.
+
+```
+1. Add destination vertex into output list.
+2. Get the parent of the current vertex.
+3. As long as the parent is not the starting vertex, do
+   3.1
+```
+
+What do we do in step 3? we simply make this parent vertex as our current vertex and get its parent from the dictionary again. We also add these vertices into our output path into the *first* position (refer to the Concrete Cases in case you forget why we insert into the first position). 
+
+
+```
+1. Add destination vertex into output list.
+2. Get the parent of the current vertex.
+3. As long as the parent is not the starting vertex, do
+   3.1 Make this parent vertex as the current vertex
+   3.2 Add the current vertex into the output path at the first position
+   3.3 Get the parent of the current vertex from the *parent* dictionary
+```
+
+We keep on repeating steps 3.1 to 3.3 as long as this parent vertex is not the starting vertex. If it is, then we are done repating and simply add the last vertex, which is the starting vertex into the output path.
+
+```
+1. Add destination vertex into output list.
+2. Get the parent of the current vertex.
+3. As long as the parent is not the starting vertex, do
+   3.1 Make this parent vertex as the current vertex
+   3.2 Add the current vertex into the output path at the first position
+   3.3 Get the parent of the current vertex from the *parent* dictionary
+4. Add the parent of the current vertex into the output path at the first position
+```
+
+Let's implement and test these steps. 
+
+### (I)mplement and (T)est
+
+As shown in the previous section, we can actually breakdown our solution into two distinct steps. The first one is to get the parent dictionary. Once we have this parent dictionary, the second step is to get the list of points in our path. So we will create three functions for this. The first one is the overall function which will call the other two functions. 
+
+We start with the following function headers.
+
+```python
+def create_path(start: str,
+                end: str,
+                map: dict[str, list[str]]) -> dict[str, str]:
+    parent_tree: dict[str, str] = {}
+    # our code here
+    return parent_tree
+
+def get_path(start: str,
+             end: str,
+             parent_tree: dict[str, str]) -> list[str]:
+    path: list[str] = []
+    # our code here
+    return path
+
+def get_cycling_path(start: str, 
+                     end: str, 
+                     map: dict[str, list[str]]) -> list[str]:
+    parent_tree: dict[str, str] = create_path(start, end, map)
+    output_path: list[str] = get_path(start, end, parent_tree)
+    return output_path
+```
+
+We save the above file into `cycling_path.py`. We have also indicated the type hints for the input and output of each function. We can run mypy on this and it should return no error.
+
+```sh
+$ mypy cycling_path.py 
+Success: no issues found in 1 source file
+```
+
+Notice that in `get_cycling_path()` function, we call the other two functions which are `create_path()` and `get_path()`. We will now work on writing test and implementation for each of these two functions. 
+
+Let's start with `create_path()` function. To test it, we need to create our dictionary and provide the input.
+
+```python
+cycling_map: dict[str, list[str]] = {"A": ["B", "D"],
+                                     "B": ["A", "C"],
+                                     "C": ["B", "D", "F"],
+                                     "D": ["A", "C", "E"],
+                                     "E": ["D", "F"],
+                                     "F": ["C", "E"]}
+parent_tree: dict[str, str] = create_path("A", "F", cycling_map)
+print(parent_tree)
+```
+
+We will now only show the code inside `create_path()` using the test code above. Running mypy and python on the file now produces an empty dictionary.
+
+```sh
+$ mypy cycling_path.py
+Success: no issues found in 1 source file
+$ python cycling_path.py 
+{}
+```
+
+We can start implementing the steps to get the parent dictionary. Let's copy the steps here again for easy reference.
+
+```
+1. Create an empty list for *visited* and *to_explore*. 
+   Create an empty dictionary for *parent*.
+2. Add start vertex to *to_explore* list.
+3. As long as there is an item in *to_explore* list
+   3.1 Take out the next vertex to explore from the *to_explore* list.
+   3.2 Get the neighbours of this vertex.
+   3.3 For every vertex in the neighbouring vertex, do
+       3.3.1 If this neighbouring vertex is our destination vertex, do
+             3.3.1.1 Add this neighbouring vertex to the *parent* dictionary
+             3.3.1.2 Exit the search
+       3.3.2 Otherwise, if the neighbouring vertex is not in the *visited* list, do
+             3.3.2.1 Add the neighbouring vertex to the *visited* list
+             3.3.2.2 Add the neighbouring vertex to the *to_explore* list
+```
+
+We can start with step 1 and 2. 
+
+```python
+def create_path(start: str,
+                end: str,
+                map: dict[str, list[str]]) -> dict[str, str]:
+    parent_tree: dict[str, str] = {}
+    visited: list[str] = []
+    to_explore: list[str] = [start]
+    return parent_tree
+```
+
+Note that we have combined step 1 and 2 for `to_explore` list. In the code above, instead of creating an empty list, we immediatelly add the starting vertex to `to_explore` list.
