@@ -66,6 +66,29 @@ Once we know how to create a List, we can now show some of the common basic oper
 
 Notice that we can access the first element from index 0 and the last element from size of list minus 1, i.e. `len(my_steps) - 1`. We can also use the negative index where -1 refers to the last element. In the example above, -2 index will refer to the second last element, which is 50. 
 
+### Checking If an Element is in a List
+
+So we know how to read a value in a list. There are many cases when we are only interested to know if a certain item is in the list. Is it in the list or not? If it is maybe we will do some processing but if it is not, we may do something else. Python provides `in` operator to check if an object is in the list.
+
+```python
+>>> my_steps = [40, 50, 43]
+>>> 40 in my_steps
+True
+>>> 43 in my_steps
+True
+>>> 53 in my_steps
+False
+```
+
+Usually, we use the `in` operator with the if-statement.
+
+```python
+if item in list:
+  do_something()
+else:
+  do_something_else()
+```
+
 ### Modifying an Element in a List
 
 The get item operator can be used together with the assignment operator `=` to change an element in the list. 
