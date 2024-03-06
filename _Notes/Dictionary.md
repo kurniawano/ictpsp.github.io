@@ -1175,7 +1175,7 @@ if n not in parent_tree:
   parent_tree[n] = current_vertex
 ``` 
 
-The above code means that we only add into the parent tree if the entry does not exist in the dictionary. The final code is shown below.
+The above code means that we only add into the parent tree if the entry does not exist in the dictionary. The code is shown below.
 
 ```python
 def create_path(start: str,
@@ -1264,14 +1264,63 @@ Found the end
 {'B': 'A', 'D': 'A', 'A': 'B', 'C': 'B', 'E': 'D', 'F': 'C'}
 ```
 
-Notice that now the parent of D is A and no longer C. With this, we can create a path from A to F. 
+Notice that now the parent of D is A and no longer C. But, you may notice one wrong entry there. We see there is this `'A': 'B'` which means that A has B as its parent. Recall that A is the starting vertex and it should not have any parent. This happens because whenever we create an entry in the parent tree dictionary, we do the following check.
+
+```python
+if n not in parent_tree:
+    parent_tree[n] = current_vertex
+```
+
+But A is not in the parent_tree at all and so it was added when exploring the neighbours of B. To fix this, we need to think how to represent the root vertex of our tree. A root vertex is the node or the vertex at the top which has no parent at all. One way, is to represent this with an empty string. This means that instead of initializing our `parent_tree` dictionary with an empty dictionary, we can initialize it with the root vertex as shown below.
+
+```python
+parent_tree: dict[str, str] = {start: ''}
+```
+
+This means that A has no parent. The final code is given below.
+
+```python
+def create_path(start: str,
+                end: str,
+                map: dict[str, list[str]]) -> dict[str, str]:
+    parent_tree: dict[str, str] = {start: ''}
+    # our code here
+    visited: list[str] = [start]
+    to_explore: list[str] = [start]
+    while len(to_explore) != 0:
+        # print('---')
+        current_vertex: str = to_explore.pop(0)
+        # print(f'Exploring {current_vertex}')
+        neighbours = map[current_vertex]
+        for n in neighbours:
+            # print(f'neighbour: {n}')
+            if n not in parent_tree:
+                parent_tree[n] = current_vertex
+            if n == end:
+                # print('Found the end')
+                return parent_tree
+            elif n not in visited:
+                # print(f'Adding {n} to the list of vertices to explore')
+                visited.append(n)
+                to_explore.append(n)
+            # print(f'To explore list: {to_explore}')
+            # print(f'Visited list: {visited}')
+            # print(f'Parent tree: {parent_tree}')
+    return parent_tree
+```
+
+We have commented out all the print statement so that it can just output the return value of the function. With the correct parent tree, we can create a path from A to F. The final output of the parent tree dictionary is shown below.
+
+```sh
+{'A': '', 'B': 'A', 'D': 'A', 'C': 'B', 'E': 'D', 'F': 'C'}
+```
 
 #### Implementing the Output Path
 
 In order to start implementing `get_path()`, we can write another test code. We can copy the output of dictionary as an input to this function. Let's write a test code to drive the implementation of `get_path()`.
 
 ```python
-parent_tree: dict[str, str] = {'B': 'A', 'D': 'A', 'A': 'B', 'C': 'B', 'E': 'D', 'F': 'C'}
+parent_tree: dict[str, str] = {'A': '', 'B': 'A', 'D': 'A', 'C': 'B', 'E': 'D', 'F': 'C'}
 path: list[str] = get_path('A', 'F', parent_tree)
 print(path)
 ```
