@@ -291,9 +291,146 @@ $ python matching_users_region.py
 The output currently is an empty dictionary. We will not go through the PCDIT steps in detail for this function but please work it out yourself and see if you can write this function yourself. We will just show the final function below.
 
 ```python
+def generate_region_dict(user_dict: dict[str, str]) -> dict[str, list[str]]: 
+    output: dict[str, list[str]] = {}
+    for user in user_dict:
+        region = user_dict[user]
+        if region in output:
+            output[region].append(user)
+        else:
+            output[region] = [user]
+    return output
+```
+
+The output is shown below.
+
+```sh
 $ mypy matching_users_region.py  
 Success: no issues found in 1 source file
 $ python matching_users_region.py
 {'West': ['John', 'Mary'], 'East': ['Jane', 'Nat'], 'North': ['Joe'], 'Central': ['Brad'], 'North East': ['Robin']}
 ```
 
+Since the users are unique and the sequence of the user in a particular region is not significant, it is better to represent this dictionary using a set instead of a list. We can rewrite our function in a different way as follows.
+
+```python
+def generate_region_dict(user_dict: dict[str, str]) -> dict[str, set[str]]: 
+    output: dict[str, set[str]] = {}
+    for user in user_dict:
+        region = user_dict[user]
+        if region in output:
+            output[region].add(user)
+        else:
+            output[region] = {user}
+    return output
+```
+
+Notice a few part that changes. First, when a new region is found and it is not in the output dictinary, we created a set instead of a list.
+
+```python
+output[region] = {user}
+```
+
+Second, instead of using `.append()` when adding a user to a region already existing in the output dictionary, we use `.add()` method which belongs to set object.
+
+```python
+output[region].add(user)
+```
+
+Lastly, we have changed the type of our returned value. Now, the value of our dictionary is a set. We do this in our function header.
+
+```python
+def generate_region_dict(user_dict: dict[str, str]) -> dict[str, set[str]]: 
+```
+
+We also modified the initialization when creating the output dictionary.
+
+```python
+output: dict[str, set[str]] = {}
+```
+
+The output now looks as follows.
+
+```sh
+$ python matching_users_region.py 
+{'West': {'Mary', 'John'}, 'East': {'Jane', 'Nat'}, 'North': {'Joe'}, 'Central': {'Brad'}, 'North East': {'Robin'}}
+```
+
+With this, we can create some useful functions. The first function, we will create is a function to create a new combined region. For example, let's say we want to see who are the users in the North East and East region. We can create a new dictionary entry called "North East - East" with all the users in these two regions. Let's start by writing the test code.
+
+```python
+ne_e_regions: dict[str, set[str]] = create_combined_region_dict(regions_dict, 'North East', 'East')
+print(ne_e_regions)
+```
+
+Notice that we expect this function to return a new dictionary with the same type. The input to this function is `region_dict` which is the output of the previous function `generate_region_dict()`. 
+
+We can start with the function header and initializing a new dictionary by copying the input argument dictionary.
+
+```python
+def create_combined_region_dict(region_dict: dict[str, set[str]], r1, r2) -> dict[str, set[str]]:
+    output: dict[str, set[str]] = copy.deepcopy(region_dict)
+    # your code here
+    return output
+```
+
+We used `deepcopy` function to make sure that the dictionary with all the values are copied as a separate distinct object. What we will do now is to add a new entry into the dictionary. However, we will do this only if the region `r1` and `r2` exist in the dictionary. Otherwise, we can just return the dictionary as it is.
+
+```python
+def create_combined_region_dict(region_dict: dict[str, set[str]], r1, r2) -> dict[str, set[str]]:
+    output: dict[str, set[str]] = copy.deepcopy(region_dict)
+    if r1 not in region_dict or r2 not in region_dict:
+        return output
+    return output
+```
+
+In the code above, we have added the if-statement to check if the two regions we want to combine exist in the dictionary or not. If one of them does not exist, we will just return the output and exit the function immediately. 
+
+When both regions exists, we can create a new entry. The key will a combined word of the two regions separated by a dash, i.e. `-`. 
+
+```python
+output[r1 + ' - ' + r2] = # something
+```
+
+And the value will be a union of the two sets, i.e. 
+
+```python
+region_dict[r1] | (region_dict[r2])
+``` 
+
+So we can write our function as follows.
+
+```python
+def create_combined_region_dict(region_dict: dict[str, set[str]], r1, r2) -> dict[str, set[str]]:
+    output: dict[str, set[str]] = copy.deepcopy(region_dict)
+    if r1 not in region_dict or r2 not in region_dict:
+        return output
+    output[r1 + ' - ' + r2] = region_dict[r1] | (region_dict[r2])
+    return output
+```
+
+The output of this function given the previous input is shown below.
+
+```sh
+{'West': {'Mary', 'John'}, 'East': {'Jane', 'Nat'}, 'North': {'Joe'}, 
+'Central': {'Brad'}, 'North East': {'Robin'}, 
+'North East - East': {'Robin', 'Jane', 'Nat'}}
+```
+
+Notice that we have a new entry, `North East - East`, in our dictionary. This entry has Robin, Jane and Nat, who are the users in the these two regions. So our app can match these three users to have a cycling activity together. We create any combinations that we want. For example, now we can use the same function to create `North East - East - Central` region.
+
+```python
+ne_e_c_regions: dict[str, set[str]] = create_combined_region_dict(ne_e_regions, 'North East - East', 'Central')
+print(ne_e_c_regions)
+```
+
+In the code above, we feed the previous dictionary containing our first combined region to generate a new region `North East - East - Central`. The output is shown below.
+
+```sh
+{'West': {'Mary', 'John'}, 'East': {'Jane', 'Nat'}, 'North': {'Joe'}, 
+'Central': {'Brad'}, 'North East': {'Robin'}, 
+'North East - East': {'Robin', 'Jane', 'Nat'}, 
+'North East - East - Central': {'Robin', 'Jane', 'Brad', 'Nat'}}
+```
+
+The best part is that we don't need to create a new function for this. We are able to get all the users in these three regins. Now, Brad from Central region is added into the set.
