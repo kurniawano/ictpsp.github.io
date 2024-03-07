@@ -34,7 +34,7 @@ SyntaxError: invalid syntax
 
 In the above code, the multiplication operator only has the left operand and it gives a `SyntaxError`. 
 
-We can think of operator as another primitive abstraction concept of a computation. Recall that every computation may take in output and produce output. In this case, an operator takes in the operands as its input. Moreover, the operator is evaluated and produces an output value. Python evaluates the expression and produces a value.  For example, in the expression `steps * 2`, Python first evaluates the variable reference `steps` and get its value. This value and a literal integer of `2` are the operands. Python then evaluates the multiplication using these two operands as the input to the multiplication function. In this way, operators are convinient way of expression a computation as compared to having call a function such as the following.
+We can think of operator as another primitive abstraction concept of a computation. Recall that every computation may take in output and produce output. In this case, an operator takes in the operands as its input. Moreover, the operator is evaluated and produces an output value. Python evaluates the expression and produces a value.  For example, in the expression `steps * 2`, Python first evaluates the variable reference `steps` and get its value. This value and a literal integer of `2` are the operands. Python then evaluates the multiplication using these two operands as the input to the multiplication function. In this way, operators are convenient way of expressing a computation as compared to calling a function such as the following.
 
 ```python
 cadence = multiply(steps, 2)
@@ -418,7 +418,7 @@ Success: no issues found in 1 source file
 The output when running `python` is as follows.
 
 ```sh
-python 05_calculate_speed_5.py 
+$ python 05_calculate_speed_5.py 
 213740.50018173413
 213740.50018173413
 ```
@@ -465,6 +465,18 @@ $ python 06_calculate_speed_6.py
 The reason is that the return value still returning `speed` instead of `speed_kmh`. We can fix this by changing the return variable to `speed_kmh`. 
 
 ```python
+import math
+def calculate_speed(cadence: int,
+                    diameter: float = 685.8,
+                    tire_size: float = 38.1,
+                    chainring: int = 50,
+                    cog: int = 14) -> float:
+    
+    gear_ratio: float = chainring / cog
+    speed: float = math.pi * (diameter + (2 * tire_size)) \
+          * gear_ratio * cadence
+    speed_kmh: float = speed * 60 / 1_000_000
+    return speed_kmh
 ```
 
 Now, we get the output that we expected.
