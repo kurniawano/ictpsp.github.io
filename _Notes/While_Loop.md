@@ -44,7 +44,7 @@ The syntax for the while-loop has four main parts:
 Let's take a look at some example. First, let's redo some of the iterative structure in the previous lesson but this time using the `while` statement. The first code we had previously is like the one below here.
 
 ```python
-name = "John Wick"
+name:str = "John Wick"
 for char in name:
   print(char)
 ```
@@ -52,15 +52,15 @@ for char in name:
 How can we write this code using `while` statement. First, we need the code for initialzing the condition and think what that condition would be. We can use a variable to index each of the character in name and we can stop the iteration when the index exceed the last character in the string.
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 # code to initialize for the while loop condition
 # we will use index to access the character in a string
-idx = 0 
+idx: int = 0 
 
 # while loop statement with condition
 while idx < len(name):
   # block A
-  char = name[idx]
+  char: str = name[idx]
   print(char)
 
   # block B
@@ -84,7 +84,7 @@ How would we write the code above using `while` statement? Let's start with thin
 
 ```python
 # code to initialize
-item = 10
+item: int = 10
 
 # while statement
 while item < 100:
@@ -104,11 +104,11 @@ In this case, our initialization is simply to set the variable `item` to 10. The
 In the previous examples, we implemented iterative structure using `while` statement which we convert from the `for-in` statement. The `while` statement is general enough that it can do what `for-in` statement can do. When dealing with *iterable* data types, it is easier and more natural to use `for-in` statement as we iterate for every item in the iterable or in the collection. The `while` statement is used more naturally when there is no obvious iterable data or collection data that we work on. It is also more natural to use the `while` statement when we do not know beforehand how many iteration is needed. An example of this is when users login unsuccessfuly. In this case, the user is presented with the login page repeatedly until he or she enters the right password. Let's write a simple Python code to test this.
 
 ```python
-username = 'user1'
-password = 'password4user1'
+username: str = 'user1'
+password: str = 'password4user1'
 # code to initialize
-username_inp = input("Username: ")
-password_inp = input("Password: ")
+username_inp: str = input("Username: ")
+password_inp: str = input("Password: ")
 
 # while loop with condition
 while (username_inp != username) or (password_inp != password):
@@ -144,7 +144,7 @@ Another example for iterative structure that best implemented using the `while` 
 In the example below, we will show you another simple example in playing games where using while loops is more intuitive as compared to for loop. For example, you have a chatbot that can play guessing game with you. At the end of the game, the chatbot will ask if you want to play another game. If you say yes, it will generate a new guessing game. If you say no, however, it will end the game playing. We can have something like this.
 
 ```python
-continue_playing = True
+continue_playing: bool = True
 while continue_playing:
   play_guessing_game()
   continue_playing = ask_user_to_continue()
@@ -246,25 +246,25 @@ We have modified our algorithm in a few significant ways. First we use index 0 t
 Let's start our **I**mplement step and **T**esting step together.  We will write the code step by step and  print the values along the way to check our code. 
 
 ```python
-data = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
+data: str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
 
-arrow = 0
+arrow: int = 0
 # initialize condition
-found_fullstop = False
+found_fullstop: bool = False
 ```
 
 In the above, we have done the initialize variable `found_fullstop` that would be used in the `while` condition. We have initialized `arrow` as well. You can choose to print the value of the `arrow` but we will skip it here as we know it will be 0. Our next step is to write the while condition. It is important to write a print statement once we write our loop. However, in order to ensure that our loop terminates, we need to write our block B which is the code to ensure loop termination. The question is what should be this code? Since the condition of the while loop termination is whether we find the fullstop or not, we need some code to check if the character is a fullstop, if it is, then we should change the variable to indicate that we have found the full stop. Let's write all these below.
 
 ```python
-data = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
+data: str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
 
-arrow = 0
+arrow: int = 0
 # initialize condition
-found_fullstop = False
+found_fullstop: bool = False
 # while statement
 while  not found_fullstop:
   # block A
-  char = data[arrow]
+  char: str = data[arrow]
   print(char)
   # block B
   if char == '.':
@@ -278,15 +278,15 @@ You can run the above code using Python Tutor and it will display the first sent
 However, the program actually displays "V" and it enters into an infinite loop. What happens? As you can observe, "V" is the first character and it seems that the program never moves to the next character. The reason is that we have not implemented step 3.3 to increase the arrow position. Let's fix that.
 
 ```python
-data = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
+data: str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
 
-arrow = 0
+arrow: int = 0
 # initialize condition
-found_fullstop = False
+found_fullstop: bool = False
 # while statement
 while  not found_fullstop:
   # block A
-  char = data[arrow]
+  char: str = data[arrow]
   print(char)
   # block B
   if char == '.':
@@ -301,15 +301,15 @@ Now, the code does print the first sentence. So we have created our while-loop s
 Our next step is to check if the character is a comma or not. If it is, then we will print out the position. As you can see from the "check" keyword, it is a branch structure and we will use *if-statement* to implement this.
 
 ```python
-data = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
+data: str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
 
-arrow = 0
+arrow: int = 0
 # initialize condition
-found_fullstop = False
+found_fullstop: bool = False
 # while statement
 while  not found_fullstop:
   # block A
-  char = data[arrow]
+  char: str = data[arrow]
   if char == ',':
     print(f"A comma at position {arrow + 1}.")
   # block B
@@ -333,25 +333,6 @@ Try running the code step by step using Python Tutor.
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=data%20%3D%20%22%22%22Violence%20does,%20in%20truth,%20recoil%20upon%20the%20violent,%20and%20the%20schemer%20falls%20into%20the%20pit%20which%20he%20digs%20for%20another.%20Let%20us%20thrust%20this%20creature%20back%20into%20its%20den,%20and%20we%20can%20then%20remove%20Miss%20Stoner%20to%20some%20place%20of%20shelter%20and%20let%20county%20police%20know%20what%20has%20happened.%22%22%22%0A%0Aarrow%20%3D%200%0A%23%20initialize%20condition%0Afound_fullstop%20%3D%20False%0A%23%20while%20statement%0Awhile%20%20not%20found_fullstop%3A%0A%20%20%23%20block%20A%0A%20%20char%20%3D%20data%5Barrow%5D%0A%20%20if%20char%20%3D%3D%20','%3A%0A%20%20%20%20print%28f%22A%20comma%20at%20position%20%7Barrow%20%2B%201%7D.%22%29%0A%20%20%23%20block%20B%0A%20%20if%20char%20%3D%3D%20'.'%3A%0A%20%20%20%20found_fullstop%20%3D%20True%0A%20%20arrow%20%2B%3D%201&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-It is also a good exercise to rewrite the above code with some type annotation. See below the version with type annotation.
-
-```python
-data:str = """Violence does, in truth, recoil upon the violent, and the schemer falls into the pit which he digs for another. Let us thrust this creature back into its den, and we can then remove Miss Stoner to some place of shelter and let county police know what has happened."""
-
-arrow:int = 0
-# initialize condition
-found_fullstop:bool = False
-# while statement
-while  not found_fullstop:
-  # block A
-  char:str = data[arrow]
-  if char == ',':
-    print(f"A comma at position {arrow + 1}.")
-  # block B
-  if char == '.':
-    found_fullstop = True
-  arrow += 1
-```
 
 Running `mypy` and `python` output the following.
 
