@@ -349,7 +349,7 @@ Notice that Python does not produce any output in the standard output since we d
 To see what happens if we have a wrong **I**mplementation, let's try changing our implementation purposely to introduce a wrong implementation. Let's use `**` instead of `*` in our calculation. 
 
 ```python
-def compute_cadence_for_30sec(steps):
+def compute_cadence_for_30sec(steps: int) -> int:
   return steps ** 2
 
 assert compute_cadence_for_30sec(10) == 20
