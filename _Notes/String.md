@@ -395,7 +395,7 @@ My name, John Wick      , has          9 characters.
 You may notice some extra space in `John Wick      ` at the end of the name and some extra space in `         9` before the number 9. What happens is that Python reserves 15 spaces for `name` and 10 spaces for `len(name)`. You may also notice that for string data it is left-aligned by default while for number data is right-aligned. You can change this using the alignment format specifier, i.e. `<` for left-aligned and `>` for right-aligned.
 
 ```python
->>> reply = f"My name, {name:>15}, has {len(name):<10d} characters."
+>>> reply: str = f"My name, {name:>15}, has {len(name):<10d} characters."
 >>> print(reply)
 My name,       John Wick, has 9          characters.
 ```
