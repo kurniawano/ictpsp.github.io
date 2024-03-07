@@ -434,3 +434,7 @@ In the code above, we feed the previous dictionary containing our first combined
 ```
 
 The best part is that we don't need to create a new function for this. We are able to get all the users in these three regins. Now, Brad from Central region is added into the set.
+
+## Summary
+
+In this section, we cover a new data type called set which is very useful when we are dealing with set operations. The key difference is that all the elmenents in the set are unique. Set data type makes it easy to perform some operations that would take us write lines of codes if we were to do using list. Understanding when a set is suitable is an important step in writing a good code.
