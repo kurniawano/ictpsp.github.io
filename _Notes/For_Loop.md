@@ -45,7 +45,7 @@ Let's take a look at some examples how to use that syntax. Let's say, we want to
 
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for char in name:
   print(char)
 ```
@@ -60,7 +60,7 @@ In the above code, the instruction that is repeated for every element (code bloc
 One common mistakes that many novice programmers tend to do is processing the collection as a whole when what they wanted is processing the element. An example of this logic error is printing the whole name repetitively instead of printing the characters.
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for char in name:
   print(name)
 ```
@@ -74,7 +74,7 @@ Notice that instead of printing each character on every line, what the code does
 Sometimes, you just want to repeat based on the number of element in the collection. In that case, you don't really use the element in the collection. As mentioned previously, you can ignore the element using an underscore, i.e. `_`. The code below print asterisks as many as the number of characters in the password.
 
 ```python
-password = "D0n't us3 simpl3 passw0rd#"
+password: str = "D0n't us3 simpl3 passw0rd#"
 for _ in password:
   print('*', end='')
 ```
@@ -88,7 +88,7 @@ In the above code we use the option `end=''` to replace the default new line cha
 There are times when it is useful to work with both the element and the index of a collection-like data. For example, we can get both the character and its index from a string. To do this, Python provides `enumerate()` function that returns a tuple of `(index, element)`. 
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for (idx, char) in enumerate(name):
   print(f"Character {char} is at position: {idx + 1})
 ```
@@ -148,9 +148,9 @@ Notice again that `100` is excluded. In that range function, we put our starting
 Range function is useful when we need an index of each character or element of a collection data type. We can rewrite our previous code where we used `enumerate()` in a different way using `range()` function. See below.
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for idx in range(len(name)):
-  char = name[idx]
+  char: str = name[idx]
   print(f"Character {char} is at position: {idx + 1}")
 ```
 
@@ -166,9 +166,9 @@ Iterative structure can be complicated, especially when you have a number of com
 Let's start with our last code.
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for idx in range(len(name)):
-  char = name[idx]
+  char: str = name[idx]
   print(f"Character {char} is at position: {idx + 1}")
 ```
 
@@ -177,7 +177,7 @@ First, we can note that `range(len(name))` will be evaluated from the inside to 
 It is useful then, to use print statement to print `idx` values at each iteration. 
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for idx in range(len(name)):
   print(idx)
 ```
@@ -206,16 +206,16 @@ What we have put in the columns are the various expression in the body of the lo
 - `idx + 1`
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for idx in range(len(name)):
-  char = name[idx]
+  char: str = name[idx]
   print(f"Character {char} is at position: {idx + 1}")
 ```
 
 Notice that the table is similar to the output of the code when it is at the following state.
 
 ```python
-name = "John Wick"
+name: str = "John Wick"
 for idx in range(len(name)):
   print(idx)
 ```
@@ -245,7 +245,7 @@ Iterative structure is easy to identify. Whenever you have some steps or calcula
 Let's see this by looking at an example. Given a message, we want to encrypt the message using a fibonacci sequence. Let's say we have a message as follows.
 
 ```python
-message = """Let us cycle tomorrow at 4pm starting from City Hall"""
+message: str = """Let us cycle tomorrow at 4pm starting from City Hall"""
 ```
 
 We would like, for some reason, to encrypt that message using a [Caesar Cipher](https://www.cryptomuseum.com/crypto/caesar/cipher.htm). The encryption and decryption is simple. Each letter of the plaintext is shifted down by 3 position. Here is a table of characters and its encrypted letters after shift.
@@ -335,8 +335,8 @@ Here, we can identify the repetition and its iterative structure. Steps 3 to 4 i
 ```
 input: message -> string data type
 output: encrypted message -> string data type
-1. Convert *message* to all capital letters, name it as *message_in_caps*.
-2. Create an empty string for output, name it as *result*.
+1. Create an empty string for output, name it as *result*.
+2. Convert *message* to all capital letters, name it as *message_in_caps*.
 3. For each character in *message_in_caps*
    3.1 Get the character
    3.2 Shift down the character by three letters
@@ -348,8 +348,8 @@ We have revised our algorithm one time. We can refine it again by looking at how
 ```
 input: message -> string data type
 output: encrypted message -> string data type
-1. Convert *message* to all capital letters, name it as *message_in_caps*.
-2. Create an empty string for output, name it as *result*.
+1. Create an empty string for output, name it as *result*.
+2. Convert *message* to all capital letters, name it as *message_in_caps*.
 3. For each character in *message_in_caps*
    3.1 Get the character
    3.2 Change the character to ASCII number
@@ -363,45 +363,41 @@ I hope you notice that PCDIT framework is not linear. We go back and forth even 
 Let's start with a simple test code and a function definition.
 
 ```python
-def encrypt(message):
-  pass
+def encrypt(message: str) -> str:
+  result: str = ""
+  # your code here
+  return result
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
+In the function definition, we specify that our input argument is a string and this function will return the encrypted string. On top of that, we have done step 1 which is to create an empty string to store our output result.
+
 The first thing we may want to do is simply to print the input arguments and see what kind of value and data type it is.
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20print%28message%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20print%28message%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 If you run the code to the end, you will see the input message displayed and `None`. The output `None` comes from the `print(output)`. The reason is that our function does not return anything and so by default Python returns a `None` object. This is the one displayed by `print(output)`. 
 
 Now, let us do step 1.
 
 ```python
-def encrypt(message):
-  message_in_caps = message.upper()
+def encrypt(message: str) -> str:
+  result: str = ""
+  message_in_caps: str = message.upper()
   print(message_in_caps)
+  return result
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20print%28message_in_caps%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20print%28message_in_caps%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-We can observe that now we have `message_in_caps` with the message in all capital letters. Now, we are ready to start encrypting the letters. The next step is to create an empty string. Let's do that first.
-
-```python
-def encrypt(message):
-  message_in_caps = message.upper()
-  result = ""
-
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
-print(output)
-```
+We can observe that now we have `message_in_caps` with the message in all capital letters. Now, we are ready to start encrypting the letters. 
 
 Now, we are going to iterate every character in `message_in_caps`. We are going to a few things for each character that will be repeated again and again. These are:
 
@@ -418,59 +414,59 @@ Now, we are going to iterate every character in `message_in_caps`. We are going 
 Let's implement this iteration using the `for-in` statement. The variable on the left-hand side of the `in` operator captures the character for each iteration. 
 
 ```python
-def encrypt(message):
-  message_in_caps = message.upper()
-  result = ""
+def encrypt(message: str) -> str:
+  result: str = ""
+  message_in_caps: str = message.upper()
   for char in message_in_caps:
     print(char)
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20result%20%3D%20%22%22%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20print%28char%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20print%28char%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 In order to change the character to ASCII number as in step 3.2, we can use `ord()` function. Similarly, we can use the `chr()` function to change from ASCII to character to do step 3.4. 
 
 ```python
-def encrypt(message):
-  message_in_caps = message.upper()
-  result = ""
+def encrypt(message: str) -> str:
+  result: str = ""
+  message_in_caps: str = message.upper()
   for char in message_in_caps:
     print(ord(char))
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20result%20%3D%20%22%22%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20print%28ord%28char%29%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=113&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20print%28ord%28char%29%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 So we can implement steps 3.2 to 3.5 in a single line as follows.
 
 ```python
-def encrypt(message):
-  message_in_caps = message.upper()
-  result = ""
+def encrypt(message: str):
+  result: str = ""
+  message_in_caps: str = message.upper()
   for char in message_in_caps:
     result += chr(ord(char) - 3)
     print(result)
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20result%20%3D%20%22%22%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20result%20%2B%3D%20chr%28ord%28char%29%20-%203%29%0A%20%20%20%20print%28result%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20result%20%2B%3D%20chr%28ord%28char%29%20-%203%29%0A%20%20%20%20print%28result%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 However, we noticed that the spacing is not preserved. Let's say, if we want to preserve the spacing in the encrypted message as a spacing as well, we can modify our algorithm as follows.
 
 ```
 input: message -> string data type
 output: encrypted message -> string data type
-1. Convert *message* to all capital letters, name it as *message_in_caps*.
-2. Create an empty string for output, name it as *result*.
+1. Create an empty string for output, name it as *result*.
+2. Convert *message* to all capital letters, name it as *message_in_caps*.
 3. For each character in *message_in_caps*
    3.1 Get the character
    3.2 If the character is a space
@@ -485,9 +481,9 @@ output: encrypted message -> string data type
 Now, we not only see iteration but we see a branch structure inside the iteration. 
 
 ```python
-def encrypt(message):
-  message_in_caps = message.upper()
-  result = ""
+def encrypt(message: str):
+  result: str = ""
+  message_in_caps: str = message.upper()
   for char in message_in_caps:
     if char == " ":
       result += char
@@ -495,21 +491,21 @@ def encrypt(message):
       result += chr(ord(char) - 3)
     print(result)
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20result%20%3D%20%22%22%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20if%20char%20%3D%3D%20%22%20%22%3A%0A%20%20%20%20%20%20result%20%2B%3D%20char%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20result%20%2B%3D%20chr%28ord%28char%29%20-%203%29%0A%20%20%20%20print%28result%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20if%20char%20%3D%3D%20%22%20%22%3A%0A%20%20%20%20%20%20result%20%2B%3D%20char%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20result%20%2B%3D%20chr%28ord%28char%29%20-%203%29%0A%20%20%20%20print%28result%29%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 Now, we can see some spaces in the encrypted message. This may be easier to break, but that's ok. This encryption, is just for fun and it's good to illustrate how we can have a branch structure inside an iteration structure. 
 
 All this while, we still use print to test our code. Now, we can return `result` as an output of the function when we are sure this is what we want for the `encrypt()` function. The final code looks something like the following.
 
 ```python
-def encrypt(message):
-  message_in_caps = message.upper()
-  result = ""
+def encrypt(message: str) -> str:
+  result: str = ""
+  message_in_caps: str = message.upper()
   for char in message_in_caps:
     if char == " ":
       result += char
@@ -517,20 +513,20 @@ def encrypt(message):
       result += chr(ord(char) - 3)
   return result
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20result%20%3D%20%22%22%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20if%20char%20%3D%3D%20%22%20%22%3A%0A%20%20%20%20%20%20result%20%2B%3D%20char%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20result%20%2B%3D%20chr%28ord%28char%29%20-%203%29%0A%20%20return%20result%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20if%20char%20%3D%3D%20%22%20%22%3A%0A%20%20%20%20%20%20result%20%2B%3D%20char%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20result%20%2B%3D%20chr%28ord%28char%29%20-%203%29%0A%20%20return%20result%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 Oops. There is something wrong with the code. Upon checking the output. It seems that `A` is translated to `>`. In our table, above, `A` should be translated as `X`. The reason is that we do not use modular arithmetic to calculate our translation. This means that our character can exceed the range that we have specified. To ensure that the character to be kept within `A-Z`, we can do the following modular arithmetic. 
 
 ```python
-def encrypt(message):
-  base = ord('A')
-  message_in_caps = message.upper()
-  result = ""
+def encrypt(message: str) -> str:
+  result: str = ""
+  base: int = ord('A')
+  message_in_caps: str = message.upper()
   for char in message_in_caps:
     if char == " ":
       result += char
@@ -538,13 +534,13 @@ def encrypt(message):
       result += chr((((ord(char) - base) - 3) % 26 ) + base)
   return result
 
-input_message =  "Let us cycle tomorrow at 4pm starting from City Hall"
-output = encrypt(input_message)
+input_message: str =  "Let us cycle tomorrow at 4pm starting from City Hall"
+output: str = encrypt(input_message)
 print(output)
 ```
 
 What we did is simply set the ASCII number for `A` as the `base`. So we subtract any number by this base. This ensures the numbers are from 0 to 25 for 26 letters. Applying modulus 26 keeps the number within this range when it is subtracted by 3. When we are done, we add back `base` to get the right ASCII number. 
 
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20base%20%3D%20ord%28'A'%29%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20result%20%3D%20%22%22%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20if%20char%20%3D%3D%20%22%20%22%3A%0A%20%20%20%20%20%20result%20%2B%3D%20char%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20result%20%2B%3D%20chr%28%28%28%28ord%28char%29%20-%20base%29%20-%203%29%20%25%2026%20%29%20%2B%20base%29%0A%20%20return%20result%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20encrypt%28message%29%3A%0A%20%20result%20%3D%20%22%22%0A%20%20base%20%3D%20ord%28'A'%29%0A%20%20message_in_caps%20%3D%20message.upper%28%29%0A%20%20%0A%20%20for%20char%20in%20message_in_caps%3A%0A%20%20%20%20if%20char%20%3D%3D%20%22%20%22%3A%0A%20%20%20%20%20%20result%20%2B%3D%20char%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20result%20%2B%3D%20chr%28%28%28%28ord%28char%29%20-%20base%29%20-%203%29%20%25%2026%20%29%20%2B%20base%29%0A%20%20return%20result%0A%0Ainput_message%20%3D%20%20%22Let%20us%20cycle%20tomorrow%20at%204pm%20starting%20from%20City%20Hall%22%0Aoutput%20%3D%20encrypt%28input_message%29%0Aprint%28output%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 Now, we can see that `A` is translated correctly as `X`. 
