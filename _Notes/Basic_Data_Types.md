@@ -69,6 +69,8 @@ You can create this data in the Python shell. When you press enter, it will just
 >>> 
 ```
 
+Throughout this book, we will use `>>>` to indicate codes that are entered through a Python shell. Notice also in the above that once you press the ENTER key of our keyboard, the shell returns back the value created. You may also notice that the output string printed by the shell has single quotes instead of double quotes. This brings us to the second way of creating a string.
+
 The second way is to use a *single* single quotes. 
 
 ```python
@@ -145,6 +147,7 @@ So we now know that we can create `string` data using the various ways discussed
 To create an `int` data, we just type the literal as it is.
 
 ```python
+>>> 4321
 4321
 ```
 
@@ -158,11 +161,13 @@ When the numbers are long, you can use underscore to make it easier for human to
 On the other hand, to create a `float` data, we must make use of the `.` character to insert the decimal point. For example, to create 4321.0 data, we do either the following.
 
 ```python
+>>> 4321.0
 4321.0
 ```
 or
 ```python
-4321.
+>>> 4321.
+4321.0
 ```
 
 The `0` is not required but the `.` is required to create a `float`. 
@@ -178,17 +183,23 @@ Let's say we have a few worlds which we want to say hello. We can label each wor
 We can then say hello to each of the world. 
 
 ```python
-print("Hello World no. 1")
-print("Hello World no. 2")
-print("Hello World no. 3")
+>>> print("Hello World no. 1")
+Hello World no. 1
+>>> print("Hello World no. 2")
+Hello World no. 2
+>>> print("Hello World no.3")
+Hello World no.3
 ```
 
 Another way of doing the same thing is by typing the following.
 
 ```python
-print("Hello World no. ", 1)
-print("Hello World no. ", 2)
-print("Hello World no. ", 3)
+>>> print("Hello World no. ", 1)
+Hello World no.  1
+>>> print("Hello World no. ", 2)
+Hello World no.  2
+>>> print("Hello World no. ", 3)
+Hello World no.  3
 ```
 
 What is the different between the two codes above? In the first code, we print the world's label 1, 2 and 3 as part of a single `string` data. On the other hand, in the second code, we print two **kinds** of data. The first data `"Hello World no. "` is a `string` data type. The second of data, however, is not. The data that is displayed into the screen, i.e. `1` is an `int` data type. The comma (`,`) in between the two data is just to separate the different objects to be displayed. 
@@ -204,12 +215,12 @@ If the above code looks foreign to you, do not worry. We will discuss about the 
 
 ## Running Python Code as a Script
 
-We have been running our code in a Python shell. We enter the shell by first typing:
+We have been running our code in a Python shell. We enter the shell by first typing the following in a terminal.
 ```sh
-python
+$ python
 ```
 
-in our terminal. 
+In the above, the symbol `$` represent your terminal's prompt. It may look different depending on what kind of terminal do you use. But throughout this book, I will use `$` symbol to represent a terminal prompt. This means that the one that you have to type in the terminal is simply `python`. 
 
 The second way of running our Python's code is as a *Script*. To do this, create a new *text file* called `01_hello.py`. You may want to use code editor like Visual Studio Code, Atom, Sublime Text, etc, to do this. You can write your code and paste it into your new text file.
 
@@ -222,7 +233,7 @@ print("Hello World no. ", 3)
 After you save your text file, you can run this code by running the following command in your terminal or command prompt.
 
 ```sh
-python 01_hello.py
+$ python 01_hello.py
 ```
 
 You will see an output that looks like this.
@@ -236,7 +247,7 @@ Hello World no.  3
 The above command assumes you are in the same location as where you save your `01_hello.py`. For example, if you save your `01_hello.py` in your `/Users/my_user/Downloads`, then you need to go into that folder first. The terminal command to go to a particular location is `cd` which means change directory.
 
 ```sh
-cd ~/Downloads
+$ cd ~/Downloads
 ```
 
 In Unix-based OS, the character `~` is used to indicate the home user's directory, which is the same as `/Users/my_user/`.
@@ -244,10 +255,10 @@ In Unix-based OS, the character `~` is used to indicate the home user's director
 If you use Windows operating system, you may store it in something like `C:\Users\my_user\Downloads`. Similarly, you can open your command prompt and type the following
 
 ```dos
-cd $HOME\Downloads
+> cd $HOME\Downloads
 ```
 
-In Windows, `$HOME` stores the location to the user's home directory. 
+For Windows' prompt, I normally use `>` symbol instead of `$`.  In Windows, `$HOME` stores the location to the user's home directory. 
 
 
 ## Sequence Matters
@@ -312,7 +323,7 @@ The error says that you cannot assign something to a literal. Recall that `1` is
 
 ## Checking Data Type
 
-Python makes it easy for programmers to create variables. But this comes at a cost that programmers do not ask the question, "What kind of data is this?". When you create a variable, binds the data dynamically and does not require you to specify the type of the data. However, Python 3.6 onwards allows programmers to specify the data type as a kind of **annotation** to be checked by other programs. You can specify the previous variable as follows.
+Python makes it easy for programmers to create variables. But this comes at a cost that programmers do not ask the question, "What kind of data is this?". When you create a variable, binds the data dynamically and does not require you to specify the type of the data. However, Python 3.6 onwards allows programmers to specify the data type as a kind of **annotation** to be checked by other programs. We will use the type annotation supported by Python 3.11. You can specify the previous variable as follows.
 
 ```python
 world_index: int = 1
@@ -327,7 +338,7 @@ As you can see that `world_index` is neither `str` nor `float` and yet Python co
 To install mypy, do the following from the terminal.
 
 ```sh
-python -m pip install -U mypy
+$ python -m pip install -U mypy
 ```
 
 You can then run `mypy` on your script. To create your script. Create a text file called `02_wrong_type_hello.py` and type in the following code.
@@ -465,7 +476,7 @@ In the next instruction, we calculate the `cadence` by multiplying the number of
 You can try running the above Python code as a script. To do that, create a new file, say with the name `04_cadence_bot.py`. Paste the code into this text file. You can run the code then by typing the following into the terminal.
 
 ```sh
-python 04_cadence_bot.py
+$ python 04_cadence_bot.py
 ```
 
 The output and interaction may look like something of the following.
