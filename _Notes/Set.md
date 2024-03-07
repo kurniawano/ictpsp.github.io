@@ -76,6 +76,8 @@ We can also remove an item from a set. If we just want to remove one item, Pytho
 {1, 3, 4, 5, 31}
 ```
 
+Notice that since you can add and remove elements, a set is a mutable data type.
+
 ### Checking if an Item is a Member of a Set
 
 We can also check if an item is a member of a set using the familiar `in` operator.
