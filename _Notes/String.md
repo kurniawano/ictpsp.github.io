@@ -20,8 +20,8 @@ In our lesson [Basic Data Types]({{ "/notes/basic-data-types" | relative_url }})
 Let's recap again on how we can create `string` data. We can create string data using either a single quote or a single double quote.
 
 ```python
-str1 = 'This is a string data.'
-str2 = "This is another string data."
+str1: str = 'This is a string data.'
+str2: str = "This is another string data."
 ```
 
 We have also discussed on why Python have these two kinds of string delimiters. Other programming language may only have one way of creating a string data. For Python, it is one simply way to create a string whenenver there is an apostrophe or quotes inside that string. See example, below.
@@ -36,7 +36,7 @@ In the the first example, we have a single apostrophe in the string. Therefore, 
 We can create multi-line string data using **triple** single quotes or **triple** double quotes. 
 
 ```python
-data = '''
+data: str = '''
 Two roads diverged in a yellow wood,
 And sorry I could not travel both
 And be one traveler, long I stood
@@ -67,7 +67,7 @@ And that has made all the difference.
 
 We can do the same with a triple double quotes.
 ```python
-data = """
+data: str = """
 “Hope” is the thing with feathers -
 That perches in the soul -
 And sings the tune without the words -
@@ -96,9 +96,9 @@ Previously, in our lesson [Basic Operators]({{ "/notes/basic-operators" | relati
 We can concatenate two strings using the `+` operator. 
 
 ```python
->>> first_name = "John"
->>> last_name = "Wick"
->>> full_name = first_name + last_name
+>>> first_name: str = "John"
+>>> last_name: str = "Wick"
+>>> full_name: str = first_name + last_name
 >>> print(full_name)
 JohnWick
 ```
@@ -106,7 +106,7 @@ JohnWick
 Oops. The concatenated string does not have a space. But we can fix that by concatenating a space in between.
 
 ```python
->>> full_name = first_name + " " + last_name
+>>> full_name: str = first_name + " " + last_name
 >>> print(full_name)
 John Wick
 ```
@@ -116,7 +116,7 @@ This kind of operation is useful in many applications since usually the user pro
 We have also introduced the duplication operator `*`. For example, we can create an ASCII artwork as below.
 
 ```python
-data = 3 * " " + "*" + "\n"
+data: str = 3 * " " + "*" + "\n"
 data += 2 * " " + 3 * "*" + "\n"
 data += 1 * " " + 5 * "*" + "\n"
 data += 3 * " " + "*" + "\n"
@@ -131,7 +131,7 @@ You can see the output by running it in Python Tutor below.
 We used a few operators here. The most common one is actually the assignment operator `=`. In the first line, we created the first string and assign it to the name `data`. How did we create the first string? We have the following line.
 
 ```python
-data = 3 * " " + "*" + "\n"
+data: str = 3 * " " + "*" + "\n"
 ```
 
 In this line of code, we duplicate a single space string `" "` three times and concatenate it with a single asterisk. At the end we added a **newline character**  `"\n"` so that the next string added will be printed into a new line.  The second line added the next line to the string.
@@ -153,8 +153,8 @@ In this code, we use the compound operator `+=` which is equivalent to `data = d
 On top of that, we also learned that we can compare strings in our lesson [Boolean Data]({{ "/notes/boolean-data" | relative_url }}). We can use the relational operators such as `<`, `<=`, `>`, `>=`, `==`, `!=`. In many cases, we are actually interested to compare if two strings are equal or not equal. A common example is in many website form or login when we want to compare whether the user is in a database.
 
 ```python
->>> name_entered = 'John the Wick'
->>> name_in_database = 'John Wick'
+>>> name_entered: str = 'John the Wick'
+>>> name_in_database: str = 'John Wick'
 >>> print(name_entered == name_in_database)
 False
 ```
@@ -168,8 +168,8 @@ Now, we will introduce a few new operators that works in a collection-like data 
 The first one maybe is simply to check if some item is inside a collection. In the case of `string` data, we may want to check if a character is inside a string or if a substring is inside a string.  In this case we use the `in` operator. This operator evaluates to a boolean data because it is either true, when the substring is inside the  string, or false, when the substring is not inside  string. 
 
 ```python
->>> char = 'a'
->>> vowel = 'aiueo'
+>>> char: str = 'a'
+>>> vowel: str = 'aiueo'
 >>> print(char in vowel)
 True
 ```
@@ -177,8 +177,8 @@ True
 Similarly, we can do the same for a substring.
 
 ```python
->>> first_name = 'John'
->>> full_name = 'John Wick'
+>>> first_name: str = 'John'
+>>> full_name: str = 'John Wick'
 >>> print(first_name in full_name)
 True
 ```
@@ -188,7 +188,7 @@ True
 It is very useful to know what is the length of a collection. This means like how many items are there in a list. In the case of string data, we are interested to know what is the length of the string or how many characters are there in the string. This is done simply using the `len()` built-in function provided by Python. 
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> print(len(name))
 9
 ```
@@ -207,7 +207,7 @@ Another common operation in collection-like data is to get an element from the c
 We can get the different characters by specifying the index inside the bracket operator. The bracket operator is also called the **Get Item** operator.
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> print(name[0])
 J
 >>> print(name[5])
@@ -223,7 +223,7 @@ You can also use **negative indexing** with the bracket operator.
 | character | J  | o  | h  | n  |    | W  | i  | c  | k  |
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> print(name[-9])
 J
 >>> print(name[-4])
@@ -235,7 +235,7 @@ k
 Notice that we can get the same characters either using the positive indexing or the negative indexing. It is, however, very convinient to get the last character using the index `-1`. Otherwise, we will need to know the length of the string or the collection.  The last character is always **the length of the string minus one**. 
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> print(name[len(name) - 1])
 k
 >>> print(name[-1])
@@ -259,7 +259,7 @@ The only point to take note is that **end index** is excluded from the sliced su
 | character | J | o | h | n |   | W | i | c | k |
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> print(name[0:3])
 Joh
 >>> print(name[3:6])
@@ -284,7 +284,7 @@ Wick
 You can also provide steps in the slicing. So if you would like to get every other characters from the string, you can do something like the following.
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> print(name[::2])
 Jh ik
 >>> print(name[1::2])
@@ -311,7 +311,7 @@ Use negative index sparingly and only when it clarifies what you are trying to d
 Different programming language may implement string data type differently. Python makes its `string` data type to be **immutable**. Immutable means that you cannot change it. Once you create a string, you cannot edit it or change it.
 
 ```python
->>> name = "John Wick"
+>>> name: str = "John Wick"
 >>> name[0] = 'Z'
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -332,8 +332,7 @@ Zohn Wick
 Here, we managed to change the name from John Wick to Zohn Wick. What is important here is that `name` variable points to a new string. In order to illustrate this, we will use the built-in function `id()` to check its identity which depends on where it is located in the memory address. 
 
 ```python
-Zohn Wick
->>> name = "John Wick"
+>>> name:str = "John Wick"
 >>> id(name)
 140450800593904
 >>> name = 'Z' + name[1:]
@@ -343,16 +342,16 @@ Zohn Wick
 
 Notice that the variable `name` has two different identities number. 
 
-A number data types in Python are actually immutable such as `int` and `float`. You can check it out in the same manners.
+A number of data types in Python are actually immutable such as `int` and `float`. You can check it out in the same manners.
 
 ```python
->>> a = 1
+>>> a: int = 1
 >>> id(a)
 4544481632
 >>> a = 2
 >>> id(a)
 4544481664
->>> b = 3.
+>>> b: int = 3.
 >>> id(b)
 140450263065232
 >>> b = 3.14
@@ -369,8 +368,8 @@ There are several ways to format string data. This is particularly useful when y
 Python's formatted string literals start with `f` or `F` before the string quotes. Inside this string, you can write Python's expression within `{}`. Let's see some example.
 
 ```python
->>> name = "John Wick"
->>> greeting = f"Good day, {name}!"
+>>> name: str = "John Wick"
+>>> greeting: str = f"Good day, {name}!"
 >>> print(greeting)
 Good day, John Wick!
 ```
@@ -378,7 +377,7 @@ Good day, John Wick!
 Notice that we put the variable name as the expression within the `{}`. Not only variables, you can actually put any Python's expression there. For example, we can call the `len()` function inside this formatted string literals.
 
 ```python
->>> reply = f"My name, {name}, has {len(name)} characters."
+>>> reply: str = f"My name, {name}, has {len(name)} characters."
 >>> print(reply)
 My name, John Wick, has 9 characters.
 ```
@@ -386,7 +385,7 @@ My name, John Wick, has 9 characters.
 You can format how you want to display the evaluated data inside the `{}` in several ways. For example, you can specify the minimum width. You do this by putting `:X` after the expression where `X` is a number specifying the width.
 
 ```python
->>> reply = f"My name, {name:15}, has {len(name):10d} characters."
+>>> reply: str = f"My name, {name:15}, has {len(name):10d} characters."
 >>> print(reply)
 My name, John Wick, has 9 characters.
 >>> print(reply)
