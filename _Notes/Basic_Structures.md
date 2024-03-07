@@ -210,7 +210,7 @@ cadence_list = [45, 57, 62, 58, 55, 66, 63]
 target_cadence = 60
 ```
 
-In the above, we use the square bracket `[]` to indicate a list of data. Notice that we put only integers inside the list. This is part of what we have already indicated in our problem statement. PCDIT framework is not meant to be linear. In the case that we realize that some of the elements are not integer, we should go back to the **P**roblem statement step and revise it.
+In the above, we use the square bracket `[]` to indicate a list of data. We will talk about list in future lessons. For now, just take not that a list is a collection data type that you can use to group similar data. Notice that we put only integers inside the list. This is part of what we have already indicated in our problem statement. PCDIT framework is not meant to be linear. In the case that we realize that some of the elements are not integer, we should go back to the **P**roblem statement step and revise it.
 
 In **C**oncrete Cases, we walk through the computation as if we are the computers. This is an important exercise of computational thinking. This means that we have to think like a computing agent in doing this step. Let's do it.
 
