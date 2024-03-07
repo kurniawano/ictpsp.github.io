@@ -137,7 +137,7 @@ print(compute_cadence_for_30sec("25"))
 
 In the above code, the input argument provided is a `string` data, i.e `"25"`. Running this code results in the following.
 
-```python
+```sh
 $ python 03_cadence_str.py 
 2525
 ```
@@ -304,7 +304,7 @@ We can then use a tuple to return multiple values out of the function. For examp
 import math
 def calculate_speed(diameter: float, tire_size: float, 
                     chainring: int, cog: int, 
-                    cadence: int) -> Tuple[float, float]:
+                    cadence: int) -> tuple[float, float]:
   '''
   Calculates the speed from the given bike parameters and cadence.
 
@@ -358,12 +358,7 @@ At this point it is instructive to see the difference between a global and local
 We have added the function call and the print statement at the end of the code. We have also removed the docstring to shorten the code. At the same time, we created an Alias to define the type of the return value of the function.
 
 ```python
-Speed = Tuple[float, float]
-```
-In order to use `Tuple[float, float]`, we need to import the name `Tuple` from `typing` library. This makes `Tuple` available in your environment for type hinting. 
-
-```python
-from typing import Tuple
+Speed = tuple[float, float]
 ```
 
 We can then define `Speed` as a tuple that consists of two float values. We then use this `Speed` to annotate the return value of the function. 
@@ -439,9 +434,8 @@ The other alternative instead of using a global variable is to use optional argu
 
 ```python
 import math
-from typing import Tuple 
 
-Speed = Tuple[float, float]
+Speed = tuple[float, float]
 
 def calculate_speed(cadence: int, 
                     diameter: float = 685.8, 
