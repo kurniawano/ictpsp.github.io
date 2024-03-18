@@ -36,7 +36,7 @@ print(bmi)
 
 The above Python *code* has four lines. Python is an interpreted programming language which means that every statement will be evaluated and executed before the next one. In the code above, a Python interpretter will read the first line, i.e. `weight = 60` and do something. What does Python interpreter do? We will go into more details in future lessons but for now it is sufficient to say that Python creates an integer data and assign it to variable called `weight` in its environment. Python interpreter does this before it executes the next line, i.e. `height = 170`. 
 
-// image of interpreter process
+<img src="/ictpsp/assets/images/lesson0/interpreter.png" width=400>
 
 The second way is in using some *compiled* programming languages such as C and C++. These programming languages have  *compilers* that translates the computer codes into some object files which contain the machine level instructions to the CPU (computer processing unit). Most of the time a *linker* is used to link various object files to a *binary* files that is executable by the computer. A similar code written in C is shown below.
 
@@ -51,7 +51,7 @@ int main(void){
 
 Unlike interpreted language, where the instructions are executed line by line, the whole source code is *compiled* into an object file which is then linked into an executable file. Only then the computer executes the program.
 
-// image of compilation and linking
+<img src="/ictpsp/assets/images/lesson0/compiler.png" width=600>
 
 Since compilers take in the whole source code, they are able to do optimisation and checking on the codes. Optimisations improve the performance of the codes while checking may reduce errors before the codes is being executed. For example, variables that are not used nor initialized may produces errors or warnings during compilation time. Moreover, loops can be optimised and memory allocation can be saved by compilers too. Interpreters on the other hand do not have these advantages since the codes are executed one statement at a time. Some interpreted programming languages try to create a Just-in-time compilers to increase the performance.
 
@@ -67,7 +67,7 @@ Programming, however, is not an easy task. This is especially true for novice pr
 - Familiarity with the development environment tools
 - Analytical thinking and debugging skills
 
-// insert image of skills needed in programming
+<img src="/ictpsp/assets/images/lesson0/programming_skills.png" width=400>
 
 Each of this different skill is required for programmers to perform a single task of programming. Familiarity with a programming language used is analogous to learning a new foreign language. At the same time, knowing programmng language does not guarantee a person to be able to write a computer code. The reason is that the programming language itself is just a tool to solve some problems at hand. Therefore, problem solving skill is also needed in programming. It is common for novice programmers to learn the programming language without being able to write the code to solve certain problems. 
 
