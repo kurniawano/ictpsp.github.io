@@ -23,7 +23,7 @@ List is more commonly used than tuple in many cases because of its mutability. A
 Let's begin by creating a list. Previously, we created a tuple by assigning a number of items into a variable separated by a comma. The use of the parenthesis, i.e. `()`, was optional to create a tuple. List data type is created also by assembling items separated by a comma. However, to indicate to Python that we want to create a list instead of a tuple, we use a **square bracket** when creating a list literal, i.e. `[]`. 
 
 ```python
->>> my_pies = [3, 3.14, '3.14']
+>>> my_pies: list = [3, 3.14, '3.14']
 >>> print(my_pies)
 [3, 3.14, '3.14']
 >>> type(my_pies)
@@ -33,9 +33,7 @@ Let's begin by creating a list. Previously, we created a tuple by assigning a nu
 As we mentioned in the first section, though List can have elements of different types, it is more common to create list where the elements are of the same type. In this case, we can also use type annotation when creating a list where the elements are of the same type.
 
 ```python
-from typing import List
-
-my_steps: List[int] = [40, 50, 43]
+my_steps: list[int] = [40, 50, 43]
 print(my_steps)
 print(type(my_steps))
 ```
@@ -43,10 +41,8 @@ print(type(my_steps))
 In the above code we annotate `my_steps` as follows
 
 ```python
-my_steps: List[int] 
+my_steps: list[int] 
 ```
-
-On Python 3.8 and earlier, the name of the collection type is capitalized, and the type is imported from the 'typing' module. 
 
 ## Basic Operations for List
 
@@ -55,7 +51,7 @@ On Python 3.8 and earlier, the name of the collection type is capitalized, and t
 Once we know how to create a List, we can now show some of the common basic operations with List data type. The most basic one is to access the element in a list. The way we do it is exactly the same as accessing an element in a Tuple. We use the get item operator which is a square bracket operator with an index.
 
 ```python
->>> my_steps = [40, 50, 43]
+>>> my_steps: list[int] = [40, 50, 43]
 >>> print(my_steps[0])
 40
 >>> print(my_steps[2])
@@ -71,7 +67,7 @@ Notice that we can access the first element from index 0 and the last element fr
 So we know how to read a value in a list. There are many cases when we are only interested to know if a certain item is in the list. Is it in the list or not? If it is maybe we will do some processing but if it is not, we may do something else. Python provides `in` operator to check if an object is in the list.
 
 ```python
->>> my_steps = [40, 50, 43]
+>>> my_steps: list[int] = [40, 50, 43]
 >>> 40 in my_steps
 True
 >>> 43 in my_steps
@@ -94,7 +90,7 @@ else:
 The get item operator can be used together with the assignment operator `=` to change an element in the list. 
 
 ```python
->>> my_steps = [40, 50, 43]
+>>> my_steps: list[int] = [40, 50, 43]
 >>> print(my_steps[0])
 40
 >>> my_steps[0] = 65
@@ -109,7 +105,7 @@ In the above code, we modify the first element (index 0) from 40 to 65.
 We can get the length of a list from the `len()` built-in function and so we can access the last element using this.
 
 ```python
->>> my_steps = [40, 50, 43]
+>>> my_steps: list[int] = [40, 50, 43]
 >>> print(my_steps[len(my_steps) - 1])
 43
 ```
@@ -117,7 +113,7 @@ We can get the length of a list from the `len()` built-in function and so we can
 Notice that the last element is the size of the list minus one. Therefore, if we use the size of the list as an index to access an element, this results in trying to access an element that is outside of the range.
 
 ```python
->>> my_steps = [40, 50, 43]
+>>> my_steps: list[int] = [40, 50, 43]
 >>> print(my_steps[len(my_steps)])
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -131,7 +127,7 @@ The error message indicates that the list index is out of range. This is because
 Another basic operations is to add elements into a list. There are multiple ways of adding an element into a list. The first one is to add an element at the **back** of the list. This is called **appending**. Since list is an *ordered* linear data structure, there is a sequence in the element. We can talk about the first item and the last item in a list. Appending is adding the item at the end of the list as the last item of the list. As the name suggest, the method to do this is `list.append(item)`. 
 
 ```python
->>> my_steps = [40, 50, 43]
+>>> my_steps: list[int] = [40, 50, 43]
 >>> my_steps.append(52)
 >>> my_steps
 [40, 50, 43, 52]
@@ -181,9 +177,9 @@ We can see that the output of `print(output)` is `None`. However, when you print
 Another way of adding elements into a list is by concatenating two lists or extending a list with another list. The operator for concatenating two objects is the `+` operator which we have used for concatenating two strings. We can use the same operator for concatenating two lists.
 
 ```python
->>> week1_steps = [40, 45, 50]
->>> week2_steps = [55, 52, 60]
->>> week1_and_2 = week1_steps + week2_steps
+>>> week1_steps: list[int] = [40, 45, 50]
+>>> week2_steps: list[int] = [55, 52, 60]
+>>> week1_and_2: list[int] = week1_steps + week2_steps
 >>> week1_and_2
 [40, 45, 50, 55, 52, 60]
 ```
@@ -236,7 +232,7 @@ Just as it is common to add items from the back of the list, it is also common t
 ```python
 >>> my_steps
 [45, 65, 50, 52, 70]
->>> out = my_steps.pop()
+>>> out: int = my_steps.pop()
 >>> print(out)
 70
 >>> my_steps
@@ -254,7 +250,7 @@ What is interesting is that you can change the behaviour of `pop()` by providing
 ```python
 >>> my_steps
 [45, 65, 50, 52]
->>> out = my_steps.pop(0)
+>>> out: int = my_steps.pop(0)
 >>> print(out)
 45
 >>> print(my_steps)
@@ -291,10 +287,10 @@ In the above example, `my_steps.index(52)` finds the index of an element 52 in t
 >>> my_steps.append(52)
 >>> my_steps
 [65, 50, 52, 52]
->>> first_pos = my_steps.index(52)
+>>> first_pos: int = my_steps.index(52)
 >>> first_pos
 2
->>> second_pos = my_steps.index(52, first_pos + 1)
+>>> second_pos: int = my_steps.index(52, first_pos + 1)
 >>> second_pos
 3
 ```
@@ -306,7 +302,7 @@ In the above code, we first append another 52 into the list `my_steps`. Then, we
 We have learnt how to create a list using what we call as a *list literal*. We used square bracket to create a new list.
 
 ```python
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60]
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
 ```
 
 We can also create a new list from any existing data. In this section, we will discuss some of a few way to create a new list from an existing data.
@@ -317,7 +313,7 @@ Python provides a built-in function `list()` to convert any other data type to a
 
 ```python
 step_as_tuple: tuple[str, int] = ('John', 50)
-step_as_list: List[str, int] = list(step_as_tuple)
+step_as_list: list[str, int] = list(step_as_tuple)
 print(step_as_list, type(step_as_list))
 ```
 
@@ -330,7 +326,7 @@ Similarly, we can convert a string into a list. In this case, every character wi
 
 ```python
 name: str = 'John'
-name_as_list: List[str] = list(name)
+name_as_list: list[str] = list(name)
 print(name_as_list)
 ```
 
@@ -345,8 +341,8 @@ We can also make a copy of an existing list into a new list. To do this, we will
 
 ```python
 import copy
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60]
-my_steps_backup: List[int] = copy.copy(my_steps)
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+my_steps_backup: list[int] = copy.copy(my_steps)
 print(my_steps, id(my_steps))
 print(my_steps_backup, id(my_steps_backup))
 ```
@@ -371,12 +367,12 @@ my_list[start:end:step]
 One thing that we have to remember is that the **end index** is exclusive. This means that it excludes the element pointed by the *end index*. Let's illustrate this with an example. Let's start with our existing list.
 
 ```python
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60]
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
 ```
 
 We can create a new list consisting of `[50, 43, 55]` which is the second element to the fourth element in the list above using slicing.
 ```python
-mon_to_wed_steps: List[int] = my_steps[1:4]
+mon_to_wed_steps: list[int] = my_steps[1:4]
 print(mon_to_wed_steps)
 ```
 
@@ -394,7 +390,7 @@ Notice that the index starts from 0 as shown in the table below.
 Notice that we did not specify the steps in the slicing arguments. By default the step size is 1. The `start` and the `end` index also has its default values. By default `start` is 0. This means that you don't need to specify the start index if you want to slice from the first element.
 
 ```python
-sun_to_wed: List[int] = my_steps[:4]
+sun_to_wed: list[int] = my_steps[:4]
 print(sun_to_wed)
 ```
 
@@ -407,8 +403,8 @@ The output is shown below.
 The default for the `end` index, however, is **one plus** the last element's index. In our case, the last element is 6, so the default for the end index is 7. Therefore, these two codes are equivalent.
 
 ```python
-copy_1: List[int] = my_steps[0:7]
-copy_2: List[int] = my_steps[:]
+copy_1: list[int] = my_steps[0:7]
+copy_2: list[int] = my_steps[:]
 print(copy_1, id(copy_1))
 print(copy_2, id(copy_2))
 ```
@@ -431,7 +427,7 @@ We can also slice the list using a negative index. See table below.
 Notice the difference between the positive indexing and the negative index. While the positive indexing starts from 0, the negative indexing starts from -1. This is useful when we want to create a new list counting from the back. For example, let's say we want to get the *last three elements*. 
 
 ```python
-last_three_days: List[int] = my_steps[-3:]
+last_three_days: list[int] = my_steps[-3:]
 print(last_three_days)
 ```
 
@@ -444,7 +440,7 @@ The output is shown below.
 Notice in the above slicing that we have used the default value for the `end` index. We can get the same results using the following code.
 
 ```python
-last_three_days: List[int] = my_steps[-3:7]
+last_three_days: list[int] = my_steps[-3:7]
 ```
 
 The above example shows that you can actually mixed positive and negative indexing. However, utilising the default values are useful because it is just more intuitive to retrieve the last *three days* with indexing `my_steps[-3:]`. 
@@ -452,7 +448,7 @@ The above example shows that you can actually mixed positive and negative indexi
 We can also get the first three days using the positive indexing and default values as shown below.
 
 ```python
-first_three_days: List[int] = my_steps[:3]
+first_three_days: list[int] = my_steps[:3]
 print(first_three_days)
 ```
 
@@ -473,8 +469,8 @@ In the figure above, we can see the `start` and `end` index as the boundary of t
 The third argument in the get item operator for list slicing is the step size. We can specify the step size other than the default value 1. For example, let's day we want to get the data every two days. We can do so using the code below.
 
 ```python
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60]
-every_other_days: List[int] = my_steps[::2]
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+every_other_days: list[int] = my_steps[::2]
 print(every_other_days)
 ```
 
@@ -487,8 +483,8 @@ The output is shown below.
 Notice that since we did not specify the `start` and `end` index, Python takes their default values 0 and 7 for these two arguments. The resulting slice starts from the first element to the last but with a step of 2. We can also specify a negative step size. This is useful for example if we want to get a new list with a reverse order. Let's say, we can get the last three days starting from the last day to the earlier day using the code below.
 
 ```python
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60]
-reverse_last_three_days: List[int] = my_steps[-1:-4:-1]
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60]
+reverse_last_three_days: list[int] = my_steps[-1:-4:-1]
 print(reverse_last_three_days)
 ```
 The output is shown below.
@@ -532,8 +528,8 @@ We can see the environment diagram from Python Tutor below.
 This is different in the case of list data type. 
 
 ```python
-my_steps: List[int] = [40, 50, 40, 50]
-copy_steps: List[int] = my_steps
+my_steps: list[int] = [40, 50, 40, 50]
+copy_steps: list[int] = my_steps
 copy_steps[0] = 75
 print(my_steps)
 print(copy_steps)
@@ -653,7 +649,7 @@ TypeError: 'tuple' object does not support item assignment
 This is not the case for mutable data type such as list.  We have shown that we can actually modify an element in a list.
 
 ```python
-my_steps = [40, 50, 43]
+my_steps: list[int] = [40, 50, 43]
 my_steps[0] = 65
 ```
 
@@ -683,7 +679,7 @@ for char in name:
 List is also an *iterable* just like string data type. Because of this, we can actually traverse the list in a similar way.
 
 ```python
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 output = []
 for step in my_steps:
   cadence = compute_cadence_for_30sec(step)
@@ -697,8 +693,7 @@ In the above code `my_steps` is our list which is an iterable. The variable `ste
 We can also use the `enumerate()` function to count the element and get the element at the same time. For example, we can use the code below to display the day and the steps.
 
 ```python
-my_steps = [40, 50, 43, 55, 67, 56, 60] 
-output = []
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 for index, step in enumerate(my_steps):
   print('Day ', (index + 1), ', steps: ', step)
 ```
@@ -710,8 +705,7 @@ Recall that enumerate returns an iterable where each element is a tuple. The fir
 Lastly, we can also traverse the list by creating the index and traversing the range of the indices. 
 
 ```python
-my_steps = [40, 50, 43, 55, 67, 56, 60] 
-output = []
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 for index in range(len(my_steps)):
   print('Day ', (index + 1), ', steps: ', my_step[index])
 ```
@@ -731,7 +725,7 @@ contact_info: tuple = ("John Wick", 81234567, "john@wick.com")
 Notice that though these three data are related since they are all information of the same person, they are different kinds of data. The first one is a string since it is the name of the person. The second one is a number for the contact. The last one is the email address. Tuple is a convenient way to group them together. There are better ways which we will explore in subsequent lesson such as using dictionary. However, list is usually used to group items that is very look a like. In this lesson, we used it to group the steps of various days.
 
 ```python
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 ```
 
 Notice that all these data are integers and they are all `steps`. The only thing that differentiate them is which day the step belongs to. This comes to the other characteristics of list data. List data naturally suits those that have a sequence. In this case, the first data is the step on the first day, the second data is the step on the second day and so on. This suits list since each element is placed with a fixed index. The indices in a list data type is useful when the data has a certain order or sequence. Data at index of higher value is at a later sequence as compared to data at a lower value index. 
@@ -823,7 +817,7 @@ The Concrete (C)ases above shows that we can solve this with two steps. First, w
 def find_pos_of_max(list_steps: List[int]) -> int:
   print(list_steps)
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 ```
 
@@ -836,11 +830,11 @@ The output is shown below.
 We can now find the maximum element using the `max()` function from Python and modify our function as follows.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   max_step: int = max(list_steps)
   print(max_step)
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 ```
 
@@ -853,12 +847,12 @@ The output now gives us the following which is the maximum step in that list.
 Now, we can find the position of this element in the list using `list.index(element)` function. 
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   max_step: int = max(list_steps)
   pos: int = list_steps.index(max_step)
   return pos
 
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -980,10 +974,10 @@ The purpose of this (D)esign of Algorithm step is to generalize the steps we hav
 Now, we can try to implement the above steps in Python. Let's write down the function definition and the code to test it first.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   print(list_steps)
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 ```
 
@@ -996,12 +990,12 @@ The output of the above code just printed the input argument.
 Let's, do step 1 and print the value of the largest so far.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   print(largest_so_far)
   return largest_so_far
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 ```
 
@@ -1019,13 +1013,13 @@ list_steps[1:]
 We will use that together with `for` statement to traverse the list element from the second to the end. We will print each element at every iteration for testing. Let's modify the code to do that.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   for current_element in list_steps[1:]:
     print(current_element)
   return largest_so_far
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 ```
 
@@ -1045,7 +1039,7 @@ We can see that the first output is actually the step number in the second eleme
 We can now do step 2.2. To compare two numbers, we will use the `if` statement.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   for current_element in list_steps[1:]:
     if current_element > largest_so_far:
@@ -1053,7 +1047,7 @@ def find_pos_of_max(list_steps: List[int]) -> int:
     print(current_element, largest_so_far)
   return largest_so_far
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 ```
 
@@ -1071,14 +1065,14 @@ We added the line `print(current_element, largest_so_far)` so that we can see wh
 In the output above, the first column is the `current_element` and the second column is the `largest_so_far`. We can see that the variable `largest` so far is updated when the `current_element` is 50, 55, and finally 67. After which, the largest element stays at 67. So it seems we have completed the steps to find the largest number in the list. Now, we can remove the print statement and return this largest number.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   for current_element in list_steps[1:]:
     if current_element > largest_so_far:
       largest_so_far = current_element
   return largest_so_far
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -1108,7 +1102,7 @@ In the above, step, we have added step 2, 3.2 and 3.2.2. In step 2, we set the p
 Let's implement those three steps. Let's start with implementing step 2.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   pos_largest: int = 0 # step 2
   for current_element in list_steps[1:]:
@@ -1116,7 +1110,7 @@ def find_pos_of_max(list_steps: List[int]) -> int:
       largest_so_far = current_element
   return pos_largest # now the output returns the position instead
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -1128,7 +1122,7 @@ How do we do step 3.2. In the previous section, we discussed the function `enume
 
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   pos_largest: int = 0 # step 2
   for pos, current_element in enumerate(list_steps[1:]):
@@ -1137,7 +1131,7 @@ def find_pos_of_max(list_steps: List[int]) -> int:
     print(pos, current_element, largest_so_far)
   return pos_largest # now the output returns the position instead
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -1157,7 +1151,7 @@ In the above code, we have added back the print statement to print the current p
 The first column shows the current position, the second column shows the current element and the last one shows the largest so far. The last line is the output of the function which currently still outputs 0. Now, we have found a way to get the current position, we can implement step 3.2.2 to update this position. 
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   pos_largest: int = 0 # step 2
   for pos, current_element in enumerate(list_steps[1:]):
@@ -1167,7 +1161,7 @@ def find_pos_of_max(list_steps: List[int]) -> int:
     print(pos, current_element, largest_so_far)
   return pos_largest # now the output returns the position instead
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -1188,7 +1182,7 @@ Notice that we got `3` as the day of the largest step. This is incorrect since o
 
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   pos_largest: int = 0 # step 2
   for pos, current_element in enumerate(list_steps[1:]):
@@ -1198,7 +1192,7 @@ def find_pos_of_max(list_steps: List[int]) -> int:
     print(pos, current_element, largest_so_far)
   return pos_largest # now the output returns the position instead
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -1224,7 +1218,7 @@ In the code below, we remove the type annotation to make it simpler and you can 
 The final function should not have print statement inside it and it is given here.
 
 ```python
-def find_pos_of_max(list_steps: List[int]) -> int:
+def find_pos_of_max(list_steps: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   pos_largest: int = 0 # step 2
   for pos, current_element in enumerate(list_steps[1:]):
@@ -1233,7 +1227,7 @@ def find_pos_of_max(list_steps: List[int]) -> int:
       pos_largest = pos + 1
   return pos_largest # now the output returns the position instead
   
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: int = find_pos_of_max(my_steps)
 print(day_max_step)
 ```
@@ -1269,12 +1263,12 @@ INSERT IMAGE FLOWCHART
 We have learnt that our function can call another function and this is what is called as function composition. This means that we can compose our function using other functions as part of its body. Let's define our final function.
 
 ```python
-def find_day_of_max_steps(list_steps: List[int]) -> str:
+def find_day_of_max_steps(list_steps: list[int]) -> str:
   day_index: int = find_pos_of_max(list_steps)
   day_name: str = get_name_of_day(day_index)
   return day_name
 
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 day_max_step: str = find_day_of_max_steps(my_steps)
 print(day_max_step)
 ```
@@ -1292,7 +1286,7 @@ One thing to note is that we purposely name our functions generic enough such as
 ```python
 from typing import List
 
-def find_pos_of_max(list_items: List[int]) -> int:
+def find_pos_of_max(list_items: list[int]) -> int:
   largest_so_far: int = list_steps[0]
   pos_largest: int = 0 # step 2
   for pos, current_element in enumerate(list_items[1:]):
@@ -1309,9 +1303,7 @@ In the above code, we replaced the name `list_steps` into `list_items`.
 One other improvement we can do is to generalize the code such that we traverse the elements in the list starting from the first element instead from the second element. In the above solution, we first put the first element as the largest element before we start the iteration. There is a way if we want to traverse starting from the first element. We just need to make sure that when we compare the first element, it will always replace the first initial value. When finding the largest element, we can do so by initializing this to the smallest number. In our case, it is enough to initialize the largest element with a negative number since number of steps are non-negative. We can then re-write our solution as follows. 
 
 ```python
-from typing import List
-
-def find_pos_of_max(list_items: List[int]) -> int:
+def find_pos_of_max(list_items: list[int]) -> int:
   largest_so_far: int = -1 # use negative number to initialize
   pos_largest: int =  -1 # we need to initialize the position as well
   for pos, current_element in enumerate(list_items): # now we are iterating all elements
