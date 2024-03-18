@@ -25,7 +25,7 @@ You may not realize it, but you have actually dealt with tuple when we discuss a
 import math
 def calculate_speed(diameter: float, tire_size: float, 
                     chainring: int, cog: int, 
-                    cadence: int) -> Tuple[float, float]:
+                    cadence: int) -> tuple[float, float]:
   '''
   Calculates the speed from the given bike parameters and cadence.
 
@@ -83,7 +83,7 @@ In Python, a `tuple` is simply a collection of objects and it is immutable. In o
 We create a tuple simply by grouping them using a comma.
 
 ```python
->>> my_output = 12.8, 7.97
+>>> my_output: tuple = 12.8, 7.97
 >>> print(my_output)
 (12.8, 7.97)
 >>> print(type(my_output))
@@ -93,13 +93,13 @@ We create a tuple simply by grouping them using a comma.
 The parenthesis is not a requirement, but often times, it is clearer if you put a parenthesis over the tuple.
 
 ```python
->>> my_output = (12.8, 7.97)
+>>> my_output: tuple = (12.8, 7.97)
 ```
 
 We can create a tuple made of objects of different data types as in the example below here.
 
 ```python
->>> various_types_tuple = 3, 3.14, '3.14', True
+>>> various_types_tuple: tuple = 3, 3.14, '3.14', True
 >>> print(various_types_tuple)
 (3, 3.14, '3.14', True)
 ```
@@ -111,7 +111,7 @@ Once we know how to create tuple, now we can discuss on what we can do with tupl
 The simplest basic operation of tuple data is to access its elements. We access element of a tuple in a similar way as we access a character from a string, i.e. using a square bracket (`[]`) or the get item operator.
 
 ```python
->>> various_types_tuple = 3, 3.14, '3.14', True
+>>> various_types_tuple: tuple = 3, 3.14, '3.14', True
 >>> print(various_types_tuple)
 (3, 3.14, '3.14', True)
 >>> various_types_tuple[0]
@@ -162,7 +162,23 @@ Once you create a tuple, you cannot modify it. It has a fixed number of element 
 4
 ```
 
-In the above example, the tuple has four elements. Once the tuple is created, we cannot add or remove elements from the tuple. It is immutable. 
+You can also use `mypy` to check if you accidentally modify a tuple in your code. We have created the file `01_modify_tuple.py` for you to see the output of `mypy` when you try to modify the code. 
+
+```python
+# 01_modify_tuple.py
+various_types_tuple: tuple = 3, 3.14, '3.14', True
+various_types_tuple[0] = False
+```
+
+Running `mypy` on this file creates the following output.
+
+```sh
+$ mypy 01_modify_tuple.py 
+01_modify_tuple.py:2: error: Unsupported target for indexed assignment ("tuple[Any, ...]")  [index]
+Found 1 error in 1 file (checked 1 source file)
+```
+
+It says that tuple does not suppert indexed assignment and this error occurs at line 2 where we have `various_types_tuple[0] = False`.
 
 What if you really want to change the element of the tuple? You have two options. The first option is not to use tuple but rather a `list` data type. We will cover list in the next lesson. The second option is to create a new tuple. 
 
@@ -171,7 +187,7 @@ For example, if we want to remove the last element, what we can do is to slice t
 ```python
 >>> various_types_tuple
 (3, 3.14, '3.14', True)
->>> new_tuple = various_types_tuple[:-1]
+>>> new_tuple: tuple = various_types_tuple[:-1]
 >>> new_tuple
 (3, 3.14, '3.14')
 ```
@@ -183,7 +199,7 @@ We can join two tuples using the `+` operator. See example below.
 (3, 3.14, '3.14', True)
 >>> new_tuple
 (3, 3.14, '3.14')
->>> joined_tuple = various_types_tuple + new_tuple
+>>> joined_tuple: tuple = various_types_tuple + new_tuple
 >>> joined_tuple
 (3, 3.14, '3.14', True, 3, 3.14, '3.14')
 ```
@@ -191,7 +207,7 @@ We can join two tuples using the `+` operator. See example below.
 We can use this slicing and joining to remove some of the elements in the tuple. For example, let's say we want to remove `True` from the `joined_tuple` variable. We can slice the left up to `True` and joined it with the other tuple starting from after `True`. Notice that `True` is at index 3. We can write the following code.
 
 ```python
->>> removed_bool_tuple = joined_tuple[:3] + joined_tuple[4:]
+>>> removed_bool_tuple: tuple = joined_tuple[:3] + joined_tuple[4:]
 >>> removed_bool_tuple
 (3, 3.14, '3.14', 3, 3.14, '3.14')
 ```
@@ -213,34 +229,17 @@ Notice, however, that if we tend to modify the elements of our collection, it is
 One other basic operations that we can do with a tuple is to check if an element is inside a tuple. We can use the `in` operator which returns `True` or `False`. See the example below.
 
 ```python
->>> new_tuple = [3, 3.14, '3.14']
+>>> new_tuple: tuple = [3, 3.14, '3.14']
 >>> 3 in new_tuple
 True
 >>> 4 in new_tuple
 False
 ```
 
-Just a simple example that `mypy` can check if we try to modify a tuple, you can run `mypy` on `01_modify_tuple.py`.
+Recall that `mypy` detects an error when we try to assign to a tuple. We can use type annotation when declaring a tuple with the type of its elements. In the code below, we put all the basic operations with its type annotation when assigning to a new variable.
 
 ```python
-various_types_tuple = 3, 3.14, '3.14', True
-various_types_tuple[0] = False
-```
-
-and run in the shell.
-
-```sh
-$ mypy 01_modify_tuple.py 
-01_modify_tuple.py:2: error: Unsupported target for indexed assignment ("Tuple[int, float, str, bool]")  [index]
-Found 1 error in 1 file (checked 1 source file)
-```
-
-Notice that `mypy` detects an error when we try to assign to a tuple. We can use type annotation when declaring a tuple as follows. In the code below, we put all the basic operations with its type annotation when assigning to a new variable.
-
-```python
-from typing import Tuple
-
-various_types_tuple:Tuple[int, float, str, bool] = 3, 3.14, '3.14', True
+various_types_tuple:tuple[int, float, str, bool] = 3, 3.14, '3.14', True
 print(various_types_tuple)
 
 # slicing a tuple
@@ -250,12 +249,12 @@ print(various_types_tuple[1:3])
 print(various_types_tuple[1:-1:2])
 
 # creating a new tuple using slicing and joining
-new_tuple:Tuple[int, float, str] = various_types_tuple[:-1]
+new_tuple:tuple[int, float, str] = various_types_tuple[:-1]
 print(new_tuple)
 print(various_types_tuple)
-joined_tuple:Tuple[int, float, str, bool, int, float, str] = various_types_tuple + new_tuple
+joined_tuple:tuple[int, float, str, bool, int, float, str] = various_types_tuple + new_tuple
 print(joined_tuple)
-removed_bool_tuple:Tuple[int, float, str, int, float, str] = joined_tuple[:3] + joined_tuple[4:]
+removed_bool_tuple:tuple[int, float, str, int, float, str] = joined_tuple[:3] + joined_tuple[4:]
 print(removed_bool_tuple)
 
 # duplicating a tuple
@@ -274,9 +273,7 @@ Success: no issues found in 1 source file
 Tuple is an iterable data type. This means that you can iterate over the elements in a tuple. The simplest way is to use the `for-in` statement as shown below.
 
 ```python
-from typing import Tuple
-
-contact:Tuple[str, str, str] = ("John", "80043232", "john@mycontact.com")
+contact:tuple[str, str, str] = ("John", "80043232", "john@mycontact.com")
 
 for item in contact:
   print(item)
@@ -289,9 +286,7 @@ You can run the above code step by step using Python Tutor.
 If you need the index as well as the item in the tuple, again, you can use the `enumerate()` function. 
 
 ```python
-from typing import Tuple
-
-contact:Tuple[str, str, str] = ("John", "80043232", "john@mycontact.com")
+contact:tuple[str, str, str] = ("John", "80043232", "john@mycontact.com")
 
 for idx, item in enumerate(contact):
   print(idx, item)
