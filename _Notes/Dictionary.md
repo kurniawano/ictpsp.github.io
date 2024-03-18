@@ -24,7 +24,7 @@ Before we introduce this more general data type, it's useful to see a simple pro
 Previously, we represent the number of steps that our app user in a list of list. 
 
 ```python
-month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+month_steps: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                 [54, 56, 47, 62, 61, 46, 61],
                                 [52, 56, 63, 58, 62, 66, 62],
                                 [57, 58, 46, 71, 63, 76, 63]]
@@ -33,7 +33,7 @@ month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
 In this case, the first row represents the steps in the first week and the second row represents the steps in the second week and so on. However, we also showed that there are times, when it is more profitable to represent the data in its transposed. 
 
 ```python
-month_steps: List[List[int]] = [[40, 54, 52, 57],
+month_steps: list[list[int]] = [[40, 54, 52, 57],
                                 [51, 56, 56, 58],
                                 [43, 47, 63, 46],
                                 [55, 62, 58, 71],
@@ -47,7 +47,7 @@ In this second representation, the first row is for all the steps on Sundays fro
 Another example where we may need more than just a list is a codebook. Let's say your app has a feature to send encrypted message where each letter will be encrypted to another letter or emoji. Shifting the letter by the same amount is the simplest but this suffers from frequency analysis attack. Another simple way is to keep a codebook how to translate each letter to another letter. Let's say, we have the following codebook for the vocals.
 
 ```python
-codebook: List[Tuple[str, str]] = [('a', 'p'), 
+codebook: list[tuple[str, str]] = [('a', 'p'), 
                                    ('e', 'f'), 
                                    ('i', 'j'), 
                                    ('o', 'c'), 
@@ -349,7 +349,7 @@ Similar to list, we can use the `in` operator. When dealing with list, `in` oper
 
 ```python
 False
->>> profile: dict = {"name": "John Wick",
+>>> profile: dict[str, str] = {"name": "John Wick",
                  "email": "john@wick.ed",
                  "phone": "+6591234567",
                  "birth-year": 1980}
@@ -512,30 +512,30 @@ With our assumptions, we can either choose path 1 or path 3 as our solutions as 
 We start with the second input which is the starting vertex, i.e. A. What we can do now is too look into the neighbours of A. We can get A's neihbours from the dictionary. A has two neighbours, i.e. `["B", "D"]`. What we do is that we can put these to vertices into a list to visit.
 
 ```python
-to_explore: List[str] = ["B", "D"]
+to_explore: list[str] = ["B", "D"]
 ```
 The sequence may matter in this case. In the above, we choose to put into list alphabetically. This means that we put B first ahead of D. But we can choose otherwise. What do we do with this list? We can take out the item from the list and do the same thing as we did with A. 
 
 This means that we take out B from the list and find the neighbours of B. Looking into our dictionary, we notice that B has two neighbours, i.e `["A", "C"]`. However, we have visited A and we don't want to go back to A. So we must keep track of those vertices we have visited. Moreover, we also don't want to explore B and D again since we have done that. So we should keep track all these vertices that we have visited. What's the strategy? Well, we can put all those we put into the `to_explore` list into another list called `visited`. We didn't really put A into the `to_explore` list. But we can do this actually. In the beginning, we can add A into the `to_explore` list and `visited` list. Then we take out A from the `to_explore` list to get its neighbours. Let's create a new list for all those vertices we have visited. By now, it should contain A, B and D.
 
 ```python
-visited: List[str] = ["A", "B", "D"]
+visited: list[str] = ["A", "B", "D"]
 ```
 
 Now, what we do is that before we add anything to the list `to_explore`, we will check if the vertex is already inside `visited` list. If  the vertex is not the `visited` list, we can add that vertex to the list `to_explore`. In this case, only C will be added.
 
 
 ```python
-to_explore: List[str] = ["D", "C"]
-visited: List[str] = ["A", "B", "D", "C"]
+to_explore: list[str] = ["D", "C"]
+visited: list[str] = ["A", "B", "D", "C"]
 ```
 
 Since we add all the neighbours of B, we can visit the neighbours of the next vertex in the list `to_explore`. Now, D is next. So we take out D from the list and find its neighbours. The neighbours of D are `["A", "C", "E"]`. But A and C are already in the `visited` list. So this leaves us only with E. 
 
 
 ```python
-to_explore: List[str] = ["C", "E"]
-visited: List[str] = ["A", "B", "D", "C", "E"]
+to_explore: list[str] = ["C", "E"]
+visited: list[str] = ["A", "B", "D", "C", "E"]
 ```
 
 We will do the same steps. You can see that there is iteration structure here as we do the same steps again and again. We take out C from the list `to_explore` and get its neighbours, i.e. `["B", "D", "F"]`. Out of these three, B and D are in the `visited` list. Therefore, we will not add these two and only add F. But F is actually our destination and we have found our destination!

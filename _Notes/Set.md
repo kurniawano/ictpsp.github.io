@@ -24,7 +24,7 @@ There are some similarity between a set and a dictionary. Recall that dictionary
 Let's say, we want to record the dates in January that we exercise. We can create a set in the way shown below.
 
 ```python
->>> january_exercise_dates = {1, 3, 4, 5, 31}
+>>> january_exercise_dates: set[int] = {1, 3, 4, 5, 31}
 >>> type(january_exercise_dates)
 <class 'set'>
 ```
@@ -32,7 +32,7 @@ Let's say, we want to record the dates in January that we exercise. We can creat
 Notice the curly braces to create the set. Remember that each element of the set must be unique. This means that we have two items that are the same, a set will keep only one of them. This consistency helps a lot for certain type of application and checking. See example below when we recorded date 5th of January two times.
 
 ```python
->>> january_exercise_dates = {1, 3, 4, 5, 5, 31}
+>>> january_exercise_dates: set[int] = {1, 3, 4, 5, 5, 31}
 >>> january_exercise_dates
 {1, 3, 4, 5, 31}
 ```
@@ -40,7 +40,7 @@ Notice the curly braces to create the set. Remember that each element of the set
 We can also convert other collection data type into a set using `set()` function. This is useful when we want to apply some set operations to these data. For example, we can create the dates in January as another set using the `range()` function and the conversion function `set()`. 
 
 ```python
->>> january_dates = set(range(1,32))
+>>> january_dates: set[int] = set(range(1,32))
 >>> january_dates
 {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
@@ -139,8 +139,8 @@ The result is an empty set. The reason is that january_exercise_dates is smaller
 If the set is not a subset the difference operation will not return an empty set. Let's take a look at another example. Let's say we have two users who use our exercise cycling app. These are the dates the two users exercise in January.
 
 ```python
->>> john_january = {1, 4, 6, 9, 10}
->>> mary_january = {4, 9, 11, 12, 31}
+>>> john_january: set[int] = {1, 4, 6, 9, 10}
+>>> mary_january: set[int] = {4, 9, 11, 12, 31}
 ```
 
 We can take the dates that John exercised but Mary did not as follows.
@@ -229,10 +229,10 @@ So when should we use a set? We should use it when we want to use some of the se
 Let's say, we have a dictionary of users and where they stay. To make it simpler, we will indicate the regin of where they stay such as west, east, north, north east, or south and central. 
 
 ```python
->>> users_region = {'John': 'West', 'Jane': 'East',
+>>> users_region: dict[str, str] = {'John': 'West', 'Jane': 'East',
 ... 'Mary': 'West', 'Joe': 'North', 'Brad': 'Central',
 ... 'Nat': 'East', 'Robin': 'North East'}
->>> regions = ['West', 'East', 'North', 'North East', 'South', 'Central']
+>>> regions: list[str] = ['West', 'East', 'North', 'North East', 'South', 'Central']
 ```
 
 Let's say we want to know which are the regions that our app users stay, we can write the following code.
@@ -246,7 +246,7 @@ dict_values(['West', 'East', 'West', 'North', 'Central', 'East', 'North East'])
 But, we may be more interested to see the active region without any duplication. In this way, we can change this to a set.
 
 ```python
->>> active_region = set(users_region.values())
+>>> active_region:set[str] = set(users_region.values())
 >>> active_region
 {'North East', 'North', 'West', 'Central', 'East'}
 ```
@@ -254,7 +254,7 @@ But, we may be more interested to see the active region without any duplication.
 And we can get the region which has no users using the difference operation.
 
 ```python
->>> no_user_region = set(regions) - active_region
+>>> no_user_region: set[str] = set(regions) - active_region
 >>> no_user_region
 {'South'}
 ```
