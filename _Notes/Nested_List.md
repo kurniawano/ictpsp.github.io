@@ -18,9 +18,7 @@ show_date: false
 So far, we have worked on two kinds of collection data types. The first one is tuple and the second one is a list. In each of those lessons, we showed how to contain various items in a single collection. This collection, however, is linear or one dimensional. In our last example, we have a list of steps in a week.
 
 ```python
-from typing import List
-
-my_steps: List[int] = [40, 50, 43, 55, 67, 56, 60] 
+my_steps: list[int] = [40, 50, 43, 55, 67, 56, 60] 
 ```
 
 What if we want to contain the list of steps in a month? We can continue adding the items to have a list of 30 or 31 elements. To go to the second or third week, however, we have to calculate what is the starting index of that week. For example, the first week starts from 0 to 6. The second week, on the other hand, will be from 7 to 13. The third week will be from 14 to 20 and so on. This means that when we work on the second or third or fourth week, the index of the maximum step is no longer from 0 to 6 and we are unable to make use of the function `get_name_day()` anymore. We have to transform it to 0 to 6 range before we can use that function. It's not that difficult. But there is another way we can organize our data.
@@ -32,16 +30,16 @@ We can organize our data as a list in a list. This is what we call as nested dat
 Let's say, we have data for four weeks exercises. Each week is contained in a list.
 
 ```python
-week_1: List[int] = [40, 50, 43, 55, 67, 56, 60] 
-week_2: List[int] = [54, 56, 47, 62, 61, 46, 61] 
-week_3: List[int] = [52, 56, 63, 58, 62, 66, 62] 
-week_4: List[int] = [57, 58, 46, 71, 63, 76, 63] 
+week_1: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+week_2: list[int] = [54, 56, 47, 62, 61, 46, 61] 
+week_3: list[int] = [52, 56, 63, 58, 62, 66, 62] 
+week_4: list[int] = [57, 58, 46, 71, 63, 76, 63] 
 ```
 
 We can then store these data in another list for a month.
 
 ```python
-month_steps: List[List[int]] = [week_1, week_2, week_3, week_4]
+month_steps: list[list[int]] = [week_1, week_2, week_3, week_4]
 ```
 
 Notice that this list has **four elements**. Each element is a **list** data type. We can check it's length and type using the normal list operations.
@@ -63,15 +61,15 @@ We can see that `month_steps` has four elements which are the four week lists. O
 Another thing that we introduced here is the type annotatin for nested list. See that we defined it in the following way.
 
 ```python
-month_steps: List[List[int]] = [week_1, week_2, week_3, week_4]
+month_steps: list[list[int]] = [week_1, week_2, week_3, week_4]
 ```
 
-We used the usual `List[element_type]` for annotating `month_steps`. The only thing is that the element type for this list is another list with `int` elements, i.e. `List[int]`. 
+We used the usual `list[element_type]` for annotating `month_steps`. The only thing is that the element type for this list is another list with `int` elements, i.e. `list[int]`. 
 
 We need not create a variable and directly create a single nested list literal as shown below.
 
 ```python
-month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+month_steps: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                 [54, 56, 47, 62, 61, 46, 61],
                                 [52, 56, 63, 58, 62, 66, 62],
                                 [57, 58, 46, 71, 63, 76, 63]]
@@ -98,7 +96,7 @@ Notice that we have more *arrows* in this diagram. The name `month_steps` has an
 The first basic operation is accessing an element either to read the value or to modify the value. Notice that `month_steps` is a list data type where each element is another list. See the type annotation of this variable.
 
 ```python
-month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+month_steps: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                 [54, 56, 47, 62, 61, 46, 61],
                                 [52, 56, 63, 58, 62, 66, 62],
                                 [57, 58, 46, 71, 63, 76, 63]]
@@ -132,7 +130,7 @@ In order to get the number of steps in day one of week one, we need to access th
 Notice that we used two get item operators here. The first one is to get the element of `month_steps` which is the first week, i.e. `month_steps[0]`. The second get item operator is to get the first element of that week which is the step of day one in week one. To make it clear, you can actually assign the first week to a variable first.
 
 ```python
->>> week_1 = month_steps[0]
+>>> week_1: list[int] = month_steps[0]
 >>> week_1
 [40, 50, 43, 55, 67, 56, 60]
 >>> week_1[0]
@@ -168,7 +166,7 @@ You can also modify the element using the get item operator and the assignment o
 Similar to a single list, you can also slice a nested list. What you need to remember is that they are just *a list where the *. This means that you need to decide how the list is to be sliced. Let's start with the simplest task of slicing the weeks in `month_steps`. Let's say, we only want to get the first two weeks. We can type the following.
 
 ```python
->>> month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+>>> month_steps: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                     [54, 56, 47, 62, 61, 46, 61],
                                     [52, 56, 63, 58, 62, 66, 62],
                                     [57, 58, 46, 71, 63, 76, 63]]
@@ -216,7 +214,7 @@ Notice that the data type of the item in the `append()` argument is a **list**. 
  100]
 ```
 
-Python will basically just add the `int` item as the last element in the list. Recall that Python allows multiple data types in a single list. However, when you run this code using `mypy`, it will throw an error. The reason is that previously, we annotated `month_steps` as `List[List[int]]`. Try running the file `month_steps_error.py` inside `lesson08` folder with `mypy` and check the error message.
+Python will basically just add the `int` item as the last element in the list. Recall that Python allows multiple data types in a single list. However, when you run this code using `mypy`, it will throw an error. The reason is that previously, we annotated `month_steps` as `list[list[int]]`. Try running the file `month_steps_error.py` inside `lesson08` folder with `mypy` and check the error message.
 
 ```
 $ mypy month_steps_error.py
@@ -263,14 +261,12 @@ Notice that in all these operations, the key idea is to access the *sub-list* `m
 Another important aspect of nested list is the effect of aliasing. Let's recreate `month_steps` using four lists as follows.
 
 ```python
-from typing import List
+week_1: list[int] = [40, 50, 43, 55, 67, 56, 60] 
+week_2: list[int] = [54, 56, 47, 62, 61, 46, 61] 
+week_3: list[int] = [52, 56, 63, 58, 62, 66, 62] 
+week_4: list[int] = [57, 58, 46, 71, 63, 76, 63]
 
-week_1: List[int] = [40, 50, 43, 55, 67, 56, 60] 
-week_2: List[int] = [54, 56, 47, 62, 61, 46, 61] 
-week_3: List[int] = [52, 56, 63, 58, 62, 66, 62] 
-week_4: List[int] = [57, 58, 46, 71, 63, 76, 63]
-
-month_steps: List[List[int]] = [week_1, week_2, week_3, week_4]
+month_steps: list[list[int]] = [week_1, week_2, week_3, week_4]
 ```
 
 What if we modify one of the sub-list such as `week_2`. Let's say, we remove the last element of `week_2`. What will happen to month_steps?
@@ -311,7 +307,7 @@ Notice that `61` is back into `week_2`. Both `week_2` and `month_steps`'s second
 This has important consequences when we slice a nested list. Let's say, we create a new list containing the first two weeks.
 
 ```python
-first_two_weeks: List[List[int]] = month_steps[:2]
+first_two_weeks: list[list[int]] = month_steps[:2]
 ```
 
 The environment diagram is shown below.
@@ -325,7 +321,7 @@ What if we want to create a new copy of the deeper level items as well? Python p
 ```python
 import copy
 
-first_two_weeks: List[List[int]] = copy.deepcopy(month_steps[:2])
+first_two_weeks: list[list[int]] = copy.deepcopy(month_steps[:2])
 ```
 
 The environment diagram is shown below.
@@ -493,19 +489,19 @@ Let's start the Implementation and Testing.
 Let's start by defining our function with the respective input and output.
 
 ```python
-from typing import List, Any
+from typing import Any
 
-def slice_2d(array: List[List[Any]], 
+def slice_2d(array: list[list[Any]], 
              row_start: int, row_end: int, row_step: int,
-             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+             col_start: int, col_end: int, col_step: int) -> list[list[Any]]:
     pass
 
-input_array:List[List[int]] = [[1, 2, 3, 4],
+input_array: list[list[int]] = [[1, 2, 3, 4],
                                [5, 6, 7, 8],
                                [9, 10, 11, 12],
                                [13, 14, 15, 16]]
 
-output:List[List[int]] = slice_2d(input_array, 0, 4, 2, 0, 4, 2)
+output: list[list[int]] = slice_2d(input_array, 0, 4, 2, 0, 4, 2)
 print(output)
 ```
 
@@ -519,13 +515,13 @@ Success: no issues found in 1 source file
 We are now ready to implement our algorithm. The first step in our design of algorithm is to create an empty output array. For brevity sake, we will not include the function call and only show the function definition in the subsequent codes.
 
 ```python
-from typing import List, Any
+from typing import Any
 
-def slice_2d(array: List[List[Any]], 
+def slice_2d(array: list[list[Any]], 
              row_start: int, row_end: int, row_step: int,
-             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+             col_start: int, col_end: int, col_step: int) -> list[list[Any]]:
 
-    output: List[List[Any]] = []
+    output: list[list[Any]] = []
     # your solution
     return output
 ```
@@ -533,13 +529,13 @@ def slice_2d(array: List[List[Any]],
 If we run this code, it will output an empty list.  So we can move on to step number 2. We should iterate the rows from the starting index for the rows all the way to the ending index with step size as indicated by the input. We can use `range()` function to create our `current_row_index`. Let's create this row index and print it out.
 
 ```python
-from typing import List, Any
+from typing import Any
 
-def slice_2d(array: List[List[Any]], 
+def slice_2d(array: list[list[Any]], 
              row_start: int, row_end: int, row_step: int,
-             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+             col_start: int, col_end: int, col_step: int) -> list[list[Any]]:
 
-    output: List[List[Any]] = []
+    output: list[list[Any]] = []
     for current_row_index: int in range(row_start, row_end, row_step):
         print(current_row_index)
     return output
@@ -558,7 +554,7 @@ Given the following function call `slice_2d(0, 4, 1, 0, 4, 1)`, it gives the fol
 We have set the row indices to start from 0 to 4 (exclusive) with step size 1. We should test what happens if we change the function call to the following.
 
 ```python
-output:List[List[int]] = slice_2d(input_array, 0, 4, 2, 0, 4, 2)
+output:list[list[int]] = slice_2d(input_array, 0, 4, 2, 0, 4, 2)
 print(output)
 ```
 
@@ -573,15 +569,15 @@ In this case, we use step size 2 for both the rows and the columns. The output i
 So far looks good. We can get the indices of our sliced rows. Now, we can proceed to do step 2.1 which is to get the list of the current row.
 
 ```python
-from typing import List, Any
+from typing import Any
 
-def slice_2d(array: List[List[Any]], 
+def slice_2d(array: list[list[Any]], 
              row_start: int, row_end: int, row_step: int,
-             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+             col_start: int, col_end: int, col_step: int) -> list[list[Any]]:
 
-    output: List[List[Any]] = []
+    output: list[list[Any]] = []
     for current_row_index: int in range(row_start, row_end, row_step):
-        row_list: List[Any] = array[current_row_index]
+        row_list: list[Any] = array[current_row_index]
         print(row_list)
     return output
 ```
@@ -604,16 +600,16 @@ In the first function call, we have four rows (from 0 to 3) and we can see the l
 Once we get the row list, we can slice to get the elements according to our column indices. 
 
 ```python
-from typing import List, Any
+from typing import Any
 
-def slice_2d(array: List[List[Any]], 
+def slice_2d(array: list[list[Any]], 
              row_start: int, row_end: int, row_step: int,
-             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+             col_start: int, col_end: int, col_step: int) -> list[list[Any]]:
 
-    output: List[List[Any]] = []
+    output: list[list[Any]] = []
     for current_row_index: int in range(row_start, row_end, row_step):
-        row_list: List[Any] = array[current_row_index]
-        sliced_row_list: List[Any] = row_list[col_start: col_end: col_step]
+        row_list: list[Any] = array[current_row_index]
+        sliced_row_list: list[Any] = row_list[col_start: col_end: col_step]
         print(sliced_row_list)
     return output
 ```
@@ -636,16 +632,16 @@ Notice that for the first function call, we get all the elements in the column. 
 The last step is to add this sliced list into our output list.
 
 ```python
-from typing import List, Any
+from typing import Any
 
-def slice_2d(array: List[List[Any]], 
+def slice_2d(array: list[list[Any]], 
              row_start: int, row_end: int, row_step: int,
-             col_start: int, col_end: int, col_step: int) -> List[List[Any]]:
+             col_start: int, col_end: int, col_step: int) -> list[list[Any]]:
 
-    output: List[List[Any]] = []
+    output: list[list[Any]] = []
     for current_row_index: int in range(row_start, row_end, row_step):
-        row_list: List[Any] = array[current_row_index]
-        sliced_row_list: List[Any] = row_list[col_start: col_end: col_step]
+        row_list: list[Any] = array[current_row_index]
+        sliced_row_list: list[Any] = row_list[col_start: col_end: col_step]
         output.append(sliced_row_list)
     return output
 ```
@@ -660,11 +656,11 @@ The output is given as shown below for the two function calls.
 We can now apply this function to our `month_steps` list of list. Let's say, we want to get the steps on Wednesday for each week. We can write the following code.
 
 ```python
-month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+month_steps: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                 [54, 56, 47, 62, 61, 46, 61],
                                 [52, 56, 63, 58, 62, 66, 62],
                                 [57, 58, 46, 71, 63, 76, 63]]
-wed_steps: List[List[int]] = slice_2d(month_steps, 0, 4, 1, 3, 4, 1)
+wed_steps: list[list[int]] = slice_2d(month_steps, 0, 4, 1, 3, 4, 1)
 print(wed_steps)
 ```
 
@@ -677,7 +673,7 @@ Notice that we want all weeks so we set our row start index to be zero and its e
 We can also get the steps on every Wednesdays and Fridays in the first two weeks using the following code.
 
 ```python
-wed_fri_week12: List[List[int]] = slice_2d(month_steps, 0, 2, 1, 3, 6, 2)
+wed_fri_week12: list[list[int]] = slice_2d(month_steps, 0, 2, 1, 3, 6, 2)
 print(wed_fri_week12)
 ```
 

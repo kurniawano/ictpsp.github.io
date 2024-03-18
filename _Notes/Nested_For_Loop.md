@@ -18,7 +18,7 @@ show_date: false
 In the previous lesson, we introduced the idea that a collection data type like a list can have elements that are also lists. This introduces us to nested data type. There are times that we may need to visit every element in our nested list which require us to use a nested loop. One simple example that requires us to do is, let's say, we want to represent our data differently. In our previous lesson, we have `month_steps` where we store the steps of every day in a week and every week in a month. It was represented as below.
 
 ```python
-month_steps_week: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+month_steps_week: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                      [54, 56, 47, 62, 61, 46, 61],
                                      [52, 56, 63, 58, 62, 66, 62],
                                      [57, 58, 46, 71, 63, 76, 63]]
@@ -27,7 +27,7 @@ month_steps_week: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
 Notice, that this list is easy to access if we are interested in the *weekly* data. It's easy to get the steps in the first week or the second week or the third and so on. However, as shown in the previous lesson, it is not easy if we wish to access the data from particular *day*. For example, if we want to display what is my number of steps every Wednesday, we have to slice the data using our previous function that we developped in the last lesson. But what if we represent the data where each *sub-list* is a particular day. This means that the rows are the days and the column and the week. It will be easy to get the steps data for every Wednesday on that month. 
 
 ```python
-month_steps_day: List[List[int]] = [[40, 54, 52, 57],
+month_steps_day: list[list[int]] = [[40, 54, 52, 57],
                                     [51, 56, 56, 58],
                                     [43, 47, 63, 46],
                                     [55, 62, 58, 71],
@@ -244,7 +244,7 @@ Problem Statement
 Let's work out some concrete cases. Instead of dealing with `month_steps_week`, we will use a simpler list of lists as shown below.
 
 ```python
-input_array: List[List[int]] = [[1, 2, 3, 4],
+input_array: list[list[int]] = [[1, 2, 3, 4],
                                 [5, 6, 7, 8],
                                 [9, 10, 11, 12]]
 ```
@@ -252,7 +252,7 @@ input_array: List[List[int]] = [[1, 2, 3, 4],
 What we would like to have on the output is as follows.
 
 ```python
-output_array: List[List[int]] = [[1, 5, 9],
+output_array: list[list[int]] = [[1, 5, 9],
                                  [2, 6, 10],
                                  [3, 7, 11],
                                  [4, 8, 12]]
@@ -261,13 +261,13 @@ output_array: List[List[int]] = [[1, 5, 9],
 Now, we need to work it out how to get the output from the input step by step as if we are the machine. Our plan is to construct the output one at a time. First, we will create the first sub-list, i.e. `[1, 5, 9]`. When this is done, we will insert this sublist into the output list. To begin, we will create an empty list.
 
 ```python
-output_array = []
+output_array: list[list[int]] = []
 ```
 
 Next, we need to create another empty list for the first sublist and start filling up the elements.
 
 ```python
-sublist = []
+sublist: list[int] = []
 ```
 
 How do we get the element? We need to get it from the `input_array`. This is where we need to traverse the input list of lists to get the element. We need to get the element `1`, `5` and `9`. These three are at different sub-lists in the input array. So let's write down the step and what we get.
@@ -477,16 +477,14 @@ Let's try to implement these steps that we have written.
 We will create a python script called `transpose.py` to implement and test our steps. Let's start by writing the function header and some code to test it.
 
 ```python
-from typing import List
-
-def transpose(input_array: List[List[int]]) -> List[List[int]]:
-    output_array: List[List[int]] = []
+def transpose(input_array: list[list[int]]) -> list[list[int]]:
+    output_array: list[list[int]] = []
     return output_array
 
-input_array: List[List[int]] = [[1, 2, 3, 4],
+input_array: list[list[int]] = [[1, 2, 3, 4],
                                 [5, 6, 7, 8],
                                 [9, 10, 11, 12]]
-output: List[List[int]] = transpose(input_array)
+output: list[list[int]] = transpose(input_array)
 print(output)
 ```
 
@@ -504,8 +502,8 @@ $ python transpose.py
 Step 2 is to iterate for the number of columns in the input array. We will use the `range()` function so that we can get both the index. On top of that, we will first calculate the number of rows and columns in the input array. In the code below, we remove the other parts of the code and focus only on the function definition.
 
 ```python
-def transpose(input_array: List[List[int]]) -> List[List[int]]:
-    output_array: List[List[int]] = []
+def transpose(input_array: list[list[int]]) -> list[list[int]]:
+    output_array: list[list[int]] = []
     n_rows: int = len(input_array)
     n_cols: int = len(input_array[0])
     for v_arrow in range(n_cols):
@@ -530,12 +528,12 @@ We can ignore the last empty list since we still return the empty `output_array`
 With this, it seems we have implemented step 2 and we are ready to implement the steps under this outer iteration. Step 2.1 creates another empty array but this time it is for the rows in the output array. Since the rows in the output array have the same number as the columns in the input array, we iterate four times to create the empty lists. 
 
 ```python
-def transpose(input_array: List[List[int]]) -> List[List[int]]:
-    output_array: List[List[int]] = []
+def transpose(input_array: list[list[int]]) -> list[list[int]]:
+    output_array: list[list[int]] = []
     n_rows: int = len(input_array)
     n_cols: int = len(input_array[0])
     for v_arrow in range(n_cols):
-        output_row: List[int] = []
+        output_row: list[int] = []
         print(output_row)
     return output_array
 ```
@@ -566,12 +564,12 @@ We can implement Step 2.2 including 2.2.2 using the usual `for-in` statement.
 
 ```python
 
-def transpose(input_array: List[List[int]]) -> List[List[int]]:
-    output_array: List[List[int]] = []
+def transpose(input_array: list[list[int]]) -> list[list[int]]:
+    output_array: list[list[int]] = []
     n_rows: int = len(input_array)
     n_cols: int = len(input_array[0])
     for v_arrow in range(n_cols):
-        output_row: List[int] = []
+        output_row: list[int] = []
         for h_arrow in range(n_rows):
             output_row.append(input_array[h_arrow][v_arrow])
             print(output_row)
@@ -603,7 +601,7 @@ We added a single print statement to show `output_row`. Let's see the output.
 We can see that it first added `1` into the `output_row` and then `5` and then `9`. Once it has three elements, it creates a new list and added `2` for the second row in the output. We repeat these four times which is the number of columns in the input or the number of rows in the output. Comparing these sublist with out Concrete (C)ases example, we can see that we get the output rows correct. Recall the following expected output in Concrete (C)ases.
 
 ```python
-output_array: List[List[int]] = [[1, 5, 9],
+output_array: list[list[int]] = [[1, 5, 9],
                                  [2, 6, 10],
                                  [3, 7, 11],
                                  [4, 8, 12]]
@@ -612,12 +610,12 @@ output_array: List[List[int]] = [[1, 5, 9],
 We can see all the rows needed to assemble the output array. Now, what we need to do is to implement step 2.3 which is to add the sublist into the output array. 
 
 ```python
-def transpose(input_array: List[List[int]]) -> List[List[int]]:
-    output_array: List[List[int]] = []
+def transpose(input_array: list[list[int]]) -> list[list[int]]:
+    output_array: list[list[int]] = []
     n_rows: int = len(input_array)
     n_cols: int = len(input_array[0])
     for v_arrow in range(n_cols):
-        output_row: List[int] = []
+        output_row: list[int] = []
         for h_arrow in range(n_rows):
             output_row.append(input_array[h_arrow][v_arrow])
         output_array.append(output_row)
@@ -640,12 +638,12 @@ We have five lines where the last two lines are the same. The reason is that the
 We got the final output array correctly and we can remove the print statement inside the function definition. 
 
 ```python
-def transpose(input_array: List[List[int]]) -> List[List[int]]:
-    output_array: List[List[int]] = []
+def transpose(input_array: list[list[int]]) -> list[list[int]]:
+    output_array: list[List[int]] = []
     n_rows: int = len(input_array)
     n_cols: int = len(input_array[0])
     for v_arrow in range(n_cols):
-        output_row: List[int] = []
+        output_row: list[int] = []
         for h_arrow in range(n_rows):
             output_row.append(input_array[h_arrow][v_arrow])
         output_array.append(output_row)
@@ -672,11 +670,11 @@ At the beginning of this lesson, we mentioned that getting the number of steps f
 We want to be able to pass `month_steps` and get the number of steps for Wednesdays in that month. 
 
 ```python
-month_steps: List[List[int]] = [[40, 50, 43, 55, 67, 56, 60],
+month_steps: list[list[int]] = [[40, 50, 43, 55, 67, 56, 60],
                                 [54, 56, 47, 62, 61, 46, 61],
                                 [52, 56, 63, 58, 62, 66, 62],
                                 [57, 58, 46, 71, 63, 76, 63]]
-wednesdays: List[int] = steps_month_for_day(month_steps, 3)
+wednesdays: list[int] = steps_month_for_day(month_steps, 3)
 ```
 
 We created a function called `steps_month_for_day()` which takes in two arguments. The first is the list of lists containing all the steps in a month. This list has the number of steps for each week in its rows. The second argument is the index of the day we are interested in. In the above code, we put in `3` for Wednesday since we start with Sunday which is index `0`. 
@@ -684,9 +682,9 @@ We created a function called `steps_month_for_day()` which takes in two argument
 We can then write this function as follows.
 
 ```python
-def steps_month_for_day(month_steps: List[List[int]], index: int) -> List:
-    steps_on_days: List[List[int]] = transpose(month_steps)
-    output: List[int] = steps_on_days[index]
+def steps_month_for_day(month_steps: list[list[int]], index: int) -> list[int]:
+    steps_on_days: list[list[int]] = transpose(month_steps)
+    output: list[int] = steps_on_days[index]
     return output
 ```
 
