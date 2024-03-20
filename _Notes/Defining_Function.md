@@ -47,11 +47,11 @@ This new function `compute_cadence_for_30sec()` serves several purposes. First, 
 
 But now, we need to be able to write our own custom function or user-defined function. Let's learn how to do it for the various possible function combination that you have seen previously.
 
-// put images of blackbox with and without input/output
+<img src="/ictpsp/assets/images/lesson2/functions.png" width=600>
 
 ## Defining a User-Defined Function With Input Arguments and Return Values
 
-// put image of box with both input and output
+<img src="/ictpsp/assets/images/lesson2/functions_i_o.png">
 
 We will start with the first function that takes in input argument and return some output (return value). The format to define a new function is as follows.
 
@@ -291,7 +291,7 @@ Let's say if we want our function not only to return the speed in km/h but also 
 For example, the code below creates a tuple and print its values and its type.
 
 ```python
->>> my_output = 12.8, 7.97
+>>> my_output:tuple = 12.8, 7.97
 >>> print(my_output)
 (12.8, 7.97)
 >>> print(type(my_output))
@@ -340,7 +340,7 @@ print(speed_kmph, speed_mph)
 The other way is to store it in a single variable first which then can be accessed using the bracket operator. 
 
 ```python
-speed = calculate_speed(685.8, 38.1, 50, 14, 25)
+speed: tuple = calculate_speed(685.8, 38.1, 50, 14, 25)
 print(speed[0], speed[1])
 ```
 

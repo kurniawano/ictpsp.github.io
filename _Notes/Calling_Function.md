@@ -24,7 +24,7 @@ We call these functions as built-in functions because Python provides these func
 
 In a way, a *function* encapsulates some computation. Every computation may or may not have some input. It may or may not have some output. Similarly, every function does some computation. Some function may or may not have some input. Some functions may or may not have some output. We can draw a function like a blackbox as shown in the diagram below. 
 
-// Put image of function as black box with various combination of input and output
+<img src="/ictpsp/assets/images/lesson2/functions.png" width=600>
 
 In the above diagrams, we have drawn various possible combination with regards to the input and output of a function. Let's discuss some of these in the sections below.
 
@@ -52,7 +52,7 @@ Not all functions have input arguments but the above three functions are example
 
 Input arguments are data that the function **takes in** in order to do its computation. The **output** of a function is the data that the function **throws out** as a result of some computation inside the function. In our three built-in examples, only `int()` and `input()` throws some output. The `print()` function does not throw an output. 
 
-// Put diagram for function that throws output and no output.
+<img src="/ictpsp/assets/images/lesson2/functions_no_i_no_o.png">
 
 You may wonder why `print()` function does not throw an output though you can see something on the computer screen. Doesn't displaying data on a screen can be considered as an output? 
 
@@ -62,11 +62,18 @@ Again, let's repeat our definition of an output of a function. The output of a f
 cadence: int = 25
 ```
 
-In the above line, we create variable called `cadence` which is an integer and assign a value `25`. Since the literal `25` is interpreted by Python as an `int` data, cadence is binded to an `int` data `25`. We can consider this assignment as *storing* the value `25` into the variable `cadence`. See image below.
+In the above line, we create variable called `cadence` which is an integer and assign a value `25`. Since the literal `25` is interpreted by Python as an `int` data, cadence is binded to an `int` data `25`. We can consider this assignment as *storing* the value `25` into the variable `cadence`. 
 
-// PUt image of storing a literal to a variable.
+<img src="/ictpsp/assets/images/lesson2/assignment.png">
 
-Now, we can see if a function throws any output data by storing that output data into a variable. We will use the same **assignment** operator to assign the output of the function to the variable.
+More accurately, we are binding a value with a name. The value is `25` and the name is `cadence`. The assignment operator creates the *binding*. This binding can be represented as a table that associates a name and a value.
+
+| Name    | Value |
+|---------|-------|
+| cadence | 25    |
+|         |       |
+
+Now, we can see if a function throws any output data by storing that output data into a variable. We will use the same **assignment** operator to assign the output of the function to the variable and then we will display this variable to the screen.
 
 ```python
 out_print = print("Hello World")
@@ -95,17 +102,17 @@ The first line displays `Hello World` and this is due to the print function wher
 
 The third line of the output, however, displays `5`. This is the result of `print(out_int)`. So we know that `int()` function throws an output data, i.e. `5`. The second last line, we see the prompt being displayed into the standard output, `What's your step?`. In the last line, we see the output data thrown out by the `input()` function, i.e. `25` (assuming you enter 25 when prompted "What's your steps?"). 
 
-So we see that both `int()` and `input()` throws some output data but `print()` does not. This *throwing out* output is more commonly called **return an output** in programming languages and you will see later on that Python has a specific keyword if you want to return an output from your user-defined function. We will learn how to create our own user-defined function soon.
+So we see that both `int()` and `input()` throws some output data but `print()` does not. This *throwing out* output is more commonly called **returning an output** in programming languages and you will see later on that Python has a specific keyword if you want to return an output from your user-defined function. We will learn how to create our own user-defined function soon.
 
 But we may ask, so what is the thing that we see on the screen when we call `print()` function? The answer is it is a **side effect**. A function is said to have a side effect if it modifies some state outside of its local environment. This results in some observable effect other than its primary effect of returning a value to the invoker of the function. In our case, displaying a text into a screen is this observable effect. The cause of this observable effect of something appear on the screen is that the `print()` function modifies something outside of its function **not by returning a value to the program that call the print function**. We have seen that the function `print()` does not return any data to `out_print`. Because `print()` modifies something outside of its function not through its **return value**, we say that the `print()` function has a side effect. 
 
-Now, we have differentiate an output of a functin and a side effect. When we call a function, Python evaluates its **return value** as its output. For example,
+Now, we have differentiate an output of a function and a side effect. When we call a function, Python evaluates its **return value** as its output. For example,
 
 ```python
 out_int = int("5")
 ```
 
-Python interpreter evaluates the return value of invoking `int("5")`. The result of this computation is the output of the function which is an `int` type data that represent `5`. This output is then assigned to the variable.
+Python interpreter evaluates the return value of invoking `int("5")`. The result of this computation is the output of the function which is an `int` type data that represent `5`. This output is then assigned to the variable. The above code is then the same as the following after executing the function `int("5")`.
 
 ```python
 out_int = 5
@@ -119,7 +126,12 @@ out: int = int("5")
 
 Instead of putting the "int" as part of the variable name, we can use type annotation. The good thing about type annotation is that we can use tools such as `mypy` to do a static check on our code.
 
-// Put diagram
+<img src="/ictpsp/assets/images/lesson2/function_to_var.png">
+
+| Name | Value |
+|------|-------|
+| out  | 5     |
+|      |       |
 
 ## Importing and Calling Math Functions in Python
 
