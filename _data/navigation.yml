@@ -40,7 +40,7 @@ Notes:
       - title: Boolean Data
         url: /notes/boolean-data
       - title: Branch Structures
-        url: /notes/branch-structures
+        url: /notes/branch
   - title: "Lesson 5: String"
     children:
       - title: Working with String
