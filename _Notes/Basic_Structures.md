@@ -17,7 +17,7 @@ show_date: false
 
 We will introduce some basic control structures in this section. You will find these structures throughout many computer codes and programming exercises. In fact, we can actually reduce the control structure of all programming code into only a few control structure. The image below show the three basic control structure.
 
-// put image of sequential and branch and iterative
+<img src="/ictpsp/assets/images/lesson3/control_structures.png">
 
 The first one on the left is **sequential** and we have been using this structure throughout our previous codes. We claim that computer codes are executed sequentially from top to bottom. This is the most basic and fundamental structure of all computer codes.
 
@@ -60,13 +60,14 @@ def calculate_speed(cadence: int,
 
 We can draw a flow chart of the above code as shown below.
 
-<img src="/assets/images/lesson3/sequential1.png" height=500>
+<img src="/ictpsp/assets/images/lesson3/sequential1.png" height=500>
 
 As you can easily see from the flowchart, the computation flows from top to bottom. The sequence is important because we need to compute the `gear_ratio` before we can compute the `speed`. Similarly, we need to compute the `speed` before we can compute the `speed_kmph`.
 
 In the image, we have put a rounded rectangle as the starting point of the flowchart. We also indicated the input arguments into the start process. On the other hand, all the computation processes use a normal rectangle. The flow ends with the return statement and we indicate the return value in the end terminal symbol which is also a rounded rectangle. 
 
-// put image of terminal and process flowchart symbol
+<img src="/ictpsp/assets/images/lesson3/terminal.png" width=200>
+<img src="/ictpsp/assets/images/lesson3/process.png" width=200>
 
 Let's compare this with another code that you have previously written as well and draw the flow chart as well.
 
@@ -89,7 +90,7 @@ def calculate_speed(cadence: int,
   return speed_kmph, speed_mph
 ```
 
-<img src="/assets/images/lesson3/sequential2.png" height=500>
+<img src="/ictpsp/assets/images/lesson3/sequential2.png" height=500>
 
 The above code is similar to the previous one. The only difference is that we compute both `speed_kmph` and `speed_mph` in this code. At the same time, you may have noticed that we don't put a separate process box for the `speed_mph` and `speed_kmph`. The reason is that these two computations does not depend on each other and can be computed as long as `speed` has been computed. This means that the two computations are at the same dependencies with respect to the `speed` process block. 
 
@@ -97,15 +98,15 @@ The above code is similar to the previous one. The only difference is that we co
 
 Let's say, now, we want to train at a consistent rate of cadence and we have a specific target to hit, we can monitor our performance whether we hit the target or not using a branch structure. For example, if our target for cycling cadence is 60 RPM, then we can have the following flow chart.
 
-// insert flow chart if-else here.
+<img src="/ictpsp/assets/images/lesson3/branch.png" width=500>
 
 In the above flowchart we have introduced a diamond symbol which is used to indicate a **decision** process. A Decision process allows a branch to more than one process. Inside that decision, a condition has to be specified. If the condition is true, a certain process will be executed (block A). Otherwise, another process will be executed. In our example here, if the cadence is below 60 RPM, then the user does not hit the target. Otherwise, the user hits the target. 
 
-// insert diamond symbol for flowchart
+<img src="/ictpsp/assets/images/lesson3/decision.png" width=200>
 
 In the above flowchart, we show that we will display "You are below target" if the cadence is less than 60 RPM. On the other hand, we display "You hit your cadence target of 60RPM" if the cadence is 60 or above.
 
-// insert input / output symbol for flowchart
+<img src="/ictpsp/assets/images/lesson3/io.png" width=200>
 
 Notice that we use the parallelogram to indicate the process of displaying an output. This symbol is used for both **input** and **output** process. An input process may be something like getting the data from the user through a keyboard. An output process can be something like what we did here which is to display some data into the screen. 
 
@@ -120,14 +121,14 @@ We can modify the branch structure to be more complicated than the above. The ab
 
 In this case, we can draw the flowchart as shown below.
 
-// put flowchart for table
+<img src="/ictpsp/assets/images/lesson3/branch1.png" width=600>
 
 Notice that in the above flowchart, we choose to start from the very high category and move down. You can see the substructure of the flowchart is basically just a simple branch structure that is nested in a process when the condition is false. 
 
 Can we choose the other way around starting from the low category?
 
 
-<img src="/assets/images/lesson3/branch2.png" height=500>
+<img src="/ictpsp/assets/images/lesson3/branch2.png" height=600>
 
 Notice that if the condition `100 <= cadence <= 120` is true, we display "very high". However, if this condition is false, we do not display anything and there is no process associated to it. Though, we can write a code for this, it is easier to read if we start from the "very high" category and move down such that all the other cases when the cadence is lower than 70 is attributed to "low". This example, illustrates that though we can choose how we want to nest and sequence our conditions, certain way of writing is easier to read.
 
@@ -145,7 +146,7 @@ steps_inp: str = input("how many push did you do on the pedal within 30 seconds?
 
 How can we repeat this as long as the user did not enter a valid response? Below is a flowchart on how you can do so.
 
-<img src="/assets/images/lesson3/iterative1.png" height=500>
+<img src="/ictpsp/assets/images/lesson3/iterative1.png" height=500>
 
 A few notes on the flowchart diagram above. Notice that we use the parallelogram for the `input()` function to get the users' input. We do this two times: the first one is the initial prompt and the second one is when the user did not enter a valid input. We modified the prompt to the user to indicate that the input entered is not valid and give some valid input example. 
 
