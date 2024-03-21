@@ -42,6 +42,8 @@ cadence = multiply(steps, 2)
 
 Using the `*` multiplication operator is more expressive and readable for human. At the same time, you can still conceptually think operator as a primitive computational unit that takes in input and produces output. 
 
+<img src="/ictpsp/assets/images/lesson3/multiply.png">
+
 ## Math and Assignment Operators
 
 Python supports the common arithmetic operators as shown in the table below. We added the assignment operator together here in the last row to show that all the math operators will be evaluated first before it is being assigned.
