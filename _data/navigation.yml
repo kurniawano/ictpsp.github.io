@@ -33,39 +33,37 @@ Notes:
     children:
       - title: Basic Operators
         url: /notes/basic-operators
-  - title: "Lesson 4: Three Basic Control Structures"
-    children:
       - title: Basic Control Structures
         url: /notes/basic-structures
-  - title: "Lesson 5: Boolean Data Type and Branch Structure"
+  - title: "Lesson 4: Boolean Data Type and Branch Structure"
     children:
       - title: Boolean Data
         url: /notes/boolean-data
       - title: Branch Structures
         url: /notes/branch-structures
-  - title: "Lesson 6: String"
+  - title: "Lesson 5: String"
     children:
       - title: Working with String
         url: /notes/string
-  - title: "Lesson 7: Iteration Using While Loop and For Loop"
+  - title: "Lesson 6: Iteration Using While Loop and For Loop"
     children:
       - title: Implementing For Loop
         url: /notes/for-loop
       - title: Implementing While Loop
         url: /notes/while-loop
-  - title: "Lesson 8: List and Tuple"
+  - title: "Lesson 7: List and Tuple"
     children:
       - title: Working with Tuple
         url: /notes/tuple
       - title: Working with List
         url: /notes/list
-  - title: "Lesson 9: Nested List and Nested For Loop"
+  - title: "Lesson 8: Nested List and Nested For Loop"
     children:
       - title: Nested List
         url: /notes/nested-list
       - title: Nested For Loop
         url: /notes/nested-for
-  - title: "Lesson 10: Dictionary and Set"
+  - title: "Lesson 9: Dictionary and Set"
     children:
       - title: Working with Dictionary
         url: /notes/dictionary
