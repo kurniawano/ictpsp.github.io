@@ -156,11 +156,13 @@ The iterative structure is very common and can be found in many different cases.
 
 Let's go back to our problem in calculating the average cadence for the past `n` days. Below is the flowchart that we can draw to compute the average.
 
-// put flowchart for average
+<img src="/ictpsp/assets/images/lesson3/average.png" width=500>
+
+The key part of the above flowchart is the process to compute the `total`. The `total` is computed by adding the previous total with the value of `cadence` at a particular `day`. We then increase the `day` by one to get the value of the `cadence` of the next `day`. The `average` is just `total` divided by the number of day, i.e. `n`. 
 
 In the above flowchart, notice where the loop structure is. Notice also that we always have some part of the flowchart that is sequential. Recall that we mention that the sequential structure is the most basic structure. In general, any iterative structure *usually* have the following structure.
 
-// put flowchart for iterative in general
+<img src="/ictpsp/assets/images/lesson3/loop_flowchart.png" width=500>
 
 The init block is used to initialize the data which will be used to decide whether we will enter into the loop or not. This data is checked with some conditions in the diamond decision block. Depending on the condition, we either enter the **body** of the loop or **terminate** the loop. It is possible that we may never enter the body of the loop for some cases. The condition simply determines whether to do the body of the loop or not. The body of the loop consists of two parts, the first part is the main code to be executed repeatedly. The second part is the code to modify the data in such a way that the condition at some points in time will *terminate* the loop. If we do not have this block that modifies the conditions, the loop will run forever and we will end up in an **infinite** loop. The program will hang and will never continues. 
 
@@ -387,10 +389,12 @@ Now, we can proceed to the next two stages that is to determine the state and di
 2. Otherwise,
     2.1 calculate difference betwen *average_cadence* and *target_cadence*.
     2.2 Determine state depending on the difference
-      2.2.1 if the difference is less than 10
-          2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
-      2.2.2 Otherwise,
-          2.2.2.1 Call *modify_target_cadence* function.
+      2.2.1 if the difference is greater than 0
+          2.2.1.1 Display, "Good job, you hit your target."
+      2.2.2 otherwise, if the difference is greater than -10
+          2.2.2.1 Display, "You almost hit your target, try harder in the coming weeks."
+      2.2.3 Otherwise,
+          2.2.3.1 Call *modify_target_cadence* function.
 ```
 
 Let's combine all the steps now into one single algorithm.
@@ -406,11 +410,12 @@ Let's combine all the steps now into one single algorithm.
       5.1 Display "Good job, you hit your target for the past week cycling.".
   5.2 Otherwise,
       5.2.1 calculate difference betwen *average_cadence* and *target_cadence*.
-      5.2.2 Determine state depending on the difference
-        5.2.2.1 if the difference is less than 10
-            5.2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
-        5.2.2.2 Otherwise,
-            5.2.2.2.1 Call *modify_target_cadence* function.
+      5.2.2 if the difference is greater than 0
+          5.2.2.1 Display, "Good job, you hit your target."
+      5.2.3.1 otherwise, if the difference is greater than -10
+            5.2.3.1.1 Display, "You almost hit your target, try harder in the coming weeks."
+      5.2.4.2 Otherwise,
+            5.2.4.2.1 Call *modify_target_cadence* function.
 ```
 
 Notice a few things:
@@ -423,23 +428,24 @@ We can also represent the above design of algorithm using a Flowchart. 5.2.2. Al
 
 We can also represent the above design of algorithm using a Flowchart. We can iterate the flowchart from big steps to the smaller steps. For example, we can start with the following basic steps.
 
-// show flowchart for big steps sequential
+<img src="/ictpsp/assets/images/lesson3/sequential_average_status.png" height=300>
 
 Notice, that we do not describe in detail on how to get the average. We can expand the process to calculate the average using the following flowchart.
 
-// flowchart for calculate average
+<img src="/ictpsp/assets/images/lesson3/average_flowchart.png" width=500>
 
 Notice that the iterative structure in the above flowchart. We continue adding as long as there is a next element in the list. When there is no more next element, we stop the iteration and calculate the average. 
 
 Similarly, we can draw the flowchart to determine the state of the program after the average cadence calculation as shown below.
 
-// flowchart for state determination
+
+<img src="/ictpsp/assets/images/lesson3/state_decision.png" width=500>
 
 Notice that we also have two decision box in this section showing how the branch structure is actually nested inside another branch structure. 
 
 Finally, we can combine the different part into one single flowchart as shown below.
 
-// flowchart overall.
+<img src="/ictpsp/assets/images/lesson3/overall_flowchart.png" width=700>
 
 For smaller problem like the above, we can draw all the parts in a single flowchart. For bigger problems, we may need to modularize and separate the flowchart into different sections and parts. 
 
