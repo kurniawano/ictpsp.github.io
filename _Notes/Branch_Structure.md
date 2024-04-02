@@ -23,7 +23,7 @@ We showed an example of when this branch structure may at play in a real applica
 
 Let's start with a simple decision making. Using our cycling app example, let's say if the user hits the set target, we will display `"You hit your cadence target for the week! Well done."`. The flowchart is shown below.
 
-// show flowchart for if-true block
+<img src="/ictpsp/assets/images/lesson4/if_true_flowchart.png" width=300>
 
 We can implement the above using the following code.
 
@@ -50,7 +50,8 @@ What if you have some codes not indented as shown below.
 
 Run the above code till the end and see the output. As you can see that the **unindented** code is no longer part of code block A. In fact, Python consider that as the **next statement after** the if-statement. This means that it will always be executed regardless if the condition is true or false because it is simply the next statement following the sequential nature of the program flow. 
 
-//flowchart with code outside of if-else
+<img src="/ictpsp/assets/images/lesson4/if_true_outside.png" width=300>
+
 
 This also means that it will be executed when the condition is false. See and run the following code.
 
@@ -70,6 +71,11 @@ if cadence >= target:
 else:
   print("You missed your target but don't give up and try again.")
 ```
+
+The flowchart is shown here.
+
+
+<img src="/ictpsp/assets/images/lesson4/if_else_flowchart.png" width=500>
 
 The syntax in general is as follows.
 
@@ -92,7 +98,7 @@ The second code is when the condition is false. We set the cadence to be lower (
 
 Again, any unindented code is considered as the **next statement** after the if-statement and will be executed regardless if the condition is true or false. See the flowchart below.
 
-// insert flowchart with next statement.
+<img src="/ictpsp/assets/images/lesson4/if_else_next.png" width=500>
 
 ### When There are More Than Two
 
@@ -239,7 +245,7 @@ In this case, the elif condition is checked only if `average_cadence` is not gre
 
 How can we identify a branch structure from our **D**esign of algorithm? The answer is simple. Whenever we encounter a step in the algorithm that requires us to take **different actions** depending on some **conditions** we have a branch structure. This requires us to make a **decision** on which course of action to take. This is why the flowchart symbol for a branch structure contains the "Decision" symbol.
 
-// put image of decision symbol in flowchart. 
+<img src="/ictpsp/assets/images/lesson3/decision.png" width=200>
 
 In order for us to easily spot the branch structure it is recommended that we rewrite our **D**esign of algorithm with certain keywords such as the following:
 - decide ..., determine ...
