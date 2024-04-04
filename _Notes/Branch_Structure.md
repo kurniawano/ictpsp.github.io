@@ -148,7 +148,7 @@ else:
 
 One important note is that the **conditions are checked sequentially from the top to the bottom**. This is described in the following flowchart.
 
-// put flowchart if-elif-else block
+<img src="/ictpsp/assets/images/lesson4/if_elif_else.png" width=500>
 
 It is imperative for us to compare the above structure with the following structure.
 
@@ -165,11 +165,11 @@ else:
 
 First, notice the difference in the keyword that we use. In the previous code, we use **if** and **elif**. On the other hand, this code uses **if** and **if** for the various conditions. The flowchart below shows what it looks like for the if-if codes.
 
-// flowchart for if-if code
+<img src="/ictpsp/assets/images/lesson4/if_if_else.png" height=500>
 
 Basically, the next if-statement for condition_2 and condition_3 are just the next statement after the previous if-statement. This means that each of this conditions will be checked regardless whether condition_1 is true or false. On the other hand, the if-elif statement does something different. If the earlier condition is true, it will execute the block and immediately go to the end and execute the next statement. See flowchart for the if-elif and notice the flow when condition_1 is true. It does not go and check condition_2 at all.
 
-// flowchart for if-elif again
+<img src="/ictpsp/assets/images/lesson4/if_elif_else.png" width=500>
 
 We can show this difference using the following code examples. Let's start with the if-elif statements.
 
