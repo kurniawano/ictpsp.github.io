@@ -199,7 +199,7 @@ Recall our example of our cycling application. In our previous lessons, we draft
 2. Otherwise,
     2.1 calculate difference betwen *average_cadence* and *target_cadence*.
     2.2 Determine state depending on the difference
-      2.2.1 if the difference is less than 10
+      2.2.1 if the absolute difference is less than 10
           2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
       2.2.2 Otherwise,
           2.2.2.1 Call *modify_target_cadence* function.
@@ -207,7 +207,7 @@ Recall our example of our cycling application. In our previous lessons, we draft
 
 Notice in the above pseudocode that we have two branch structure. The first branch structure is based on whether the `average_cadence` is greater than or equla to the `target_cadence`. When the condition is `False`, step 2.1 calculates the difference between the two. Furthermore, step 2.2 actually contains another branch structure that is based on the difference. We can draw the flowchart as below.
 
-// flowchart for nested if-else
+<img src="/ictpsp/assets/images/lesson4/nested_if.png" width=500>
 
 Note that the nested branch structure can be either in the true block or in the false block of codes. Where they are located really depends on the logic and the problem we are trying to solve. 
 
@@ -260,7 +260,7 @@ This is an example of our pseudocode for our average cadence.
 2. Otherwise,
     2.1 calculate difference betwen *average_cadence* and *target_cadence*.
     2.2 Determine state depending on the difference
-      2.2.1 if the difference is less than 10
+      2.2.1 if the absolute difference is less than 10
           2.2.1.1 Display, "You almost hit your target, try harder in the coming weeks."
       2.2.2 Otherwise,
           2.2.2.1 Call *modify_target_cadence* function.
