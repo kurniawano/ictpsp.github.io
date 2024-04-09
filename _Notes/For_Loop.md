@@ -39,7 +39,7 @@ for _ in iterable:
   # which will be repeated for the number of items in iterable
 ```
 
-// put flow chart for for-in statement
+<img src="/ictpsp/assets/images/lesson6/for_in_flowchart.png" height=400>
 
 Let's take a look at some examples how to use that syntax. Let's say, we want to print every character in a name. We can write the following code.
 

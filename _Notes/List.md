@@ -462,7 +462,7 @@ As can be seen above it is intuitive to get the first three days with slicing in
 
 Another way to see the slice index is to put them at the boundary of the elements as shown in the figure below.
 
-INSERT FIGURE HERE
+<img src="/ictpsp/assets/images/lesson7/list_slicing_indices.png" width=500>
 
 In the figure above, we can see the `start` and `end` index as the boundary of the sliced elements. For example, when we want to get the steps from the second element to the fourth, we can see that the boundary enclosing those elements is 1 on the left and 4 on the right. The same thing works for the negative index. 
 

@@ -41,6 +41,11 @@ The syntax for the while-loop has four main parts:
 1. The third part is block A code which contains code that will be repeated. In the example of a login page, this would be to display the username and password prompt and capturing user input to these data.
 1. The last part, which is very important, is block B, which has to be present to modify the state of the condition. If the condition never changes, the boolean evaluation will remain true and the loop never stops. This is what we call as infinite loop. Block B code is the code that makes sure the condition will become false at some points when the iteration should stop.
 
+The flowchart is shown below.
+
+
+<img src="/ictpsp/assets/images/lesson6/while_flowchart.png" height=400>
+
 Let's take a look at some example. First, let's redo some of the iterative structure in the previous lesson but this time using the `while` statement. The first code we had previously is like the one below here.
 
 ```python
