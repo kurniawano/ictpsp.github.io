@@ -442,17 +442,27 @@ However, for simple if-else, dictionary can make the code cleaner. This is even 
 
 ## Graph and Breadth First Search
 
-Let's look into some example where we can use dictionary and apply some problem solving framework. Let's say, our app can plan a cycling path and we would like to find the path we should take from one place to another place. See example image below of an example map. What are the path we should take from point A to point F?
-
-INSERT IMAGE HERE
+Let's look into some example where we can use dictionary and apply some problem solving framework. Let's say, our app can plan a cycling path and we would like to find the path we should take from one place to another place. This is similar to Google Maps do when finding a path from a starting location to some destination.
 
 The first question we may ask is how should we represent the map in our data. How should we represent the connection between one place to another place?
 
-One useful abstract data type is what we call a **graph**. A graph consists of vertices or nodes. These nodes are connected by edges. In our example here, we can represent each place and junction as a vertex and the connection between two junctions as an edge. Therefore, the above map can be represented as the following graph.
+One useful abstract data type is what we call a **graph**. A graph consists of vertices or nodes. These nodes are connected by edges. 
 
-INSERT IMAGE HERE
+See example image below of an example map of MRT lines. What are the path we should take from Simei to Upper Changi?
 
-How can we represent this graph as our data? We can use a dictionary for this. In using the dictionary, we should ask ourselves what are the keys and the values. We can choose the vertices as the keys. Every graph has vertices and these vertices can be the keys in our dictionary. Moreover, each vertex can have some neighbouring vertices. These neighbours can the values for each key. We can then represent the the above graph as follows.
+<img src="/ictpsp/assets/images/lesson9/mrt_map.png" width=500>
+
+In the above graph, we represent every station as a vertex in the graph. Whenever two stations are connected by the MRT line, there is an edge in the graph to represent this connection.
+
+Similarly, we can have a map for our cycling map representing different places as shown in the image below.
+
+<img src="/ictpsp/assets/images/lesson9/park_map.png" width=400>
+
+In our example here, we represent each place and junction as a vertex and the connection between two places or junctions as an edge. For simplicity, we will just use alphabet to represent the graph as shown below.
+
+<img src="/ictpsp/assets/images/lesson9/park_map_abc.png" width=400>
+
+How can we describe this graph as our data in our code? We can use a dictionary for this. In using the dictionary, we should ask ourselves what are the keys and the values. We can choose the vertices as the keys. Every graph has vertices and these vertices can be the keys in our dictionary. Moreover, each vertex can have some neighbouring vertices. These neighbours can the values for each key. We can then represent the the above graph as follows.
 
 ```python
 cycling_map: dict[str, list[str]] = {"A": ["B", "D"],
