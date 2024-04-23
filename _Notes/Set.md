@@ -125,7 +125,7 @@ But set is useful because of its set operations which was based on set theory in
 
 We have used the `-` operator to get this difference. The difference operator can be visualize using the Venn diagram.
 
-INSERT IMAGE VENN
+<img src="/ictpsp/assets/images/lesson9/a_minus_b.png" width=300>
 
 Notice, that we can swap the operands when taking a difference. Let's see what happens if we swap the above operands.
 
@@ -168,6 +168,8 @@ In fact, we can take a **symmetric difference** of the two sets.
 
 These are the dates that John and Mary exercise without the other. 
 
+<img src="/ictpsp/assets/images/lesson9/symmetric_difference.png">
+
 #### Union and Intersection
 
 But we can find more interesting results using set operations. Let's say we want to know which dates that Mary and John exercise on the same dates. We can use **intersection** operator.
@@ -180,6 +182,8 @@ But we can find more interesting results using set operations. Let's say we want
 >>> 
 ```
 
+<img src="/ictpsp/assets/images/lesson9/union.png">
+
 Maybe the app can arrange the two to exercise together next time? 
 
 We can also get the dates when both Mary and John exercise using **union** operation.
@@ -190,6 +194,8 @@ We can also get the dates when both Mary and John exercise using **union** opera
 ```
 
 This lists all the dates that both Mary and John exercise. 
+
+<img src="/ictpsp/assets/images/lesson9/intersection.png">
 
 #### Subset and Superset
 
@@ -210,6 +216,10 @@ False
 ```
 
 A set is a proper subset of another set if it is a subset of the other set and *not* the same as the other set. In the second code above, the result is `False` because the two sets are the same. 
+
+<img src="/ictpsp/assets/images/lesson9/subset.png">
+
+In the above image, A is a subset of B. We can also say that B is the superset of A.
 
 Similarly, we can check if a set is a superset of another set using the opposite operator.
 
