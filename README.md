@@ -1,3 +1,3 @@
-## This is a website for the bok Introduction to Computational Thinking and Problem Solving. 
+## This is a website for the book "Introduction to Computational Thinking and Problem Solving."
 
-You can contribute by forking this repository and creating pull requests 😊
+You can contribute by forking this repository and creating pull requests. 😊
