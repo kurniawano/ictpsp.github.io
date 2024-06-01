@@ -16,7 +16,7 @@ show_date: false
 ## What is Computational Thinking?
 Before we delve into programming, we would like to talk first about computational thinking. Computational thinking has been identified as one of the important work skills in the 21st century. A number of governments have revised their primary education curriculum to include computational thinking for all students. Some argue that computational thinking should be another literacy that must be taught similar to writing and mathematics. So what is computational thinking and how does it relate to programming?
 
-Wing defines computational thinking as taking an approach to solving problems, designing systems, and understanding human behaviours that draws on the concepts fundamental to computing[^1]. Computational thinking's essence is thinking like a computer scientist when confronted with a problem. Computational thinking, in a way,changes the way we think. Computational concepts provide a new language for describing problems and their solutions. To solve problems in the future, we will need to understand computation.
+Wing defines computational thinking as taking an approach to solving problems, designing systems, and understanding human behaviours that draws on the concepts fundamental to computing[^1]. Computational thinking's essence is thinking like a computer scientist when confronted with a problem. Computational thinking, in a way, changes the way we think. Computational concepts provide a new language for describing problems and their solutions. To solve problems in the future, we will need to understand computation.
 
 
 [^1]: <div class="csl-entry">Wing, J. M. (2006). Computational Thinking. <i>Communications of the ACM</i>, <i>49</i>(3), 33–35.</div> 
