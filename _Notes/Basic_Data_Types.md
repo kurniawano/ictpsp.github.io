@@ -15,11 +15,13 @@ show_date: false
 
 ## What Kind of Data is This?
 
-It is important to ask the question, "what kind of data is this?". One of the challenges of novice programmers is that Python does not require you to declare the *data type*. So many novice programmers do not think on this question, "what kind of data is this?". However, it is essential on every part of the problem solving steps, to continue asking the question, what kind of data we are dealing with.
+It is important to ask the question, "what kind of data is this?" One of the challenges **for** novice programmers is that Python does not require you to declare the *data type*. So many novice programmers do not think **about** this question, "what kind of data is this?" However, it is essential **at** every part of the problem-solving **process** to continue asking the question, "what kind of data **are** we dealing with?"
 
-In the first step `P` for Problem statement, we are asking what is the input, output and the process. In answering these questions, we have to ask what *kind* of data is the input and what *kind* of data is the output. The kinds of data is what we call as *data type*. 
 
-In our first problem, we want to display `Hello World!` into the screen. We should ask, what kind of data is this?
+In the first step **'P'** for **Problem Statement**, we are asking what is the input, output **,** and the process. In answering these questions, we have to ask what *kind* of data is the input and what *kind* of data is the output. The kinds of data **are** what we call **a** *data type*. 
+
+In our first problem, we want to display **'Hello, World!'** **on** the screen. We should ask, what kind of data is this?
+
 
 ## Two Basic Data Types
 
@@ -27,62 +29,62 @@ Now, we will introduce two basic data types:
 - text
 - numbers
 
-In our first problem, our data is not numbers but rather text. We call this data of a `string` data type. In some other programming language, they have a character data type where it only consists of a single character. Python does not have a character data type. To create a character, you basically create a string with only one character.  
+In our first problem, our data is not numbers but rather text. We call this data a **'string'** data type. In some other programming **languages**, they have a character data type **,** which only consists of a single character. Python does not have a character data type. To create a character, you basically create a string with only one character.
 
-If you recall about our chatbot, a name will be a string data. But let's say if you create a chatbot to calculate your cadence related to your fitness activity, some of those data may not be a string. For example, the chatbot can ask on the number of steps and the duration of your walk or your cycling period. In calculating your cadence, the app has to work with numbers to do the mathematical manipulation. 
+If you recall **our chatbot**, a name will be a string **of** data. But let's say **you create** a chatbot to calculate your cadence related to your fitness activity **;** some of those data may not be a string. For example, the chatbot can ask **for** the number of steps and the duration of your walk or your cycling period. In calculating your cadence, the app has to work with numbers to do the mathematical manipulation.
 
-This `string` data type includes other kinds that may not so obviously a text such as:
-- new line character
-- tab and other whitespaces
+
+This `string` data type includes other kinds that may not **seem** so obviously **to be** text, such as:
+- **newline** character
+- tab **characters** and other whitespaces
+
 
 Python supports the standard [ASCII characters](https://www.asciitable.com) and [Unicode](https://home.unicode.org) characters.
 
-Even what may seem like numbers can be actually a `string` data type. For example, `1234` can be considered as a string instead of numbers. One example would be a student id data. Since this data is more like a label rather than being used with any mathematical manipulation, it is more likely that such data is represented as a string instead of as a number.
+Even what may seem like numbers can **actually** be **a** `string` data type. For example, `1234` can be considered as a string instead of **a number**. One example would be a student **ID** data. Since this data is more like a label rather than being used with any mathematical manipulation, it is more likely that such data is represented as a string instead of as a number.
 
 On the other hand, Python supports two kinds of numbers:
-- `int`: whole number
-- `float`: decimal numbers represented as floating point
+- `int`: whole **numbers**
+- `float`: decimal numbers represented as **floating-point numbers**
 
-An example for `int` data type would be the whole range of whole numbers: 3, 17, 1234, etc. On the other hand, `float` is used to represent numbers with decimal point. In computer, decimal numbers cannot be represented accurately all the time. The reason is that there are some numbers with infinite decimal expansion. For example,
+An example **of** the `int` data type would be the whole range of whole numbers: 3, 17, 1234, etc. On the other hand, `float` is used to represent numbers with **a** decimal point. **In computers**, decimal numbers cannot be represented accurately all the time. The reason is that there are some numbers with infinite decimal expansion. For example,
 - 1/11 = 0.090909...
 - 10/3 = 3.333333...
-- 7/4 = 1.74999...
-- etc
+- 7/4 = 1.74999.../1.750000...(choose 1)
+- etc.
 
 Since computer stores information in a finite space (or finite *bits*), it is not possible for computer to represent these numbers accurately. Therefore, real numbers are stored in computer using a representation called *floating point numbers* that has some finite precision. When dealing with real numbers in computers, we have to accept that we can never eliminiate floating-point errors. We can only [manage floating-point errors by mitigating them](https://en.wikipedia.org/wiki/Floating-point_error_mitigation). 
 
 ## Creating a String Data
 
-Now, we can answer that `Hello World!` is of `string` data type. How can we create `string` data type and use it in our computer programs? There are a few ways of creating a `string` literal in Python.
+Now, we can answer that `Hello World!` is **a** `string` data type. How can we create **a** `string` data type and use it in our computer programs? There are a few ways of creating a `string` literal in Python.
 
-The first way is to use *single* double quotes as shown in the previous code. 
+The first way is to use **double** quotes as shown in the previous code.
 
 ```python
 "Hello World!"
-```
+
 
 You can create this data in the Python shell. When you press enter, it will just display the data you just created.
 
-```python
 >>> "Hello World!"
 'Hello World!'
 >>> 
-```
 
-Throughout this book, we will use `>>>` to indicate codes that are entered through a Python shell. Notice also in the above that once you press the ENTER key of our keyboard, the shell returns back the value created. You may also notice that the output string printed by the shell has single quotes instead of double quotes. This brings us to the second way of creating a string.
-
-The second way is to use a *single* single quotes. 
+Throughout this book, we will use >>> to indicate code that is entered through a Python shell. Notice also in the above example that once you press the ENTER key on your keyboard, the shell returns the value created. You may also notice that the output string printed by the shell has single quotes instead of double quotes. This brings us to the second way of creating a string.
+The second way is to use **single** quotes.
 
 ```python
 'Hello World!'
 ```
 
-The third way is to use a *tripple* double quotes.
-```python
+The third way is to use *triple** double quotes.
 """Hello World!"""
 ```
 
-And the last one is to use a *tripple* single quotes.
+And the last one is to use *triple* single quotes.
+
+
 ```python
 '''Hello World!'''
 ```
@@ -98,10 +100,9 @@ SyntaxError: EOL while scanning string literal
 >>> 
 ```
 
-Remember to read the error from the bottom.  In the above code, we use a double quote in the beginning but use a single quote at the end. Python produces the same error. The reason is that Python interpreter cannot find the closing double quotes. 
+Remember to read the error from the bottom. In the above code, we use a double quote at the beginning but use a single quote at the end. Python produces the same error. The reason is that the Python interpreter cannot find the closing double quotes.
 
-Why does Python allow multiple ways to create strings? One reason is that single quotes and double quotes can be part of a `string` data. For example, you can create the following data.
-
+Why does Python allow multiple ways to create strings? One reason is that single quotes and double quotes can be part of string data. For example, you can create the following data:
 ```python
 "Hello World! What's up"
 ```
@@ -121,10 +122,9 @@ What is important is that the opening and closing quotes must match. We cannot h
 SyntaxError: invalid syntax
 ```
 
-The reason that the syntax is invalid is because Python finds a closing quotes for the string literal just before `World, Hello'`. Python interpret the `string` data to be: `'Yoda spoke, '`. Python does not understand how to interpret the subsequent characters in `World, Hello'` because there is no operator in between the two tokens of a string `'Yoda spoke, '` and a symbol `World`. Notice that Python does not interpret `World` as a `string` data because it does not have an opening quotes. Therefore, Python try to interpret `World` as a symbol or names instead. 
+The reason that the syntax is invalid is because Python finds a closing quote for the string literal just before 'World, Hello'. Python interprets the string data to be: 'Yoda spoke, '. Python does not understand how to interpret the subsequent characters in 'World, Hello' because there is no operator in between the two tokens of a string 'Yoda spoke, ' and a symbol World. Notice that Python does not interpret World as a string data because it does not have an opening quote. Therefore, Python tries to interpret World as a symbol or name instead.
 
-But how about the triple quotes? What is it used for? Python allows you to create multi-line string data using the triple quotes strings. For example,
-
+But how about the triple quotes? What are they used for? Python allows you to create multi-line string data using triple-quoted strings. For example,
 ```python
 """Hello,
 World!"""
@@ -140,7 +140,7 @@ If you type this into the shell, you can see that it records the new line betwee
 
 The new line is recorded as `\n` character. The backslash is normally used for an escape character in many programming language. 
 
-## Creating Int and Float Data
+## Creating Int and Float Data (note: continue edditing frm here)
 
 So we now know that we can create `string` data using the various ways discussed in the previous section. How about numbers? How can we create `int` and `float` data in our code?
 
