@@ -142,16 +142,16 @@ The new line is recorded as `\n` character. The backslash is normally used for a
 
 ## Creating Int and Float Data
 
-So we now know that we can create `string` data using the various ways discussed in the previous section. How about numbers? How can we create `int` and `float` data in our code?
+So, we now know that we can create string data using the various ways discussed in the previous section. How about numbers? How can we create int and float data in our code?
 
-To create an `int` data, we just type the literal as it is.
+To create an int data type, we just type the literal as it is.
 
 ```python
 >>> 4321
 4321
 ```
 
-When the numbers are long, you can use underscore to make it easier for human to read.  For example, this how you can create the following number $4,321,567,000 in Python.
+When the numbers are long, you can use an underscore to make them easier for humans to read. For example, this is how you can create the following number, $4,321,567,000, in Python.
 
 ```python
 >>> 4_321_567_000
@@ -202,17 +202,15 @@ Hello World no.  2
 Hello World no.  3
 ```
 
-What is the different between the two codes above? In the first code, we print the world's label 1, 2 and 3 as part of a single `string` data. On the other hand, in the second code, we print two **kinds** of data. The first data `"Hello World no. "` is a `string` data type. The second of data, however, is not. The data that is displayed into the screen, i.e. `1` is an `int` data type. The comma (`,`) in between the two data is just to separate the different objects to be displayed. 
+What is the difference between the two codes above? In the first code, we print the words "label 1," "2," and "3" as part of a single string data. On the other hand, in the second code, we print two kinds of data. The first data, "Hello World no. ", is a string data type. The second data, however, is not. The data that is displayed on the screen, i.e., 1, is an int data type. The comma (,) in between the two data types is just to separate the different objects to be displayed.
 
-Why this matters, you may ask. Thinking abou the data matters because we work with different data differently. For example, you can add numbers and increase it sequentially. Later, you will be able to write *loops* to do the above. Imagine if you have a million of worlds. You are not going to write `print()` statements a million times. Instead, you can just do the following.
-
+Why does this matter, you may ask. Thinking about the data matters because we work with different data differently. For example, you can add numbers and increase them sequentially. Later, you will be able to write loops to do the above. Imagine if you have a million worlds. You are not going to write print() statements a million times. Instead, you can just do the following.
 ```python
 for world in range(1_000_000):
   print("Hello World no. ", world)
 ```
 
-If the above code looks foreign to you, do not worry. We will discuss about the `for-in` statement, the `range()` function and the role of variables in subsequent lessons. But I hope you can at least identify there are two data types in the above code. The first one is the `int` data which we create using `1_000_000` to represent the number of worlds we have (assuming we only have 1 million worlds). The second one is the `string` data which we create using the double quotes in `"Hello World no. "`. Thinking about "what kind of data is this?" is very important. Knowing what data that is helps us to know what we can do about it. Different data has different operations and ways to manipulate.
-
+If the above code looks foreign to you, do not worry. We will discuss the for-in statement, the range() function, and the role of variables in subsequent lessons. But I hope you can at least identify that there are two data types in the above code. The first one is the int data, which we create using 1_000_000 to represent the number of worlds we have (assuming we only have 1 million worlds). The second one is the string data, which we create using the double quotes in "Hello World no. ". Thinking about "what kind of data is this?" is very important. Knowing what data it is helps us to know what we can do with it. Different data types have different operations and ways to manipulate them.
 ## Running Python Code as a Script
 
 We have been running our code in a Python shell. We enter the shell by first typing the following in a terminal.
@@ -220,9 +218,11 @@ We have been running our code in a Python shell. We enter the shell by first typ
 $ python
 ```
 
-In the above, the symbol `$` represent your terminal's prompt. It may look different depending on what kind of terminal do you use. But throughout this book, I will use `$` symbol to represent a terminal prompt. This means that the one that you have to type in the terminal is simply `python`. 
+In the above, the symbol $ represents your terminal's prompt. It may look different depending on what kind of terminal you use. However, throughout this book, I will use the $ symbol to represent a terminal prompt. This means that what you have to type in the terminal is simply python.
 
-The second way of running our Python's code is as a *Script*. To do this, create a new *text file* called `01_hello.py`. You may want to use code editor like Visual Studio Code, Atom, Sublime Text, etc, to do this. You can write your code and paste it into your new text file.
+The second way of running our Python code is as a script. To do this, create a new text file called 01_hello.py. You may want to use a code editor like Visual Studio Code, Atom, Sublime Text, etc., to do this. You can write your code and paste it into your new text file.
+
+
 
 ```python
 print("Hello World no. ", 1)
@@ -263,7 +263,8 @@ For Windows' prompt, I normally use `>` symbol instead of `$`.  In Windows, `$HO
 
 ## Sequence Matters
 
-In programming, sequence matters. In fact, this is the first pattern that you will continue to see recurring again in all computer codes. Computer codes in general execute the instruction in sequence **from top to bottom**. When you run your code as a script, the sequence matters because different sequence may create a different output. For example, run the below code which is the same as in the previous one using Python Tutor to visualize the sequence. You can click the "next" button to step through the execution of the code. However, we want you to note the two arrows. The green and the red arrows. The green light arrow indicates the instruction that has *just been executed*. On the other hand, the dark red arrow indicates the instruction that is *about to be executed*. 
+
+In programming, sequence matters. In fact, this is the first pattern that you will continue to see recurring in all computer codes. Computer codes generally execute instructions in sequence from top to bottom. When you run your code as a script, the sequence matters because a different sequence may create a different output. For example, run the code below, which is the same as the previous one, using Python Tutor to visualize the sequence. You can click the "next" button to step through the execution of the code. However, we want you to note the two arrows: the green and the red arrows. The green light arrow indicates the instruction that has just been executed. On the other hand, the dark red arrow indicates the instruction that is about to be executed.
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Hello%20World%20no.%20%22,%201%29%0Aprint%28%22Hello%20World%20no.%20%22,%202%29%0Aprint%28%22Hello%20World%20no.%20%22,%203%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
@@ -271,13 +272,12 @@ The output is different from the following one.
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Hello%20World%20no.%20%22,%203%29%0Aprint%28%22Hello%20World%20no.%20%22,%201%29%0Aprint%28%22Hello%20World%20no.%20%22,%202%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-The reason that the output is different because the sequence of the instruction is different. In the second one, the hello to world number 3 is executed first before the other two instructions. 
+The reason the output is different is that the sequence of the instructions is different. In the second example, the hello to world number 3 is executed first before the other two instructions.
 
-Besides noting that the sequence matters, it is important to understand the concept of **program counter**. The red arrow in the two embedded code above shows the program counter. A program counter **points to the next instruction to be executed**. In most cases, the program counter moves from **top to bottom** in a linear sequence. We will learn ways to alter this behaviour in the subsequent lessons. But for now, it is important to remember that program counter moves in sequence from top to bottom. The program counter indicates which instruction to be executed next. 
+Besides noting that sequence matters, it is important to understand the concept of a program counter. The red arrow in the two embedded codes above shows the program counter. A program counter points to the next instruction to be executed. In most cases, the program counter moves from top to bottom in a linear sequence. We will learn ways to alter this behavior in subsequent lessons. But for now, it is important to remember that the program counter moves in sequence from top to bottom. The program counter indicates which instruction is to be executed next.
 
-## Introducing Variables
-
-In many cases, we want to **work** with data. This means that our data may change over time. We may also re-use some of the data we have created in other places in our computation and manipulate it. Computers are good to work with numbers but human works better with labels. In most programming language, we are able to create a **variable** that binds a label or a name with a value or data. For example, in the previous problem of saying hello to our multiverse, we can actually store our world's index or number into a variable. For example,
+##Introducing Variables
+In many cases, we want to work with data. This means that our data may change over time. We may also reuse some of the data we have created in other places in our computation and manipulate it. Computers are good at working with numbers, but humans work better with labels. In most programming languages, we can create a variable that binds a label or a name with a value or data. For example, in the previous problem of saying hello to our multiverse, we can actually store our world's index or number in a variable. For example,
 
 ```python
 world_index = 1
@@ -286,12 +286,13 @@ print("Hello World no. ", world_index)
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-When you click "next" for the first time, Python interpreter will execute the first line `world_index = 1`.  The effect of this execution  was not apparent as there is no output produced. However, Python Tutor displays that there are three things happening in the **Global frame** which is the memory environment used by Python to execute the code.
-- a label or a name called `world_index` was created
-- an `int` literal was created with the value `1`. 
-- the name `world_index` was binded with the literal data `1`.
+When you click "next" for the first time, the Python interpreter will execute the first line world_index = 1. The effect of this execution is not apparent as there is no output produced. However, Python Tutor displays that three things are happening in the Global frame, which is the memory environment used by Python to execute the code:
 
-When you click the "next" button the second time, Python interpreter executes the `print()` statement and displays the text into the standard output. Note that in displaying this output, Python interpreter encounters a **name** called `world_index`. Python interpreter then tries to find what is the meaning of this name. Python could not find it in any of its built-in keywords and functions and, therefore, check whether `world_index` is **defined** in the *global frame*. When Python interpreter finds the name `world_index` in the global frame and recognize that it is a variable, it evaluates its value, which is `1`. Thus, the above code is evaluated similar to the following code.
+A label or a name called world_index was created.
+An int literal was created with the value 1.
+The name world_index was bound to the literal data 1.
+When you click the "next" button the second time, the Python interpreter executes the print() statement and displays the text in the standard output. Note that in displaying this output, the Python interpreter encounters a name called world_index. The Python interpreter then tries to find what this name means. It could not find it in any of its built-in keywords and functions, and therefore checks whether world_index is defined in the global frame. When the Python interpreter finds the name world_index in the global frame and recognizes that it is a variable, it evaluates its value, which is 1. Thus, the above code is evaluated similarly to the following code.
+
 
 ```python
 print("Hello World no. ", 1)
@@ -301,15 +302,16 @@ A variable is just a name that is binded to some value. You can change this bind
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%202%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%203%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-In the above code, when Python interpreter executes line number 3 `world_index = 2`, it does the following:
-- Python creates an `int` literal with value `2`.
-- Python binds this new literal to the name `world_index`.
+In the above code, when the Python interpreter executes line number 3, world_index = 2, it does the following:
 
-We can see that the value in the *global frame* for `world_index` changes to `2` after executing line 3. 
+Python creates an int literal with the value 2.
+Python binds this new literal to the name world_index.
+We can see that the value in the global frame for world_index changes to 2 after executing line 3.
 
-You may have noticed that we use the equal sign, i.e. `=` in the above code. This **operator** is called the **assignment operator**. It is called the assignment operator because it assigns the literal to a label or a name. 
+You may have noticed that we use the equal sign, i.e., =, in the above code. This operator is called the assignment operator. It is called the assignment operator because it assigns the literal to a label or a name.
 
-Note that this assignment is from **right to left**. We cannot swap the sequence. Writing the below code produces an error. 
+Note that this assignment is from right to left. We cannot swap the sequence. Writing the code below produces an error.
+
 
 ```python
 >>> 1 = world_index
@@ -317,19 +319,17 @@ Note that this assignment is from **right to left**. We cannot swap the sequence
 SyntaxError: cannot assign to literal
 ```
 
-The error says that you cannot assign something to a literal. Recall that `1` is an `int` type literal and the assignment is from right to left
+The error says that you cannot assign something to a literal. Recall that 1 is an int type literal and the assignment is from right to left. With the above code, you are telling Python to assign the value associated with the name world_index to the literal 1, and Python does not allow this.
 
-The error says that you cannot assign something to a literal. Recall that `1` is an `int` type literal and the assignment is from right to left. With the above code, you are telling python to assign the value associated with the name `world_index` to the literal `1` and Python does not allow this. 
-
-## Checking Data Type
-
-Python makes it easy for programmers to create variables. But this comes at a cost that programmers do not ask the question, "What kind of data is this?". When you create a variable, binds the data dynamically and does not require you to specify the type of the data. However, Python 3.6 onwards allows programmers to specify the data type as a kind of **annotation** to be checked by other programs. We will use the type annotation supported by Python 3.11. You can specify the previous variable as follows.
-
+Checking Data Type
+Python makes it easy for programmers to create variables. But this comes at a cost: programmers do not ask the question, "What kind of data is this?". When you create a variable, Python binds the data dynamically and does not require you to specify the type of the data. However, Python 3.6 onwards allows programmers to specify the data type as a kind of annotation to be checked by other programs. We will use the type annotation supported by Python 3.11. You can specify the previous variable as follows:
 ```python
 world_index: int = 1
 ```
 
-However, what Python does is just to create an annotation and does not enforce it. For example, you can still make mistakes assigning a wrong data type and Python interpreter will still executes fine. Run the following code step by step observing the data created in the memory.
+However, what Python does is just to create an annotation and does not enforce it. For example, you can still make mistakes assigning a wrong data type, and the Python interpreter will still execute fine. Run the following code step by step, observing the data created in memory.
+
+
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%3Aint%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%20%222%22%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29%0Aworld_index%20%3D%203.0%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
@@ -400,18 +400,20 @@ Try clicking the "next" button and see how the code works. I think it is importa
 print(type(world_index))
 ```
 
-When Python interpreter sees this, 
-- it sees a name `print` and recognize that you are *invoking* a function due to the opening and closing parenthesis `print()`. 
-- Python tries to evaluates the value inside the parenthesis to pass it to the `print()` function. 
-- When Python evaluates the value inside the parenthesis, it finds another name `type` and recognize that it is another of its built-in function.
-- Python also sees that you are invoking `type()` because of the opening and closing parenthesis. In order to execute this function, Python tries to evaluate the value inside this *inner* parenthesis.
-- When evaluating the inner parenthesis, Python finds another name `world_index`. This time, Python cannot recognize this name from any of its built-in keywords or function and tries to find it in the global frame.
-- Python finds the name `world_index` in the global frame and obtains the value, which is `1`.
-- Python pass this value `1` to the function `type()` and executes `type()`. This functions evaluates to a data that describes Python's `type`. You can actually try to type the following in a Python shell to see: `type(type(1))`. You will get `<class 'type'>`. 
-- Python then pass this output of `type()` function to `print()` function. In order to print it, Python will convert this data into a string so that it can displays it into the standard output.
-- Python finally displays `<class 'int'>` into the screen.
+When the Python interpreter sees this:
 
-Now, that's a lot of things going on with just a simple code. But it is important to note that Python **evaluates from inside to outside of the parenthesis** when it invokes a function such as `print()` and `type()`. We will learn more about function in the next lesson. 
+It encounters the name print and recognizes that you are invoking a function due to the opening and closing parentheses print().
+Python tries to evaluate the value inside the parentheses to pass it to the print() function.
+When Python evaluates the value inside the parentheses, it finds another name, type, and recognizes that it is another of its built-in functions.
+Python also sees that you are invoking type() because of the opening and closing parentheses. To execute this function, Python tries to evaluate the value inside these inner parentheses.
+When evaluating the inner parentheses, Python finds another name, world_index. This time, Python cannot recognize this name from any of its built-in keywords or functions and tries to find it in the global frame.
+Python finds the name world_index in the global frame and obtains the value, which is 1.
+Python passes this value 1 to the function type() and executes type(). This function evaluates to data that describes Python's type. You can actually try typing the following in a Python shell to see: type(type(1)). You will get <class 'type'>.
+Python then passes this output of the type() function to the print() function. In order to print it, Python will convert this data into a string so that it can display it in the standard output.
+Python finally displays <class 'int'> on the screen.
+Now, that's a lot of things going on with just a simple code. But it is important to note that Python evaluates from inside to outside of the parentheses when it invokes a function such as print() and type(). We will learn more about functions in the next lesson.
+
+
 
 ## Environment Diagram
 
@@ -421,13 +423,16 @@ Python Tutor allows you to see the memory environment of your code. On the right
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%20%222%22%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%203.0%0Aprint%28type%28world_index%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-Try clicking the "next" button and you will see that the first frame created is called the **global frame**. Later on, when you learn to create your own user defined function, you will see that each function has its own local frame. But for now, we will only deal with the global frame. All the variables are created in this global frame. Currently, we only have one variable called `world_index`. As we introduce more data and more different kinds of data, you will see more things in this environment diagram.
+chatbot will do a conversation like the following.
+ChatGPT
+Try clicking the "next" button, and you will see that the first frame created is called the global frame. Later on, when you learn to create your own user-defined functions, you will see that each function has its own local frame. But for now, we will only deal with the global frame. All the variables are created in this global frame. Currently, we only have one variable called world_index. As we introduce more data and different kinds of data, you will see more things in this environment diagram.
 
-## Identifying Data Type in a Problem
+Identifying Data Type in a Problem
+The first step of PCDIT is the Problem Statement. In this step, we need to identify the input, output, and process of the problem. In identifying the input and the output, we need to ask, "what kind of data is this?".
 
-The first step of PCDIT is Problem Statement. In this step, we need to identify the input, output and process of the problem. In identifying the input and the output, we need to ask, "what kind of data is this?". 
+Let's try to identify the input and output of our chatbot. Let's say our chatbot is able to advise us on our fitness activity and would like to calculate your cadence from your previous cycling period. So the chatbot will have a conversation like the following:
 
-Let's try to identify the input and output of our chatbot. Let's say, our chatbot is able to advise us on our fitness activity and would like to calculate your cadence from your previous cycling period. So the chatbot will do a conversation like the following.
+
 
 ```
 Hi, Jane! How as your last cycling?
@@ -441,19 +446,18 @@ Did you count how many push you did on the pedal within 30 seconds?
 Thanks. Your cadence is 50. That's rather low, you may want to try to increase it.
 ```
 
-Now, we should ask, what the input and the output of this program is. The input to the chatbot is all the data that you give to the program. In this case, they are text data as you type into the chatbot. This means that the data is a string data. On the other hand, the chatbot displays a string data as well into the app screen. So both input and output are string. 
+Now, we should ask, what the input and the output of this program are. The input to the chatbot is all the data that you give to the program. In this case, they are text data as you type into the chatbot. This means that the data is a string. On the other hand, the chatbot displays a string as well on the app screen. So both input and output are strings.
 
-You may ask why the input is not a number since `25` looks like a number. The answer is that the data that you key in is considered as a string because it is entered into a kind of text field. This is why it is important to ask what kind of data it is. 
+You may ask why the input is not a number since 25 looks like a number. The answer is that the data that you key in is considered as a string because it is entered into a kind of text field. This is why it is important to ask what kind of data it is.
 
-However, in order to calculate the cadence, you cannot manipulate a string data and therefore you need to transform your data into a number-like data. Since steps tend to be generally whole number, we can convert that string data into an `int`. So now we can roughly design our algorithm to calculate your cycling cadence.
-1. Request for number of steps within 30 seconds
-1. Convert the number of steps from string into integer
-1. Multiply number of steps by 2 to get the cadence
+However, in order to calculate the cadence, you cannot manipulate a string and therefore you need to transform your data into a number-like data. Since steps tend to be generally whole numbers, we can convert that string data into an int. So now we can roughly design our algorithm to calculate your cycling cadence:
 
-Depending on the cadence we may want to decide whether to prompt the user to increase their cycling cadence or not. But in order to display different messages, we will need to learn on the control structure in the subsequent lesson. For now, we can implement the cadence calculation.
+Request for the number of steps within 30 seconds.
+Convert the number of steps from a string into an integer.
+Multiply the number of steps by 2 to get the cadence.
+Depending on the cadence, we may want to decide whether to prompt the user to increase their cycling cadence or not. But in order to display different messages, we will need to learn about control structures in the subsequent lesson. For now, we can implement the cadence calculation.
 
-In order to get data, you need to learn a function to take in data from the keyboard. In Python, you can use `input()` function where the argument is the prompt you want to display to the user. This function returns you the string that the user enters through the keyboard. 
-
+In order to get data, you need to learn a function to take in data from the keyboard. In Python, you can use the input() function, where the argument is the prompt you want to display to the user. This function returns the string that the user enters through the keyboard.
 
 ```python
 steps_inp: str = input("how many push did you do on the pedal within 30 seconds? ")
@@ -491,14 +495,13 @@ In the above code, the output cadence is also an `int` but then we display this 
 
 ## Summary
 
-In this two lessons, you have learnt how to write your first code. The first important pattern that we introduce here is what we call as **sequential**. In general, Python code is executed in sequence from the top to the bottom. We will learn how to change this sequence to allow variation of code to be executed depending on different conditions. 
+In these two lessons, you have learned how to write your first code. The first important pattern that we introduced here is what we call sequential. In general, Python code is executed in sequence from the top to the bottom. We will learn how to change this sequence to allow variation of code to be executed depending on different conditions.
 
-We also learn our first built-in function, which is `print()`. We learn how to call a function using the parenthesis and supplying the input data to the `print()` function through its argument. We will create our own custom function in the next lesson. We also made use of `int()` function to convert a string data into an `int` data type.
+We also learned our first built-in function, which is print(). We learned how to call a function using parentheses and supply the input data to the print() function through its arguments. We will create our own custom function in the next lesson. We also made use of the int() function to convert a string data into an int data type.
 
-How would we know that we need to use `int()` function in our last example of cadence chat bot? The answer is because we were asking the question, "What kind of data is this?". In our use of `input()` function (the other built-in function that we use), the output of this function is a `string` data. Because it is a string data it cannot be used with any other mathematical operators to calculate any new data. But an `int` data is a numeric data that can be manipulated using mathematical operators. So we convert it to an `int` first before we calculate the cadence. Asking what kind of data that we are dealing with is a necessary components in PCDIT framework. So in this P (problem statement) step, we also ask that question. That helps us to know that we need a step to convert the data from one type to another type.
+How would we know that we need to use the int() function in our last example of the cadence chatbot? The answer is because we were asking the question, "What kind of data is this?". In our use of the input() function (the other built-in function that we used), the output of this function is a string data. Because it is a string data, it cannot be used with any other mathematical operators to calculate new data. But an int data is a numeric data that can be manipulated using mathematical operators. So we convert it to an int first before we calculate the cadence. Asking what kind of data that we are dealing with is a necessary component in the PCDIT framework. So in this P (problem statement) step, we also ask that question. That helps us to know that we need a step to convert the data from one type to another type.
 
-We have introduced a few basic data types, `string`, `int` and `float`. These are the basic data and it allows us to do a simple chatbot example to calculate cadence when you cycle. In subsequent lessons, we will introduce more data and when you learn about object oriented, you will be able to create your own custom data. 
+We have introduced a few basic data types: string, int, and float. These are the basic data types, and they allow us to create a simple chatbot example to calculate cadence when cycling. In subsequent lessons, we will introduce more data types, and when you learn about object-oriented programming, you will be able to create your own custom data types.
 
-In the next lesson, we will dive in into **functions**, which is our first lesson on abstraction. Remember that abstraction is one of the big element in computational thinking. You will see abstraction every where in learning how to code and creating a function is one of the first example of abstraction that we will introduce. 
-
+In the next lesson, we will dive into functions, which is our first lesson on abstraction. Remember that abstraction is one of the big elements in computational thinking. You will see abstraction everywhere in learning how to code, and creating a function is one of the first examples of abstraction that we will introduce.
 
