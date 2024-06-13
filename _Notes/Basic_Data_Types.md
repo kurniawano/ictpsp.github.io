@@ -263,7 +263,7 @@ For Windows' prompt, I normally use `>` symbol instead of `$`.  In Windows, `$HO
 
 ## Sequence Matters
 
-In programming, sequence matters. In fact, this is the first pattern that you will continue to see recurring again in all computer codes. Computer codes in general execute the instruction in sequence **from top to bottom**. When you run your code as a script, the sequence matters because different sequence may create a different output. For example, run the below code which is the same as in the previous one using Python Tutor to visualize the sequence. You can click the "next" button to step through the execution of the code. However, we want you to note the two arrows. The green and the red arrows. The green light arrow indicates the instruction that has *just been executed*. On the other hand, the dark red arrow indicates the instruction that is *about to be executed*. 
+In programming, sequence matters. In fact, this is the first pattern that you will continue to see recurring again in all computer codes. Computer codes in general execute the instructions in sequence **from top to bottom**. When you run your code as a script, the sequence matters because different sequences may create a different output. For example, run the code below, which is the same as the previous one, using Python Tutor to visualize the sequence. You can click the "next" button to step through the execution of the code. However, we want you to note the two arrows: the green and the red arrows. The green arrow indicates the instruction that has *just been executed*. On the other hand, the dark red arrow indicates the instruction that is *about to be executed*.
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=print%28%22Hello%20World%20no.%20%22,%201%29%0Aprint%28%22Hello%20World%20no.%20%22,%202%29%0Aprint%28%22Hello%20World%20no.%20%22,%203%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
@@ -286,12 +286,13 @@ print("Hello World no. ", world_index)
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28%22Hello%20World%20no.%20%22,%20world_index%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-When you click "next" for the first time, Python interpreter will execute the first line `world_index = 1`.  The effect of this execution  was not apparent as there is no output produced. However, Python Tutor displays that there are three things happening in the **Global frame** which is the memory environment used by Python to execute the code.
-- a label or a name called `world_index` was created
-- an `int` literal was created with the value `1`. 
-- the name `world_index` was binded with the literal data `1`.
+When you click "next" for the first time, the Python interpreter will execute the first line `world_index = 1`. The effect of this execution is not apparent as there is no output produced. However, Python Tutor displays that there are three things happening in the **Global frame**, which is the memory environment used by Python to execute the code.
+- a label or a name called `world_index` is created
+- an `int` literal is created with the value `1`
+- the name `world_index` is bound with the literal data `1`
 
-When you click the "next" button the second time, Python interpreter executes the `print()` statement and displays the text into the standard output. Note that in displaying this output, Python interpreter encounters a **name** called `world_index`. Python interpreter then tries to find what is the meaning of this name. Python could not find it in any of its built-in keywords and functions and, therefore, check whether `world_index` is **defined** in the *global frame*. When Python interpreter finds the name `world_index` in the global frame and recognize that it is a variable, it evaluates its value, which is `1`. Thus, the above code is evaluated similar to the following code.
+When you click the "next" button the second time, the Python interpreter executes the `print()` statement and displays the text to the standard output. Note that in displaying this output, the Python interpreter encounters a **name** called `world_index`. The Python interpreter then tries to find the meaning of this name. Python cannot find it in any of its built-in keywords and functions and, therefore, checks whether `world_index` is **defined** in the *global frame*. When the Python interpreter finds the name `world_index` in the global frame and recognizes that it is a variable, it evaluates its value, which is `1`. Thus, the above code is evaluated similarly to the following code.
+
 
 ```python
 print("Hello World no. ", 1)
@@ -400,28 +401,30 @@ Try clicking the "next" button and see how the code works. I think it is importa
 print(type(world_index))
 ```
 
-When Python interpreter sees this, 
-- it sees a name `print` and recognize that you are *invoking* a function due to the opening and closing parenthesis `print()`. 
-- Python tries to evaluates the value inside the parenthesis to pass it to the `print()` function. 
-- When Python evaluates the value inside the parenthesis, it finds another name `type` and recognize that it is another of its built-in function.
-- Python also sees that you are invoking `type()` because of the opening and closing parenthesis. In order to execute this function, Python tries to evaluate the value inside this *inner* parenthesis.
-- When evaluating the inner parenthesis, Python finds another name `world_index`. This time, Python cannot recognize this name from any of its built-in keywords or function and tries to find it in the global frame.
+When the Python interpreter sees this,
+- it sees a name `print` and*recognizes that you are *invoking* a function due to the opening and closing parentheses `print()`.
+- Python tries to evaluate the value inside the parentheses to pass it to the `print()` function.
+- When Python evaluates the value inside the parentheses, it finds another name `type` and recognizes that it is another of its built-in functions.
+- Python also sees that you are invoking `type()` because of the opening and closing parentheses. In order to execute this function, Python tries to evaluate the value inside this *inner* parentheses.
+- When evaluating the inner parentheses, Python finds another name `world_index`. This time, Python cannot recognize this name from any of its built-in keywords or functions and tries to find it in the global frame.
 - Python finds the name `world_index` in the global frame and obtains the value, which is `1`.
-- Python pass this value `1` to the function `type()` and executes `type()`. This functions evaluates to a data that describes Python's `type`. You can actually try to type the following in a Python shell to see: `type(type(1))`. You will get `<class 'type'>`. 
-- Python then pass this output of `type()` function to `print()` function. In order to print it, Python will convert this data into a string so that it can displays it into the standard output.
-- Python finally displays `<class 'int'>` into the screen.
+- Python passes this value `1` to the function `type()` and executes `type()`. This function evaluates to a data that describes Python's `type`. You can actually try to type the following in a Python shell to see: `type(type(1))`. You will get `<class 'type'>`.
+- Python then passes this output of the `type()` function to the `print()` function. In order to print it, Python will convert this data into a string so that it can display it to the standard output.
+- Python finally displays `<class 'int'>` **on the screen.
 
-Now, that's a lot of things going on with just a simple code. But it is important to note that Python **evaluates from inside to outside of the parenthesis** when it invokes a function such as `print()` and `type()`. We will learn more about function in the next lesson. 
+Now, that's a lot of things going on with just a simple code. But it is important to note that Python **evaluates from inside to outside of the parentheses** when it invokes a function such as `print()` and `type()`. We will learn more about functions in the next lesson.
+
 
 ## Environment Diagram
 
-Python Tutor allows you to see the memory environment of your code. On the right hand side of your code you see two panels, the first one at the top right is the print of your standard output. This panel shows you whatever that you display to the standard output through the `print()` function. The second one is on the right side just below the print output panel. This shows you what is happening in the memory environment of your code. At the beginning, you only see the labels:
+Python Tutor allows you to see the memory environment of your code. On the right-hand side of your code, you see two panels. The first one at the top right is the print of your standard output. This panel shows you whatever you display to the standard output through the `print()` function. The second one is on the right side just below the print output panel. This shows you what is happening in the memory environment of your code. At the beginning, you only see the labels:
 - Frames
 - Objects
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=world_index%20%3D%201%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%20%222%22%0Aprint%28type%28world_index%29%29%0Aworld_index%20%3D%203.0%0Aprint%28type%28world_index%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-Try clicking the "next" button and you will see that the first frame created is called the **global frame**. Later on, when you learn to create your own user defined function, you will see that each function has its own local frame. But for now, we will only deal with the global frame. All the variables are created in this global frame. Currently, we only have one variable called `world_index`. As we introduce more data and more different kinds of data, you will see more things in this environment diagram.
+Try clicking the "next" button and you will see that the first frame created is called the global frame. Later on, when you learn to create your own user-defined functions, you will see that each function has its own local frame. But for now, we will only deal with the global frame. All the variables are created in this global frame. Currently, we only have one variable called `world_index`. As we introduce more data and more different kinds of data, you will see more things in this environment diagram.
+
 
 ## Identifying Data Type in a Problem
 
@@ -491,14 +494,14 @@ In the above code, the output cadence is also an `int` but then we display this 
 
 ## Summary
 
-In this two lessons, you have learnt how to write your first code. The first important pattern that we introduce here is what we call as **sequential**. In general, Python code is executed in sequence from the top to the bottom. We will learn how to change this sequence to allow variation of code to be executed depending on different conditions. 
+In these two lessons, you have learned how to write your first code. The first important pattern that we introduce here is what we call **sequential**. In general, Python code is executed in sequence from the top to the bottom. We will learn how to change this sequence to allow variation of code to be executed depending on different conditions.
 
-We also learn our first built-in function, which is `print()`. We learn how to call a function using the parenthesis and supplying the input data to the `print()` function through its argument. We will create our own custom function in the next lesson. We also made use of `int()` function to convert a string data into an `int` data type.
+We also learned our first built-in function, which is `print()`. We learned how to call a function using the parenthesis and supply the input data to the `print()` function through its argument. We will create our own custom function in the next lesson. We also made use of the `int()` function to convert a string data into an `int` data type.
 
-How would we know that we need to use `int()` function in our last example of cadence chat bot? The answer is because we were asking the question, "What kind of data is this?". In our use of `input()` function (the other built-in function that we use), the output of this function is a `string` data. Because it is a string data it cannot be used with any other mathematical operators to calculate any new data. But an `int` data is a numeric data that can be manipulated using mathematical operators. So we convert it to an `int` first before we calculate the cadence. Asking what kind of data that we are dealing with is a necessary components in PCDIT framework. So in this P (problem statement) step, we also ask that question. That helps us to know that we need a step to convert the data from one type to another type.
+How would we know that we need to use the `int()` function in our last example of the cadence chatbot? The answer is because we were asking the question, "What kind of data is this?". In our use of the `input()` function (the other built-in function that we used), the output of this function is a `string` data. Because it is a string data, it cannot be used with any other mathematical operators to calculate any new data. But an `int` data is a numeric data that can be manipulated using mathematical operators. So we convert it to an `int` first before we calculate the cadence. Asking what kind of data we are dealing with is a necessary component in the PCDIT framework. So in this P (problem statement) step, we also ask that question. That helps us to know that we need a step to convert the data from one type to another type.
 
-We have introduced a few basic data types, `string`, `int` and `float`. These are the basic data and it allows us to do a simple chatbot example to calculate cadence when you cycle. In subsequent lessons, we will introduce more data and when you learn about object oriented, you will be able to create your own custom data. 
+We have introduced a few basic data types: `string`, `int`, and `float`. These are the basic data types, and they allow us to do a simple chatbot example to calculate cadence when you cycle. In subsequent lessons, we will introduce more data types, and when you learn about object orientation, you will be able to create your own custom data types.
 
-In the next lesson, we will dive in into **functions**, which is our first lesson on abstraction. Remember that abstraction is one of the big element in computational thinking. You will see abstraction every where in learning how to code and creating a function is one of the first example of abstraction that we will introduce. 
+In the next lesson, we will dive into **functions**, which is our first lesson on abstraction. Remember that abstraction is one of the big elements in computational thinking. You will see abstraction everywhere in learning how to code, and creating a function is one of the first examples of abstraction that we will introduce.
 
 
