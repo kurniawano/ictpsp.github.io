@@ -34,7 +34,8 @@ SyntaxError: invalid syntax
 
 In the above code, the multiplication operator only has the left operand and it gives a `SyntaxError`. 
 
-We can think of operator as another primitive abstraction concept of a computation. Recall that every computation may take in output and produce output. In this case, an operator takes in the operands as its input. Moreover, the operator is evaluated and produces an output value. Python evaluates the expression and produces a value.  For example, in the expression `steps * 2`, Python first evaluates the variable reference `steps` and get its value. This value and a literal integer of `2` are the operands. Python then evaluates the multiplication using these two operands as the input to the multiplication function. In this way, operators are convenient way of expressing a computation as compared to calling a function such as the following.
+We can think of an operator as another primitive abstraction concept of a computation. Recall that every computation may take an input and produce an output. In this case, an operator takes in the operands as its input. Moreover, the operator is evaluated and produces an output value. Python evaluates the expression and produces a value. For example, in the expression `steps * 2`, Python first evaluates the variable reference `steps` and gets its value. This value and a literal integer of `2` are the operands. Python then evaluates the multiplication using these two operands as the input to the multiplication function. In this way, operators are a convenient way of expressing a computation as compared to calling a function such as the following.
+
 
 ```python
 cadence = multiply(steps, 2)
@@ -183,7 +184,8 @@ In the above code, the right hand side is a function call to `calculate_speed()`
 
 ## String Operators
 
-We have discussed how we can use some of the common arithmetic operators to do mathematical computations. These are done mainly on numeric data such as `int` and `float`. The other basic data type is `string`. String data type have their own unique operations and yet they may use a similar symbol for its operators. Let's look at some of them.
+We have discussed how we can use some of the common arithmetic operators to do mathematical computations. These are done mainly on numeric data such as `int` and `float`. The other basic data type is `string`. String data types have their own unique operations and yet they may use a similar symbol for their operators. Let's look at some of them.
+
 
 In arithmetic, a `+` operator is used for addition of two numbers. In string data, however, it is used to **concatenate** or join two strings. 
 
@@ -230,13 +232,14 @@ Some string operations are totally different from arithmetic comptutations. We w
 
 ## Testing and Debugging using Print Statement
 
-As we introduce more things into our code, it is best to start the habit of **debugging** our code. No programmers can ever written a code without debugging it (Okay, maybe we can write a print Hello World code without debugging it). Most code as it grows in complexity requires programmers to test its code and check whether the code runs as what it is expected it to do. Instead of testing the code at the end of writing a long lines of code, programmers do test their code in bite-size. 
+As we introduce more things into our code, it is best to start the habit of **debugging** our code. No programmers have ever written code without debugging it (Okay, maybe we can write a print "Hello World" code without debugging it). Most code, as it grows in complexity, requires programmers to test their code and check whether the code runs as expected. Instead of testing the code at the end of writing long lines of code, programmers test their code in bite-size pieces.
 
-In this section, we want to introduce a little habit which should be part and puzzle of every novice programmers when writing code. This habit is to test their code after one or few lines of code to see whether it performs what it is expected to do. One simple way is to use the `print()` function to test two things:
+In this section, we want to introduce a little habit which should be part and parcel of every novice programmer when writing code. This habit is to test their code after one or a few lines of code to see whether it performs as expected. One simple way is to use the `print()` function to test two things:
 - the expected value of computation
 - the data type of some value
 
-Let's revisit our `calculate_speed()` function. We will put here the final version, but we will describe how a novice programmers can write it step by step with the print statement to test it. 
+Let's revisit our `calculate_speed()` function. We will put the final version here, but we will describe how a novice programmer can write it step by step with the print statement to test it.
+
 
 
 ```python
@@ -282,9 +285,10 @@ print(calculate_speed(25))
 # print(calculate_speed(25, diameter=600))
 ```
 
-We have written down our function header starting from the `def` keyword using the information that we have from our **P**roblem Statement step. In this step, we know what are our input to our computations and we know the output. We also ask what kind of data they are, both for the input and the output. 
+We have written down our function header starting from the `def` keyword using the information that we have from our **P**roblem Statement step. In this step, we know what our inputs to our computations are and we know the output. We also ask what kind of data they are, both for the input and the output.
 
-Outside of the function definition, we have four (4) function calls to test different way the function may be called. We can write more, but for simplicity we only list four of them here. 
+Outside of the function definition, we have four (4) function calls to test different ways the function may be called. We can write more, but for simplicity, we only list four of them here.
+
 
 ```python
 print(calculate_speed(25))
@@ -298,7 +302,8 @@ This function call test if we supply the required input argument for `cadence` a
 # print(calculate_speed(25, diameter=600))
 ```
 
-In these few other function calls, we put comments  for subsequent tests. But we will start with that first one call first to test. We have also put Python keywords `pass` as the body of the function. This keyword does not do anything but it is useful when we want to leave the body of the function empty. Without putting this keyword, the functin will give an error. The error is caused because Python expect some indented code after the function header. In fact, after every statement that ends with the colon `:`, it expects some indented block. 
+In these few other function calls, we put comments for subsequent tests. But we will start with that first one call first to test. We have also put the Python keyword `pass` as the body of the function. This keyword does not do anything but it is useful when we want to leave the body of the function empty. Without putting this keyword, the function will give an error. The error is caused because Python expects some indented code after the function header. In fact, after every statement that ends with a colon `:`, it expects some indented block.
+
 
 We can save the above code into a file `01_calculate_speed_1.py` and run both `mypy` and `python`.
 
@@ -346,7 +351,7 @@ Now, we can start writing our code. One of the useful thing to do is actually to
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20calculate_speed%28cadence%3A%20int,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20diameter%3A%20float%20%3D%20685.8,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tire_size%3A%20float%20%3D%2038.1,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int%20%3D%2050,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cog%3A%20int%20%3D%2014%29%20-%3E%20float%3A%0A%20%20%20%20speed%20%3D%200.0%0A%20%20%20%20print%28cadence%29%0A%20%20%20%20print%28type%28cadence%29%29%0A%20%20%20%20return%20speed%0A%0Aprint%28calculate_speed%2825%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-In the code above, we print both the value of `cadence` and its type. If you annotate your input arguments, this may not be necessary as `mypy` would have checked that for you. However, type annotation is optional in Python and we just want to show you that it is useful to check the type of your input as well. You can also print all the other values of the input arguments such as `diameter`, `tire_size`, etc. 
+In the code above, we print both the value of `cadence` and its type. If you annotate your input arguments, this may not be necessary as `mypy` would have checked that for you. However, type annotation is optional in Python and we just want to show you that it is useful to check the type of your input as well. You can also print all the other values of the input arguments such as `diameter`, `tire_size`, etc.
 
 Now, we can calculate the gear ratio from the given `chainring` and `cog`. Let's add the code and print the values.
 
@@ -429,7 +434,8 @@ Now we got two values that are the same because we have two print statements. Th
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Adef%20calculate_speed%28cadence%3A%20int,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20diameter%3A%20float%20%3D%20685.8,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tire_size%3A%20float%20%3D%2038.1,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int%20%3D%2050,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cog%3A%20int%20%3D%2014%29%20-%3E%20float%3A%0A%20%20%20%20%0A%20%20%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20%20%20print%28speed%29%0A%20%20%20%20return%20speed%0A%0Aprint%28calculate_speed%2825%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-But this is not the value that we expected. We expected the speed to be about 12.8 km/h. The reason is that the units are wrong. This is why it is useful to print the value value of our computation. Though there are no longer syntactical errors, our code may not produce the correct output. To convert to km/h, we can add the conversion calculation. 
+But this is not the value that we expected. We expected the speed to be about 12.8 km/h. The reason is that the units are wrong. This is why it is useful to print the computed value of our computation. Though there are no longer syntactical errors, our code may not produce the correct output. To convert to km/h, we can add the conversion calculation.
+
 
 ```python
 import math
@@ -495,6 +501,6 @@ You can also run in in Python Tutor below.
 
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Adef%20calculate_speed%28cadence%3A%20int,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20diameter%3A%20float%20%3D%20685.8,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tire_size%3A%20float%20%3D%2038.1,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20chainring%3A%20int%20%3D%2050,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cog%3A%20int%20%3D%2014%29%20-%3E%20float%3A%0A%20%20%20%20%0A%20%20%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20%20%20speed_kmh%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20%20%20return%20speed_kmh%0A%0Aprint%28calculate_speed%2825%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-Previously, we have commented the other function calls with different values of input arguments. You can remove the comment now and test. You may need to calculate it using your calculator just to make sure that it outputs the right speed using the equation when the input arguments are different.
+Previously, we have commented out the other function calls with different values of input arguments. You can remove the comments now and test them. You may need to calculate the expected output using your calculator just to make sure that it outputs the right speed using the equation when the input arguments are different.
 
-We will show how to test for the various input arguments and using the `assert` statement in future lessons. For now, we just want to show that you can use `print()` statement in stages to test your code in bite-size and ensure that it produces what you expected. We have made use of `mypy` as well to do some of the checking on our behalf. 
+We will show how to test for the various input arguments using the `assert` statement in future lessons. For now, we just want to show that you can use the `print()` statement in stages to test your code in bite-size pieces and ensure that it produces what you expected. We have made use of `mypy` as well to do some of the checking on our behalf.
