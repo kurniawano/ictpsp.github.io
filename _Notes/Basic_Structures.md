@@ -64,7 +64,8 @@ We can draw a flow chart of the above code as shown below.
 
 As you can easily see from the flowchart, the computation flows from top to bottom. The sequence is important because we need to compute the `gear_ratio` before we can compute the `speed`. Similarly, we need to compute the `speed` before we can compute the `speed_kmph`.
 
-In the image, we have put a rounded rectangle as the starting point of the flowchart. We also indicated the input arguments into the start process. On the other hand, all the computation processes use a normal rectangle. The flow ends with the return statement and we indicate the return value in the end terminal symbol which is also a rounded rectangle. 
+In the image, we have put a rounded rectangle as the starting point of the flowchart. We also indicated the input arguments in the start process. On the other hand, all the computation processes use a normal rectangle. The flow ends with the return statement, and we indicate the return value in the end terminal symbol, which is also a rounded rectangle.
+
 
 <img src="/ictpsp/assets/images/lesson3/terminal.png" width=200>
 <img src="/ictpsp/assets/images/lesson3/process.png" width=200>
@@ -92,7 +93,8 @@ def calculate_speed(cadence: int,
 
 <img src="/ictpsp/assets/images/lesson3/sequential2.png" height=500>
 
-The above code is similar to the previous one. The only difference is that we compute both `speed_kmph` and `speed_mph` in this code. At the same time, you may have noticed that we don't put a separate process box for the `speed_mph` and `speed_kmph`. The reason is that these two computations does not depend on each other and can be computed as long as `speed` has been computed. This means that the two computations are at the same dependencies with respect to the `speed` process block. 
+The above code is similar to the previous one. The only difference is that we compute both `speed_kmph` and `speed_mph` in this code. At the same time, you may have noticed that we don't put a separate process box for `speed_mph` and `speed_kmph`. The reason is that these two computations do not depend on each other and can be computed as long as `speed` has been computed. This means that the two computations are independent with respect to the `speed` process block.
+
 
 ## Branch Structures
 
@@ -108,9 +110,10 @@ In the above flowchart, we show that we will display "You are below target" if t
 
 <img src="/ictpsp/assets/images/lesson3/io.png" width=200>
 
-Notice that we use the parallelogram to indicate the process of displaying an output. This symbol is used for both **input** and **output** process. An input process may be something like getting the data from the user through a keyboard. An output process can be something like what we did here which is to display some data into the screen. 
+Notice that we use the parallelogram to indicate the process of displaying an output. This symbol is used for both input and output processes. An input process may be something like getting the data from the user through a keyboard. An output process can be something like what we did here, which is to display some data on the screen.
 
-We can modify the branch structure to be more complicated than the above. The above structure only allow the program to flow into either two options depending on the condition. If the condition is true, it will do one thing, otherwise, it will do another thing. What if we have more than two things to choose? For example, let's say if we want to categorize the user's cadence into the following table.
+We can modify the branch structure to be more complicated than the above. The above structure only allows the program to flow into either of two options depending on the condition. If the condition is true, it will do one thing; otherwise, it will do another thing. What if we have more than two things to choose from? For example, let's say we want to categorize the user's cadence into the following table.
+
 
 | cadence    | category  |
 |------------|-----------|
