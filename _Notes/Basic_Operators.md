@@ -15,14 +15,13 @@ show_date: false
 
 ## Operators and Operands in Computation
 
-In our previous lessons, we have done some simple computations. We first computed the cadence and then the speed based on the cadence and the bicycle parameters. In all these we use mathematical **operators** to do our computation. For example, to calculate the cadence from the number of steps, we had the following function definition.
-
+In our previous lessons, we have done some simple computations. We first computed the cadence and then the speed based on the cadence and the bicycle parameters. In all these, we used mathematical **operators** to do our computations. For example, to calculate the cadence from the number of steps, we had the following function definition.
 ```python
 def compute_cadence_for_30sec(steps):
   return steps * 2
 ```
 
-In the above function definition, we used the **multiplication** operators, i.e. `*`. Multiplication operator is an example of what we call as **binary operator**. The word binary refers to the number of the operands which in this case is two for the multiplication operator. This means that multiplication operator requires *two operands*, that is the left hand side number and the right hand side number which the operator will multiply. Python expects two operands and when there is a lack of operand, Python will throw an exception or an error as in the code below.
+In the above function definition, we used the **multiplication** operator, i.e. '*' . The multiplication operator is an example of what we call a **binary operator**. The word "binary" refers to the number of operands, which in this case are two for the multiplication operator. This means that the multiplication operator requires two operands—that is, the left-hand side number and the right-hand side number, which the operator will multiply. Python expects two operands, and when there is a lack of an operand, Python will throw an exception or an error as in the code below.
 
 ```python
 >>> cadence = 2 *
@@ -34,7 +33,7 @@ SyntaxError: invalid syntax
 
 In the above code, the multiplication operator only has the left operand and it gives a `SyntaxError`. 
 
-We can think of an operator as another primitive abstraction concept of a computation. Recall that every computation may take an input and produce an output. In this case, an operator takes in the operands as its input. Moreover, the operator is evaluated and produces an output value. Python evaluates the expression and produces a value. For example, in the expression `steps * 2`, Python first evaluates the variable reference `steps` and gets its value. This value and a literal integer of `2` are the operands. Python then evaluates the multiplication using these two operands as the input to the multiplication function. In this way, operators are a convenient way of expressing a computation as compared to calling a function such as the following.
+We can think of an operator as another primitive abstraction concept of a computation. Recall that every computation may take an input and produce an output. In this case, an operator takes the operands as its input. Moreover, the operator is evaluated and produces an output value. Python evaluates the expression and produces a value. For example, in the expression 'steps * 2', Python first evaluates the variable reference 'steps' and gets its value. This value and a literal integer value of '2' are the operands. Python then evaluates the multiplication using these two operands as the input to the multiplication function. In this way, operators are a convenient way of expressing a computation compared to calling a function such as the following.
 
 
 ```python
@@ -208,8 +207,7 @@ TypeError: can only concatenate str (not "int") to str
 
 The error says that we can only concatenate string to string and not to an integer. It is important, therefore, to know what kind of data we are working on to ensure that we do the right computation. 
 
-Some string operators actually can work with numeric data. An example of this is the `*` operator. In arithmetic, this operator is used for multiplication. In a string data, however, it is used to duplicate and join the string together. 
-
+Some string operators actually can work with numeric data. An example of this is the '*' operator. In arithmetic, this operator is used for multiplication. In a string data, however, it is used to duplicate and join the string together. 
 ```python
 >>> "Hello" * 3
 'HelloHelloHello'
@@ -232,12 +230,12 @@ Some string operations are totally different from arithmetic comptutations. We w
 
 ## Testing and Debugging using Print Statement
 
-As we introduce more things into our code, it is best to start the habit of **debugging** our code. No programmers have ever written code without debugging it (Okay, maybe we can write a print "Hello World" code without debugging it). Most code, as it grows in complexity, requires programmers to test their code and check whether the code runs as expected. Instead of testing the code at the end of writing long lines of code, programmers test their code in bite-size pieces.
+As we introduce more features into our code, it is best to start the habit of **debugging** our code. No programmer has ever written code without debugging it. (Okay, maybe we can write a print "Hello World" code without debugging it.) Most code, as it grows in complexity, requires programmers to test their code and check whether the code runs as expected. Instead of testing the code at the end of writing long lines of code, programmers test their code in bite-size pieces.
 
-In this section, we want to introduce a little habit which should be part and parcel of every novice programmer when writing code. This habit is to test their code after one or a few lines of code to see whether it performs as expected. One simple way is to use the `print()` function to test two things:
-- the expected value of computation
-- the data type of some value
+In this section, we want to introduce a little habit that should be part and parcel of every novice programmer's process when writing code. This habit is to test their code after one or a few lines of code to see whether it performs as expected. One simple way is to use the 'print()' function to test two things:
 
+the expected value of the computation
+the data type of some value
 Let's revisit our `calculate_speed()` function. We will put the final version here, but we will describe how a novice programmer can write it step by step with the print statement to test it.
 
 
