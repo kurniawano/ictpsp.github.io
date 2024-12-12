@@ -15,17 +15,17 @@ show_date: false
 
 ## Basic Control Structures
 
-We will introduce some basic control structures in this section. You will find these structures throughout many computer codes and programming exercises. In fact, we can actually reduce the control structure of all programming code into only a few control structure. The image below show the three basic control structure.
+We will introduce some basic control structures in this section. You will find these structures throughout many computer codes and programming exercises. In fact, we can actually reduce the control structures of all programming code into only a few control structures. The image below shows the three basic control structures.
 
 <img src="/ictpsp/assets/images/lesson3/control_structures.png">
 
-The first one on the left is **sequential** and we have been using this structure throughout our previous codes. We claim that computer codes are executed sequentially from top to bottom. This is the most basic and fundamental structure of all computer codes.
+The first one on the left is **sequential**, and we have been using this structure throughout our previous codes. We claim that computer codes are executed sequentially from top to bottom. This is the most basic and fundamental structure of all computer codes.
 
-In this lesson and the next lesson, we are going to introduce the second structure which is a **branch** structure as shown in the middle of the above image. A branch structure adds an extremely important features in programming becauses it allows you to execute a certain code instead of another. Branch structure allows you to change the flow of the code based on some conditions. 
+In this lesson and the next lesson, we are going to introduce the second structure, which is a **branch** structure, as shown in the middle of the above image. A branch structure adds an extremely important feature in programming because it allows you to execute a certain code instead of another. The branch structure allows you to change the flow of the code based on some conditions.
 
-Lastly, we will introduce briefly the **iterative** structure as shown on the right in the above image. Iterative structure is based on the branch structure because it uses the branch structure to determine whether to continue or to stop the iteration. In the above image, if the condition is true, the computer will continue to the next iteration. On the other hand, if the condition is false, the computer will stop the iteration and execute the next block of the code.
+Lastly, we will briefly introduce the **iterative** structure, as shown on the right in the above image. The iterative structure is based on the branch structure because it uses the branch structure to determine whether to continue or to stop the iteration. In the above image, if the condition is true, the computer will continue to the next iteration. On the other hand, if the condition is false, the computer will stop the iteration and execute the next block of the code.
 
-Notice that both branch and iterative structure relies on sequential structure for each of the block that they will execute. Sequential structure remains the fundamental control flow of a computer code. Branch structure adds on the possibility of changing this sequential flow based on some conditions and Iterative structure allows you to repeat a block of code as long as the condition is true.
+Notice that both branch and iterative structures rely on the sequential structure for each block that they execute. The sequential structure remains the fundamental control flow of a computer code. The branch structure adds the possibility of changing this sequential flow based on some conditions, and the iterative structure allows you to repeat a block of code as long as the condition is true.
 
 ## Sequential Structure
 
@@ -64,7 +64,7 @@ We can draw a flow chart of the above code as shown below.
 
 As you can easily see from the flowchart, the computation flows from top to bottom. The sequence is important because we need to compute the `gear_ratio` before we can compute the `speed`. Similarly, we need to compute the `speed` before we can compute the `speed_kmph`.
 
-In the image, we have put a rounded rectangle as the starting point of the flowchart. We also indicated the input arguments into the start process. On the other hand, all the computation processes use a normal rectangle. The flow ends with the return statement and we indicate the return value in the end terminal symbol which is also a rounded rectangle. 
+In the image, we use a rounded rectangle as the starting point of the flowchart. We also show the input arguments at the start process. On the other hand, all the computation processes use a normal rectangle. The flow ends with the return statement, and we show the return value in the end terminal symbol, which is also a rounded rectangle.
 
 <img src="/ictpsp/assets/images/lesson3/terminal.png" width=200>
 <img src="/ictpsp/assets/images/lesson3/process.png" width=200>
@@ -92,15 +92,15 @@ def calculate_speed(cadence: int,
 
 <img src="/ictpsp/assets/images/lesson3/sequential2.png" height=500>
 
-The above code is similar to the previous one. The only difference is that we compute both `speed_kmph` and `speed_mph` in this code. At the same time, you may have noticed that we don't put a separate process box for the `speed_mph` and `speed_kmph`. The reason is that these two computations does not depend on each other and can be computed as long as `speed` has been computed. This means that the two computations are at the same dependencies with respect to the `speed` process block. 
+he above code is similar to the previous one. The only difference is that we compute both `speed_kmph` and `speed_mph` in this code. At the same time, you may have noticed that we didn't put a separate process box for the `speed_mph` and `speed_kmph`. The reason is that these two computations do not depend on each other and can be computed as long as `speed` has been computed. This means that the two computations are at the same level of dependency with respect to the `speed` process block.
 
 ## Branch Structures
 
-Let's say, now, we want to train at a consistent rate of cadence and we have a specific target to hit, we can monitor our performance whether we hit the target or not using a branch structure. For example, if our target for cycling cadence is 60 RPM, then we can have the following flow chart.
+Let's say, now, we want to train at a consistent rate of cadence, and we have a specific target to hit. We can monitor our performance to determine whether we hit the target or not using a branch structure. For example, if our target for cycling cadence is 60 RPM, then we can create the following flowchart.
 
 <img src="/ictpsp/assets/images/lesson3/branch.png" width=500>
 
-In the above flowchart we have introduced a diamond symbol which is used to indicate a **decision** process. A Decision process allows a branch to more than one process. Inside that decision, a condition has to be specified. If the condition is true, a certain process will be executed (block A). Otherwise, another process will be executed. In our example here, if the cadence is below 60 RPM, then the user does not hit the target. Otherwise, the user hits the target. 
+In the above flowchart, we have introduced a diamond symbol, which is used to indicate a **decision** process. A decision process allows the flow to branch to more than one process. Inside the decision, a condition has to be specified. If the condition is true, a certain process will be executed (Block A). Otherwise, another process will be executed. In our example here, if the cadence is below 60 RPM, then the user does not hit the target. Otherwise, the user hits the target.
 
 <img src="/ictpsp/assets/images/lesson3/decision.png" width=200>
 
@@ -108,10 +108,9 @@ In the above flowchart, we show that we will display "You are below target" if t
 
 <img src="/ictpsp/assets/images/lesson3/io.png" width=200>
 
-Notice that we use the parallelogram to indicate the process of displaying an output. This symbol is used for both **input** and **output** process. An input process may be something like getting the data from the user through a keyboard. An output process can be something like what we did here which is to display some data into the screen. 
+Notice that we use the parallelogram to indicate the process of displaying an output. This symbol is used for both **input** and **output** processes. An input process may be something like getting the data from the user through a keyboard. An output process can be something like what we did here, which is to display some data on the screen.
 
-We can modify the branch structure to be more complicated than the above. The above structure only allow the program to flow into either two options depending on the condition. If the condition is true, it will do one thing, otherwise, it will do another thing. What if we have more than two things to choose? For example, let's say if we want to categorize the user's cadence into the following table.
-
+We can modify the branch structure to be more complicated than the above. The above structure only allows the program to flow into one of two options depending on the condition. If the condition is true, it will do one thing; otherwise, it will do another thing. What if we have more than two things to choose from? For example, let's say that we want to categorize the user's cadence into the following table.
 | cadence    | category  |
 |------------|-----------|
 | <70        |       low |
@@ -130,7 +129,7 @@ Can we choose the other way around starting from the low category?
 
 <img src="/ictpsp/assets/images/lesson3/branch2.png" height=600>
 
-Notice that if the condition `100 <= cadence <= 120` is true, we display "very high". However, if this condition is false, we do not display anything and there is no process associated to it. Though, we can write a code for this, it is easier to read if we start from the "very high" category and move down such that all the other cases when the cadence is lower than 70 is attributed to "low". This example, illustrates that though we can choose how we want to nest and sequence our conditions, certain way of writing is easier to read.
+Notice that if the condition `100 <= cadence <= 120` is true, we display "very high." However, if this condition is false, we do not display anything, and there is no process associated with it. Although we can write a code for this, it is easier to read if we start from the "very high" category and move down, such that all the other cases where the cadence is lower than 70 are attributed to "low." This example illustrates that, although we can choose how we want to nest and sequence our conditions, a certain way of writing may be easier to read.
 
 ## Iterative Structures
 
@@ -148,11 +147,11 @@ How can we repeat this as long as the user did not enter a valid response? Below
 
 <img src="/ictpsp/assets/images/lesson3/iterative1.png" height=500>
 
-A few notes on the flowchart diagram above. Notice that we use the parallelogram for the `input()` function to get the users' input. We do this two times: the first one is the initial prompt and the second one is when the user did not enter a valid input. We modified the prompt to the user to indicate that the input entered is not valid and give some valid input example. 
+A few notes on the flowchart diagram above. Notice that we use the parallelogram for the `input()` function to get the user's input. We do this twice: the first time is the initial prompt, and the second time is when the user does not enter a valid input. We modified the prompt to the user to indicate that the input entered is not valid and to provide some valid input examples.
 
-Every time the user enters the input, it will be directed to the decision diamon box where it will check if the input is valid or not. If it is not valid, it will repeat the blocks that requests the user to enter it again. On the other hand, if the input is valid, it will exit the loop and continue to the next part of the code. 
+Every time the user enters the input, it will be directed to the decision diamond box where it will check if the input is valid or not. If it is not valid, it will repeat the blocks that request the user to enter it again. On the other hand, if the input is valid, it will exit the loop and continue to the next part of the code.
 
-The iterative structure is very common and can be found in many different cases. Another example could be when we want to average the cadence values for the past three days. We can create three variables to store the three days cadence values. Another way is to store it in a **collection** data type such as a list. We will cover list in future lessons. For now, you can see a list data structure as just a list of data. You can name this list `cadence` for example. If you want to store only the past three days, the list can have three elements. On the other hand if you want to store for the past one week, the list can contain seven elements. List is very flexible and very useful in programming. 
+The iterative structure is very common and can be found in many different cases. Another example could be when we want to average the cadence values for the past three days. We can create three variables to store the three days' cadence values. Another way is to store it in a **collection** data type such as a list. We will cover lists in future lessons. For now, you can see a list data structure as just a list of data. You can name this list `cadence`, for example. If you want to store only the past three days, the list can have three elements. On the other hand, if you want to store data for the past one week, the list can contain seven elements. A list is very flexible and very useful in programming.
 
 Let's go back to our problem in calculating the average cadence for the past `n` days. Below is the flowchart that we can draw to compute the average.
 
