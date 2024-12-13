@@ -168,26 +168,26 @@ The init block is used to initialize the data which will be used to decide wheth
 
 ## Identifying Structural Patterns in a Problem
 
-We will see the three basic structures again and again. It is important for us to be able to identify which structure may be present in a given problem that we are solving. As a basic rule, the sequential structure is present throughout and is the most basic structure. All computation is fundamentally sequential. This means that the sequence matters and we compute from the top to the bottom. Therefore, in this section, we are more interested in identifying if we can spot the *branch* structure and the *iterative* structure in a given problem statement.
+We will see the three basic structures again and again. It is important for us to be able to identify which structure may be present in a given problem that we are solving. As a basic rule, the sequential structure is present throughout and is the most basic structure. All computations are fundamentally sequential. This means that the sequence matters**,** and we compute from the top to the bottom. Therefore, in this section, we are more interested in identifying whether we can spot the *branch* structure and the *iterative* structure in a given problem statement.
 
 The way we will do this is to introduce the next part of our problem solving framework, which is the **C**oncrete cases and the **D**esign of Algorithm steps. Previously, we have discussed the **P**roblem statement step in identifying the input, output, the computation process that is needed. We also shared that we need to ask the question, "What kind of data is this?" at every step of our PCDIT framework. 
 
-These two steps in PCDIT is best illustrated with an example. Let's start with a problem. Let's say we want to train cycling cadence to hit a certain target average for the past one week. If the user hit the target, the chatbot would like to compliment the user for achieving the target and maybe give some bonus points through its gamification features. IF the user does not hit the target, the chatbot may encourage the user to try harder or maybe to set a lower target. Whether the chatbot requests the user to set a lower target or simply encourage him to try harder will be based on the difference that the user's cadence average with the target. If the difference is greater than 10 RPM, then the chatbot will ask the user to have a lower target. How should we start? Let's apply the PCDIT framework and in the process, we will identify if there is any *branch* structure or *iterative* structure.
+These two steps in the PCDIT framework are best illustrated with an example. Let's start with a problem. Let's say we want to train cycling cadence to hit a certain target average for the past one week. If the user hits the target, the chatbot would like to compliment the user for achieving the target and maybe give some bonus points through its gamification features. If the user does not hit the target, the chatbot may encourage the user to try harder or maybe suggest setting a lower target. Whether the chatbot requests the user to set a lower target or simply encourages them to try harder will be based on the difference between the user's cadence average and the target. If the difference is greater than 10 RPM, then the chatbot will ask the user to set a lower target. How should we start? Let's apply the PCDIT framework, and in the process, we will identify if there is any *branch* structure or *iterative* structure.
 
 ### Problem Statement
 
-We will start with the problem statement. In this step, we will ask what is the input, output and the computation process. We are also interested in the kind of data of the input and output. 
+We will start with the problem statement. In this step, we will ask about the input, output, and the computation process. We are also interested in the kind of data used for the input and output.
 
-Let's say for our case, the input is a list of cadence of the user for the past seven days. This input is a collection data type. In such collection data type, we want to ask further what is the data type of the element of the list. In our case, the cadence is of `int` type in RPM (rotation per minute). 
+Let's say for our case, the input is a list of the user's cadence for the past seven days. This input is a collection data type. In this collection data type, we want to ask further about the data type of the elements of the list. In our case, the cadence is of the `int` type in RPM (rotations per minute).
 
-There is another input in our case. This is the target cadence average the user wants to hit. Since this is a cycling training app, the user may want to hit a certain target cadence for the past one week. This target value is an input to this computation. What's the data type? This can be another integer. 
+There is another input in our case. This is the target cadence average the user wants to hit. Since this is a cycling training app, the user may want to hit a certain target cadence for the past one week. This target value is an input to this computation. What's the data type? This can be another integer.
 
-How about the output? There is no particular output that this code will return. The program, however, will end up in several possible states.
-- state 1: The user hits the target and the chatbot displays some compliment and reward user with some bonus point.
-- state 2: The user does not hit the average target by less than 10 RPM difference. In this case, the chatbot will display some words to encourage the user to hit the target. 
-- state 3: the user does not hit the average target by more than 10 RPM difference. In this case, the chatbot will offer the user whether he or she wants to modify the target with a lower target at first. 
+How about the output? There is no particular output that this code will return. The program, however, will end up in several possible states:
 
-What we have described in the previous paragraph is part of the computation process that we need to perform. In order to arrive at one of those states, the program has compute the average cadence first. We can summarize the problem statement as follows.
+State 1: The user hits the target and the chatbot displays some compliments and rewards the user with some bonus points.
+State 2: The user does not hit the average target by less than a 10 RPM difference. In this case, the chatbot will display some words to encourage the user to hit the target.
+State 3: The user does not hit the average target by more than a 10 RPM difference. In this case, the chatbot will offer the user the option to modify the target to a lower target at first.
+What we have described in the previous paragraph is part of the computation process that we need to perform. In order to arrive at one of those states, the program must compute the average cadence first. We can summarize the problem statement as follows.
 
 ```
 Input: 
@@ -213,7 +213,7 @@ cadence_list = [45, 57, 62, 58, 55, 66, 63]
 target_cadence = 60
 ```
 
-In the above, we use the square bracket `[]` to indicate a list of data. We will talk about list in future lessons. For now, just take not that a list is a collection data type that you can use to group similar data. Notice that we put only integers inside the list. This is part of what we have already indicated in our problem statement. PCDIT framework is not meant to be linear. In the case that we realize that some of the elements are not integer, we should go back to the **P**roblem statement step and revise it.
+In the above**,** we use the square bracket `[]` to indicate a list of data. We will talk about lists in future lessons. For now, just take note that a list is a collection data type that you can use to group similar data. Notice that we put only integers inside the list. This is part of what we have already indicated in our problem statement. The PCDIT framework is not meant to be linear. In the case that we realize that some of the elements are not integers, we should go back to the **P**roblem statement step and revise it.
 
 In **C**oncrete Cases, we walk through the computation as if we are the computers. This is an important exercise of computational thinking. This means that we have to think like a computing agent in doing this step. Let's do it.
 
@@ -337,7 +337,7 @@ In this case, our average is greater than the target and we will just display, `
 
 Now, we are ready to design our algorithm. The word algorithm refers to the steps of the computation. We can derive the algorithm from the previous **C**oncrete Case steps by **generalizing** the steps we took in our computation. We will do so in two ways. The first one is through a pseudocode and the second one will use a flowchart. 
 
-Let's start with using the pseudocode. A pseudocode is not a computer code. That's where the word *pseudo* comes from. It is meant to be general enough in such a way that it can be implemented by any programming language. The key feature of a pseudocode is to help us to think through about the steps without worrying about the programming language features. In these notes, we will use simple English for our pseudocode which we will then refine to use with certain key words that helps us to identify the structure of steps.
+Let's start with writing the pseudocode. A pseudocode is not a computer code. That's where the word *pseudo* comes from. It is meant to be general enough so that it can be implemented by any programming language. The key feature of a pseudocode is to help us think through the steps without worrying about the programming language features. In these notes, we will use simple English for our pseudocode, which we will then refine to use with certain keywords that help us identify the structure of steps.
 
 We can divide the steps into few distinct stages:
 - calculating the total
@@ -451,6 +451,6 @@ For smaller problem like the above, we can draw all the parts in a single flowch
 
 ## Summary
 
-In this section, we introduced to you the three basic structures, sequential, branch and iterative. The basic structure is sequential. However, the branch structure actually is the one that creates flexibility in our computer programs as it allows us to choose what to do depending on some conditions. In fact, the iterative structure is based on the branch structure as it chooses to repeat certain block of steps depending on some conditions. 
+In this section, we introduced the three basic structures: sequential, branch, and iterative. The basic structure is sequential. However, the branch structure is the one that creates flexibility in our computer programs, as it allows us to choose what to do depending on some conditions. In fact, the iterative structure is based on the branch structure, as it chooses to repeat a certain block of steps depending on some conditions.
 
-We also introduce how you can write down your **C**oncrete Cases and **D**esign of Algorithm. We showed you how to iterate over your design of algorithm using both pseudocode and flowchart. In subsequent lessons, we will focus on pseudocode to design our algorithm.
+We also introduced how you can write down your **C**oncrete Cases and **D**esign of Algorithm. We showed you how to iterate over your design of an algorithm using both pseudocode and flowchart. In subsequent lessons, we will focus on pseudocode to design our algorithm.
