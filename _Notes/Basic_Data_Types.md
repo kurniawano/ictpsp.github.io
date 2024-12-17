@@ -15,9 +15,9 @@ show_date: false
 
 ## What Kind of Data is This?
 
-It is important to ask the question, "what kind of data is this?". One of the challenges for novice programmers is that Python does not require you to declare the *data type*. So many novice programmers do not think about this question, "what kind of data is this?". However, it is essential at every part of the problem solving process to continue asking the question, "what kind of data are we dealing with?"
+It is important to ask the question, "what kind of data is this?". One of the challenges for novice programmers is that Python does not require you to declare the *data type*. So many novice programmers do not think about this question, "what kind of data is this?". However, it is essential in every part of the problem-solving process to continue asking the question, "what kind of data are we dealing with?"
 
-In the first step `P` for **Problem statement**, we are asking what is the input, output, and the process. In answering these questions, we have to ask what *kind* of data is the input and what *kind* of data is the output. The kinds of data are what we call a *data type*. 
+In the first step, `P` for **Problem statement**, we are asking what is the input, output, and the process. In answering these questions, we have to ask what *kind* of data is the input and what *kind* of data is the output. The kinds of data are what we call a *data type*. 
 
 In our first problem, we want to display `Hello World!` on the screen. We should ask, what kind of data is this?
 
@@ -29,9 +29,9 @@ Now, we will introduce two basic data types:
 
 In our first problem, our data is not numbers but rather text. We call this data of a `string` data type. In some other programming languages, they have a character data type, which only consists of a single character. Python does not have a character data type. To create a character, you basically create a string with only one character.
 
-If you recall our chatbot, a name will be a string data. But let's say you create a chatbot to calculate your cadence related to your fitness activity; some of those data may not be a string. For example, the chatbot can ask for the number of steps and the duration of your walk or your cycling period. In calculating your cadence, the app has to work with numbers to do the mathematical manipulation. 
+If you recall our chatbot, a name will be a string data. But let's say that if you create a chatbot to calculate your cadence related to your fitness activity; some of this data may not be a string. For example, the chatbot can ask for the number of steps and the duration of your walk or your cycling period. In calculating your cadence, the app has to work with numbers to do the mathematical manipulation. 
 
-This `string` data type includes other kinds that may not so obviously a text such as:
+This `string` data type includes other kinds that may not obviously be text such as:
 - newline character
 - tab characters and other whitespaces
 
@@ -49,7 +49,7 @@ An example of the `int` data type would be the whole range of whole numbers: 3, 
 - 7/4 = 1.74999...
 - etc.
 
-Since computer stores information in a finite space (or finite *bits*), it is not possible for computer to represent these numbers accurately. Therefore, real numbers are stored in computer using a representation called *floating point numbers* that has some finite precision. When dealing with real numbers in computers, we have to accept that we can never eliminiate floating-point errors. We can only [manage floating-point errors by mitigating them](https://en.wikipedia.org/wiki/Floating-point_error_mitigation). 
+Since computers store information in a finite space (or finite *bits*), it is not possible for computers to represent these numbers accurately. Therefore, real numbers are stored in computers using a representation called *floating-point numbers* that has some finite precision. When dealing with real numbers in computers, we have to accept that we can never eliminate floating-point errors. We can only [manage floating-point errors by mitigating them](https://en.wikipedia.org/wiki/Floating-point_error_mitigation). 
 
 ## Creating a String Data
 
@@ -61,7 +61,7 @@ The first way is to use *single* double quotes as shown in the previous code.
 "Hello World!"
 ```
 
-You can create this data in the Python shell. When you press enter, it will just display the data you just created.
+You can create this data in the Python shell. When you press enter, it will just display the data you have just created.
 
 ```python
 >>> "Hello World!"
@@ -121,9 +121,9 @@ What is important is that the opening and closing quotes must match. We cannot h
 SyntaxError: invalid syntax
 ```
 
-The reason that the syntax is invalid is because Python finds a closing quotes for the string literal just before `World, Hello'`. Python interprets the `string` data to be: `'Yoda spoke, '`. Python does not understand how to interpret the subsequent characters in `World, Hello'` because there is no operator in between the two tokens of a string `'Yoda spoke, '` and a symbol `World`. Notice that Python does not interpret `World` as a `string` data because it does not have an opening quotes. Therefore, Python tries to interpret `World` as a symbol or name instead. 
+The reason that the syntax is invalid is because Python finds a closing quote for the string literal just before `World, Hello'`. Python interprets the `string` data to be: `'Yoda spoke, '`. Python does not understand how to interpret the subsequent characters in `World, Hello'` because there is no operator in between the two tokens of a string `'Yoda spoke, '` and a symbol `World`. Notice that Python does not interpret `World` as a `string` data because it does not have an opening quotes. Therefore, Python tries to interpret `World` as a symbol or name instead. 
 
-But how about the triple quotes? What are they used for? Python allows you to create multi-line string data using the triple quotes strings. For example,
+But how about the triple quotes? What are they used for? Python allows you to create multi-line string data using the triple quotes syntax. For example,
 
 ```python
 """Hello,
@@ -202,7 +202,7 @@ Hello World no.  2
 Hello World no.  3
 ```
 
-What is the difference between the two codes above? In the first code, we print the Hello World's number 1, 2 and 3 as part of a single `string` data. On the other hand, in the second code, we print two **kinds** of data. The first data `"Hello World no. "` is a `string` data type. The second of data, however, is not. The data that is displayed into the screen, i.e. `1` is an `int` data type. The comma (`,`) in between the two data is just to separate the different objects to be displayed. 
+What is the difference between the two codes above? In the first code, we print the World's number 1, 2 and 3 as part of a single `string` data. On the other hand, in the second code, we print two **kinds** of data. The first data `"Hello World no. "` is a `string` data type. The second of data, however, is not. The data that is displayed into the screen, i.e. `1` is an `int` data type. The comma (`,`) in between the two data is just to separate the different objects to be displayed. 
 
 Why does this matters, you may ask. Thinking about the data matters because we work with different data differently. For example, you can add numbers and increase them sequentially. Later, you will be able to write *loops* to do the above. Imagine if you have a million worlds. You are not going to write `print()` statements a million times. Instead, you can just do the following.
 
