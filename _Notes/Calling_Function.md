@@ -20,9 +20,9 @@ In our previous lessons, we have used a few built-in functions:
 - `int()` to convert a value into an `int` data type.
 - `input()` to get a value entered through a standard input device, which in most cases is your keyboard.
 
-We call these functions as built-in functions because Python provides these functions for our use. At the same time, we want to introduce the concept of abstraction and how functions actually provides that abstraction. For example, in order to display some data into a screen requires not a single instruction in a computer. It actually requires a number of instructions that would include part of the operating system before the data is displayed into the computer screen. However, Python **abstract** all those instruction into a single function called `print()`. 
+We call these functions built-in functions because Python provides these functions for our use. At the same time, we want to introduce the concept of abstraction and how functions actually provide that abstraction. For example, displaying some data on a screen does not require a single instruction in a computer. It actually requires a number of instructions that include parts of the operating system before the data is displayed on the computer screen. However, Python **abstracts** all those instructions into a single function called `print()`.
 
-In a way, a *function* encapsulates some computation. Every computation may or may not have some input. It may or may not have some output. Similarly, every function does some computation. Some function may or may not have some input. Some functions may or may not have some output. We can draw a function like a blackbox as shown in the diagram below. 
+In a way, a *function* encapsulates some computation. Every computation may or may not have some input. It may or may not have some output. Similarly, every function performs some computation. Some functions may or may not have input. Some functions may or may not have output. We can represent a function like a black box, as shown in the diagram below.
 
 <img src="/ictpsp/assets/images/lesson2/functions.png" width=600>
 
@@ -30,7 +30,7 @@ In the above diagrams, we have drawn various possible combination with regards t
 
 ## How to Call a Function
 
-The first important thing about function is to know how to **execute** a function. We have a term for this executing a function. We call it **calling** a function or **invoking** a function. Basically, when we call a function, we execute a whole set of instructions encapsulated by that function. We do not need to know how to display a character into a computer screen, we just need to know how to *call* the `print()` function. To call a function in Python, you need to specify using the following format.
+The first important thing about functions is to know how to **execute** a function. We have a term for this: executing a function. We call it **calling** a function or **invoking** a function. Basically, when we call a function, we execute a whole set of instructions encapsulated by that function. We do not need to know how to display a character on a computer screen; we just need to know how to `call` the `print()` function. To call a function in Python, you need to specify it using the following format.
 
 ```python
 function_name(input_arguments)
@@ -50,7 +50,9 @@ Not all functions have input arguments but the above three functions are example
 
 ## Output of a Function Versus Side Effects
 
-Input arguments are data that the function **takes in** in order to do its computation. The **output** of a function is the data that the function **throws out** as a result of some computation inside the function. In our three built-in examples, only `int()` and `input()` throws some output. The `print()` function does not throw an output. 
+Input arguments are data that the function **takes in** in order to do its computation. The **output** of a function is the data that the function **returns** as a result of some computation inside the function. In our three built-in examples, only int() and input() return some output. The print() function does not return an output.
+
+
 
 <img src="/ictpsp/assets/images/lesson2/functions_no_i_no_o.png">
 
@@ -73,7 +75,7 @@ More accurately, we are binding a value with a name. The value is `25` and the n
 | cadence | 25    |
 |         |       |
 
-Now, we can see if a function throws any output data by storing that output data into a variable. We will use the same **assignment** operator to assign the output of the function to the variable and then we will display this variable to the screen.
+NNow, we can see if a function throws any output data by storing that output data into a variable. We will use the same **assignment** operator to assign the output of the function to the variable, and then we will display this variable on the screen.
 
 ```python
 out_print = print("Hello World")
@@ -135,7 +137,7 @@ Instead of putting the "int" as part of the variable name, we can use type annot
 
 ## Importing and Calling Math Functions in Python
 
-We have learnt how to call functions and supplying the input arguments as well as how to retrieve the output returned by the function. Now we can work with more functions. One of the common functions that Python provides is the math library. In order to use the math library, we need to import them into the current environment.
+We have learned how to call functions and supply the input arguments, as well as how to retrieve the output returned by the function. Now we can work with more functions. One of the common libraries that Python provides is the math library. In order to use the math library, we need to import it into the current environment.
 
 ```python
 import math
@@ -166,7 +168,8 @@ from math import sqrt
 x: float = sqrt(4)
 ```
 
-In the last example, what we imported is only the function `sqrt` which we get from the `math` module. If two packages provide a similar function name, your global frame will be populated by only the last name you define or imported. If you prefer to keep separately the two functions for different usage, it is recommended to use the second approach above by renaming the different modules and access the same function name using the dot operator. 
+In the last example, what we imported is only the function `sqrt`, which we get from the `math` module. If two packages provide a similar function name, your global frame will be populated by only the last name you define or import. If you prefer to keep the two functions separate for different usage, it is recommended to use the second approach above by renaming the different modules and accessing the same function name using the dot operator.
+
 
 For example, `numpy` also provides a `sqrt` function. We can import both function as follows.
 
@@ -182,4 +185,4 @@ You maybe wondering what's the use of `numpy` package if `math` package already 
 
 ## Summary
 
-In this lesson, you have learnt how to call a function. Some functions require you to supply the input arguments for the function to do its calculation. You also learn how take the return value of the function which we also call as the output of the function. We differentiate the output returned by the function and its side effect. Some functions like `print()` do not have output but creates side effect. We also learn on how you can make use of other functions created by other people such as the various mathematical function in the `math` library. We show the different ways of importing the module into the current environment so that we can call the function using the dot operator. 
+IIn this lesson, you have learnt how to call a function. Some functions require you to supply the input arguments for the function to do its calculation. You also learned how to take the return value of the function, which we also call the output of the function. We differentiate the output returned by the function from its side effect. Some functions, like `print()`, do not have output but create side effects. We also learned how you can make use of other functions created by other people, such as the various mathematical functions in the `math` library. We demonstrated the different ways of importing the module into the current environment so that we can call the function using the dot operator.
