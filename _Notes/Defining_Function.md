@@ -15,7 +15,7 @@ show_date: false
 
 
 ## Abstracting a Problem as a Function
-In our previous lessons, we have been using some built-in functions such as `print()`, `int()` and `input()`. We also have started using other functions provided by `math` library, particularly the `sqrt()` function. There are many other functions provided in the `math` library. However, our focus now is on how can we create our own user-defined function or our own custom function. Let's say, what if you want to create a function to compute the cadence of your cycling app. Recall previously, that we wrote the following code in our cycling chatbot.
+In our previous lessons, we have been using some built-in functions such as `print()`, `int()`, and `input()`. We also started using other functions provided by the `math` library, particularly the `sqrt()` function. There are many other functions provided in the math library. However, our focus now is on how we can create our own user-defined function or our own custom function. For instance, what if you want to create a function to compute the cadence of your cycling app? Recall previously that we wrote the following code in our cycling chatbot.
 
 ```python
 steps_inp: str = input("how many push you did on the pedal within 30 seconds? ")
@@ -43,7 +43,7 @@ cadence: int = compute_cadence_for_30sec(steps)
 print("Your cadence is ", cadence)
 ```
 
-This new function `compute_cadence_for_30sec()` serves several purposes. First, it serves as an abstraction on how to calculate a cadence for 30 sec. People need not know how to actually compute cadence, they just need to call this function and they get the result. Second, by naming the process of computation `steps * 2` as `compute_cadence_for_30sec()`, we actually gives meaning to the overall process. Now calculating cadence is straight forward, but imagine if your calculation takes hundreds of lines. By naming those hundred of lines of code into a single name, we actually simplify code. We provide name and meaning to the overall process with a single name, i.e. the function name.
+This new function `compute_cadence_for_30sec()` serves several purposes. Firstly, it serves as an abstraction on how to calculate a cadence for 30 sec. People need not know how to actually compute cadence, they just need to call this function and they get the result. Second, by naming the process of computation `steps * 2` as `compute_cadence_for_30sec()`, we actually gives meaning to the overall process. Now calculating cadence is straight forward, but imagine if your calculation takes hundreds of lines. By naming those hundred of lines of code into a single name, we actually simplify code. We provide name and meaning to the overall process with a single name, i.e. the function name.
 
 But now, we need to be able to write our own custom function or user-defined function. Let's learn how to do it for the various possible function combination that you have seen previously.
 
@@ -70,11 +70,11 @@ def compute_cadence_for_30sec(steps):
 
 ## Specifying Data Types in Arguments and Return Values
 
-It is always good to ask the question, "What is the input?" and also "What is the output?". This is part of our PCDIT framework of Problem Statement. We can apply that framework to design our user-defined function. In this problem, our input is steps in 30 seconds and the output expected is the cadence. 
+It is always good to ask the question, "What is the input?" and also, "What is the output?". This is part of our PCDIT framework of the Problem Statement. We can apply that framework to design our user-defined function. In this problem, our input is the number of `steps` in 30 seconds, and the output expected is the cadence.
 
-In the above code, `steps` is the only input argument. If you have more than one input arguments, you can separate them using a comma. The output of the function is specified using a special keyword `return`. In this case the output is this `steps * 2` which is the cadence. 
+In the above code, steps is the only input argument. If you have more than one input argument, you can separate them using a comma. The output of the function is specified using a special keyword, return. In this case, the output is `steps * 2`, which is the cadence.
 
-In asking the input and output of our problem statement, we must also ask, "What is the data type?" or "What kind of data is this?". The input `steps` is most probably a whole number and so we can use `int` data to represent steps. Similarly, since the cadence calculation is just a multiplication by 2, we would expect that the output is also an `int`.
+When asking about the input and output of our problem statement, we must also ask, "What is the data type?" or "What kind of data is this?". The input, `steps`, is most probably a whole number, so we can use `int` data to represent steps. Similarly, since the cadence calculation is just a multiplication by 2, we would expect that the output is also an `int`.
 
 Python 3.6 onwards allows you to annotate the input and output data type for static type checker to verify. The above function definition can be re-written as follows.
 
@@ -142,10 +142,9 @@ $ python 03_cadence_str.py
 2525
 ```
 
-The output is puzzling and unexpected. It no longer gives `50` as the cadence as in the previous calculation. The reason is that the `*` operator works differently for different kind of data. For number data such as `int` and `float`, the operator `*` does multiplication. However, for `string` data, the operator `*` does a *duplication* of the string. In the above code, what happens is that the string `25` is duplicated *two times* when executing `return steps * 2`. 
+The output is puzzling and unexpected. It no longer gives `50` as the cadence, as in the previous calculation. The reason is that the `*` operator works differently for different types of data. For numerical data such as `int` and `float`, the operator `*` performs multiplication. However, for string data, the operator `*` performs a duplication of the string. In the above code, what happens is that the string  `25` is duplicated two times when executing `return steps * 2`.
 
-It is important, therefore, to ask "What is the data type?". Using `mypy` would prevent such error. Notice that Python continues to execute the code without throwing any error. Python does not check the type. This is where running static type checker such as `mypy` helps.
-
+It is important, therefore, to ask, "What is the data type?". Using `mypy` would prevent such an error. Notice that Python continues to execute the code without throwing any error. Python does not check the type. This is where running a static type checker such as `mypy` helps.
 ```sh
 $ mypy 03_cadence_str.py 
 03_cadence_str.py:4: error: Argument 1 to "compute_cadence_for_30sec" has incompatible type "str"; expected "int"  [arg-type]
@@ -174,9 +173,9 @@ def calculate_speed(diameter, tire_size, chainring, cog, cadence):
   return speed * 60 / 1_000_000
 ```
 
-Notice that we have imported the `math` library in order to get the value of $\pi$. We have talked about math library in our previous lessons where we imported some functions. This time, instead of a function, we imported a constant from the library.
+Notice that we have imported the `math` library in order to get the value of $\pi$. We have talked about the math library in our previous lessons, where we imported some functions. This time, instead of a function, we imported a constant from the library.
 
-We also have a few input arguments this time. In fact, we have five of them. It is useful to document what these arguments are. We may need it to describe the unit of these values such as whether they are in milimeters or in inches. Similarly what is the unit of the output. The last line of the above functin is needed to ensure that the output speed has a unit in km/h.
+We also have a few input arguments this time. In fact, we have five of them. It is useful to document what these arguments are. We may need to describe the unit of these values, such as whether they are in millimetres or in inches. Similarly, what is the unit of the output? The last line of the above function is needed to ensure that the output speed has a unit in km/h.
 
 Note that the above code is just a **function definition**. We have not executed the function. To do a function invocation or function call, we need to type in the function name and provide the **actual arguments**. Let's input the following input arguments:
 - wheel's diameter to be 685.8 mm or 27 inches
@@ -286,7 +285,7 @@ In the above definition, we decided to write the arguments in multiple lines. Py
 
 ## Functions Returning Multiple Outputs Using a Tuple
 
-Let's say if we want our function not only to return the speed in km/h but also in mph (miles per hour). Python allows functions to return a *tuple*. A tuple is a collection data type that can contain more than one values. In order to create a tuple, we just need to separate them using a comma (`,`). Most of the time, for clarity purposes, we put a parenthesis around the tuple. 
+Let's say that we want our function not only to return the speed in km/h but also in mph (miles per hour). Python allows functions to return a tuple. A tuple is a collection data type that can contain more than one value. In order to create a tuple, we just need to separate the values using a comma (`,`). Most of the time, for clarity purposes, we enclose the tuple in parentheses.
 
 For example, the code below creates a tuple and print its values and its type.
 
@@ -378,22 +377,24 @@ print(speed[0], speed[1])
 
 Click the "Next" button a few times until the program counter reach line number 11, which is step 11 out of 13. 
 
-At this point the image on the right hand side gives a snapshot of what is in the memory before the function exit and returns the two values. A few things which you need to take note. The first one is that there are **two frames** created. The first one is the **global** frame and the second one is the **calculate_speed** frame. The calculate speed frame is created when the function `calculate_speed` is called. This happens on step 6 of 13. You can click the "Prev" button to verify this. Go to step 5 and click "Next" to see when is the `calculate_speed` frame created. In essence the `calculate_speed` frame is a local frame which is called when the function is *invoked* or *executed*. Every function invocation creates a new frame. 
+At this point, the image on the right-hand side gives a snapshot of what is in the memory before the function exits and returns the two values. A few things to take note of: The first is that there are two frames created. The first is the global frame, and the second is the calculate_speed frame. The calculate_speed frame is created when the function calculate_speed is called. This happens on step 6 of 13. You can click the "Prev" button to verify this. Go to step 5 and click "Next" to see when the calculate_speed frame is created. In essence, the calculate_speed frame is a local frame created when the function is invoked or executed. Every function invocation creates a new frame.
 
-At step 7, the program counter is at the first line of the code in function `calculate_speed`. At this point, the local frame has been populated by the input arguments: `diameter`, `tire_size`, `chainring`, `cog` and `cadence`. When you execute line 6 to arrive at Step 8, a new **local** variable is created, which is `gear_ratio`. When this local variable is created, several things happens:
-- Python tries to evaluate the value of the expression on the right.
-- On the right hand side of the assignment operator (`=`), Python sees the operator `/` and understood it as a division. Since this is a *binary* operator it requires two operands.
-- Python found two **names** for the operands of `/`: `chainring` and `cog`. Python tries to see if these names are any of the built-in names or keywords.
-- Since Python cannot find any of these names in its built-in functions or keywords, Python looks into the **local frame**. At this point, Python finds the two names and *evaluates* the values.
-- Once Python obtains the two values for the operands, Python executes the division operation on the two operands and assign it to the name on the left hand side of the assignment operators, i.e. `gear_ratio`. 
+At step 7, the program counter is at the first line of the code in the function calculate_speed. At this point, the local frame has been populated by the input arguments: diameter, tire_size, chainring, cog, and cadence. When you execute line 6 to arrive at step 8, a new local variable is created: gear_ratio. When this local variable is created, several things happen:
 
-In subsequent lines, Python does similar things to create several other *local variables*: `speed`, `speed_kmph` and `speed_mph`. 
+Python tries to evaluate the value of the expression on the right.
+On the right-hand side of the assignment operator `(=)`, Python sees the operator `/` and understands it as a division. Since this is a binary operator, it requires two operands.
+Python finds two **names** for the operands of `/`: chainring and cog. Python checks if these names are any of the built-in names or keywords.
+Since Python cannot find any of these names in its built-in functions or keywords, Python looks into the **local frame**. At this point, Python finds the two names and evaluates their values.
+Once Python obtains the two values for the operands, Python executes the division operation on the two operands and assigns it to the name on the left-hand side of the assignment operator, i.e. gear_ratio.
+In subsequent lines, Python does similar things to create several other **local variables**: speed, speed_kmph, and speed_mph.
 
-Those are called **local variables** because they are local to the functin and are **not accessible** anywhere else. To see this, make sure your program counter is back at line 11 or Step 11 of 13. Click "Next" two times to exit the function. Notice that now there is only one single frame, which is the *global* frame. The local frame of `calculate_speed` has been destroyed. Since this frame is destroyed none of those local variables are accessible when we exit the function. 
+These are called local variables because they are local to the function and are **not accessible** anywhere else. To see this, make sure your program counter is back at line 11 or step 11 of 13. Click "Next" two times to exit the function. Notice that now there is only one single frame, which is the *global* frame. The local frame of calculate_speed has been destroyed. Since this frame is destroyed, none of those local variables are accessible when we exit the function.
+
+
 
 ## Global Variable
 
-Now, you may realize that most of the arguments in the function `calculate_speed` will not change if the bicycle remains the same. Most of these are parameters of the bicycle of the users. As long as the user does not change the bicycle, those parameters will not change. Do we need to keep on entering those numbers such as the diameters and the tire size again every time we want to calculate the speed for a given cadence? The answer is no. In this section we will show two alternatives which uses the global variable and optional arguments. We will discuss its advantage and disadvantage. In the future lessons, we will show some other alternatives such as using your own custom data type through object oriented programming. Object oriented programming will allow you to pass on the bicycle information as one single data.  
+Now, you may realise that most of the arguments in the function calculate_speed will not change if the bicycle remains the same. Most of these are parameters of the user's bicycle. As long as the user does not change the bicycle, those parameters will not change. Do we need to keep on entering those numbers, such as the diameters and the tyre size, again every time we want to calculate the speed for a given cadence? The answer is no. In this section, we will show two alternatives which use the global variable and optional arguments. We will discuss their advantages and disadvantages. In future lessons, we will show some other alternatives, such as using your own custom data type through object-oriented programming. Object-oriented programming will allow you to pass on the bicycle information as one single data structure.
 
 Let's start with using the global variables. Since these parameters never (or seldom) change, we may put all these values as a kind of constants and define it outside of the functions. In this way, all these constants are readable by all the functions that we create. How to do this? Let's see the code below in Python Tutor.
 
@@ -413,7 +414,7 @@ Let's see what happens when you execute line 13:
 
 Click Next to see how the environment change in the local frame. 
 
-Similar things happens when we execute line 14 to calculate the `speed`. This time, Python gets the value for `diameter`, `tire_size` from the *global* frame. On the other hand, Python gets the value of `gear_ratio` and `cadence` from the local frame. You may not noticed that actually in this expression, we access the constant `math.pi` even in our earlier version of the code. If you observe carefully, the name `math` is located in the global frame. This is because our `import math` statement is outside of the function. Any code outside of any function is executed in the global frame. This is also the reason why we import the name `math` in the global frame. The reason is that more than one functions may make use of the math functions and constants. If we import the library `math` inside of each function, we have to do multiple import. 
+Similar things happen when we execute line 14 to calculate the `speed`. This time, Python gets the values for `diameter` and `tyre_size` from the *global* frame. On the other hand, Python gets the values of `gear_ratio` and `cadence` from the local frame. You may not have noticed that, actually, in this expression, we access the constant `math.pi`, even in our earlier version of the code. If you observe carefully, the name `math` is located in the global frame. This is because our import math statement is outside of the function. Any code outside of any function is executed in the global frame. This is also the reason why we import the name math in the global frame. The reason is that more than one function may make use of the math functions and constants. If we import the library math inside of each function, we would have to do multiple imports. 
 
 ## Variable Shadowing
 
@@ -421,11 +422,11 @@ What happens if you have the same name both in the local and in the global varia
 
 <iframe width="800" height="700" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20math%0Afrom%20typing%20import%20Tuple%0A%0ASpeed%20%3D%20Tuple%5Bfloat,%20float%5D%0A%0Adiameter%3A%20float%20%3D%20685.8%0Atire_size%3A%20float%20%3D%2038.1%0Achainring%3A%20int%20%3D%2050%0Acog%3A%20int%20%3D%2014%0A%0Adef%20calculate_speed%28cadence%3A%20int%29%20-%3E%20Speed%3A%0A%20%20chainring%3A%20int%20%3D%200%0A%20%20gear_ratio%3A%20float%20%3D%20chainring%20/%20cog%0A%20%20speed%3A%20float%20%3D%20math.pi%20*%20%28diameter%20%2B%20%282%20*%20tire_size%29%29%20%5C%0A%20%20%20%20%20%20%20%20%20%20*%20gear_ratio%20*%20cadence%0A%20%20speed_kmph%3A%20float%20%3D%20speed%20*%2060%20/%201_000_000%0A%20%20speed_mph%3A%20float%20%3D%20speed%20*%2060%20/%201.609e6%0A%20%20return%20speed_kmph,%20speed_mph%0A%0Aspeed%3A%20Speed%20%3D%20calculate_speed%2825%29%0Aprint%28speed%5B0%5D,%20speed%5B1%5D%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
-In the above code, we have two variables with the name `chainring`. The first one is at line 8 which is outside of the function and is in the global frame while the second one is at line 12 which is inside the function and is in the local frame. When you run the code and execute line 12 (Step 11 of 18), you notice that now the gear_ratio is 0.0. The reason is that Python takes in the value of `chainring` from the local frame instead of the global frame. Notice in the environment diagram that the value of `chainring` in the local frame is 0. This is why we say that the local variable shadows the global variable when they have the same name. 
+In the above code, we have two variables with the name chainring. The first one is at line 8, which is outside of the function and is in the global frame, while the second one is at line 12, which is inside the function and is in the local frame. When you run the code and execute line 12 (Step 11 of 18), you notice that now the gear_ratio is 0.0. The reason is that Python takes the value of chainring from the local frame instead of the global frame. Notice in the environment diagram that the value of chainring in the local frame is 0. This is why we say that the local variable shadows the global variable when they have the same name.
 
-If you move the steps to the last step and observe the global frame, notice that the value of the `chainring` remains at 50. The value at the global frame does not change when we have a new definition with the same name in the local frame. If you want to modify the global frame variable's value, you can use the keyword `global` in Python inside the function definition. But modifying global variable from inside a function is creating a side effect. This will make it hard for programmers to debug as the value can be modified from any function and we will find a hard time where or how the value is modified. The best way to modify a value in the global variable is by returning the output of the function and assigning it back to the global variable. 
+If you move the steps to the last step and observe the global frame, notice that the value of the chainring remains at 50. The value in the global frame does not change when we have a new definition with the same name in the local frame. If you want to modify the global frame variable's value, you can use the keyword global in Python inside the function definition. However, modifying a global variable from inside a function creates a side effect. This will make it hard for programmers to debug, as the value can be modified from any function, making it difficult to track where or how the value is changed. The best way to modify a value in the global variable is by returning the output of the function and assigning it back to the global variable.
 
-In summary, avoid using the global variable to modify information. If you want to pass on information to the function, pass it through the input arguments. On the other hand, if you want the function to modify some variables, modify by assigning the output of that function to that variable. In short, we want to have no side effects from a function as much as possible. Side effects make it hard for us to debug our code. On the other hand, if we use input arguments and return values, we know what data coming in and out of the functions and it will be easier to debug. 
+In summary, avoid using global variables to modify information. If you want to pass on information to the function, pass it through the input arguments. On the other hand, if you want the function to modify some variables, do so by assigning the output of that function to that variable. In short, we want to have as few side effects from a function as possible. Side effects make it hard for us to debug our code. Conversely, if we use input arguments and return values, we know what data is coming in and out of the functions, making it easier to debug.
 
 
 ## Defining Functions with Optional Arguments
@@ -590,11 +591,11 @@ $ python 06_speed_convert.py
 ```
 
 ## Summary
+In this lesson, we have learnt how to create our own user-defined function. We learnt how to declare a new function that takes in some input arguments and returns some output values. We also continued to use type hinting to ensure that our code is well-written and easy to debug.
 
-In this lesson, we have learnt to create our own user defined function. We learnt how to declare a new function that takes in some input arguments and returning some output values. We also continue to use the type hinting to ensure that our code is written well and easy to debug. 
+A function can be thought of as a small computation, and we can abstract our computation units as separate functions. We have demonstrated how to solve the same problem in several different ways. In all these cases, we followed the PCDIT framework. Specifically, we focused on the Problem Statement, identifying the input, output, and the computational process in this lesson. As our code becomes more complex, we will make use of the other steps in the PCDIT framework.
 
-Function can be thought of as a small computation and we can abstract our computation units as separate functions. We have shown how we can solve the same problem in a few different ways. But in all these cases, we follow the PCDIT framework. We mainly use the Problem Statement and identifying the input, output as well as the computational process in this lesson. As our code becomes more complicated, we will make use of the other steps in PCDIT framework. 
+Another important point is the concept of global and local variables. A local variable exists only within the context of the function when it is executed. These variables live only in the local frame. On the other hand, a global variable is accessible from all frames. However, if there is a variable with the same name as a global variable, it will shadow the global variable. The function always accesses the local frame first before searching the global frame.
 
-Another important point is the concept of global and local variables. Local variable only exists within the context of that function when it is executed. They live only in the local frame. On the other hand, global variable is accessible from all frames. However, if there is a variable with the same name as the global variable, it will shadow the global variable. The function always access the local frame first before it searches the global frame. 
 
 We have also introduced how we can use optional arguments in our function definition. In this case, our function can be simpler. We also show that we can chain our function call and feed the output of one function into the input of another function. 
