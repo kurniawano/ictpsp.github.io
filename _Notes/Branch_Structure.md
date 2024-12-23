@@ -17,8 +17,7 @@ show_date: false
 
 In our previous lesson on [Basic Structures]({{ '/notes/basic-structures' | relative_url}}) we discuss a few flow structures that we will find again and again a computer code. The first one and the most fundamental one is the sequential structure. Everything else is based on this. The second one is the *branch* structure which we will discuss more deeply in this lesson. 
 
-We showed an example of when this branch structure may at play in a real application. For example, in our cycling application, we may want to check if the user hit the set target or not. If the user hits the target, we want to display some congratulatory message. In that lesson we showed how we plan to solve the problem using a flowchart. In this lesson, we will show how we can **I**mplement our design of algorithm using Python. Python statement that allows us to do is is the **if statement**. 
-
+We showed an example of when this branch structure might be at play in a real application. For example, in our cycling application, we may want to check if the user hit the set target or not. If the user hits the target, we want to display a congratulatory message. In that lesson, we showed how we planned to solve the problem using a flowchart. In this lesson, we will show how we can **i**mplement our design of the algorithm using Python. The Python statement that allows us to do this is the **if statement**.
 ### When Things are Right
 
 Let's start with a simple decision making. Using our cycling app example, let's say if the user hits the set target, we will display `"You hit your cadence target for the week! Well done."`. The flowchart is shown below.
@@ -63,8 +62,7 @@ So for now, we are able to display some message when the user hits the target, b
 
 ### When It's True and When It's False
 
-The previous code only display message if the user hits the target. Let's say, if the user does not hit the set target, we want to display `"You missed your target but don't give up and try again."`. In this case, we can make use of the **if-else** statement as shown below.
-
+The previous code only displays a message if the user hits the target. Let's say that if the user does not hit the set target, we want to display `"You missed your target but don't give up and try again."` In this case, we can make use of the **if-else** statement as shown below.
 ```python
 if cadence >= target:
   print("You hit your cadence target for the week! Well done.")
@@ -102,7 +100,7 @@ Again, any unindented code is considered as the **next statement** after the if-
 
 ### When There are More Than Two
 
-So far, we have only considered the case when the condition is true and when the condition is false. But what if we have more than one condition and we want to do several things. An example would be in our cycling app when we want to categorize the user's cadence.
+So far, we have only considered the case when the condition is true and when the condition is false. But what if we have more than one condition and we want to do several things? An example would be in our cycling app, where we want to categorise the user's cadence.
 
 | cadence    | category  |
 |------------|-----------|
@@ -167,7 +165,8 @@ First, notice the difference in the keyword that we use. In the previous code, w
 
 <img src="/ictpsp/assets/images/lesson4/if_if_else.png" height=500>
 
-Basically, the next if-statement for condition_2 and condition_3 are just the next statement after the previous if-statement. This means that each of this conditions will be checked regardless whether condition_1 is true or false. On the other hand, the if-elif statement does something different. If the earlier condition is true, it will execute the block and immediately go to the end and execute the next statement. See flowchart for the if-elif and notice the flow when condition_1 is true. It does not go and check condition_2 at all.
+Basically, the next if-statement for condition_2 and condition_3 is just the next statement after the previous if-statement. This means that each of these conditions will be checked regardless of whether condition_1 is true or false. On the other hand, the if-elif statement behaves differently. If the earlier condition is true, it will execute the block and immediately go to the end to execute the next statement. See the flowchart for the if-elif statement and notice the flow when condition_1 is true. It does not go on to check condition_2 at all.
+
 
 <img src="/ictpsp/assets/images/lesson4/if_elif_else.png" width=500>
 
@@ -189,9 +188,9 @@ Therefore, we **must always use** if-elif statement when it is the same comparis
 
 ## Nested If-Else
 
-In our previous discussion on basic structures, we noted that you can actually have a nested structure. The most common one is to have some sequential structure in one of the blocks inside either branch or iterative structure. This means the "code block A" when the condition is True may contain more than one statement but a few and they are all executed sequentially. However, such nested structure is not limited to only sequential structure. We can have a branch structure inside another branch structure. 
+In our previous discussion on basic structures, we noted that you can actually have a nested structure. The most common type is to have some sequential structure within one of the blocks inside either a branch or iterative structure. This means that "code block A", when the condition is true, may contain more than one statement—just a few—and they are all executed sequentially. However, such a nested structure is not limited to only sequential structures. We can have a branch structure inside another branch structure.
 
-Recall our example of our cycling application. In our previous lessons, we drafted the following pseudocode.
+Recall our example of the cycling application. In our previous lessons, we drafted the following pseudocode.
 
 ```
 1. if the *average_cadence* is greater than or equal to *target_cadence*
@@ -205,7 +204,8 @@ Recall our example of our cycling application. In our previous lessons, we draft
           2.2.2.1 Call *modify_target_cadence* function.
 ```
 
-Notice in the above pseudocode that we have two branch structure. The first branch structure is based on whether the `average_cadence` is greater than or equla to the `target_cadence`. When the condition is `False`, step 2.1 calculates the difference between the two. Furthermore, step 2.2 actually contains another branch structure that is based on the difference. We can draw the flowchart as below.
+Notice in the above pseudocode that we have two branch structures. The first branch structure is based on whether the average_cadence is greater than or equal to the target_cadence. When the condition is False, step 2.1 calculates the difference between the two. Furthermore, step 2.2 actually contains another branch structure that is based on the difference. We can draw the flowchart as below.
+
 
 <img src="/ictpsp/assets/images/lesson4/nested_if.png" width=500>
 
@@ -223,12 +223,11 @@ else:
   else:
     target_cadence = modify_target_cadence()
 ```
+It is important to take note of the indentation level when reading Python code. In the above code, we have one statement in the True block if average_cadence >= target_cadence, which is the print() statement. On the other hand, there are two statements in the False block when the condition is False. In that False block of code, we have the assignment to calculate the difference and another if-statement to check how big the difference is. This is the other branch structure that is nested within the earlier branch structure. If the difference is less than 10, it will call the `print()` function. On the other hand, if the difference is not less than 10, it will call the `modify_target_cadence()` function.
 
-It is important to take note of the indentation level when reading Python codes. In the above code we have one statement in the True block if `average_cadence >= target_cadence` which is the `print()` statement. On the other hand, there are two statements in the False block when the condition is `False`. In that False block of codes, we have the assignment to calculate the `difference` and another if-statement to check how big the difference is. This is the other branch structure that is nested in the earlier branch structure. If the difference is less than 10, it will call the `print()` function. On the other hand, if the difference is not less than 10, it will call `modify_target_cadence()` function. 
+Now you know how to use a nested if-else. But what is more important is to come up with the pseudocode and the algorithm, as well as identify the basic structures.
 
-Now you know how to have a nested if-else. But what is more important is to come up with the pseudocode and the algorithm as well as identifying the basic structures. 
-
-In some cases, you can actually reduce the level of the nested if-statements. For example, in our case, above, you can rewrite the nested if-else using if-elif-else statements.
+In some cases, you can actually reduce the level of the nested if-statements. For example, in our case above, you can rewrite the nested if-else using if-elif-else statements.
 
 ```python
 if average_cadence >= target_cadence:
@@ -271,11 +270,13 @@ Notice in the above pseudocode we use the keywords: if ..., otherwise ..., deter
 
 ## Abstracting Selection Process as a Function
 
-In some cases, we want to abstract our selection process using a function. Recall that we can use function as an abstraction of some computation such as calculating speed, calculating cadence, etc. Similarly, we can create functions that returns a Boolean data for our selection process. For example, we can create the following functions for our example on average cadence of the week.
-- `user_hits_target(user_value, target)` which checks if the user hits the target or not. 
-- `has_small_difference(user_value, target)` which checks if the difference is small or not. We can use this to decide whether to modify the target or just display some encouraging message as in step 2.2 in the pseudocode above.
+In some cases, we want to abstract our selection process using a function. Recall that we can use a function as an abstraction of some computation, such as calculating speed, calculating cadence, etc. Similarly, we can create functions that return a Boolean value for our selection process. For example, we can create the following functions for our example on the average cadence of the week:
 
-In the two functions above, we need to return a Boolean data as the return value. Let's see how we can define those two functions.
+user_hits_target(user_value, target) which checks if the user hits the target or not.
+has_small_difference(user_value, target) which checks if the difference is small or not. We can use this to decide whether to modify the target or just display some encouraging message, as in step 2.2 of the pseudocode above.
+In the two functions above, we need to return a Boolean value as the return value. Let's see how we can define those two functions.
+
+
 
 ```python
 def user_hits_target(user_value, target):
@@ -351,4 +352,8 @@ Similarly, we can drill down step 2.2.1 `if it has small difference` into the fo
 if the difference is less than 10
 ```
 
-We should not be afraid of revising our **D**esign of algorithm at various level of abstraction. In fact, that is one of important lesson in computational thinking. To be able to think through some abstraction and at different level of abstraction is one of the key element of computational thinking. 
+
+Here’s the revised version with corrections while maintaining the original tone:
+
+We should not be afraid of revising our **D**esign of an algorithm at various levels of abstraction. In fact, that is one of the important lessons in computational thinking. Being able to think through some abstraction and at different levels of abstraction is one of the key elements of computational thinking.
+
