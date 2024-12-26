@@ -140,7 +140,9 @@ In this line of code, we duplicate a single space string `" "` three times and c
 data += 2 * " " + 3 * "*" + "\n"
 ```
 
-In this code, we use the compound operator `+=` which is equivalent to `data = data + something`. That something is the expression on the right hand side. It does a few thing. First it duplicates the space two times and concatenate with the asterisk that is duplicated three times (`***`). Lastly, it is concatenated with a newline character again. By now, you should be able to guess what the other lines do. The result is a simple christmas tree.
+In this code, we use the compound operator +=, which is equivalent to data = data + something. That "something" is the expression on the right-hand side. It performs a few steps. First, it duplicates the space two times and concatenates it with the asterisk duplicated three times (***). Lastly, it concatenates this with a newline character. By now, you should be able to guess what the other lines do. The result is a simple Christmas tree.
+
+
 
 ```
    *
@@ -165,7 +167,7 @@ Now, we will introduce a few new operators that works in a collection-like data 
 
 ### Check If Substring is in a String
 
-The first one maybe is simply to check if some item is inside a collection. In the case of `string` data, we may want to check if a character is inside a string or if a substring is inside a string.  In this case we use the `in` operator. This operator evaluates to a boolean data because it is either true, when the substring is inside the  string, or false, when the substring is not inside  string. 
+The first example may simply involve checking if an item is inside a collection. In the case of string data, we may want to check if a character is inside a string or if a substring is inside a string. In this case, we use the in operator. This operator evaluates to a Boolean value because it is either True (when the substring is inside the string) or False (when the substring is not inside the string).
 
 ```python
 >>> char: str = 'a'
@@ -246,7 +248,9 @@ The reason that the last character is always length of string minus one is that 
 
 ### Getting a Substring from a String
 
-Not only we can get a character from a string, we can also slice a substring from a string. This **slicing** operation makes use of the same **Get Item** operator (or the bracket operator). The only difference is that the argument inside the bracket is a slice that contains double colon.
+Not only can we get a character from a string, but we can also slice a substring from a string. This **slicing** operation makes use of the same **Get Item** operator (or the bracket operator). The only difference is that the argument inside the brackets is a slice that contains double colons.
+
+
 
 ```python
 [start:end:step]
@@ -266,13 +270,16 @@ Joh
 n W
 ```
 
-In the first slice, we start with index `0` and end at index `3`. Notice that index 3 refers to the letter `n` in `John`. However, what is printed is only `Joh` without the `n` character. This is to emphasize that the ending index is **excluded** in the slice. 
+In the first slice, we start with index 0 and end at index 3. Notice that index 3 refers to the letter n in John. However, what is printed is only Joh without the n character. This emphasises that the ending index is excluded in the slice.
 
-What's the reason for this? Python developers find it easier to obtain the length of the slice from the two indices. When we have `name[0:3]`, we can immediately subtract the two indices $3-0 = 3$ which gives us the length of the sliced substring `Joh`. 
+Why is this the case? Python developers found it easier to calculate the length of the slice using the two indices. When we have name[0:3], we can immediately subtract the two indices, 
+3−0=3
+3−0=3, which gives us the length of the sliced substring, Joh.
 
-We can see similar behaviour in `name[3:6]`. In this case, index 3 is on character `n` while index 6 is on character `i` after the letter `W`. However, the output simply prints `n W` which contains three character as you can calculate from the two indices. 
+We see similar behaviour in name[3:6]. Here, index 3 refers to the character n, while index 6 is at the character after W. However, the output simply prints n W, which contains three characters, as you can calculate from the two indices.
 
-When the slicing starts from the beginning or all the way to the end, you can remove the index from the slice. Python will use those first index and all the way to the last element as default values. See the two examples below.
+When slicing starts from the beginning or extends all the way to the end, you can omit the corresponding index from the slice. Python will use the first index or the last element as default values. See the two examples below.
+
 
 ```python
 >>> print(name[:4])
@@ -448,4 +455,6 @@ The table for the floating point type is shown below and was taken from Python's
 
 ## Summary
 
-In this section, we have dived slightly deeper on `string` data type. We review how to create string literals and some of basic operations that are common to string data. String can be thought of as a collection-like data where we can process the sequence of characters inside this string. In this lesson, we focus more on how to slice some substring from a given string. In the next lesson, we will learn how to iterate over each character. At the end, we emphasise that string is immutable data type in Python. This means that we cannot change it once it is created in the memory. We also showed some simple way to format string using Python's formatted string literals. 
+In this section, we have explored the string data type in greater detail. We reviewed how to create string literals and some of the basic operations commonly applied to string data. A string can be thought of as a collection-like data type, allowing us to process the sequence of characters it contains. In this lesson, we focused on how to slice a substring from a given string. In the next lesson, we will learn how to iterate over each character.
+
+Finally, we emphasised that strings are immutable data types in Python. This means that once created, they cannot be modified in memory. We also demonstrated a simple way to format strings using Python's formatted string literals.
